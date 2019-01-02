@@ -1,0 +1,222 @@
+---
+title: "GSTA4 KO analysis for Colin"
+author: "Laura Saba"
+date: "9/1/2017"
+output: html_document
+---
+
+```{r}
+rm(list=ls())
+options(stringsAsFactors = FALSE)
+library("GO.db")
+library(dplyr)
+wd <- "~/Documents/Shearn/GSTA4/"
+
+orig <- read.table(file=paste(wd,"data/120d EtOH GSTA4 study Table for Laura Saba.txt",sep=""),sep="\t",quote="",header=TRUE,fill=TRUE)
+orig <- orig[orig$Accession!="totals" & orig$Accession!=" " & orig$Accession!="",]
+
+update <- read.table(file=paste(wd,"data/updateProteinID.2017-07-14.txt",sep=""),sep="\t",header=TRUE)
+proteins <- merge(orig,update,by.x="Accession",by.y="orig",all=TRUE)
+proteins$Accession[!is.na(proteins$new)] = proteins$new[!is.na(proteins$new)]
+
+# GO data base
+go_db <- read.table(file=paste(wd,"source/",sep=""),sep="\t",header=FALSE,comment.char="!",quote="")
+
+library(biomaRt)
+ensembl=useMart("ensembl")
+ensembl = useDataset("mmusculus_gene_ensembl",mart=ensembl)
+
+#convert protein ID to Uniprot symbols
+protein_to_uniprot <- read.table(file=paste(wd,"data/protein_to_uniprot.2017-07-14.txt",sep=""),sep="\t",quote="",header=TRUE,fill=TRUE)
+
+proteins <- merge(proteins,protein_to_uniprot,by.x="Accession",by.y="Entry.name",all.x=TRUE)
+
+##problematic proteins
+proteins <- proteins[!(proteins$Accession %in% c("PZP_MOUSE","SLF2_MOUSE")),]
+
+##Convert to MGI Symbol
+toMGI <- getBM(attributes=c('uniprot_gn', 'mgi_id',"mgi_symbol"), 
+      filters = 'mgi_id', 
+      values = go_db$V2, 
+      mart = ensembl)
+```
+
+GO Enrichment
+
+```{r}
+uniprot_to_go <- merge(toMGI,go_db,by.x="mgi_id",by.y="V2")
+
+
+
+Chow_GSTA4 <- unique(uniprot_to_go$uniprot_gn[uniprot_to_go$uniprot_gn %in% proteins$Entry[proteins$Chow.GSTA4...==1]])
+Chow_SV <- unique(uniprot_to_go$uniprot_gn[uniprot_to_go$uniprot_gn %in% proteins$Entry[proteins$Chow.SV==1]])
+EtOH_GSTA4 <- unique(uniprot_to_go$uniprot_gn[uniprot_to_go$uniprot_gn %in% proteins$Entry[proteins$EtOH.GSTA4...==1]])
+EtOH_SV <- unique(uniprot_to_go$uniprot_gn[uniprot_to_go$uniprot_gn %in% proteins$Entry[proteins$EtOH.SV==1]])
+Binge_GSTA4 <- unique(uniprot_to_go$uniprot_gn[uniprot_to_go$uniprot_gn %in% proteins$Entry[proteins$Binge.GSTA4...==1]])
+Binge_SV <- unique(uniprot_to_go$uniprot_gn[uniprot_to_go$uniprot_gn %in% proteins$Entry[proteins$Binge.SV==1]])
+
+pathEnrich <- function(x){
+  all_GO <- unique(uniprot_to_go$uniprot_gn)
+  sig_GO <- unique(x)
+
+  all_GO_cnt <- uniprot_to_go[uniprot_to_go$uniprot_gn %in% all_GO,]
+  sig_GO_cnt <- uniprot_to_go[uniprot_to_go$uniprot_gn %in% sig_GO,]
+
+  all_GO_cnt <- all_GO_cnt %>%
+    group_by(V5) %>%
+    summarize(GO_cnt = length(uniprot_gn))
+
+  sig_GO_cnt <- sig_GO_cnt %>%
+    group_by(V5) %>%
+    summarize(GO_sig = length(uniprot_gn))
+
+  enrich_table <- merge(all_GO_cnt,sig_GO_cnt,by="V5",all=TRUE)
+  enrich_table$GO_sig[is.na(enrich_table$GO_sig)] = 0
+  
+  enrich_table$numTested <- length(all_GO)
+  enrich_table$numSig <- length(sig_GO)
+  enrich_table <- enrich_table %>%
+    mutate(expected = (numSig/numTested)*GO_cnt)
+
+  #enrich_table <- merge(path_names_mmu,enrich_table,by.x="V1",by.y="pathway")
+
+  enrich_table$enrich_p <- NA
+  for(i in 1:nrow(enrich_table)){
+    a = enrich_table[i,"GO_sig"]
+    b = enrich_table[i,"GO_cnt"] - enrich_table[i,"GO_sig"]
+    c = enrich_table[i,"numSig"] - enrich_table[i,"GO_sig"]
+    d = enrich_table[i,"numTested"] - enrich_table[i,"numSig"] + enrich_table[i,"GO_sig"]
+    enrich_table$enrich_p[i] = fisher.test(matrix(c(a,b,c,d),nr=2),alternative="greater")$p.value
+  }
+
+  enrich_table <- enrich_table[order(enrich_table$enrich_p),]
+  enrich_table$fdr <- p.adjust(enrich_table$enrich_p,method="BH")
+  return(enrich_table)
+}
+
+Chow_GSTA4_enrich <- pathEnrich(Chow_GSTA4)
+Chow_SV_enrich <- pathEnrich(Chow_SV)
+EtOH_GSTA4_enrich <- pathEnrich(EtOH_GSTA4)
+EtOH_SV_enrich <- pathEnrich(EtOH_SV)
+Binge_GSTA4_enrich <- pathEnrich(Binge_GSTA4)
+Binge_SV_enrich <- pathEnrich(Binge_SV)
+
+colnames(Chow_GSTA4_enrich) <- c("V1","GO_cnt","GO_sig_Chow_GSTA4","numTested","numSig_Chow_GSTA4","expected_Chow_GSTA4","enrich_p_Chow_GSTA4","fdr_Chow_GSTA4")
+colnames(Chow_SV_enrich) <- c("V1","GO_cnt","GO_sig_Chow_SV","numTested","numSig_Chow_SV","expected_Chow_SV","enrich_p_Chow_SV","fdr_Chow_SV")
+
+colnames(EtOH_GSTA4_enrich) <- c("V1","GO_cnt","GO_sig_EtOH_GSTA4","numTested","numSig_EtOH_GSTA4","expected_EtOH_GSTA4","enrich_p_EtOH_GSTA4","fdr_EtOH_GSTA4")
+colnames(EtOH_SV_enrich) <- c("V1","GO_cnt","GO_sig_EtOH_SV","numTested","numSig_EtOH_SV","expected_EtOH_SV","enrich_p_EtOH_SV","fdr_EtOH_SV")
+
+colnames(Binge_GSTA4_enrich) <- c("V1","GO_cnt","GO_sig_Binge_GSTA4","numTested","numSig_Binge_GSTA4","expected_Binge_GSTA4","enrich_p_Binge_GSTA4","fdr_Binge_GSTA4")
+colnames(Binge_SV_enrich) <- c("V1","GO_cnt","GO_sig_Binge_SV","numTested","numSig_Binge_SV","expected_Binge_SV","enrich_p_Binge_SV","fdr_Binge_SV")
+
+
+combined_enrich <- merge(Chow_GSTA4_enrich,Chow_SV_enrich,by=c("V1","GO_cnt","numTested"),all=TRUE)
+combined_enrich <- merge(combined_enrich,EtOH_GSTA4_enrich,by=c("V1","GO_cnt","numTested"),all=TRUE)
+combined_enrich <- merge(combined_enrich,EtOH_SV_enrich,by=c("V1","GO_cnt","numTested"),all=TRUE)
+combined_enrich <- merge(combined_enrich,Binge_GSTA4_enrich,by=c("V1","GO_cnt","numTested"),all=TRUE)
+combined_enrich <- merge(combined_enrich,Binge_SV_enrich,by=c("V1","GO_cnt","numTested"),all=TRUE)
+
+threshold = 0.01
+sum(combined_enrich$fdr_Chow_GSTA4<threshold,na.rm=TRUE)
+sum(combined_enrich$fdr_Chow_SV<threshold,na.rm=TRUE)
+sum(combined_enrich$fdr_EtOH_GSTA4<threshold,na.rm=TRUE)
+sum(combined_enrich$fdr_EtOH_SV<threshold,na.rm=TRUE)
+sum(combined_enrich$fdr_Binge_GSTA4<threshold,na.rm=TRUE)
+sum(combined_enrich$fdr_Binge_SV<threshold,na.rm=TRUE)
+
+combined_enrich$num_grps_sig <- rowSums(combined_enrich[,grep("fdr",colnames(combined_enrich))]<threshold)
+
+of_interest <- combined_enrich[combined_enrich$num_grps_sig>0 & combined_enrich$num_grps_sig<6,]
+
+groups <- paste(rep(c("Chow","EtOH","Binge"),each=2),rep(c("GSTA4","SV"),3),sep="_")
+of_interest[,c("V1","V2",paste("fdr_",groups,sep=""))]
+
+combined_enrich$sig_pattern <- apply(combined_enrich[,grep("fdr",colnames(combined_enrich))],1,function(a) paste(as.numeric(a<threshold),collapse=""))
+table(rowSums(combined_enrich[,grep("enrich_p",colnames(combined_enrich))]<threshold))
+```
+
+
+##Differential Enrichment
+
+```{r}
+diffEnrich <- function(a,b,c,d,OR){
+  y = fisher.test(matrix(c(a,b,c,d),nr=2))
+  if(OR) z = y$estimate
+  if(!OR) z = y$p.value
+  return(z)
+}
+
+#diff enrich EtOH effect - WT Chow vs WT EtOH
+
+combined_enrich$EtOH_Effect_p = apply(combined_enrich[,c("GO_sig_Chow_SV","GO_sig_EtOH_SV","numSig_Chow_SV","numSig_EtOH_SV")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=FALSE))
+
+combined_enrich$EtOH_Effect_OddsRatio = apply(combined_enrich[,c("GO_sig_Chow_SV","GO_sig_EtOH_SV","numSig_Chow_SV","numSig_EtOH_SV")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=TRUE))
+
+#diff enrich EtOH effect in GSTA4 - GSTA4 Chow vs GSTA4 EtOH
+
+combined_enrich$EtOHinGSTA4_Effect_p = apply(combined_enrich[,c("GO_sig_Chow_GSTA4","GO_sig_EtOH_GSTA4","numSig_Chow_GSTA4","numSig_EtOH_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=FALSE))
+
+combined_enrich$EtOHinGSTA4_Effect_OddsRatio = apply(combined_enrich[,c("GO_sig_Chow_GSTA4","GO_sig_EtOH_GSTA4","numSig_Chow_GSTA4","numSig_EtOH_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=TRUE))
+
+
+#diff enrich Binge effect - WT Binge vs WT EtOH
+
+combined_enrich$Binge_Effect_p = apply(combined_enrich[,c("GO_sig_EtOH_SV","GO_sig_Binge_SV","numSig_EtOH_SV","numSig_Binge_SV")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=FALSE))
+
+combined_enrich$Binge_Effect_OddsRatio = apply(combined_enrich[,c("GO_sig_EtOH_SV","GO_sig_Binge_SV","numSig_EtOH_SV","numSig_Binge_SV")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=TRUE))
+
+
+#diff enrich Binge effect in GSTA4 - GSTA4 Binge vs GSTA4 EtOH
+
+combined_enrich$BingeInGSTA4_Effect_p = apply(combined_enrich[,c("GO_sig_EtOH_GSTA4","GO_sig_Binge_GSTA4","numSig_EtOH_GSTA4","numSig_Binge_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=FALSE))
+
+combined_enrich$BingeInGSTA4_Effect_OddsRatio = apply(combined_enrich[,c("GO_sig_EtOH_GSTA4","GO_sig_Binge_GSTA4","numSig_EtOH_GSTA4","numSig_Binge_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=TRUE))
+
+#diff enrich Genotype Effect - WT Chow vs GSTA4 Chow
+
+combined_enrich$Genotype_Effect_p = apply(combined_enrich[,c("GO_sig_Chow_SV","GO_sig_Chow_GSTA4","numSig_Chow_SV","numSig_Chow_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=FALSE))
+
+combined_enrich$Genotype_Effect_OddsRatio = apply(combined_enrich[,c("GO_sig_Chow_SV","GO_sig_Chow_GSTA4","numSig_Chow_SV","numSig_Chow_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=TRUE))
+
+
+#diff enrich Genotype Effect With Ethanol - WT EtOH vs GSTA4 EtOH
+
+combined_enrich$GenoInEtOH_Effect_p = apply(combined_enrich[,c("GO_sig_EtOH_SV","GO_sig_EtOH_GSTA4","numSig_EtOH_SV","numSig_EtOH_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=FALSE))
+
+combined_enrich$GenoInEtOH_Effect_OddsRatio = apply(combined_enrich[,c("GO_sig_EtOH_SV","GO_sig_EtOH_GSTA4","numSig_EtOH_SV","numSig_EtOH_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=TRUE))
+
+
+combined_enrich[combined_enrich$GenoInEtOH_Effect_p<0.05,]
+
+#diff enrich Genotype Effect With Binge - WT Binge vs GSTA4 Binge
+
+combined_enrich$GenoInBinge_Effect_p = apply(combined_enrich[,c("GO_sig_Binge_SV","GO_sig_Binge_GSTA4","numSig_Binge_SV","numSig_Binge_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=FALSE))
+
+combined_enrich$GenoInBinge_Effect_OddsRatio = apply(combined_enrich[,c("GO_sig_Binge_SV","GO_sig_Binge_GSTA4","numSig_Binge_SV","numSig_Binge_GSTA4")],1,function(a) diffEnrich(a[1],a[2],a[3],a[4],OR=TRUE))
+
+table(rowSums(combined_enrich[,grep("_Effect_p",colnames(combined_enrich),fixed=TRUE)]<0.05))
+
+### add FDR  ##
+combined_enrich$GenoInBinge_Effect_fdr = p.adjust(combined_enrich$GenoInBinge_Effect_p,method="BH")
+combined_enrich$GenoInEtOH_Effect_fdr = p.adjust(combined_enrich$GenoInEtOH_Effect_p,method="BH")
+combined_enrich$Genotype_Effect_fdr = p.adjust(combined_enrich$Genotype_Effect_p,method="BH")
+combined_enrich$BingeInGSTA4_Effect_fdr = p.adjust(combined_enrich$BingeInGSTA4_Effect_p,method="BH")
+combined_enrich$Binge_Effect_fdr = p.adjust(combined_enrich$Binge_Effect_p,method="BH")
+combined_enrich$EtOHinGSTA4_Effect_fdr = p.adjust(combined_enrich$EtOHinGSTA4_Effect_p,method="BH")
+combined_enrich$EtOH_Effect_fdr = p.adjust(combined_enrich$EtOH_Effect_p,method="BH")
+
+
+tmp_results <- combined_enrich[rowSums(combined_enrich[,grep("_Effect_p",colnames(combined_enrich),fixed=TRUE)]<0.05)>0,]
+
+xx<-as.list(GOTERM)
+y <- xx["GO:0002818"]]
+
+anno <- do.call('rbind',lapply(xx[tmp_results$V1],function(y) data.frame(GO_ID = GOID(y),
+           Term = Term(y),
+           Onto = Ontology(y),
+           Defin = Definition(y))))
+
+tmp_results <- merge(anno,tmp_results,by.x="GO_ID",by.y="V1")
+write.table(tmp_results,file="~/Desktop/tmp_results_2017-09-07.txt",sep="\t",row.names = FALSE,col.names = TRUE)
+```
