@@ -48,7 +48,17 @@ get_kegg <- function(species){
               row.names=FALSE,
               col.names=FALSE,
               quote=FALSE)
-
-
+  write.table(kegg_to_pathway,
+              file=paste(base_path,"/kegg_to_pathway",Sys.Date(),".txt",sep=""),
+              sep="\t",
+              row.names=FALSE,
+              col.names=FALSE,
+              quote=FALSE)
+  write.table(pathway_to_species,
+              file=paste(base_path,"/pathway_to_species",Sys.Date(),".txt",sep=""),
+              sep="\t",
+              row.names=FALSE,
+              col.names=FALSE,
+              quote=FALSE)
 
 }
