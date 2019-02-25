@@ -19,7 +19,7 @@ get_kegg <- function(species){
   # Build api paths for
   # 1) ncbi to kegg
   ncbi_to_kegg_path <- paste0(api_base, op[["conv"]], "/",
-                              org[[species]], "/", "ncbi")
+                              org[[species]], "/", "ncbi-geneid")
   # 2) kegg to pathway
   kegg_to_pathway_path <- paste0(api_base, op[["link"]], "/", db[["pathway"]],
                                  "/", org[[species]])
@@ -27,6 +27,27 @@ get_kegg <- function(species){
   pathway_to_species_path <- paste0(api_base, op[["list"]], "/",
                                     db[["pathway"]],
                                  "/", org[[species]])
+  ## api pull
+  ncbi_to_kegg <- read.table(file = ncbi_to_kegg_path,
+                             fill = TRUE,
+                             sep = "\t",
+                             quote = "")
+  kegg_to_pathway <- read.table(file = kegg_to_pathway_path,
+                             fill = TRUE,
+                             sep = "\t",
+                             quote = "")
+  pathway_to_species <- read.table(file = pathway_to_species_path,
+                             fill = TRUE,
+                             sep = "\t",
+                             quote = "")
+  ## Since the kegg api will pull the most updated verions
+  # write out tables for reproduciblity.
+  write.table(ncbi_to_kegg,
+              file=paste(base_path,"/ncbi_to_kegg",Sys.Date(),".txt",sep=""),
+              sep="\t",
+              row.names=FALSE,
+              col.names=FALSE,
+              quote=FALSE)
 
 
 
