@@ -13,7 +13,7 @@
 #' to find location of data in expected directory.
 #' @export
 #' @importFrom here here
-#' @import utils
+#' @import data.table
 #'
 #' @examples
 #' kegg <- get_kegg(species = "human")
@@ -50,15 +50,15 @@ get_kegg <- function(species){
                                       db[["pathway"]],
                                       "/", org[[species]])
     ## api pull
-    ncbi_to_kegg <- read.table(file = ncbi_to_kegg_path,
+    ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
                                fill = TRUE,
                                sep = "\t",
                                quote = "")
-    kegg_to_pathway <- read.table(file = kegg_to_pathway_path,
+    kegg_to_pathway <- utils::read.table(file = kegg_to_pathway_path,
                                   fill = TRUE,
                                   sep = "\t",
                                   quote = "")
-    pathway_to_species <- read.table(file = pathway_to_species_path,
+    pathway_to_species <- utils::read.table(file = pathway_to_species_path,
                                      fill = TRUE,
                                      sep = "\t",
                                      quote = "")
@@ -66,19 +66,19 @@ get_kegg <- function(species){
     message("File location: ", here::here())
     ## Since the kegg api will pull the most updated verions
     # write out tables for reproduciblity.
-    write.table(ncbi_to_kegg,
+    utils::write.table(ncbi_to_kegg,
                 file=paste(base_path,"/ncbi_to_kegg",Sys.Date(),".txt",sep=""),
                 sep="\t",
                 row.names=FALSE,
                 col.names=FALSE,
                 quote=FALSE)
-    write.table(kegg_to_pathway,
+    utils::write.table(kegg_to_pathway,
                 file=paste(base_path,"/kegg_to_pathway",Sys.Date(),".txt",sep=""),
                 sep="\t",
                 row.names=FALSE,
                 col.names=FALSE,
                 quote=FALSE)
-    write.table(pathway_to_species,
+    utils::write.table(pathway_to_species,
                 file=paste(base_path,"/pathway_to_species",Sys.Date(),".txt",sep=""),
                 sep="\t",
                 row.names=FALSE,
