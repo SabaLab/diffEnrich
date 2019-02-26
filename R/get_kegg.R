@@ -13,7 +13,7 @@
 #' to find location of data in expected directory.
 #' @export
 #' @importFrom here here
-#' @import data.table
+#' @import utils
 #'
 #' @examples
 #' kegg <- get_kegg(species = "human")
