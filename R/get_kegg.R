@@ -12,7 +12,6 @@
 #' by function that include the date they were pulled. Use findFile = TRUE
 #' to find location of data in expected directory.
 #' @export
-#'
 #' @importFrom here here
 #'
 #' @examples
