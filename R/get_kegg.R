@@ -3,10 +3,18 @@
 #' ncbi gene ID data, KEGG pathway descriptions, and species specific data.
 #' Currently, this function supports Human, Mouse, and Rat.
 #'
-#' @return
+#' @return kegg_out: A named list of the data pulled from kegg api when the
+#' function was run. This may be different if the function is run at
+#' different times. For reproducible results, use text files generated
+#' by function that include the date they were pulled.
 #' @export
 #'
 #' @examples
+#' kegg <- get_kegg(species = "human")
+#' \dontrun{
+#' kegg <- get_kegg(species = "mouse")
+#' }
+#'
 get_kegg <- function(species){
   # Define user's base file path
   base_path <- here::here()
@@ -60,5 +68,8 @@ get_kegg <- function(species){
               row.names=FALSE,
               col.names=FALSE,
               quote=FALSE)
-
+  kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
+                   "kegg_to_pathway" = kegg_to_pathway,
+                   "pathway_to_species", pathway_to_species)
+return(kegg_out)
 }
