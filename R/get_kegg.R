@@ -16,7 +16,7 @@
 #' }
 #'
 get_kegg <- function(species){
-  if(is.null(species)){stop("Must choose one of the 3 species options: human, mouse, rat")}
+  if(missing(species)){stop("Must choose one of the 3 species options: human, mouse, rat")}
   # Define user's base file path
   base_path <- here::here()
   # Define base api path and define list of operations/arguments
