@@ -13,6 +13,8 @@
 #' to find location of data in expected directory.
 #' @export
 #'
+#' @importFrom here here
+#'
 #' @examples
 #' kegg <- get_kegg(species = "human")
 #' \dontrun{
