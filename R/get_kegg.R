@@ -15,8 +15,12 @@
 #' kegg <- get_kegg(species = "mouse")
 #' }
 #'
-get_kegg <- function(species){
+get_kegg <- function(species, findFile = FALSE, fileName, dirToLook, ...){
   if(missing(species)){stop("Must choose one of the 3 species options: human, mouse, rat")}
+  if(!isTRUE(findFile)){
+    path_found <- reader::find.file(fn = fileName, dir = dirToLook, ...)
+    message("file found: ", path_found)
+  }
   # Define user's base file path
   base_path <- here::here()
   # Define base api path and define list of operations/arguments
