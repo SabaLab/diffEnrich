@@ -48,6 +48,8 @@ get_kegg <- function(species){
                              fill = TRUE,
                              sep = "\t",
                              quote = "")
+  message("3 data sets will be written as tab delimited text files")
+  message("File location: ", here::here())
   ## Since the kegg api will pull the most updated verions
   # write out tables for reproduciblity.
   write.table(ncbi_to_kegg,
