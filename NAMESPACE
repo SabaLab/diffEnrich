@@ -3,3 +3,4 @@
 export(get_kegg)
 import(utils)
 importFrom(here,here)
+importFrom(stringr,str_extract)

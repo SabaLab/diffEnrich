@@ -14,6 +14,7 @@
 #' @export
 #' @importFrom here here
 #' @import utils
+#' @importFrom stringr str_extract
 #'
 #' @examples
 #' kegg <- get_kegg(species = "human")
