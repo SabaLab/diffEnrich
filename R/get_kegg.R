@@ -28,9 +28,9 @@ get_kegg <- function(species){
   base_path <- here::here()
   flist <- list.files(base_path)
   if(missing(species)){stop("Must choose one of the 3 species options: human, mouse, rat")}
-  if (sum(flist %in% c(paste("ncbi_to_kegg",Sys.Date(),".txt",sep=""),
-                       paste("kegg_to_pathway",Sys.Date(),".txt",sep=""),
-                       paste("pathway_to_species",Sys.Date(),".txt",sep="")))>0){
+  if (sum(flist %in% c(paste("ncbi_to_kegg",Sys.Date(), kegg_release, ".txt",sep=""),
+                       paste("kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
+                       paste("pathway_to_species",Sys.Date(), kegg_release, ".txt",sep="")))>0){
     stop("These files already exist in your working directory.")
   }
   else {
