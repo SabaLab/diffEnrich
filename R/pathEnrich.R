@@ -41,7 +41,16 @@ pathEnrich <- function(gk_obj, gene_list){
                   numSig = length(sig_KEGG),
                   expected = (numSig/numTested)*KEGG_cnt)
   enrich_table <- merge(pathway_to_species, enrich_table, by.x = "V1", by.y = "pathway")
+
+  ## Perform Fisher's test
   enrich_table$enrich_p <- NA
+  for(i in 1:nrow(enrich_p)){
+    a = enrich_table[i, "KEGG_sig"]
+    b = enrich_table[i, "KEGG_cnt"] - enrich_table[i, "KEGG_sig"]
+    c = enrich_table[i, "numSig"] - enrich_table[i, "KEGG_sig"]
+    d = enrich_table[i, "numTested"] - enrich_table[i, "numSig"] + enrich_table[i, "KEGG_sig"]
+    enrich_table$enrich_p[1] = stats::fisher.test(matrix(c(a,b,c,d), nr = 2), alternative = "greater")$p.value
+  }
 
 
 
