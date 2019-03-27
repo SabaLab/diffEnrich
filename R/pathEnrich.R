@@ -19,22 +19,29 @@ pathEnrich <- function(gk_obj, gene_list){
   ncbi_to_pathway <- ncbi_to_pathway %>%
     dplyr::select(Entry, pathway) %>%
     dplyr::filter(!duplicated(ncbi_to_pathway))
+  pathway_to_species <- gk_obj[["pathway_to_species"]]
 
   ## set up enrichment
   all_KEGG <- unique(ncbi_to_pathway$Entry)
   sig_KEGG <- unique(gene_list)
   all_KEGG_cnt <- ncbi_to_pathway %>%
-    filter(Entry %in% all_KEGG) %>%
-    group_by(pathway) %>%
-    summarize(KEGG_cnt = length(Entry))
+    dplyr::filter(Entry %in% all_KEGG) %>%
+    dplyr::group_by(pathway) %>%
+    dplyr::summarize(KEGG_cnt = length(Entry))
   sig_KEGG_cnt <- ncbi_to_pathway %>%
-    filter(Entry %in% sig_KEGG) %>%
-    group_by(pathway) %>%
-    summarize(KEGG_sig = length(Entry))
+    dplyr::filter(Entry %in% sig_KEGG) %>%
+    dplyr::group_by(pathway) %>%
+    dplyr::summarize(KEGG_sig = length(Entry))
 
   ## Set up enrichment table
   enrich_table <- merge(all_KEGG_cnt, sig_KEGG_cnt, by = "pathway", all = TRUE)
   enrich_table$KEGG_sig[is.na(enrich_table$KEGG_sig)] = 0
+  enrich_table <- enrich_table %>%
+    dplyr::mutate(numTested = length(all_KEGG),
+                  numSig = length(sig_KEGG),
+                  expected = (numSig/numTested)*KEGG_cnt)
+  enrich_table <- merge(pathway_to_species, enrich_table, by.x = "V1", by.y = "pathway")
+  enrich_table$enrich_p <- NA
 
 
 
