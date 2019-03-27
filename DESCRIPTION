@@ -20,4 +20,8 @@ Suggests:
     rmarkdown
 Depends:
     here,
-    stringr
+    stats,
+    dplyr,
+    stringr,
+    
+    

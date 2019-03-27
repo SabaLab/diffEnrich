@@ -1,13 +1,26 @@
-#' Title
+#' pathEnrich
+#' @description This function takes the list generated in get_kegg() as well as a vector
+#' of NCBI (ENTREZ) geneIDs, and identifies significantly enriched KEGG pathways using
+#' a Fisher's Exact Test. Unadjusted p-values as well as FDR corrected p-values are
+#' calculated.
 #'
-#' @return
+#' @param gk_obj list. Object genrated from get_kegg()
+#' @param gene_list Vector. Vector of NCBI (ENTREZ) geneIDs
+#'
+#' @return enrich_table: An object of class data.frame that summarizes the results
+#' of the pathway analysis.
 #' @export
-#'
+#' @importFrom  stats fisher.test
+#' @importFrom  stats p.adjust
+#' @import dplyr
 #' @examples
 pathEnrich <- function(gk_obj, gene_list){
   ## argument check
   if(missing(gk_obj)){stop("Argument missing: gk_obj")}
   if(missing(gene_list)){stop("Argument missing: gene_list. Please provide list of ncbi geneIDs")}
+
+  ## Prepare gene list
+  gene_list <- as.integer(gene_list)
 
   ## prepare kegg data
   ncbi_to_kegg <- gk_obj[["ncbi_to_kegg"]]
