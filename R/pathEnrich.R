@@ -44,14 +44,16 @@ pathEnrich <- function(gk_obj, gene_list){
 
   ## Perform Fisher's test
   enrich_table$enrich_p <- NA
-  for(i in 1:nrow(enrich_p)){
+  for(i in 1:nrow(enrich_table)){
     a = enrich_table[i, "KEGG_sig"]
     b = enrich_table[i, "KEGG_cnt"] - enrich_table[i, "KEGG_sig"]
     c = enrich_table[i, "numSig"] - enrich_table[i, "KEGG_sig"]
     d = enrich_table[i, "numTested"] - enrich_table[i, "numSig"] + enrich_table[i, "KEGG_sig"]
-    enrich_table$enrich_p[1] = stats::fisher.test(matrix(c(a,b,c,d), nr = 2), alternative = "greater")$p.value
+    enrich_table$enrich_p[i] = stats::fisher.test(matrix(c(a,b,c,d), nr = 2), alternative = "greater")$p.value
   }
 
-
-
+  ## clean and return
+  enrich_table <- enrich_table[order(enrich_table$enrich_p), ]
+  enrich_table$fdr <- stats::p.adjust(enrich_table$enrich_p, method = 'BH')
+  return(enrich_table)
 }
