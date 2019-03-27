@@ -102,7 +102,7 @@ get_kegg <- function(species){
                          quote=FALSE)
       kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
                        "kegg_to_pathway" = kegg_to_pathway,
-                       "pathway_to_species", pathway_to_species)
+                       "pathway_to_species" = pathway_to_species)
       return(kegg_out)
     }
   }
