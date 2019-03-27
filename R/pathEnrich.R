@@ -30,7 +30,11 @@ pathEnrich <- function(gk_obj, gene_list){
   sig_KEGG_cnt <- ncbi_to_pathway %>%
     filter(Entry %in% sig_KEGG) %>%
     group_by(pathway) %>%
-    summarize(KEGG_cnt = length(Entry))
+    summarize(KEGG_sig = length(Entry))
+
+  ## Set up enrichment table
+  enrich_table <- merge(all_KEGG_cnt, sig_KEGG_cnt, by = "pathway", all = TRUE)
+  enrich_table$KEGG_sig[is.na(enrich_table$KEGG_sig)] = 0
 
 
 
