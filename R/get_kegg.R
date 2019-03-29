@@ -78,8 +78,6 @@ get_kegg <- function(species){
                                               sep = "\t",
                                               quote = "")
 
-      message("3 data sets will be written as tab delimited text files")
-      message("File location: ", here::here())
       message("Kegg Release: ", kegg_release)
       kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
                        "kegg_to_pathway" = kegg_to_pathway,
