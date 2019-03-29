@@ -1,5 +1,5 @@
 #' pathEnrich
-#' @description This function takes the list generated in get_kegg() as well as a vector
+#' @description This function takes the list generated in \code{\link{get_kegg()}} as well as a vector
 #' of NCBI (ENTREZ) geneIDs, and identifies significantly enriched KEGG pathways using
 #' a Fisher's Exact Test. Unadjusted p-values as well as FDR corrected p-values are
 #' calculated.
