@@ -16,14 +16,13 @@
 #' @importFrom  stats p.adjust
 #' @import dplyr
 #' @examples
-#' gk_obj <- get_kegg('rat')
 #' ## Load annotations
 #' library(org.Rn.eg.db)
 #' x <- org.Rn.egACCNUM
-#' Get the entrez gene identifiers that are mapped to an ACCNUM
+#' #Get the entrez gene identifiers that are mapped to an ACCNUM
 #' mapped_genes <- mappedkeys(x)
 #' gene_list <- sample(mapped_genes, 100, replace = F)
-#' pe <- pathEnrich(gk_obj = gk_obj, gene_list = gene_list)
+#' pe <- pathEnrich(gk_obj = kegg, gene_list = gene_list)
 pathEnrich <- function(gk_obj, gene_list){
   ## argument check
   if(missing(gk_obj)){stop("Argument missing: gk_obj")}
@@ -72,7 +71,7 @@ pathEnrich <- function(gk_obj, gene_list){
     b = enrich_table[i, "KEGG_cnt"] - enrich_table[i, "KEGG_sig"]
     c = enrich_table[i, "numSig"] - enrich_table[i, "KEGG_sig"]
     d = enrich_table[i, "numTested"] - enrich_table[i, "numSig"] + enrich_table[i, "KEGG_sig"]
-    enrich_table$enrich_p[i] = stats::fisher.test(matrix(c(a,b,c,d), nr = 2), alternative = "greater")$p.value
+    enrich_table$enrich_p[i] = stats::fisher.test(matrix(c(a,b,c,d), nrow = 2), alternative = "greater")$p.value
   }
 
   ## clean and return

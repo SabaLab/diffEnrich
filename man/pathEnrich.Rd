@@ -24,12 +24,11 @@ a Fisher's Exact Test. Unadjusted p-values as well as FDR corrected p-values are
 calculated.
 }
 \examples{
-gk_obj <- get_kegg('rat')
 ## Load annotations
 library(org.Rn.eg.db)
 x <- org.Rn.egACCNUM
 Get the entrez gene identifiers that are mapped to an ACCNUM
 mapped_genes <- mappedkeys(x)
 gene_list <- sample(mapped_genes, 100, replace = F)
-pe <- pathEnrich(gk_obj = gk_obj, gene_list = gene_list)
+pe <- pathEnrich(gk_obj = kegg, gene_list = gene_list)
 }
