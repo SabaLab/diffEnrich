@@ -21,6 +21,7 @@ Suggests:
 Depends:
     here,
     stats,
+    rlang,
     dplyr,
     stringr,
     

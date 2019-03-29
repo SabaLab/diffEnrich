@@ -14,7 +14,9 @@
 #' @export
 #' @importFrom  stats fisher.test
 #' @importFrom  stats p.adjust
+#' @importFrom rlang .data
 #' @import dplyr
+#' @import utils
 #' @examples
 #' ## Load annotations
 #' library(org.Rn.eg.db)
@@ -39,7 +41,7 @@ pathEnrich <- function(gk_obj, gene_list){
   colnames(kegg_to_pathway) <- c("gene", "pathway")
   ncbi_to_pathway <- merge(ncbi_to_kegg, kegg_to_pathway, by = "gene")
   ncbi_to_pathway <- ncbi_to_pathway %>%
-    dplyr::select(Entry, pathway) %>%
+    dplyr::select(.data$Entry, .data$pathway) %>%
     dplyr::filter(!duplicated(ncbi_to_pathway))
   pathway_to_species <- gk_obj[["pathway_to_species"]]
 
@@ -47,13 +49,13 @@ pathEnrich <- function(gk_obj, gene_list){
   all_KEGG <- unique(ncbi_to_pathway$Entry)
   sig_KEGG <- unique(gene_list)
   all_KEGG_cnt <- ncbi_to_pathway %>%
-    dplyr::filter(Entry %in% all_KEGG) %>%
-    dplyr::group_by(pathway) %>%
-    dplyr::summarize(KEGG_cnt = length(Entry))
+    dplyr::filter(.data$Entry %in% all_KEGG) %>%
+    dplyr::group_by(.data$pathway) %>%
+    dplyr::summarize(KEGG_cnt = length(.data$Entry))
   sig_KEGG_cnt <- ncbi_to_pathway %>%
-    dplyr::filter(Entry %in% sig_KEGG) %>%
-    dplyr::group_by(pathway) %>%
-    dplyr::summarize(KEGG_sig = length(Entry))
+    dplyr::filter(.data$Entry %in% sig_KEGG) %>%
+    dplyr::group_by(.data$pathway) %>%
+    dplyr::summarize(KEGG_sig = length(.data$Entry))
 
   ## Set up enrichment table
   enrich_table <- merge(all_KEGG_cnt, sig_KEGG_cnt, by = "pathway", all = TRUE)
@@ -61,7 +63,7 @@ pathEnrich <- function(gk_obj, gene_list){
   enrich_table <- enrich_table %>%
     dplyr::mutate(numTested = length(all_KEGG),
                   numSig = length(sig_KEGG),
-                  expected = (numSig/numTested)*KEGG_cnt)
+                  expected = (.data$numSig/.data$numTested)*KEGG_cnt)
   enrich_table <- merge(pathway_to_species, enrich_table, by.x = "V1", by.y = "pathway")
 
   ## Perform Fisher's test
