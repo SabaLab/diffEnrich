@@ -7,7 +7,9 @@
 pathEnrich(gk_obj, gene_list)
 }
 \arguments{
-\item{gk_obj}{list. Object genrated from get_kegg()}
+\item{gk_obj}{list. Object genrated from get_kegg(), or a list containing the
+output generated from a past get_kegg() call. Names of the list must match those
+defined in get_kegg().}
 
 \item{gene_list}{Vector. Vector of NCBI (ENTREZ) geneIDs}
 }
@@ -20,4 +22,14 @@ This function takes the list generated in get_kegg() as well as a vector
 of NCBI (ENTREZ) geneIDs, and identifies significantly enriched KEGG pathways using
 a Fisher's Exact Test. Unadjusted p-values as well as FDR corrected p-values are
 calculated.
+}
+\examples{
+gk_obj <- get_kegg('rat')
+## Load annotations
+library(org.Rn.eg.db)
+x <- org.Rn.egACCNUM
+Get the entrez gene identifiers that are mapped to an ACCNUM
+mapped_genes <- mappedkeys(x)
+gene_list <- sample(mapped_genes, 100, replace = F)
+pe <- pathEnrich(gk_obj = gk_obj, gene_list = gene_list)
 }

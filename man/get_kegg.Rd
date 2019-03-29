@@ -13,8 +13,10 @@ get_kegg(species)
 kegg_out: A named list of the data pulled from kegg api when the
 function was run. This may be different if the function is run at
 different times. For reproducible results, use text files generated
-by function that include the date they were pulled. Use findFile = TRUE
-to find location of data in expected directory.
+by function that include the date they were pulled.
+kegg_out: "ncbi_to_kegg" = ncbi_to_kegg dataframe,
+          "kegg_to_pathway" = kegg_to_pathway dataframe,
+          "pathway_to_species" = pathway_to_species dataframe
 }
 \description{
 This function connects to the KEGG API, downloads, and cleans
