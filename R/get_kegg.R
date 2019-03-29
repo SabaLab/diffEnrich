@@ -63,7 +63,27 @@ get_kegg <- function(species){
     if (sum(flist %in% c(paste("ncbi_to_kegg",Sys.Date(), kegg_release, ".txt",sep=""),
                          paste("kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
                          paste("pathway_to_species",Sys.Date(), kegg_release, ".txt",sep="")))>0){
-      stop("These files already exist in your working directory.")
+      message("These files already exist in your working directory. New files will not be generated.")
+
+      ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
+                                        fill = TRUE,
+                                        sep = "\t",
+                                        quote = "")
+      kegg_to_pathway <- utils::read.table(file = kegg_to_pathway_path,
+                                           fill = TRUE,
+                                           sep = "\t",
+                                           quote = "")
+      pathway_to_species <- utils::read.table(file = pathway_to_species_path,
+                                              fill = TRUE,
+                                              sep = "\t",
+                                              quote = "")
+
+      message("3 data sets will be written as tab delimited text files")
+      message("File location: ", here::here())
+      message("Kegg Release: ", kegg_release)
+      kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
+                       "kegg_to_pathway" = kegg_to_pathway,
+                       "pathway_to_species" = pathway_to_species)
     }
     else {
       ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,

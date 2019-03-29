@@ -25,6 +25,7 @@
 #' #Get the entrez gene identifiers that are mapped to an ACCNUM
 #' mapped_genes <- mappedkeys(x)
 #' gene_list <- base::sample(mapped_genes, 100, replace = FALSE)
+#' kegg <- get_kegg('rat')
 #' pe <- pathEnrich(gk_obj = kegg, gene_list = gene_list)
 pathEnrich <- function(gk_obj, gene_list){
   ## argument check
