@@ -23,7 +23,7 @@
 #' x <- org.Rn.egACCNUM
 #' #Get the entrez gene identifiers that are mapped to an ACCNUM
 #' mapped_genes <- mappedkeys(x)
-#' gene_list <- sample(mapped_genes, 100, replace = F)
+#' gene_list <- base::sample(mapped_genes, 100, replace = F)
 #' pe <- pathEnrich(gk_obj = kegg, gene_list = gene_list)
 pathEnrich <- function(gk_obj, gene_list){
   ## argument check
@@ -63,7 +63,7 @@ pathEnrich <- function(gk_obj, gene_list){
   enrich_table <- enrich_table %>%
     dplyr::mutate(numTested = length(all_KEGG),
                   numSig = length(sig_KEGG),
-                  expected = (.data$numSig/.data$numTested)*KEGG_cnt)
+                  expected = (.data$numSig/.data$numTested)*.data$KEGG_cnt)
   enrich_table <- merge(pathway_to_species, enrich_table, by.x = "V1", by.y = "pathway")
 
   ## Perform Fisher's test
