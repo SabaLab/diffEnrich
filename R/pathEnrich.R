@@ -4,7 +4,9 @@
 #' a Fisher's Exact Test. Unadjusted p-values as well as FDR corrected p-values are
 #' calculated.
 #'
-#' @param gk_obj list. Object genrated from get_kegg()
+#' @param gk_obj list. Object genrated from get_kegg(), or a list containing the
+#' output generated from a past get_kegg() call. Names of the list must match those
+#' defined in get_kegg().
 #' @param gene_list Vector. Vector of NCBI (ENTREZ) geneIDs
 #'
 #' @return enrich_table: An object of class data.frame that summarizes the results
