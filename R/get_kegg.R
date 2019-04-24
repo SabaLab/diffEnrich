@@ -19,7 +19,7 @@
 #' @importFrom stringr str_extract
 #'
 #' @examples
-#' kegg <- get_kegg(species = "human")
+#' kegg <- get_kegg(species = "rat")
 #' \dontrun{
 #' kegg <- get_kegg(species = "mouse")
 #' }
