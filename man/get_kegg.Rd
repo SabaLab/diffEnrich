@@ -25,7 +25,7 @@ Currently, this function supports Human, Mouse, and Rat. Files will be
 written to the working directory.
 }
 \examples{
-kegg <- get_kegg(species = "human")
+kegg <- get_kegg(species = "rat")
 \dontrun{
 kegg <- get_kegg(species = "mouse")
 }
