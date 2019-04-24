@@ -25,9 +25,9 @@ calculated.
 }
 \examples{
 
-bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
-\dontrun{
 bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+\dontrun{
+bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
 }
 
 }

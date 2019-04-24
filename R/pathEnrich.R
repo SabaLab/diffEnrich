@@ -20,9 +20,9 @@
 #' @import org.Rn.eg.db
 #' @examples
 #'
-#' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
-#' \dontrun{
 #' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+#' \dontrun{
+#' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
 #' }
 #'
 pathEnrich <- function(gk_obj, gene_list){
@@ -31,6 +31,7 @@ pathEnrich <- function(gk_obj, gene_list){
   if(missing(gene_list)){stop("Argument missing: gene_list. Please provide list of ncbi geneIDs")}
 
   ## Prepare gene list
+  #gene_list <- gene_list[!is.na(gene_list)]
   gene_list <- as.integer(gene_list)
 
   ## prepare kegg data
