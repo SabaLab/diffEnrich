@@ -26,3 +26,9 @@ geneLists <- list(background = backgroundENTZ,
 
 ## save and compress
 usethis::use_data(geneLists, compress = "xz")
+
+## generate kegg data
+kegg <- get_kegg('rat')
+
+## save and compress
+usethis::use_data(kegg, compress = "xz")
