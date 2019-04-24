@@ -19,14 +19,12 @@
 #' @import utils
 #' @import org.Rn.eg.db
 #' @examples
-#' ## Load annotations
-#' require(org.Rn.eg.db)
-#' x <- org.Rn.egACCNUM
-#' #Get the entrez gene identifiers that are mapped to an ACCNUM
-#' mapped_genes <- mappedkeys(x)
-#' gene_list <- base::sample(mapped_genes, 100, replace = FALSE)
-#' kegg <- get_kegg('rat')
-#' pe <- pathEnrich(gk_obj = kegg, gene_list = gene_list)
+#'
+#' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+#' \dontrun{
+#' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+#' }
+#'
 pathEnrich <- function(gk_obj, gene_list){
   ## argument check
   if(missing(gk_obj)){stop("Argument missing: gk_obj")}

@@ -15,6 +15,6 @@ geneLists
 \description{
 This is a \code{list} object that contains the list background
 genes and significant genes used in pathway enrichment. This object is
-mostly meant fo running examples and vignettes.
+mostly meant for running examples and vignettes.
 }
 \keyword{datasets}
