@@ -19,9 +19,9 @@
 #' @importFrom stringr str_extract
 #'
 #' @examples
-#' kegg <- get_kegg(species = "rat")
+#' kegg <- get_kegg(species = "rno")
 #' \dontrun{
-#' kegg <- get_kegg(species = "mouse")
+#' kegg <- get_kegg(species = "mmu")
 #' }
 #'
 get_kegg <- function(species){
