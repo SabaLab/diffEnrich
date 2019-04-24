@@ -47,7 +47,7 @@ pathEnrich <- function(gk_obj, gene_list){
   pathway_to_species <- gk_obj[["pathway_to_species"]]
 
   ## set up enrichment
-  all_KEGG <- unique(ncbi_to_pathway$Entry)
+  all_KEGG <- unique(ncbi_to_kegg$Entry)
   sig_KEGG <- unique(gene_list)
   all_KEGG_cnt <- ncbi_to_pathway %>%
     dplyr::filter(.data$Entry %in% all_KEGG) %>%
