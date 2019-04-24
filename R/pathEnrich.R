@@ -20,7 +20,7 @@
 #' @import org.Rn.eg.db
 #' @examples
 #'
-#' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+#' sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
 #' \dontrun{
 #' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
 #' }
