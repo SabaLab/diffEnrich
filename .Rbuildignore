@@ -1,3 +1,4 @@
+^data-raw$
 ^README\.Rmd$
 ^diffEnrich\.Rproj$
 ^\.Rproj\.user$
