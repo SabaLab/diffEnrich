@@ -25,7 +25,8 @@ Depends:
     dplyr,
     stringr,
     org.Rn.eg.db,
-    R (>= 2.10)
+    R (>= 2.10),
+    R (>= 3.5.2)
     
     
     
