@@ -55,7 +55,7 @@ pathEnrich <- function(gk_obj, gene_list){
   pathway_to_species <- gk_obj[["pathway_to_species"]]
 
   ## set up enrichment
-  all_KEGG <- unique(ncbi_to_kegg$Entry)
+  all_KEGG <- unique(ncbi_to_pathway$Entry)
   sig_KEGG <- unique(gene_list)
   all_KEGG_cnt <- ncbi_to_pathway %>%
     dplyr::filter(.data$Entry %in% all_KEGG) %>%
@@ -71,7 +71,7 @@ pathEnrich <- function(gk_obj, gene_list){
   enrich_table$KEGG_in_list[is.na(enrich_table$KEGG_in_list)] = 0
   enrich_table <- enrich_table %>%
     dplyr::mutate(numTested = length(all_KEGG),
-                  numSig = length(sig_KEGG),
+                  numSig = length(all_KEGG[which(all_KEGG %in% sig_KEGG)]),
                   expected = (.data$numSig/.data$numTested)*.data$KEGG_cnt)
   enrich_table <- merge(pathway_to_species, enrich_table, by.x = "V1", by.y = "pathway")
 
