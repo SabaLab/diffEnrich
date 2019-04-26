@@ -3,7 +3,6 @@
 export(get_kegg)
 export(pathEnrich)
 import(dplyr)
-import(org.Rn.eg.db)
 import(utils)
 importFrom(here,here)
 importFrom(rlang,.data)

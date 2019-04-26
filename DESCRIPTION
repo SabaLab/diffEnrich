@@ -24,7 +24,6 @@ Depends:
     rlang,
     dplyr,
     stringr,
-    org.Rn.eg.db,
     R (>= 2.10)
     
     

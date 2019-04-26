@@ -25,7 +25,6 @@
 #' @importFrom rlang .data
 #' @import dplyr
 #' @import utils
-#' @import org.Rn.eg.db
 #' @examples
 #'
 #' sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
