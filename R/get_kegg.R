@@ -24,11 +24,13 @@
 #' kegg <- get_kegg(species = "mouse")
 #' }
 #'
-get_kegg <- function(species){
+get_kegg <- function(species, path){
   options(stringsAsFactors = F)
   # Define user's base file path
   base_path <- here::here()
   flist <- list.files(base_path)
+  usr_path <- path
+  usr_flist <- list.files(usr_path)
   if(missing(species)){stop("Must choose one of the 3 species options: human, mouse, rat")}
   else {
     # Define base api path and define list of operations/arguments
