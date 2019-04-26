@@ -64,11 +64,11 @@ pathEnrich <- function(gk_obj, gene_list){
   sig_KEGG_cnt <- ncbi_to_pathway %>%
     dplyr::filter(.data$Entry %in% sig_KEGG) %>%
     dplyr::group_by(.data$pathway) %>%
-    dplyr::summarize(KEGG_sig = length(.data$Entry))
+    dplyr::summarize(KEGG_in_list = length(.data$Entry))
 
   ## Set up enrichment table
   enrich_table <- merge(all_KEGG_cnt, sig_KEGG_cnt, by = "pathway", all = TRUE)
-  enrich_table$KEGG_sig[is.na(enrich_table$KEGG_sig)] = 0
+  enrich_table$KEGG_in_list[is.na(enrich_table$KEGG_in_list)] = 0
   enrich_table <- enrich_table %>%
     dplyr::mutate(numTested = length(all_KEGG),
                   numSig = length(sig_KEGG),
@@ -78,10 +78,10 @@ pathEnrich <- function(gk_obj, gene_list){
   ## Perform Fisher's test
   enrich_table$enrich_p <- NA
   for(i in 1:nrow(enrich_table)){
-    a = enrich_table[i, "KEGG_sig"]
-    b = enrich_table[i, "KEGG_cnt"] - enrich_table[i, "KEGG_sig"]
-    c = enrich_table[i, "numSig"] - enrich_table[i, "KEGG_sig"]
-    d = enrich_table[i, "numTested"] - enrich_table[i, "numSig"] + enrich_table[i, "KEGG_sig"]
+    a = enrich_table[i, "KEGG_in_list"]
+    b = enrich_table[i, "KEGG_cnt"] - enrich_table[i, "KEGG_in_list"]
+    c = enrich_table[i, "numSig"] - enrich_table[i, "KEGG_in_list"]
+    d = enrich_table[i, "numTested"] - enrich_table[i, "numSig"] + enrich_table[i, "KEGG_in_list"]
     enrich_table$enrich_p[i] = stats::fisher.test(matrix(c(a,b,c,d), nrow = 2), alternative = "greater")$p.value
   }
 
