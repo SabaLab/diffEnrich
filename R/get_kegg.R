@@ -5,6 +5,8 @@
 #' written to the working directory.
 #'
 #' @param species character. The species to use in kegg data pull
+#' @param path character. A character string describing the path to write out KEGG
+#' API data sets. If not provided, defaults to current working directory.
 #'
 #' @return kegg_out: A named list of the data pulled from kegg api when the
 #' function was run. This may be different if the function is run at
@@ -21,7 +23,7 @@
 #' @examples
 #' kegg <- get_kegg(species = "rno")
 #' \dontrun{
-#' kegg <- get_kegg(species = "mmu")
+#' kegg <- get_kegg(species = "mmu", path = "usr/data/out/")
 #' }
 #'
 get_kegg <- function(species, path = NULL){

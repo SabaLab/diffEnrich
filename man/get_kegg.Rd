@@ -4,10 +4,13 @@
 \alias{get_kegg}
 \title{get_kegg}
 \usage{
-get_kegg(species)
+get_kegg(species, path = NULL)
 }
 \arguments{
 \item{species}{character. The species to use in kegg data pull}
+
+\item{path}{character. A character string describing the path to write out KEGG
+API data sets. If not provided, defaults to current working directory.}
 }
 \value{
 kegg_out: A named list of the data pulled from kegg api when the
@@ -27,7 +30,7 @@ written to the working directory.
 \examples{
 kegg <- get_kegg(species = "rno")
 \dontrun{
-kegg <- get_kegg(species = "mmu")
+kegg <- get_kegg(species = "mmu", path = "usr/data/out/")
 }
 
 }
