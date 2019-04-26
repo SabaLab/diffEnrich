@@ -24,13 +24,11 @@
 #' kegg <- get_kegg(species = "mmu")
 #' }
 #'
-get_kegg <- function(species, path){
+get_kegg <- function(species, path = NULL){
   options(stringsAsFactors = F)
   # Define user's base file path
   base_path <- here::here()
   flist <- list.files(base_path)
-  usr_path <- path
-  usr_flist <- list.files(usr_path)
   if(missing(species)){stop("Must choose one of the 3 species options: human, mouse, rat")}
   if(missing(species) | !(species %in% c('hsa','mmu','rno'))){stop("Must choose one of the 3 species options: human: use 'hsa', mouse: use 'mmu', rat: use rno")}
   else {
@@ -66,8 +64,7 @@ get_kegg <- function(species, path){
     find_files <- c(paste("ncbi_to_kegg",Sys.Date(), kegg_release, ".txt",sep=""),
                     paste("kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
                     paste("pathway_to_species",Sys.Date(), kegg_release, ".txt",sep=""))
-    if (sum(flist %in% find_files)>0 |
-        sum(usr_flist %in% find_files)>0){
+    if (sum(flist %in% find_files)>0){
       message("These files already exist in your working directory. New files will not be generated.")
 
       ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
