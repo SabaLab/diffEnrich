@@ -62,9 +62,11 @@ get_kegg <- function(species, path){
     kegg_release <- gsub(",", "", kegg_release, fixed = T)
     kegg_release <- gsub(" ", "_", kegg_release, fixed = T)
     kegg_release <- gsub("/", "_", kegg_release, fixed = T)
-    if (sum(flist %in% c(paste("ncbi_to_kegg",Sys.Date(), kegg_release, ".txt",sep=""),
-                         paste("kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
-                         paste("pathway_to_species",Sys.Date(), kegg_release, ".txt",sep="")))>0){
+    find_files <- c(paste("ncbi_to_kegg",Sys.Date(), kegg_release, ".txt",sep=""),
+                    paste("kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
+                    paste("pathway_to_species",Sys.Date(), kegg_release, ".txt",sep=""))
+    if (sum(flist %in% find_files)>0 |
+        sum(usr_flist %in% find_files)>0){
       message("These files already exist in your working directory. New files will not be generated.")
 
       ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
