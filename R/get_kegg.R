@@ -19,9 +19,9 @@
 #' @importFrom stringr str_extract
 #'
 #' @examples
-#' kegg <- get_kegg(species = "rat")
+#' kegg <- get_kegg(species = "rno")
 #' \dontrun{
-#' kegg <- get_kegg(species = "mouse")
+#' kegg <- get_kegg(species = "mmu")
 #' }
 #'
 get_kegg <- function(species, path){
@@ -29,16 +29,20 @@ get_kegg <- function(species, path){
   # Define user's base file path
   base_path <- here::here()
   flist <- list.files(base_path)
+<<<<<<< HEAD
   usr_path <- path
   usr_flist <- list.files(usr_path)
   if(missing(species)){stop("Must choose one of the 3 species options: human, mouse, rat")}
+=======
+  if(missing(species) | !(species %in% c('hsa','mmu','rno'))){stop("Must choose one of the 3 species options: human: use 'hsa', mouse: use 'mmu', rat: use rno")}
+>>>>>>> add280e6eabfc4b6f91b0d66bf7dfc94a56019e0
   else {
     # Define base api path and define list of operations/arguments
     api_base <- "http://rest.kegg.jp/"
     op <- list("info"="info", "list"="list", "find"="find", "get"="get",
                "conv"="conv", "link"="link", "ddi"="ddi")
     db <- list("pathway"="pathway")
-    org <- list("human"="hsa", "mouse"="mmu", "rat"="rno")
+    org <- list("hsa"="hsa", "mmu"="mmu", "rno"="rno")
     # Build api paths for
     # 1) ncbi to kegg
     ncbi_to_kegg_path <- paste0(api_base, op[["conv"]], "/",
