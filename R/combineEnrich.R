@@ -31,4 +31,9 @@ combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05){
   if(missing(bkg_pe)){stop("Argument missing: bkg_pe")}
   if(missing(threshold)){stop("Argument missing: threshold. Please provide an FDR cutoff for gene inclusion in summary table")}
 
+  ## Merge results from first enrichment
+  combined_enrich <- merge(sig_pe, bkg_pe, by = c("V1", "V2", "KEGG_cnt", "numTested"))
+  ## Define fdr threshold
+  threshold <- threshold
+
 }
