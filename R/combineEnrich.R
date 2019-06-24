@@ -15,7 +15,13 @@
 #' @param threshold numeric. FDR cutoff for significant genes included in summary table.
 #' (Default = 0.05).
 #'
-#' @return
+#' @return combined_enrich: An object of class data.frame that is the result of merging
+#' \code{sig_pe} and \code{bkg_pe}, using the default joining implemented in the base
+#' \code{\link{merge}} function.
+#'         fdr_summary: An object of class data.frame that summarizes the number
+#'         of significantly enriched genes from each original data set based on the
+#'         fdr threshold value provided by the user.
+#'
 #' @export
 #'
 #' @examples
