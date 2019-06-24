@@ -26,5 +26,9 @@
 #'
 #' @examples
 combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05){
+  ## argument check
+  if(missing(sig_pe)){stop("Argument missing: sig_pe")}
+  if(missing(bkg_pe)){stop("Argument missing: bkg_pe")}
+  if(missing(threshold)){stop("Argument missing: threshold. Please provide an FDR cutoff for gene inclusion in summary table")}
 
 }
