@@ -27,6 +27,8 @@
 #' @export
 #'
 #' @examples
+#' combined_enrich <- combineEnrich(sig_pe, bkg_pe, threshold = 0.05, range = c(0, 6))
+#'
 combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05, range){
   ## argument check
   if(missing(sig_pe)){stop("Argument missing: sig_pe")}
