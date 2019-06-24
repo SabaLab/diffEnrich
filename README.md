@@ -21,6 +21,8 @@ install.packages("diffEnrich")
 Example
 -------
 
+### Step 1: Collect and clean pathways from KEGG API
+
 First we will use the *get\_kegg* function access the KEGG REST API and download the data sets required to perform our downstream analysis. This function takes two arguments. The first, 'species' is required and is the species of interest. Currently, *diffEnrich* supports three species, and the argument is a character string using the KEGG code [REF](https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf): Homo sapiens (human), use 'hsa'; Mus musculus (mouse), use 'mmu', and Rattus norvegicus (rat), use 'rno'. The second, 'path' is also passed as a character string, and is the path of the directory in which the user would like to write the data sets downloaded from the KEGG REST API. If the user does not provide a path, the data sets will be automatically written to the current working directory using the *here::here()* functionality. These data sets will be tab delimited files with a name describing the data, and for reproducibility, the date they were generated and the version of KEGG when the API was accessed. In addition to these flat files, *get\_kegg* will also create a named list with the three relavent KEGG data sets. The names of this list will describe the the data set.
 
 ``` r
@@ -47,3 +49,39 @@ kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_90.0+_06-24_Jun_19
 ```
+
+### Step 2: Perform individual enrichment analysis
+
+In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched based on a list of genes we are interested in and based on a list of background genes. This function may not always use the complete list of genes provided by the user. Specifically, it will only use the genes from the list provided that are also in the most current species list pulled from the KEGG REST API using *get\_kegg*, or from the older KEGG data loaded by the user from a previous *get\_kegg* call. The *pathEnrich* function should be run at least twice, once for the genes of interest and once for the background. Each *pathEnrich* call generates a dataframe summarizing the results of a traditional pathway enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched by the user's list of interesting genes with repect to background enrichment.
+
+``` r
+# run pathEnrich using kegg_rno
+## Genes of interest
+sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+## Background
+bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+head(sig_pe)
+#>                V1                                                       V2
+#> 172 path:rno04530                 Tight junction - Rattus norvegicus (rat)
+#> 295 path:rno05210              Colorectal cancer - Rattus norvegicus (rat)
+#> 142 path:rno04144                    Endocytosis - Rattus norvegicus (rat)
+#> 313 path:rno05231   Choline metabolism in cancer - Rattus norvegicus (rat)
+#> 298 path:rno05213             Endometrial cancer - Rattus norvegicus (rat)
+#> 202 path:rno04722 Neurotrophin signaling pathway - Rattus norvegicus (rat)
+#>     KEGG_cnt KEGG_in_list numTested numSig expected     enrich_p
+#> 172      170           19      8834    293 5.638442 2.481420e-06
+#> 295       88           12      8834    293 2.918723 2.766056e-05
+#> 142      275           22      8834    293 9.121010 7.386974e-05
+#> 313       99           12      8834    293 3.283564 8.917519e-05
+#> 298       58            9      8834    293 1.923704 1.042410e-04
+#> 202      125           13      8834    293 4.145914 2.152030e-04
+#>              fdr
+#> 172 0.0008089431
+#> 295 0.0045086707
+#> 142 0.0067965110
+#> 313 0.0067965110
+#> 298 0.0067965110
+#> 202 0.0116926990
+```
+
+*pathEnrich* generates a dataframe with 9 columns described below.
