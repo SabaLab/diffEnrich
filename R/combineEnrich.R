@@ -25,7 +25,7 @@
 #' @export
 #'
 #' @examples
-combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05){
+combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05, range){
   ## argument check
   if(missing(sig_pe)){stop("Argument missing: sig_pe")}
   if(missing(bkg_pe)){stop("Argument missing: bkg_pe")}
@@ -38,5 +38,8 @@ combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05){
 
   ## Get sum of significantly enriched genes based on fdr cutoff
   combined_enrich$num_groups_sig <- rowSums(combined_enrich[, grep("fdr", colnames(combined_enrich))] < threshold)
+  ## Get group range of interest
+  of_interest <- combined_enrich[combined_enrich$num_groups_sig > range[1] & combined_enrich$num_groups_sig < range[2], ]
+
 
 }
