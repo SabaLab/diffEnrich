@@ -2,7 +2,8 @@
 #'
 #' @description This is a \code{list} object that contains the list background
 #' genes and significant genes used in pathway enrichment. This object is
-#' mostly meant for running examples and vignettes.
+#' mostly meant for running examples and vignettes. The data provided is
+#' for the rat, and is loaded from org.Rn.eg.db version 3.7.0.
 #'
 #' @format A \code{list} with two names items which are:
 #' \describe{
