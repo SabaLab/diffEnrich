@@ -8,6 +8,13 @@
 #' merged dataframe, this function will produce a table summarizing the number of significantly
 #' enriched genes in each original object, based on a user defined fdr threshold.
 #'
+#' @param sig_pe data.frame. Dataframe of enrichment results for genes of interest
+#' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
+#' @param  bkg_pe data.frame. Dataframe of enrichment results for background genes
+#' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
+#' @param threshold numeric. FDR cutoff for significant genes included in summary table.
+#' (Default = 0.05).
+#'
 #' @return
 #' @export
 #'
