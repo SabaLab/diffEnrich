@@ -27,6 +27,10 @@
 #' @export
 #'
 #' @examples
+#' ## Generate individual enrichment results
+#' sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+#' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+#' ## Combine
 #' combined_enrich <- combineEnrich(sig_pe, bkg_pe, threshold = 0.05, range = c(0, 6))
 #'
 combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05, range){
