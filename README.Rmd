@@ -97,7 +97,7 @@ sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
 ## Background
 bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
 knitr::kable(head(sig_pe),
-             caption = "Table 1. Head of sig_pe dataframe generated using pathEnrich") %>%
+             caption = "Table 1. Head of sig_pe dataframe generated using pathEnrich", row.names = FALSE) %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T)
 ```
 

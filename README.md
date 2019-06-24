@@ -30,7 +30,8 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
 #> Kegg Release: Release_90.0+_06-24_Jun_19
 ```
 
@@ -60,20 +61,20 @@ sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
 ## Background
 bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
 knitr::kable(head(sig_pe),
-             caption = "Table 1. Head of sig_pe dataframe generated using pathEnrich") %>%
+             caption = "Table 1. Head of sig_pe dataframe generated using pathEnrich", row.names = FALSE) %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T)
 #> Warning in kableExtra::kable_styling(., bootstrap_options = c("striped", :
 #> Please specify format in kable. kableExtra can customize either HTML or
 #> LaTeX outputs. See https://haozhu233.github.io/kableExtra/ for details.
 ```
 
-|     | V1            | V2                                                       |  KEGG\_cnt|  KEGG\_in\_list|  numTested|  numSig|  expected|  enrich\_p|        fdr|
-|-----|:--------------|:---------------------------------------------------------|----------:|---------------:|----------:|-------:|---------:|----------:|----------:|
-| 172 | path:rno04530 | Tight junction - Rattus norvegicus (rat)                 |        170|              19|       8834|     293|  5.638442|  0.0000025|  0.0008089|
-| 295 | path:rno05210 | Colorectal cancer - Rattus norvegicus (rat)              |         88|              12|       8834|     293|  2.918723|  0.0000277|  0.0045087|
-| 142 | path:rno04144 | Endocytosis - Rattus norvegicus (rat)                    |        275|              22|       8834|     293|  9.121010|  0.0000739|  0.0067965|
-| 313 | path:rno05231 | Choline metabolism in cancer - Rattus norvegicus (rat)   |         99|              12|       8834|     293|  3.283564|  0.0000892|  0.0067965|
-| 298 | path:rno05213 | Endometrial cancer - Rattus norvegicus (rat)             |         58|               9|       8834|     293|  1.923704|  0.0001042|  0.0067965|
-| 202 | path:rno04722 | Neurotrophin signaling pathway - Rattus norvegicus (rat) |        125|              13|       8834|     293|  4.145913|  0.0002152|  0.0116927|
+| V1            | V2                                                       |  KEGG\_cnt|  KEGG\_in\_list|  numTested|  numSig|  expected|  enrich\_p|        fdr|
+|:--------------|:---------------------------------------------------------|----------:|---------------:|----------:|-------:|---------:|----------:|----------:|
+| path:rno04530 | Tight junction - Rattus norvegicus (rat)                 |        170|              19|       8834|     293|  5.638442|  0.0000025|  0.0008089|
+| path:rno05210 | Colorectal cancer - Rattus norvegicus (rat)              |         88|              12|       8834|     293|  2.918723|  0.0000277|  0.0045087|
+| path:rno04144 | Endocytosis - Rattus norvegicus (rat)                    |        275|              22|       8834|     293|  9.121010|  0.0000739|  0.0067965|
+| path:rno05231 | Choline metabolism in cancer - Rattus norvegicus (rat)   |         99|              12|       8834|     293|  3.283564|  0.0000892|  0.0067965|
+| path:rno05213 | Endometrial cancer - Rattus norvegicus (rat)             |         58|               9|       8834|     293|  1.923704|  0.0001042|  0.0067965|
+| path:rno04722 | Neurotrophin signaling pathway - Rattus norvegicus (rat) |        125|              13|       8834|     293|  4.145913|  0.0002152|  0.0116927|
 
 *pathEnrich* generates a dataframe with 9 columns described below.
