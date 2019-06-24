@@ -96,7 +96,9 @@ enrichment.
 sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
 ## Background
 bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
-head(sig_pe)
+knitr::kable(head(sig_pe),
+             caption = "Table 1. Head of sig_pe dataframe generated using pathEnrich") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T)
 ```
 
 *pathEnrich* generates a dataframe with 9 columns described below.
