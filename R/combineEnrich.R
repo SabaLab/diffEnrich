@@ -48,7 +48,11 @@ combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05, range){
 
   ## Use logical to numeric to summarize sig_pattern
   combined_enrich$sig_pattern <- apply(combined_enrich[, grep("fdr", colnames(combined_enrich))], 1, function(a) paste(as.numeric(a<threshold), collapse = ""))
-  table(rowSums(combined_enrich[, grep("enrich_p", colnames(combined_enrich))]<threshold))
+  sig_sum <- as.data.frame(table(rowSums(combined_enrich[, grep("enrich_p", colnames(combined_enrich))]<threshold)))
 
-
+  ## Put out objects in list *THIS WILL NEED TO BE UPDATED*
+  list.out <- list("combined_enrich" = combined_enrich,
+                   "of_interest" = of_interest_subset,
+                   "sig_sum" = sig_sum)
+  return(list.out)
 }
