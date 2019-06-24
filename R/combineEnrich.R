@@ -25,6 +25,6 @@
 #' @export
 #'
 #' @examples
-combineEnrich <- function(){
+combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05){
 
 }
