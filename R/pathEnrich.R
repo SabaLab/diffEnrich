@@ -16,7 +16,7 @@
 #'
 #' @details This function may not always use the complete list of genes provided by the user.
 #' Specifically, it will only use the genes from the list provided that are also in
-#' the most current species list pulled from the KEGG REST API, or from the data older KEGG
+#' the most current species list pulled from the KEGG REST API, or from the older data KEGG
 #' loaded by the user.
 #'
 #' @export
