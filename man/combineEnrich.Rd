@@ -4,7 +4,7 @@
 \alias{combineEnrich}
 \title{combineEnrich}
 \usage{
-combineEnrich(sig_pe, bkg_pe, threshold = 0.05)
+combineEnrich(sig_pe, bkg_pe, threshold = 0.05, range)
 }
 \arguments{
 \item{sig_pe}{data.frame. Dataframe of enrichment results for genes of interest
@@ -15,6 +15,9 @@ generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}
 
 \item{threshold}{numeric. FDR cutoff for significant genes included in summary table.
 (Default = 0.05).}
+
+\item{range}{numeric vector. Vector containing the smallest and largest number of
+significant groups for use in filtering pathways of interest (e.g. \code{c(0,6)}.}
 }
 \value{
 combined_enrich: An object of class data.frame that is the result of merging
@@ -33,4 +36,12 @@ in both objects (\code{by = c("V1", "V2", "KEGG_cnt", "numTested")}). This merge
 will be used as the input for the differential enrichment function. In addition to this
 merged dataframe, this function will produce a table summarizing the number of significantly
 enriched genes in each original object, based on a user defined fdr threshold.
+}
+\examples{
+## Generate individual enrichment results
+sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+## Combine
+combined_enrich <- combineEnrich(sig_pe, bkg_pe, threshold = 0.05, range = c(0, 6))
+
 }
