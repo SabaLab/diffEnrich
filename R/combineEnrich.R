@@ -38,8 +38,10 @@ combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05, range){
 
   ## Get sum of significantly enriched genes based on fdr cutoff
   combined_enrich$num_groups_sig <- rowSums(combined_enrich[, grep("fdr", colnames(combined_enrich))] < threshold)
-  ## Get group range of interest
+  ## Get group range of interest and subset data to only include pathways and fdr values
   of_interest <- combined_enrich[combined_enrich$num_groups_sig > range[1] & combined_enrich$num_groups_sig < range[2], ]
+  groups <- c("x", "y")
+  of_interest[, c("V1", "V2", paste("fdr", groups, sep = "."))]
 
 
 }
