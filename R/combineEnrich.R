@@ -33,6 +33,8 @@ combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05, range){
 
   ## Merge results from first enrichment
   combined_enrich <- merge(sig_pe, bkg_pe, by = c("V1", "V2", "KEGG_cnt", "numTested"))
+  colnames(combined_enrich) <- gsub(".x", "_sig", colnames(combined_enrich), fixed = TRUE)
+  colnames(combined_enrich) <- gsub(".y", "_bkg", colnames(combined_enrich), fixed = TRUE)
   ## Define fdr threshold
   threshold <- threshold
 
@@ -40,8 +42,8 @@ combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05, range){
   combined_enrich$num_groups_sig <- rowSums(combined_enrich[, grep("fdr", colnames(combined_enrich))] < threshold)
   ## Get group range of interest and subset data to only include pathways and fdr values
   of_interest <- combined_enrich[combined_enrich$num_groups_sig > range[1] & combined_enrich$num_groups_sig < range[2], ]
-  groups <- c("x", "y")
-  of_interest[, c("V1", "V2", paste("fdr", groups, sep = "."))]
+  groups <- c("sig", "bkg")
+  of_interest_subset <- of_interest[, c("V1", "V2", paste("fdr", groups, sep = "_"))]
 
 
 }
