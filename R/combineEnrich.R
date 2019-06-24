@@ -14,6 +14,8 @@
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
 #' @param threshold numeric. FDR cutoff for significant genes included in summary table.
 #' (Default = 0.05).
+#' @param range numeric vector. Vector containing the smallest and largest number of
+#' significant groups for use in filtering pathways of interest (e.g. \code{c(0,6)}.
 #'
 #' @return combined_enrich: An object of class data.frame that is the result of merging
 #' \code{sig_pe} and \code{bkg_pe}, using the default joining implemented in the base
