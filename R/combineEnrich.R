@@ -36,4 +36,7 @@ combineEnrich <- function(sig_pe, bkg_pe, threshold = 0.05){
   ## Define fdr threshold
   threshold <- threshold
 
+  ## Get sum of significantly enriched genes based on fdr cutoff
+  combined_enrich$num_groups_sig <- rowSums(combined_enrich[, grep("fdr", colnames(combined_enrich))] < threshold)
+
 }
