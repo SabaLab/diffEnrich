@@ -22,6 +22,13 @@
 #' @export
 #'
 #' @examples
+#' ## Generate individual enrichment reults
+#' sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+#' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+#'
+#' ## Perform differential enrichment
+#' dif_enrich <- diffEnrich(sig_pe = sig_pe, bkg_pe = bkg_pe)
+#'
 diffEnrich <- function(sig_pe, bkg_pe){
   ## Call .combineEnrich helper function
   ce <- .combineEnrich(sig_pe = sig_pe, bkg_pe = bkg_pe)
@@ -40,39 +47,6 @@ diffEnrich <- function(sig_pe, bkg_pe){
   res$fdr <- stats::p.adjust(res$pv, method = "BH")
   return(out)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
