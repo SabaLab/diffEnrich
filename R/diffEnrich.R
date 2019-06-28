@@ -16,10 +16,9 @@
 #' @return data.frame. Dataframe generated from merging pathEnrich dataframes with the following added columns:
 #'                     Estimate: Estimated odds ration calculated from Fisher's Exact test
 #'                     P_value: Unadjusted p_value from Fisher's Exact test
-#'                     FDR: FDR calculated using \code{p.adjust(x, method = "BH")}
+#'
 #' @export
 #' @importFrom  stats fisher.test
-#' @importFrom  stats p.adjust
 #'
 #' @examples
 #' ## Generate individual enrichment reults
@@ -44,7 +43,6 @@ diffEnrich <- function(sig_pe, bkg_pe){
   ## perform differential enrichment
   res <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_bkg", "KEGG_in_list_sig", "numSig_bkg", "numSig_sig")], 1,
                function(a){ de(a[1], a[2], a[3], a[4])})))
-  res$fdr <- stats::p.adjust(res$pv, method = "BH")
   return(res)
 }
 

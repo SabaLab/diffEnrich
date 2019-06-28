@@ -17,7 +17,6 @@ generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}
 data.frame. Dataframe generated from merging pathEnrich dataframes with the following added columns:
                     Estimate: Estimated odds ration calculated from Fisher's Exact test
                     P_value: Unadjusted p_value from Fisher's Exact test
-                    FDR: FDR calculated using \code{p.adjust(x, method = "BH")}
 }
 \description{
 This function takes the objects generated from \code{\link{pathEnrich}}.
