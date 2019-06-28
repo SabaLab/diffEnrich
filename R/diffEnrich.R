@@ -8,9 +8,17 @@
 #' pathways with their associated estimated odds ratio, unadjusted p-value, and fdr adjusted
 #' p-value.
 #'
-#' @param x
+#' @param sig_pe data.frame. Dataframe of enrichment results for genes of interest
+#' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
+#' @param  bkg_pe data.frame. Dataframe of enrichment results for background genes
+#' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
 #'
-#' @return
+#' @return data.frame. Dataframe with 5 columns.
+#'                     KEGG_pathway ID: KEGG pathway ID
+#'                     Description: KEGG pathway description
+#'                     Estimate: Estimated odds ration calculated from Fisher's Exact test
+#'                     P_value: Unadjusted p_value from Fisher's Exact test
+#'                     FDR: FDR calculated using \code{p.adjust(x, method = "BH")}
 #' @export
 #'
 #' @examples
