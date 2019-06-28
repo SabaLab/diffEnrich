@@ -22,7 +22,9 @@
 #' @export
 #'
 #' @examples
-diffEnrich <- function(x){
+diffEnrich <- function(sig_pe, bkg_pe){
+  ## Call .combineEnrich helper function
+  ce <- .combineEnrich(sig_pe = sig_pe, bkg_pe = bkg)
 
 }
 
