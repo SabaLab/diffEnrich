@@ -35,7 +35,7 @@ diffEnrich <- function(sig_pe, bkg_pe){
 
   ## Build diffEnrich Fisher's Exact function
   de <- function(a,b,c,d){
-    y <- stats::fisher.test(matrix(c(a,b,c,d), nr = 2))
+    y <- stats::fisher.test(matrix(c(a,b,c,d), nrow = 2))
     est <- y$estimate
     pv <- y$p.value
     out.de <- data.frame(est, pv)
@@ -45,7 +45,7 @@ diffEnrich <- function(sig_pe, bkg_pe){
   res <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_bkg", "KEGG_in_list_sig", "numSig_bkg", "numSig_sig")], 1,
                function(a){ de(a[1], a[2], a[3], a[4])})))
   res$fdr <- stats::p.adjust(res$pv, method = "BH")
-  return(out)
+  return(res)
 }
 
 
