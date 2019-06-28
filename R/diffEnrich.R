@@ -1,4 +1,12 @@
 #' diffEnrich
+#' @description This function takes the objects generated from \code{\link{pathEnrich}}.
+#' If performing a dfferential enrichment analysis, the user will have 2 objects. There
+#' will be one for the genes of interest and one for the background (see example for \code{\link{pathEnrich}}).
+#' This function then uses a Fisher's Exact test to iddentify differentially enriched
+#' pathways between the terms enriched in the gene-of-interest list and the pathways enriched
+#' in the background. \code{diffEnrich} returns a dataframe containing differentially enriched
+#' pathways with their associated estimated odds ratio, unadjusted p-value, and fdr adjusted
+#' p-value.
 #'
 #' @param x
 #'
