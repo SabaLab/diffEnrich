@@ -26,6 +26,15 @@ diffEnrich <- function(sig_pe, bkg_pe){
   ## Call .combineEnrich helper function
   ce <- .combineEnrich(sig_pe = sig_pe, bkg_pe = bkg)
 
+  ## Build diffEnrich Fisher's Exact function
+  de <- function(x){
+    y <- stats::fisher.test(matrix(c(a,b,c,d), nr = 2))
+    est <- y$estimate
+    pv <- y$p.value
+    out.de <- data.frame(est, pv)
+    return(out.de)
+  }
+
 }
 
 
