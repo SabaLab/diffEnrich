@@ -35,8 +35,9 @@ diffEnrich <- function(sig_pe, bkg_pe){
     return(out.de)
   }
   ## perform differential enrichment
-  out <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_bkg", "KEGG_in_list_sig", "numSig_bkg", "numSig_sig")], 1,
+  res <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_bkg", "KEGG_in_list_sig", "numSig_bkg", "numSig_sig")], 1,
                function(a){ de(a[1], a[2], a[3], a[4])})))
+  res$fdr <- stats::p.adjust(res$pv, method = "BH")
   return(out)
 }
 
