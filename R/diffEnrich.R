@@ -24,17 +24,20 @@
 #' @examples
 diffEnrich <- function(sig_pe, bkg_pe){
   ## Call .combineEnrich helper function
-  ce <- .combineEnrich(sig_pe = sig_pe, bkg_pe = bkg)
+  ce <- .combineEnrich(sig_pe = sig_pe, bkg_pe = bkg_pe)
 
   ## Build diffEnrich Fisher's Exact function
-  de <- function(x){
+  de <- function(a,b,c,d){
     y <- stats::fisher.test(matrix(c(a,b,c,d), nr = 2))
     est <- y$estimate
     pv <- y$p.value
     out.de <- data.frame(est, pv)
     return(out.de)
   }
-
+  ## perform differential enrichment
+  out <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_bkg", "KEGG_in_list_sig", "numSig_bkg", "numSig_sig")], 1,
+               function(a){ de(a[1], a[2], a[3], a[4])})))
+  return(out)
 }
 
 
