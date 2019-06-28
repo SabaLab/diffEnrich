@@ -13,9 +13,7 @@
 #' @param  bkg_pe data.frame. Dataframe of enrichment results for background genes
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
 #'
-#' @return data.frame. Dataframe with 5 columns.
-#'                     KEGG_pathway ID: KEGG pathway ID
-#'                     Description: KEGG pathway description
+#' @return data.frame. Dataframe generated from merging pathEnrich dataframes with the following added columns:
 #'                     Estimate: Estimated odds ration calculated from Fisher's Exact test
 #'                     P_value: Unadjusted p_value from Fisher's Exact test
 #'                     FDR: FDR calculated using \code{p.adjust(x, method = "BH")}
