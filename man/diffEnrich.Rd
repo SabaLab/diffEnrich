@@ -4,11 +4,37 @@
 \alias{diffEnrich}
 \title{diffEnrich}
 \usage{
-diffEnrich(x)
+diffEnrich(sig_pe, bkg_pe)
 }
 \arguments{
-\item{x}{}
+\item{sig_pe}{data.frame. Dataframe of enrichment results for genes of interest
+generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
+
+\item{bkg_pe}{data.frame. Dataframe of enrichment results for background genes
+generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
+}
+\value{
+data.frame. Dataframe generated from merging pathEnrich dataframes with the following added columns:
+                    Estimate: Estimated odds ration calculated from Fisher's Exact test
+                    P_value: Unadjusted p_value from Fisher's Exact test
+                    FDR: FDR calculated using \code{p.adjust(x, method = "BH")}
 }
 \description{
-diffEnrich
+This function takes the objects generated from \code{\link{pathEnrich}}.
+If performing a dfferential enrichment analysis, the user will have 2 objects. There
+will be one for the genes of interest and one for the background (see example for \code{\link{pathEnrich}}).
+This function then uses a Fisher's Exact test to iddentify differentially enriched
+pathways between the terms enriched in the gene-of-interest list and the pathways enriched
+in the background. \code{diffEnrich} returns a dataframe containing differentially enriched
+pathways with their associated estimated odds ratio, unadjusted p-value, and fdr adjusted
+p-value.
+}
+\examples{
+## Generate individual enrichment reults
+sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+
+## Perform differential enrichment
+dif_enrich <- diffEnrich(sig_pe = sig_pe, bkg_pe = bkg_pe)
+
 }

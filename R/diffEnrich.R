@@ -18,6 +18,8 @@
 #'                     P_value: Unadjusted p_value from Fisher's Exact test
 #'                     FDR: FDR calculated using \code{p.adjust(x, method = "BH")}
 #' @export
+#' @importFrom  stats fisher.test
+#' @importFrom  stats p.adjust
 #'
 #' @examples
 #' ## Generate individual enrichment reults
