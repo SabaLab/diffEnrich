@@ -30,8 +30,8 @@ p-value.
 }
 \examples{
 ## Generate individual enrichment reults
-list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
-list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
+list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 
 ## Perform differential enrichment
 dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
