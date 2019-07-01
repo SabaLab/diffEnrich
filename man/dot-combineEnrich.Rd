@@ -4,18 +4,18 @@
 \alias{.combineEnrich}
 \title{.combineEnrich}
 \usage{
-.combineEnrich(sig_pe, bkg_pe)
+.combineEnrich(list1_pe, list2_pe)
 }
 \arguments{
-\item{sig_pe}{data.frame. Dataframe of enrichment results for genes of interest
+\item{list1_pe}{data.frame. Dataframe of enrichment results for genes of interest
 generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
 
-\item{bkg_pe}{data.frame. Dataframe of enrichment results for background genes
+\item{list2_pe}{data.frame. Dataframe of enrichment results for background genes
 generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
 }
 \value{
 combined_enrich: An object of class data.frame that is the result of merging
-\code{sig_pe} and \code{bkg_pe}, using the default joining implemented in the base
+\code{list1_pe} and \code{list2_pe}, using the default joining implemented in the base
 \code{\link{merge}} function.
 }
 \description{

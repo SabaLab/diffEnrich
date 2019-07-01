@@ -4,13 +4,13 @@
 \alias{diffEnrich}
 \title{diffEnrich}
 \usage{
-diffEnrich(sig_pe, bkg_pe)
+diffEnrich(list1_pe, list2_pe)
 }
 \arguments{
-\item{sig_pe}{data.frame. Dataframe of enrichment results for genes of interest
+\item{list1_pe}{data.frame. Dataframe of enrichment results for genes of interest
 generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
 
-\item{bkg_pe}{data.frame. Dataframe of enrichment results for background genes
+\item{list2_pe}{data.frame. Dataframe of enrichment results for background genes
 generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
 }
 \value{
@@ -30,10 +30,10 @@ p-value.
 }
 \examples{
 ## Generate individual enrichment reults
-sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
-bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
 
 ## Perform differential enrichment
-dif_enrich <- diffEnrich(sig_pe = sig_pe, bkg_pe = bkg_pe)
+dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
 
 }

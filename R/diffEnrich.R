@@ -8,9 +8,9 @@
 #' pathways with their associated estimated odds ratio, unadjusted p-value, and fdr adjusted
 #' p-value.
 #'
-#' @param sig_pe data.frame. Dataframe of enrichment results for genes of interest
+#' @param list1_pe data.frame. Dataframe of enrichment results for genes of interest
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
-#' @param  bkg_pe data.frame. Dataframe of enrichment results for background genes
+#' @param list2_pe data.frame. Dataframe of enrichment results for background genes
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
 #'
 #' @return data.frame. Dataframe generated from merging pathEnrich dataframes with the following added columns:
@@ -22,15 +22,15 @@
 #'
 #' @examples
 #' ## Generate individual enrichment reults
-#' sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
-#' bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+#' list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
+#' list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
 #'
 #' ## Perform differential enrichment
-#' dif_enrich <- diffEnrich(sig_pe = sig_pe, bkg_pe = bkg_pe)
+#' dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
 #'
-diffEnrich <- function(sig_pe, bkg_pe){
+diffEnrich <- function(list1_pe, list2_pe){
   ## Call .combineEnrich helper function
-  ce <- .combineEnrich(sig_pe = sig_pe, bkg_pe = bkg_pe)
+  ce <- .combineEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
 
   ## Build diffEnrich Fisher's Exact function
   de <- function(a,b,c,d){
@@ -56,25 +56,25 @@ diffEnrich <- function(sig_pe, bkg_pe){
 #' in both objects (\code{by = c("V1", "V2", "KEGG_cnt", "numTested")}). This merged dataframe
 #' will be used as the input for the differential enrichment function.
 #'
-#' @param sig_pe data.frame. Dataframe of enrichment results for genes of interest
+#' @param list1_pe data.frame. Dataframe of enrichment results for genes of interest
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
-#' @param  bkg_pe data.frame. Dataframe of enrichment results for background genes
+#' @param  list2_pe data.frame. Dataframe of enrichment results for background genes
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
 #'
 #' @return combined_enrich: An object of class data.frame that is the result of merging
-#' \code{sig_pe} and \code{bkg_pe}, using the default joining implemented in the base
+#' \code{list1_pe} and \code{list2_pe}, using the default joining implemented in the base
 #' \code{\link{merge}} function.
 #'
 #'
-.combineEnrich <- function(sig_pe, bkg_pe){
+.combineEnrich <- function(list1_pe, list2_pe){
   ## argument check
-  if(missing(sig_pe)){stop("Argument missing: sig_pe")}
-  if(missing(bkg_pe)){stop("Argument missing: bkg_pe")}
+  if(missing(list1_pe)){stop("Argument missing: list1_pe")}
+  if(missing(list2_pe)){stop("Argument missing: list2_pe")}
 
   ## Merge results from first enrichment
-  combined_enrich <- merge(sig_pe, bkg_pe, by = c("KEGG_ID", "KEGG_description", "KEGG_cnt", "numTested"))
-  colnames(combined_enrich) <- gsub(".x", "_sig", colnames(combined_enrich), fixed = TRUE)
-  colnames(combined_enrich) <- gsub(".y", "_bkg", colnames(combined_enrich), fixed = TRUE)
+  combined_enrich <- merge(list1_pe, list2_pe, by = c("KEGG_ID", "KEGG_description", "KEGG_cnt", "numTested"))
+  colnames(combined_enrich) <- gsub(".x", "_list1", colnames(combined_enrich), fixed = TRUE)
+  colnames(combined_enrich) <- gsub(".y", "_list2", colnames(combined_enrich), fixed = TRUE)
 
   out <- combined_enrich
   return(out)
