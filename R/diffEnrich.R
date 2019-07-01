@@ -41,7 +41,7 @@ diffEnrich <- function(list1_pe, list2_pe){
     return(out.de)
   }
   ## perform differential enrichment
-  res <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_bkg", "KEGG_in_list_sig", "numSig_bkg", "numSig_sig")], 1,
+  res <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_list2", "KEGG_in_list_list1", "numSig_list2", "numSig_list1")], 1,
                function(a){ de(a[1], a[2], a[3], a[4])})))
   return(res)
 }
