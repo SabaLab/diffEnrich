@@ -180,7 +180,7 @@ get_kegg <- function(species, path = NULL){
                                               quote = "")
 
       message("3 data sets will be written as tab delimited text files")
-      message("File location: ", here::here())
+      message("File location: ", path)
       message("Kegg Release: ", kegg_release)
       # write files
       utils::write.table(ncbi_to_kegg,
