@@ -87,7 +87,7 @@ pathEnrich <- function(gk_obj, gene_list){
   ## clean and return
   enrich_table <- enrich_table[order(enrich_table$enrich_p), ]
   enrich_table$fdr <- stats::p.adjust(enrich_table$enrich_p, method = 'BH')
-
+  enrich_table$V1 <- gsub("path:", "", enrich_table$V1, fixed = TRUE)
   ## Add menaingful column names for the C1 and C2
   colnames(enrich_table)[c(1,2)] <- c("KEGG_ID", "KEGG_description")
   return(enrich_table)
