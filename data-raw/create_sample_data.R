@@ -21,8 +21,8 @@ backgroundENTZ <- mapIds(org.Rn.eg.db, backgroundList, 'ENTREZID', 'SYMBOL')
 backgroundENTZ <- base::unname(backgroundENTZ)
 sigGeneENTZ <- mapIds(org.Rn.eg.db, sigGenesList, 'ENTREZID', 'SYMBOL')
 sigGeneENTZ <- base::unname(sigGeneENTZ)
-geneLists <- list(list1 = backgroundENTZ,
-                  list2 = sigGeneENTZ)
+geneLists <- list(list1 = sigGeneENTZ,
+                  list2 = backgroundENTZ)
 
 ## save and compress
 usethis::use_data(geneLists, compress = "xz", overwrite = TRUE)
