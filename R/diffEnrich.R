@@ -72,7 +72,7 @@ diffEnrich <- function(sig_pe, bkg_pe){
   if(missing(bkg_pe)){stop("Argument missing: bkg_pe")}
 
   ## Merge results from first enrichment
-  combined_enrich <- merge(sig_pe, bkg_pe, by = c("V1", "V2", "KEGG_cnt", "numTested"))
+  combined_enrich <- merge(sig_pe, bkg_pe, by = c("KEGG_ID", "KEGG_description", "KEGG_cnt", "numTested"))
   colnames(combined_enrich) <- gsub(".x", "_sig", colnames(combined_enrich), fixed = TRUE)
   colnames(combined_enrich) <- gsub(".y", "_bkg", colnames(combined_enrich), fixed = TRUE)
 
