@@ -21,14 +21,14 @@ backgroundENTZ <- mapIds(org.Rn.eg.db, backgroundList, 'ENTREZID', 'SYMBOL')
 backgroundENTZ <- base::unname(backgroundENTZ)
 sigGeneENTZ <- mapIds(org.Rn.eg.db, sigGenesList, 'ENTREZID', 'SYMBOL')
 sigGeneENTZ <- base::unname(sigGeneENTZ)
-geneLists <- list(background = backgroundENTZ,
-                  sigGenes = sigGeneENTZ)
+geneLists <- list(list1 = backgroundENTZ,
+                  list2 = sigGeneENTZ)
 
 ## save and compress
-usethis::use_data(geneLists, compress = "xz")
+usethis::use_data(geneLists, compress = "xz", overwrite = TRUE)
 
 ## generate kegg data
-kegg <- get_kegg('rat')
+kegg <- get_kegg('rno')
 
 ## save and compress
-usethis::use_data(kegg, compress = "xz")
+usethis::use_data(kegg, compress = "xz", overwrite = TRUE)
