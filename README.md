@@ -122,25 +122,22 @@ all the genes that have annotation.
 
 ``` r
 # run pathEnrich using kegg_rno
-## Genes of interest
-sig_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
-## Background
-bkg_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
-knitr::kable(head(sig_pe),
-             caption = "Table 1. Head of sig_pe dataframe generated using pathEnrich", row.names = FALSE) %>%
-  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T)
+## List 1
+list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
+## list2
+list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 ```
 
-| KEGG\_ID      | KEGG\_description                                        | KEGG\_cnt | KEGG\_in\_list | numTested | numSig | expected | enrich\_p |       fdr |
-| :------------ | :------------------------------------------------------- | --------: | -------------: | --------: | -----: | -------: | --------: | --------: |
-| path:rno04530 | Tight junction - Rattus norvegicus (rat)                 |       170 |             19 |      8834 |    293 | 5.638442 | 0.0000025 | 0.0008089 |
-| path:rno05210 | Colorectal cancer - Rattus norvegicus (rat)              |        88 |             12 |      8834 |    293 | 2.918723 | 0.0000277 | 0.0045087 |
-| path:rno04144 | Endocytosis - Rattus norvegicus (rat)                    |       275 |             22 |      8834 |    293 | 9.121010 | 0.0000739 | 0.0067965 |
-| path:rno05231 | Choline metabolism in cancer - Rattus norvegicus (rat)   |        99 |             12 |      8834 |    293 | 3.283564 | 0.0000892 | 0.0067965 |
-| path:rno05213 | Endometrial cancer - Rattus norvegicus (rat)             |        58 |              9 |      8834 |    293 | 1.923704 | 0.0001042 | 0.0067965 |
-| path:rno04722 | Neurotrophin signaling pathway - Rattus norvegicus (rat) |       125 |             13 |      8834 |    293 | 4.145913 | 0.0002152 | 0.0116927 |
+| KEGG\_PATHWAY\_ID | KEGG\_PATHWAY\_description                             | KEGG\_PATHWAY\_cnt | KEGG\_PATHWAY\_in\_list | KEGG\_DATABASE\_cnt | KEG\_DATASE\_in\_list | expected | enrich\_p |       fdr |
+| :---------------- | :----------------------------------------------------- | -----------------: | ----------------------: | ------------------: | --------------------: | -------: | --------: | --------: |
+| rno04530          | Tight junction - Rattus norvegicus (rat)               |                170 |                      19 |                8856 |                   295 | 5.662827 | 0.0000026 | 0.0006753 |
+| rno05135          | Yersinia infection - Rattus norvegicus (rat)           |                128 |                      16 |                8856 |                   295 | 4.263776 | 0.0000041 | 0.0006753 |
+| rno05210          | Colorectal cancer - Rattus norvegicus (rat)            |                 88 |                      12 |                8856 |                   295 | 2.931346 | 0.0000289 | 0.0031674 |
+| rno04144          | Endocytosis - Rattus norvegicus (rat)                  |                275 |                      22 |                8856 |                   295 | 9.160456 | 0.0000789 | 0.0059095 |
+| rno05231          | Choline metabolism in cancer - Rattus norvegicus (rat) |                 99 |                      12 |                8856 |                   295 | 3.297764 | 0.0000930 | 0.0059095 |
+| rno05213          | Endometrial cancer - Rattus norvegicus (rat)           |                 58 |                       9 |                8856 |                   295 | 1.932023 | 0.0001078 | 0.0059095 |
 
-Table 1. Head of sig\_pe dataframe generated using pathEnrich
+Table 1. Head of list1\_pe data frame generated using pathEnrich
 
 *pathEnrich* generates a data frame with 9 columns described below.
 
@@ -178,29 +175,13 @@ Column Description
 
 <td style="text-align:left;">
 
-KEGG\_ID
+KEGG\_PATHWAY\_ID
 
 </td>
 
 <td style="text-align:left;">
 
-KEGG ID
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-KEGG\_description
-
-</td>
-
-<td style="text-align:left;">
-
-KEGG pathway description
+KEGG Pathway Identifier
 
 </td>
 
@@ -210,29 +191,13 @@ KEGG pathway description
 
 <td style="text-align:left;">
 
-KEGG\_cnt
+KEGG\_PATHWAY\_description
 
 </td>
 
 <td style="text-align:left;">
 
-PLACE HOLDER
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-KEGG\_in\_list
-
-</td>
-
-<td style="text-align:left;">
-
-PLACE HOLDER
+Description of KEGG Pathway (provided by KEGG)
 
 </td>
 
@@ -242,13 +207,13 @@ PLACE HOLDER
 
 <td style="text-align:left;">
 
-numTested
+KEGG\_PATHWAY\_cnt
 
 </td>
 
 <td style="text-align:left;">
 
-Total number of pathways in KEGG release
+Number of Genes in KEGG Pathway
 
 </td>
 
@@ -258,13 +223,45 @@ Total number of pathways in KEGG release
 
 <td style="text-align:left;">
 
-numSig
+KEGG\_PATHWAY\_in\_list
 
 </td>
 
 <td style="text-align:left;">
 
-PLACE HOLDER
+Number of Genes from gene list in KEGG Pathway
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+KEGG\_DATABASE\_cnt
+
+</td>
+
+<td style="text-align:left;">
+
+Number of Genes in KEGG Database
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+KEG\_DATASE\_in\_list
+
+</td>
+
+<td style="text-align:left;">
+
+Number of Genes from gene list in KEGG Database
 
 </td>
 
@@ -280,7 +277,8 @@ expected
 
 <td style="text-align:left;">
 
-PLACE HOLDER
+Expected number of genes from list to be in KEGG pathway by chance
+(i.e., not enriched)
 
 </td>
 
@@ -296,7 +294,7 @@ enrich\_p
 
 <td style="text-align:left;">
 
-Unadjusted p-value from Fisher’s Exact test
+P-value for enrichment of list genes related to KEGG pathway
 
 </td>
 
@@ -312,7 +310,8 @@ fdr
 
 <td style="text-align:left;">
 
-False Discovery Rate (FDR)
+False Discovery Rate (Benjamini and Hochberg) to account for multiple
+testing across KEGG pathways
 
 </td>
 
@@ -325,27 +324,25 @@ False Discovery Rate (FDR)
 ### Step 3: Identify differentially enriched KEGG pathways
 
 The diffEnrich function will merge the results from the *pathEnrich*
-calls generated above. Specifically, the data frame ‘sig\_pe’ and the
-data frame ‘bkg\_pe’ will be merged using the base *merge* functionality
-and be merged by the following columns: ‘c(“KEGG\_ID”,
-“KEGG\_description”, “KEGG\_cnt”, “numTested”)’. This merged data set
+calls generated above. Specifically, the data frame ‘list1\_pe’ and the
+data frame ‘list2\_pe’ will be merged using the base *merge*
+functionality and be merged by the following columns:
+‘c(“KEGG\_PATHWAY\_ID”, “KEGG\_PATHWAY\_description”,
+“KEGG\_PATHWAY\_cnt”, “KEGG\_DATABASE\_cnt”)’. This merged data set
 will then be used to perform differential enrichment using the same
-method and p-value calculation as described above.
+method and p-value calculation as described above. Users do have the
+option of choosing a method for multiple testing adjustment.
 
 ``` r
 ## Perform differential enrichment
-diff_enrich <- diffEnrich(sig_pe = sig_pe, bkg_pe = bkg_pe)
-
-knitr::kable(head(diff_enrich),
-             caption = "Table 2. Description of columns is dataframe generated by pathEnrich", row.names = FALSE) %>%
-  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
+diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none')
 ```
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
 <caption>
 
-Table 2. Description of columns is dataframe generated by pathEnrich
+Table 3. Description of columns is data frame generated by diffEnrich
 
 </caption>
 
@@ -355,97 +352,103 @@ Table 2. Description of columns is dataframe generated by pathEnrich
 
 <th style="text-align:left;">
 
-KEGG\_ID
+KEGG\_PATHWAY\_ID
 
 </th>
 
 <th style="text-align:left;">
 
-KEGG\_description
+KEGG\_PATHWAY\_description
 
 </th>
 
 <th style="text-align:right;">
 
-KEGG\_cnt
+KEGG\_PATHWAY\_cnt
 
 </th>
 
 <th style="text-align:right;">
 
-numTested
+KEGG\_DATABASE\_cnt
 
 </th>
 
 <th style="text-align:right;">
 
-KEGG\_in\_list\_sig
+KEGG\_PATHWAY\_in\_list1
 
 </th>
 
 <th style="text-align:right;">
 
-numSig\_sig
+KEGG\_DATABASE\_in\_list1
 
 </th>
 
 <th style="text-align:right;">
 
-expected\_sig
+expected\_list1
 
 </th>
 
 <th style="text-align:right;">
 
-enrich\_p\_sig
+enrich\_p\_list1
 
 </th>
 
 <th style="text-align:right;">
 
-fdr\_sig
+fdr\_list1
 
 </th>
 
 <th style="text-align:right;">
 
-KEGG\_in\_list\_bkg
+KEGG\_PATHWAY\_in\_list2
 
 </th>
 
 <th style="text-align:right;">
 
-numSig\_bkg
+KEGG\_DATABASE\_in\_list2
 
 </th>
 
 <th style="text-align:right;">
 
-expected\_bkg
+expected\_list2
 
 </th>
 
 <th style="text-align:right;">
 
-enrich\_p\_bkg
+enrich\_p\_list2
 
 </th>
 
 <th style="text-align:right;">
 
-fdr\_bkg
+fdr\_list2
 
 </th>
 
 <th style="text-align:right;">
 
-est
+odd\_ratio
 
 </th>
 
 <th style="text-align:right;">
 
-pv
+diff\_enrich\_p
+
+</th>
+
+<th style="text-align:right;">
+
+diff\_enrich\_adjusted
 
 </th>
 
@@ -459,7 +462,7 @@ pv
 
 <td style="text-align:left;">
 
-path:rno00010
+rno00010
 
 </td>
 
@@ -477,7 +480,7 @@ Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-8834
+8856
 
 </td>
 
@@ -489,13 +492,13 @@ Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-293
+295
 
 </td>
 
 <td style="text-align:right;">
 
-2.388046
+2.398374
 
 </td>
 
@@ -519,25 +522,25 @@ Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-5293
+5308
 
 </td>
 
 <td style="text-align:right;">
 
-43.13969
+43.15447
 
 </td>
 
 <td style="text-align:right;">
 
-0.2584661
+0.2596772
 
 </td>
 
 <td style="text-align:right;">
 
-0.3253280
+0.3273326
 
 </td>
 
@@ -549,7 +552,13 @@ Inf
 
 <td style="text-align:right;">
 
-0.1735339
+0.1738388
+
+</td>
+
+<td style="text-align:right;">
+
+0.1738388
 
 </td>
 
@@ -559,7 +568,7 @@ Inf
 
 <td style="text-align:left;">
 
-path:rno00020
+rno00020
 
 </td>
 
@@ -577,7 +586,7 @@ Citrate cycle (TCA cycle) - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-8834
+8856
 
 </td>
 
@@ -589,25 +598,25 @@ Citrate cycle (TCA cycle) - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-293
+295
 
 </td>
 
 <td style="text-align:right;">
 
-1.094521
+1.099255
 
 </td>
 
 <td style="text-align:right;">
 
-0.2980410
+0.2998073
 
 </td>
 
 <td style="text-align:right;">
 
-0.6362394
+0.6404974
 
 </td>
 
@@ -619,37 +628,43 @@ Citrate cycle (TCA cycle) - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-5293
+5308
 
 </td>
 
 <td style="text-align:right;">
 
-19.77236
+19.77913
 
 </td>
 
 <td style="text-align:right;">
 
-0.0004131
+0.0004165
 
 </td>
 
 <td style="text-align:right;">
 
-0.0009160
+0.0009197
 
 </td>
 
 <td style="text-align:right;">
 
-0.8026996
+0.8058941
 
 </td>
 
 <td style="text-align:right;">
 
-0.6769666
+0.6777759
+
+</td>
+
+<td style="text-align:right;">
+
+0.6777759
 
 </td>
 
@@ -659,7 +674,7 @@ Citrate cycle (TCA cycle) - Rattus norvegicus (rat)
 
 <td style="text-align:left;">
 
-path:rno00030
+rno00030
 
 </td>
 
@@ -677,7 +692,7 @@ Pentose phosphate pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-8834
+8856
 
 </td>
 
@@ -689,13 +704,13 @@ Pentose phosphate pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-293
+295
 
 </td>
 
 <td style="text-align:right;">
 
-1.028187
+1.032633
 
 </td>
 
@@ -719,25 +734,25 @@ Pentose phosphate pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-5293
+5308
 
 </td>
 
 <td style="text-align:right;">
 
-18.57403
+18.58040
 
 </td>
 
 <td style="text-align:right;">
 
-0.2346428
+0.2353757
 
 </td>
 
 <td style="text-align:right;">
 
-0.2999748
+0.3013175
 
 </td>
 
@@ -749,7 +764,13 @@ Inf
 
 <td style="text-align:right;">
 
-0.6242364
+0.6243900
+
+</td>
+
+<td style="text-align:right;">
+
+0.6243900
 
 </td>
 
@@ -759,7 +780,7 @@ Inf
 
 <td style="text-align:left;">
 
-path:rno00040
+rno00040
 
 </td>
 
@@ -777,7 +798,7 @@ Pentose and glucuronate interconversions - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-8834
+8856
 
 </td>
 
@@ -789,19 +810,19 @@ Pentose and glucuronate interconversions - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-293
+295
 
 </td>
 
 <td style="text-align:right;">
 
-1.127689
+1.132565
 
 </td>
 
 <td style="text-align:right;">
 
-0.6816199
+0.6832205
 
 </td>
 
@@ -819,19 +840,19 @@ Pentose and glucuronate interconversions - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-5293
+5308
 
 </td>
 
 <td style="text-align:right;">
 
-20.37152
+20.37850
 
 </td>
 
 <td style="text-align:right;">
 
-0.9521947
+0.9524474
 
 </td>
 
@@ -843,13 +864,19 @@ Pentose and glucuronate interconversions - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.8857189
+0.8892440
 
 </td>
 
 <td style="text-align:right;">
 
-0.6005331
+0.6019442
+
+</td>
+
+<td style="text-align:right;">
+
+0.6019442
 
 </td>
 
@@ -859,7 +886,7 @@ Pentose and glucuronate interconversions - Rattus norvegicus (rat)
 
 <td style="text-align:left;">
 
-path:rno00051
+rno00051
 
 </td>
 
@@ -877,7 +904,7 @@ Fructose and mannose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-8834
+8856
 
 </td>
 
@@ -889,19 +916,19 @@ Fructose and mannose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-293
+295
 
 </td>
 
 <td style="text-align:right;">
 
-1.293525
+1.299119
 
 </td>
 
 <td style="text-align:right;">
 
-0.7308383
+0.7323897
 
 </td>
 
@@ -919,31 +946,37 @@ Fructose and mannose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-5293
+5308
 
 </td>
 
 <td style="text-align:right;">
 
-23.36733
+23.37534
 
 </td>
 
 <td style="text-align:right;">
 
-0.0407482
+0.0409806
 
 </td>
 
 <td style="text-align:right;">
 
-0.0595691
+0.0599227
 
 </td>
 
 <td style="text-align:right;">
 
-1.6052439
+1.6116341
+
+</td>
+
+<td style="text-align:right;">
+
+1.0000000
 
 </td>
 
@@ -959,7 +992,7 @@ Fructose and mannose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:left;">
 
-path:rno00052
+rno00052
 
 </td>
 
@@ -977,7 +1010,7 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-8834
+8856
 
 </td>
 
@@ -989,13 +1022,13 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-293
+295
 
 </td>
 
 <td style="text-align:right;">
 
-1.061354
+1.065944
 
 </td>
 
@@ -1019,25 +1052,25 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-5293
+5308
 
 </td>
 
 <td style="text-align:right;">
 
-19.17319
+19.17977
 
 </td>
 
 <td style="text-align:right;">
 
-0.1085947
+0.1090435
 
 </td>
 
 <td style="text-align:right;">
 
-0.1481250
+0.1494805
 
 </td>
 
@@ -1049,7 +1082,13 @@ Inf
 
 <td style="text-align:right;">
 
-0.6303267
+0.6306319
+
+</td>
+
+<td style="text-align:right;">
+
+0.6306319
 
 </td>
 
@@ -1061,4 +1100,6 @@ Inf
 
 The result of the *diffEnrich* call is the merged data frame with the
 estimated odds ration generated by the Fisher’s Exact test and the
-associated p-value.
+associated p-value. Users can choose from those supported by
+*stats::p.adjust*, and the defualt is the False Discovery Rate
+(Benjamini and Hochberg).
