@@ -1,5 +1,5 @@
 Package: diffEnrich
-Title: Given a List of Gene Symbols, Performs Differential Enrichment Ananlysis
+Title: Given a List of Gene Symbols, Performs Differential Enrichment Analysis
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Harry",
@@ -10,8 +10,8 @@ Authors@R:
            family = "Saba",
            role = c("aut"),
            email = "laura.saba@cuanschutz.edu"))
-Description: This package performs differential enrichment analysis (insert
-    reference). For now, this package is in development and s to only be used
+Description: Performs differential enrichment analysis (insert
+    reference). For now, this package is in development and is to only be used
     by the Saba Lab group.
 License: GPL-3
 Encoding: UTF-8
