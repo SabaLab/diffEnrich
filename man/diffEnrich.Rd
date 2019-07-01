@@ -18,9 +18,28 @@ use for multiple testing correction. Available methods are thos provided by
 \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).}
 }
 \value{
-data.frame. Dataframe generated from merging pathEnrich dataframes with the following added columns:
-                    Estimate: Estimated odds ration calculated from Fisher's Exact test
-                    P_value: Unadjusted p_value from Fisher's Exact test
+res: An object of class data.frame that summarizes the results
+of the differential enrichment and contains the following variables:
+
+\describe{
+  \item{KEGG_PATHWAY_ID}{KEGG Pathway Identifier}
+  \item{KEGG_PATHWAY_description}{Description of KEGG Pathway (provided by KEGG)}
+  \item{KEGG_PATHWAY_cnt}{Number of Genes in KEGG Pathway}
+  \item{KEGG_DATABASE_cnt}{Number of Genes in KEGG Database}
+  \item{KEGG_PATHWAY_in_list1}{Number of Genes from gene list 1 in KEGG Pathway}
+  \item{KEGG_DATABASE_in_list1}{Number of Genes from gene list 1 in KEGG Database}
+  \item{expected_list1}{Expected number of genes from list 1 to be in KEGG pathway by chance (i.e., not enriched)}
+  \item{enrich_p_list1}{P-value for enrichment of list 1 genes related to KEGG pathway}
+  \item{fdr_list1}{False Discovery Rate (Benjamini and Hochberg) of enrich_p_list1 to account for multiple testing across KEGG pathways}
+  \item{KEGG_PATHWAY_in_list2}{Number of Genes from gene list 2 in KEGG Pathway}
+  \item{KEGG_DATABASE_in_list2}{Number of Genes from gene list 2 in KEGG Database}
+  \item{expected_list2}{Expected number of genes from list 2 to be in KEGG pathway by chance (i.e., not enriched)}
+  \item{enrich_p_list2}{P-value for enrichment of list 2 genes related to KEGG pathway}
+  \item{fdr_list2}{False Discovery Rate (Benjamini and Hochberg) of enrich_p_list2 to account for multiple testing across KEGG pathways}
+  \item{odd_ratio}{Odds of a gene from list 2 being from this KEGG pathway / Odds of a gene from list 1 being from this KEGG pathway}
+  \item{diff_enrich_p}{P-value for differential enrichment of this KEGG pathway between list 1 and list 2}
+  \item{diff_enrich_adjusted}{Multiple testing adjustment of diff_enrich_p (default = False Discovery Rate (Benjamini and Hochberg))}
+}
 }
 \description{
 This function takes the objects generated from \code{\link{pathEnrich}}.

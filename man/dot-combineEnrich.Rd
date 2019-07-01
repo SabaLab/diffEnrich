@@ -7,10 +7,10 @@
 .combineEnrich(list1_pe, list2_pe)
 }
 \arguments{
-\item{list1_pe}{data.frame. Dataframe of enrichment results for genes of interest
+\item{list1_pe}{data.frame. Data frame of enrichment results for list1
 generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
 
-\item{list2_pe}{data.frame. Dataframe of enrichment results for background genes
+\item{list2_pe}{data.frame. Data frame of enrichment results for list2
 generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
 }
 \value{
@@ -21,8 +21,8 @@ combined_enrich: An object of class data.frame that is the result of merging
 \description{
 This is a helper function for \code{diffEnrich}. This function takes the objects generated from \code{\link{pathEnrich}}.
 If performing a dfferential enrichment analysis, the user will have 2 objects. There
-will be one for the genes of interest and one for the background (see example for \code{\link{pathEnrich}}).
-This function then merges the two dataframes using the following columns that should be present
-in both objects (\code{by = c("V1", "V2", "KEGG_cnt", "numTested")}). This merged dataframe
+will be one for list1 and one for list2(see example for \code{\link{pathEnrich}}).
+This function then merges the two data frames using the following columns that should be present
+in both objects (\code{by = c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt")}). This merged data frame
 will be used as the input for the differential enrichment function.
 }
