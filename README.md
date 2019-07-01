@@ -30,8 +30,9 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_90.0+_06-24_Jun_19
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> Kegg Release: Release_91.0+_07-01_Jul_19
 ```
 
 Here are the files:
@@ -46,12 +47,18 @@ Here are the files:
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_90.0+_06-24_Jun_19
+#> Kegg Release: Release_91.0+_07-01_Jul_19
 ```
 
 ### Step 2: Perform individual enrichment analysis
 
-In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched based on a list of genes we are interested in and based on a list of background genes. This function may not always use the complete list of genes provided by the user. Specifically, it will only use the genes from the list provided that are also in the most current species list pulled from the KEGG REST API using *get\_kegg*, or from the older KEGG data loaded by the user from a previous *get\_kegg* call. The *pathEnrich* function should be run at least twice, once for the genes of interest and once for the background. Each *pathEnrich* call generates a dataframe summarizing the results of a traditional pathway enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched by the user's list of interesting genes with repect to background enrichment.
+In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on a list of genes we are interested in and based on a list of background genes. This function may not always use the complete list of genes provided by the user. Specifically, it will only use the genes from the list provided that are also in the most current species list pulled from the KEGG REST API using *get\_kegg*, or from the older KEGG data loaded by the user from a previous *get\_kegg* call. The *pathEnrich* function should be run at least twice, once for the genes of interest and once for the background. Each *pathEnrich* call generates a dataframe summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched by the user's list of interesting genes with repect to background enrichment, and a p-value is calculated using a hypergeometric distribution (Formula 1). P-values are adjusted for multiple comparisons by controlling the False Discovery Rate (FDR) at 0.05.
+
+Formula 1:
+
+$$P = 1-\\sum\_{i=0}^{k-1} \\frac{\\binom{m}{i}\\binom{N-M}{n-i}}{\\binom{N}{n}}$$
+
+where N is the total number of genes in the background, M is the number of genes within that background that also in the gene set of interest, n is the size of the list of genes of interest and k is the number of genes within that are in the background. The background by default is all the genes that have annotation.
 
 ``` r
 # run pathEnrich using kegg_rno
@@ -64,7 +71,7 @@ knitr::kable(head(sig_pe),
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T)
 ```
 
-| V1            | V2                                                       |  KEGG\_cnt|  KEGG\_in\_list|  numTested|  numSig|  expected|  enrich\_p|        fdr|
+| KEGG\_ID      | KEGG\_description                                        |  KEGG\_cnt|  KEGG\_in\_list|  numTested|  numSig|  expected|  enrich\_p|        fdr|
 |:--------------|:---------------------------------------------------------|----------:|---------------:|----------:|-------:|---------:|----------:|----------:|
 | path:rno04530 | Tight junction - Rattus norvegicus (rat)                 |        170|              19|       8834|     293|  5.638442|  0.0000025|  0.0008089|
 | path:rno05210 | Colorectal cancer - Rattus norvegicus (rat)              |         88|              12|       8834|     293|  2.918723|  0.0000277|  0.0045087|
@@ -92,7 +99,7 @@ Column Description
 <tbody>
 <tr>
 <td style="text-align:left;">
-V1
+KEGG\_ID
 </td>
 <td style="text-align:left;">
 KEGG ID
@@ -100,7 +107,7 @@ KEGG ID
 </tr>
 <tr>
 <td style="text-align:left;">
-V2
+KEGG\_description
 </td>
 <td style="text-align:left;">
 KEGG pathway description
