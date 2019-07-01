@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%"
-)
+) 
 ```
 # diffEnrich
 
@@ -91,13 +91,12 @@ Each *pathEnrich* call generates a dataframe summarizing the results of an enric
 Exact test is used to identify which KEGG pathways are enriched by the user's list of interesting genes with repect to background
 enrichment, and a p-value is calculated using a hypergeometric distribution (Formula 1). P-values are adjusted for multiple comparisons by controlling the False Discovery Rate (FDR) at 0.05.
 
-$Formula 1:$
+Formula 1:
 
-  $$P = 1-\sum_{i=0}^{k-1} \frac{\binom{m}{i}\binom{N-M}{n-i}}{\binom{N}{n}}$$
+$$ P = 1-\sum_{i=0}^{k-1} \frac{ \binom{m} {i} \binom{N-M} {n-i} } {\binom{N} {n} } $$
 
-
+where N is the total number of genes in the background, M is the number of genes within that background that also in the gene set of interest, n is the size of the list of genes of interest and k is the number of genes within that are in the background. The background by default is all the genes that have annotation. 
  
-
 ```{r pathEnrich, warning=FALSE}
 # run pathEnrich using kegg_rno
 ## Genes of interest

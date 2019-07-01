@@ -30,8 +30,7 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_91.0+_07-01_Jul_19
 ```
 
@@ -56,7 +55,7 @@ In this step we will use the *pathEnrich* function to identify KEGG pathways tha
 
 Formula 1:
 
-$$P = 1-\\sum\_{i=0}^{k-1} \\frac{\\binom{m}{i}\\binom{N-M}{n-i}}{\\binom{N}{n}}$$
+$$ P = 1-\\sum\_{i=0}^{k-1} \\frac{ \\binom{m} {i} \\binom{N-M} {n-i} } {\\binom{N} {n} } $$
 
 where N is the total number of genes in the background, M is the number of genes within that background that also in the gene set of interest, n is the size of the list of genes of interest and k is the number of genes within that are in the background. The background by default is all the genes that have annotation.
 
