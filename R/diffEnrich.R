@@ -22,8 +22,8 @@
 #'
 #' @examples
 #' ## Generate individual enrichment reults
-#' list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$sigGenes)
-#' list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$background)
+#' list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
+#' list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 #'
 #' ## Perform differential enrichment
 #' dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
@@ -43,6 +43,8 @@ diffEnrich <- function(list1_pe, list2_pe){
   ## perform differential enrichment
   res <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_list2", "KEGG_in_list_list1", "numSig_list2", "numSig_list1")], 1,
                function(a){ de(a[1], a[2], a[3], a[4])})))
+  ## update rownames
+  rownames(res) <- res$KEGG_ID
   return(res)
 }
 
