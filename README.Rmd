@@ -1,5 +1,7 @@
 ---
-output: github_document
+output: 
+  github_document:
+    pandoc_args: --webtex
 always_allow_html: yes
 ---
 
