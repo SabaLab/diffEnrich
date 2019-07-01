@@ -15,15 +15,15 @@
 #' of the pathway analysis and contains the following variables:
 #'
 #' \describe{
-#'   \item{KEGG_ID}{KEGG ID}
-#'   \item{KEGG_description}{Description og KEGG pathway}
-#'   \item{KEGG_cnt}{Number of genes in KEGG pathway}
-#'   \item{KEGG_in_list}{Number of gene in KEGG pathway AND in user provided gene list}
-#'   \item{num_in_background}{Number of genes in }
-#'   \item{num_in_list}{Number of genes in }
-#'   \item{expected}{Estimated odd's ratio from Fisher's Exact test}
-#'   \item{enrich_p}{Unadjusted p-value}
-#'   \item{fdr}{Adjusted p-value. False Discovery Rate (FDR), using the Benjamini & Hochberg (1995)}
+#'   \item{KEGG_PATHWAY_ID}{KEGG Pathway Identifier}
+#'   \item{KEGG_PATHWAY_description}{Description of KEGG Pathway (provided by KEGG)}
+#'   \item{KEGG_PATHWAY_cnt}{Number of Genes in KEGG Pathway}
+#'   \item{KEGG_PATHWAY_in_list}{Number of Genes from gene list in KEGG Pathway}
+#'   \item{KEGG_DATABASE_cnt}{Number of Genes in KEGG Database}
+#'   \item{KEG_DATASE_in_list}{Number of Genes from gene list in KEGG Database}
+#'   \item{expected}{Expected number of genes from list to be in KEGG pathway by chance (i.e., not enriched)}
+#'   \item{enrich_p}{P-value for enrichment of list genes related to KEGG pathway}
+#'   \item{fdr}{False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways}
 #' }
 #'
 #' @details This function may not always use the complete list of genes provided by the user.
