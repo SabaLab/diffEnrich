@@ -12,7 +12,19 @@
 #' @param gene_list Vector. Vector of NCBI (ENTREZ) geneIDs.
 #'
 #' @return enrich_table: An object of class data.frame that summarizes the results
-#' of the pathway analysis.
+#' of the pathway analysis and contains the following variables:
+#'
+#' \describe{
+#'   \item{KEGG_ID}{KEGG ID}
+#'   \item{KEGG_description}{Description og KEGG pathway}
+#'   \item{KEGG_cnt}{Number of genes in KEGG pathway}
+#'   \item{KEGG_in_list}{Number of gene in KEGG pathway AND in user provided gene list}
+#'   \item{num_in_background}{Number of genes in }
+#'   \item{num_in_list}{Number of genes in }
+#'   \item{expected}{Estimated odd's ratio from Fisher's Exact test}
+#'   \item{enrich_p}{Unadjusted p-value}
+#'   \item{fdr}{Adjusted p-value. False Discovery Rate (FDR), using the Benjamini & Hochberg (1995)}
+#' }
 #'
 #' @details This function may not always use the complete list of genes provided by the user.
 #' Specifically, it will only use the genes from the list provided that are also in
@@ -89,7 +101,7 @@ pathEnrich <- function(gk_obj, gene_list){
   enrich_table$fdr <- stats::p.adjust(enrich_table$enrich_p, method = 'BH')
   enrich_table$V1 <- gsub("path:", "", enrich_table$V1, fixed = TRUE)
   ## Add menaingful column names for the C1 and C2
-  colnames(enrich_table)[c(1,2)] <- c("KEGG_ID", "KEGG_description", "KEGG_cnt", "KEGG_in_list",
+  colnames(enrich_table) <- c("KEGG_ID", "KEGG_description", "KEGG_cnt", "KEGG_in_list",
                                       "num_in_background", "num_in_list", "expected", "enrich_p",
                                       "fdr")
   return(enrich_table)
