@@ -17,15 +17,18 @@ kegg_out: A named list of the data pulled from kegg api when the
 function was run. This may be different if the function is run at
 different times. For reproducible results, use text files generated
 by function that include the date they were pulled.
-kegg_out: "ncbi_to_kegg" = ncbi_to_kegg dataframe,
-          "kegg_to_pathway" = kegg_to_pathway dataframe,
-          "pathway_to_species" = pathway_to_species dataframe
+
+\describe{
+  \item{ncbi_to_kegg}{ncbi_to_kegg mappings as class data.frame}
+  \item{kegg_to_pathway}{kegg_to_pathway mappings as class data.frame}
+  \item{pathway_to_species}{pathway_to_species mappings as class data.frame}
+  }
 }
 \description{
 This function connects to the KEGG API, downloads, and cleans
 ncbi gene ID data, KEGG pathway descriptions, and species specific data.
 Currently, this function supports Human, Mouse, and Rat. Files will be
-written to the working directory.
+written to the working directory unless otherwise specified by the user.
 }
 \examples{
 kegg <- get_kegg(species = "rno")
