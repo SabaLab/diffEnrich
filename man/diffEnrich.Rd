@@ -4,7 +4,7 @@
 \alias{diffEnrich}
 \title{diffEnrich}
 \usage{
-diffEnrich(list1_pe, list2_pe)
+diffEnrich(list1_pe, list2_pe, method = "BH")
 }
 \arguments{
 \item{list1_pe}{data.frame. Dataframe of enrichment results for genes of interest
@@ -12,6 +12,10 @@ generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}
 
 \item{list2_pe}{data.frame. Dataframe of enrichment results for background genes
 generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.}
+
+\item{method}{character. Character string telling \code{diffEnrich} which method to
+use for multiple testing correction. Available methods are thos provided by
+\code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).}
 }
 \value{
 data.frame. Dataframe generated from merging pathEnrich dataframes with the following added columns:
@@ -34,6 +38,6 @@ list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
 list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 
 ## Perform differential enrichment
-dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
+dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none')
 
 }

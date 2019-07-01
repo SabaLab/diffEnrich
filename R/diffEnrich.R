@@ -12,6 +12,9 @@
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
 #' @param list2_pe data.frame. Dataframe of enrichment results for background genes
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
+#' @param method character. Character string telling \code{diffEnrich} which method to
+#' use for multiple testing correction. Available methods are thos provided by
+#' \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).
 #'
 #' @return data.frame. Dataframe generated from merging pathEnrich dataframes with the following added columns:
 #'                     Estimate: Estimated odds ration calculated from Fisher's Exact test
@@ -26,9 +29,9 @@
 #' list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 #'
 #' ## Perform differential enrichment
-#' dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
+#' dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none')
 #'
-diffEnrich <- function(list1_pe, list2_pe){
+diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
   ## Call .combineEnrich helper function
   ce <- .combineEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
 
@@ -43,6 +46,7 @@ diffEnrich <- function(list1_pe, list2_pe){
   ## perform differential enrichment
   res <- cbind(ce, do.call('rbind', apply(ce[, c("KEGG_in_list_list2", "KEGG_in_list_list1", "numSig_list2", "numSig_list1")], 1,
                function(a){ de(a[1], a[2], a[3], a[4])})))
+  res$adjusted_p <- stats::p.adjust(res$pv, method = method)
   ## update rownames
   rownames(res) <- res$KEGG_ID
   return(res)
