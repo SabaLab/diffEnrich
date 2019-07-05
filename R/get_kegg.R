@@ -30,7 +30,7 @@
 #'
 
 
-test_kegg <- function(species, path = NULL){
+get_kegg <- function(species, path = NULL){
   ## API pull if path = NULL
   if(is.null(path)){
     wkd <- here::here()
