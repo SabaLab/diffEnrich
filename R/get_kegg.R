@@ -28,8 +28,6 @@
 #' kegg <- get_kegg(species = "mmu", path = "usr/data/out/")
 #' }
 #'
-
-
 get_kegg <- function(species, path = NULL){
   ## API pull if path = NULL
   if(is.null(path)){
@@ -41,11 +39,6 @@ get_kegg <- function(species, path = NULL){
   }
   return(res)
 }
-
-
-
-
-
 
 
 
