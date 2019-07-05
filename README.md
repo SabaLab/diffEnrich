@@ -28,7 +28,7 @@ You can install the released version of diffEnrich from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("diffEnrich")
+install.packages("diffEnrich") 
 ```
 
 ## Example
@@ -61,7 +61,7 @@ suppressMessages(library(diffEnrich))
 kegg_rno <- get_kegg('rno')
 #> 3 data sets will be written as tab delimited text files
 #> File location: /Users/smiharry/Documents/packages/diffEnrich
-#> Kegg Release: Release_91.0+_07-01_Jul_19
+#> Kegg Release: Release_91.0+_07-05_Jul_19
 ```
 
 Here are the files:
@@ -84,7 +84,7 @@ choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_07-01_Jul_19
+#> Kegg Release: Release_91.0+_07-05_Jul_19
 ```
 
 ### Step 2: Perform individual enrichment analysis

@@ -39,7 +39,7 @@ Papers from Saba Lab where differentially enrichment has been used:
 You can install the released version of diffEnrich from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("diffEnrich")
+install.packages("diffEnrich") 
 ```
 
 ## Example
