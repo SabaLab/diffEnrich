@@ -1,5 +1,5 @@
 #' @title get_kegg
-#' @description This function connects to the KEGG API, downloads, and cleans
+#' @description This function calls an internal helper function that connects to the KEGG API, downloads, and cleans
 #' ncbi gene ID data, KEGG pathway descriptions, and species specific data.
 #' Currently, this function supports Human, Mouse, and Rat. Files will be
 #' written to the working directory unless otherwise specified by the user.
@@ -21,8 +21,6 @@
 #'
 #' @export
 #' @importFrom here here
-#' @import utils
-#' @importFrom stringr str_extract
 #'
 #' @examples
 #' kegg <- get_kegg(species = "rno")
@@ -30,7 +28,47 @@
 #' kegg <- get_kegg(species = "mmu", path = "usr/data/out/")
 #' }
 #'
-get_kegg <- function(species, path = NULL){
+
+
+test_kegg <- function(species, path = NULL){
+  ## API pull if path = NULL
+  if(is.null(path)){
+    wkd <- here::here()
+    res <- .api_pull(species, path = wkd)
+  } else {
+    # API pull with user's path
+    res <- .api_pull(species, path = path)
+  }
+  return(res)
+}
+
+
+
+
+
+
+
+
+#' @title .api_pull
+#' @description This function connects to the KEGG API, downloads, and cleans
+#' ncbi gene ID data, KEGG pathway descriptions, and species specific data.
+#' Currently, this function supports Human, Mouse, and Rat. Files will be
+#' written to the working directory unless otherwise specified by the user.
+#'
+#' @param species character. The species to use in kegg data pull
+#' @param path character. A character string describing the path to write out KEGG
+#' API data sets. If not provided, defaults to current working directory.
+#'
+#' @return kegg_out: A named list of the data pulled from kegg api when the
+#' function was run. This may be different if the function is run at
+#' different times. For reproducible results, use text files generated
+#' by function that include the date they were pulled.
+#'
+#' @importFrom here here
+#' @import utils
+#' @importFrom stringr str_extract
+#'
+.api_pull <- function(species, path = path){
   options(stringsAsFactors = F)
   ## Argument checks
   if(missing(species)){stop("Must choose one of the 3 species options: human, mouse, rat")}
@@ -71,144 +109,69 @@ get_kegg <- function(species, path = NULL){
                   paste("kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
                   paste("pathway_to_species",Sys.Date(), kegg_release, ".txt",sep=""))
 
-  ########################
-  #     path = NULL     #
-  ########################
-  if(is.null(path)){
-    # Define user's base file path
-    base_path <- here::here()
-    flist <- list.files(base_path)
-    # Check is files exist
-    if (sum(flist %in% find_files)>0){message("These files already exist in your working directory. New files will not be generated.")
-      # If files exist will do an api pull to generate object but won't write out new files
-      ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
-                                        fill = TRUE,
-                                        sep = "\t",
-                                        quote = "")
-      kegg_to_pathway <- utils::read.table(file = kegg_to_pathway_path,
-                                           fill = TRUE,
-                                           sep = "\t",
-                                           quote = "")
-      pathway_to_species <- utils::read.table(file = pathway_to_species_path,
-                                              fill = TRUE,
-                                              sep = "\t",
-                                              quote = "")
+  # Define user's base file path
+  flist <- list.files(path)
+  # Check is files exist
+  if (sum(flist %in% find_files)>0){message("These files already exist in your working directory. New files will not be generated.")
+    # If files exist will do an api pull to generate object but won't write out new files
+    ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
+                                      fill = TRUE,
+                                      sep = "\t",
+                                      quote = "")
+    kegg_to_pathway <- utils::read.table(file = kegg_to_pathway_path,
+                                         fill = TRUE,
+                                         sep = "\t",
+                                         quote = "")
+    pathway_to_species <- utils::read.table(file = pathway_to_species_path,
+                                            fill = TRUE,
+                                            sep = "\t",
+                                            quote = "")
 
-      message("Kegg Release: ", kegg_release)
-      kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
-                       "kegg_to_pathway" = kegg_to_pathway,
-                       "pathway_to_species" = pathway_to_species)
-    }
-    # If files do not exist, will do an api pull and generate txt files in wkdir
-    else {
-      ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
-                                        fill = TRUE,
-                                        sep = "\t",
-                                        quote = "")
-      kegg_to_pathway <- utils::read.table(file = kegg_to_pathway_path,
-                                           fill = TRUE,
-                                           sep = "\t",
-                                           quote = "")
-      pathway_to_species <- utils::read.table(file = pathway_to_species_path,
-                                              fill = TRUE,
-                                              sep = "\t",
-                                              quote = "")
-
-      message("3 data sets will be written as tab delimited text files")
-      message("File location: ", here::here())
-      message("Kegg Release: ", kegg_release)
-      # write files
-      utils::write.table(ncbi_to_kegg,
-                         file=paste(base_path,"/ncbi_to_kegg",Sys.Date(), kegg_release, ".txt",sep=""),
-                         sep="\t",
-                         row.names=FALSE,
-                         col.names=FALSE,
-                         quote=FALSE)
-      utils::write.table(kegg_to_pathway,
-                         file=paste(base_path,"/kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
-                         sep="\t",
-                         row.names=FALSE,
-                         col.names=FALSE,
-                         quote=FALSE)
-      utils::write.table(pathway_to_species,
-                         file=paste(base_path,"/pathway_to_species",Sys.Date(), kegg_release, ".txt",sep=""),
-                         sep="\t",
-                         row.names=FALSE,
-                         col.names=FALSE,
-                         quote=FALSE)
-      kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
-                       "kegg_to_pathway" = kegg_to_pathway,
-                       "pathway_to_species" = pathway_to_species)
-    }
+    message("Kegg Release: ", kegg_release)
+    kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
+                     "kegg_to_pathway" = kegg_to_pathway,
+                     "pathway_to_species" = pathway_to_species)
   }
-  ########################
-  #     path = path     #
-  ########################
-  else if(!is.null(path)){
-    usr_path <- path
-    usr_flist <- list.files(usr_path)
-    # check if files exist
-    if (sum(usr_flist %in% find_files)>0){message("These files already exist in the path you provided. New files will not be generated.")
-      # If files exist will do an api pull to generate object but won't write out new files
-      ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
-                                        fill = TRUE,
-                                        sep = "\t",
-                                        quote = "")
-      kegg_to_pathway <- utils::read.table(file = kegg_to_pathway_path,
-                                           fill = TRUE,
-                                           sep = "\t",
-                                           quote = "")
-      pathway_to_species <- utils::read.table(file = pathway_to_species_path,
-                                              fill = TRUE,
-                                              sep = "\t",
-                                              quote = "")
+  # If files do not exist, will do an api pull and generate txt files in wkdir
+  else {
+    ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
+                                      fill = TRUE,
+                                      sep = "\t",
+                                      quote = "")
+    kegg_to_pathway <- utils::read.table(file = kegg_to_pathway_path,
+                                         fill = TRUE,
+                                         sep = "\t",
+                                         quote = "")
+    pathway_to_species <- utils::read.table(file = pathway_to_species_path,
+                                            fill = TRUE,
+                                            sep = "\t",
+                                            quote = "")
 
-      message("Kegg Release: ", kegg_release)
-      kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
-                       "kegg_to_pathway" = kegg_to_pathway,
-                       "pathway_to_species" = pathway_to_species)
-    }
-    else {
-      # if files don't exist will do an api pull and write files to path provided by user
-      ncbi_to_kegg <- utils::read.table(file = ncbi_to_kegg_path,
-                                        fill = TRUE,
-                                        sep = "\t",
-                                        quote = "")
-      kegg_to_pathway <- utils::read.table(file = kegg_to_pathway_path,
-                                           fill = TRUE,
-                                           sep = "\t",
-                                           quote = "")
-      pathway_to_species <- utils::read.table(file = pathway_to_species_path,
-                                              fill = TRUE,
-                                              sep = "\t",
-                                              quote = "")
-
-      message("3 data sets will be written as tab delimited text files")
-      message("File location: ", path)
-      message("Kegg Release: ", kegg_release)
-      # write files
-      utils::write.table(ncbi_to_kegg,
-                         file=paste(usr_path,"/ncbi_to_kegg",Sys.Date(), kegg_release, ".txt",sep=""),
-                         sep="\t",
-                         row.names=FALSE,
-                         col.names=FALSE,
-                         quote=FALSE)
-      utils::write.table(kegg_to_pathway,
-                         file=paste(usr_path,"/kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
-                         sep="\t",
-                         row.names=FALSE,
-                         col.names=FALSE,
-                         quote=FALSE)
-      utils::write.table(pathway_to_species,
-                         file=paste(usr_path,"/pathway_to_species",Sys.Date(), kegg_release, ".txt",sep=""),
-                         sep="\t",
-                         row.names=FALSE,
-                         col.names=FALSE,
-                         quote=FALSE)
-      kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
-                       "kegg_to_pathway" = kegg_to_pathway,
-                       "pathway_to_species" = pathway_to_species)
-      return(kegg_out)
-    }
+    message("3 data sets will be written as tab delimited text files")
+    message("File location: ", path)
+    message("Kegg Release: ", kegg_release)
+    # write files
+    utils::write.table(ncbi_to_kegg,
+                       file=paste(path,"/ncbi_to_kegg",Sys.Date(), kegg_release, ".txt",sep=""),
+                       sep="\t",
+                       row.names=FALSE,
+                       col.names=FALSE,
+                       quote=FALSE)
+    utils::write.table(kegg_to_pathway,
+                       file=paste(path,"/kegg_to_pathway",Sys.Date(), kegg_release, ".txt",sep=""),
+                       sep="\t",
+                       row.names=FALSE,
+                       col.names=FALSE,
+                       quote=FALSE)
+    utils::write.table(pathway_to_species,
+                       file=paste(path,"/pathway_to_species",Sys.Date(), kegg_release, ".txt",sep=""),
+                       sep="\t",
+                       row.names=FALSE,
+                       col.names=FALSE,
+                       quote=FALSE)
+    kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
+                     "kegg_to_pathway" = kegg_to_pathway,
+                     "pathway_to_species" = pathway_to_species)
+    return(kegg_out)
   }
 }
