@@ -29,6 +29,4 @@ Depends:
     dplyr,
     stringr,
     R (>= 2.10)
-    
-    
-    
+VignetteBuilder: knitr
