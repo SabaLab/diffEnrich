@@ -3,4 +3,4 @@
 ^diffEnrich\.Rproj$
 ^\.Rproj\.user$
 
-^\.txt$
+^.*\.txt$
