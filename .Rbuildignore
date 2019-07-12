@@ -1,4 +1,3 @@
-^*\.txt$
 ^data-raw$
 ^README\.Rmd$
 ^diffEnrich\.Rproj$
