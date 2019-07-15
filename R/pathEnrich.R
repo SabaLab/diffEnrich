@@ -102,7 +102,7 @@ pathEnrich <- function(gk_obj, gene_list){
   enrich_table$V1 <- gsub("path:", "", enrich_table$V1, fixed = TRUE)
   ## Add menaingful column names for the C1 and C2
   colnames(enrich_table) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_PATHWAY_in_list",
-                                      "KEGG_DATABASE_cnt", "KEG_DATASE_in_list", "expected", "enrich_p",
+                                      "KEGG_DATABASE_cnt", "KEG_DATABASE_in_list", "expected", "enrich_p",
                                       "fdr")
   return(enrich_table)
 }
