@@ -24,6 +24,7 @@
 #'   \item{expected}{Expected number of genes from list to be in KEGG pathway by chance (i.e., not enriched)}
 #'   \item{enrich_p}{P-value for enrichment of list genes related to KEGG pathway}
 #'   \item{fdr}{False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways}
+#'   \item{fold_enrichment}{KEGG_PATHWAY_in_list/expected}
 #' }
 #'
 #' @details This function may not always use the complete list of genes provided by the user.
