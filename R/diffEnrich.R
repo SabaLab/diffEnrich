@@ -69,8 +69,8 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
   res$adjusted_p <- stats::p.adjust(res$pv, method = method)
   colnames(res) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt",
                      "KEGG_PATHWAY_in_list1", "KEGG_DATABASE_in_list1", "expected_list1", "enrich_p_list1",
-                     "fdr_list1", "KEGG_PATHWAY_in_list2", "KEGG_DATABASE_in_list2", "expected_list2",
-                     "enrich_p_list2", "fdr_list2", "odd_ratio", "diff_enrich_p", "diff_enrich_adjusted")
+                     "fdr_list1", "fold_enrichment_list1", "KEGG_PATHWAY_in_list2", "KEGG_DATABASE_in_list2", "expected_list2",
+                     "enrich_p_list2", "fdr_list2", "fold_enrichment_list2", "odd_ratio", "diff_enrich_p", "diff_enrich_adjusted")
   ## update rownames
   rownames(res) <- res$KEGG_PATHWAY_ID
   return(res)
@@ -107,8 +107,8 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
   colnames(combined_enrich) <- gsub(".y", "_list2", colnames(combined_enrich), fixed = TRUE)
   colnames(combined_enrich) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt",
                                  "KEGG_PATHWAY_in_list1", "KEGG_DATABASE_in_list1", "expected_list1", "enrich_p_list1",
-                                 "fdr_list1", "KEGG_PATHWAY_in_list2", "KEGG_DATABASE_in_list2", "expected_list2",
-                                 "enrich_p_list2", "fdr_list2")
+                                 "fdr_list1", "fold_enrichment_list1", "KEGG_PATHWAY_in_list2", "KEGG_DATABASE_in_list2", "expected_list2",
+                                 "enrich_p_list2", "fdr_list2", "fold_enrichment_list2")
 
   out <- combined_enrich
   return(out)
