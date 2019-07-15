@@ -92,7 +92,7 @@ pathEnrich <- function(gk_obj, gene_list){
     a = enrich_table[i, "KEGG_in_list"]
     b = enrich_table[i, "KEGG_cnt"] - enrich_table[i, "KEGG_in_list"]
     c = enrich_table[i, "numSig"] - enrich_table[i, "KEGG_in_list"]
-    d = enrich_table[i, "numTested"] - enrich_table[i, "numSig"] + enrich_table[i, "KEGG_in_list"]
+    d = enrich_table[i, "numTested"] - a - b - c
     enrich_table$enrich_p[i] = stats::fisher.test(matrix(c(a,b,c,d), nrow = 2), alternative = "greater")$p.value
   }
 
