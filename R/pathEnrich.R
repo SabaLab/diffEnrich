@@ -100,9 +100,12 @@ pathEnrich <- function(gk_obj, gene_list){
   enrich_table <- enrich_table[order(enrich_table$enrich_p), ]
   enrich_table$fdr <- stats::p.adjust(enrich_table$enrich_p, method = 'BH')
   enrich_table$V1 <- gsub("path:", "", enrich_table$V1, fixed = TRUE)
+
+  ## Calulate fold enrichment column
+  enrich_table$fold_enrichment <- enrich_table$KEGG_in_list/enrich_table$expected
   ## Add menaingful column names for the C1 and C2
   colnames(enrich_table) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_PATHWAY_in_list",
                                       "KEGG_DATABASE_cnt", "KEG_DATABASE_in_list", "expected", "enrich_p",
-                                      "fdr")
+                                      "fdr", "fold_enrichment")
   return(enrich_table)
 }
