@@ -61,7 +61,7 @@ suppressMessages(library(diffEnrich))
 kegg_rno <- get_kegg('rno')
 #> 3 data sets will be written as tab delimited text files
 #> File location: /Users/smiharry/Documents/packages/diffEnrich
-#> Kegg Release: Release_91.0+_07-05_Jul_19
+#> Kegg Release: Release_91.0+_07-15_Jul_19
 ```
 
 Here are the files:
@@ -84,7 +84,7 @@ choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_07-05_Jul_19
+#> Kegg Release: Release_91.0+_07-15_Jul_19
 ```
 
 ### Step 2: Perform individual enrichment analysis
@@ -335,7 +335,7 @@ option of choosing a method for multiple testing adjustment.
 
 ``` r
 ## Perform differential enrichment
-diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none')
+diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none') 
 ```
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">

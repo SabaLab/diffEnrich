@@ -148,7 +148,7 @@ for multiple testing adjustment.
 
 ```{r diffEnrich}
 ## Perform differential enrichment
-diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none')
+diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none') 
 ```
 
 ```{r diffEnrich_kable, warning=FALSE, echo=FALSE}
