@@ -104,7 +104,7 @@ where N is the total number of genes in the background, M is the number of genes
 ## List 1
 list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
 ## list2
-list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
+list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2) 
 ```
 
 ```{r pathEnrich_kable, warning=FALSE, echo=FALSE}
@@ -127,7 +127,8 @@ description <- c("KEGG Pathway Identifier",
                  "Number of Genes from gene list in KEGG Database",
                  "Expected number of genes from list to be in KEGG pathway by chance (i.e., not enriched)",
                  "P-value for enrichment of list genes related to KEGG pathway",
-                 "False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways")
+                 "False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways",
+                 "KEGG_PATHWAY_in_list/expected")
 # Make dataframe
 df1 <- data.frame(names, description)
 colnames(df1) <- c("Column Names", "Column Description")

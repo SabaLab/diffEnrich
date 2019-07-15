@@ -59,8 +59,7 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_91.0+_07-15_Jul_19
 ```
 
@@ -125,17 +124,17 @@ all the genes that have annotation.
 ## List 1
 list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
 ## list2
-list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
+list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2) 
 ```
 
-| KEGG\_PATHWAY\_ID | KEGG\_PATHWAY\_description                             | KEGG\_PATHWAY\_cnt | KEGG\_PATHWAY\_in\_list | KEGG\_DATABASE\_cnt | KEG\_DATASE\_in\_list | expected | enrich\_p |       fdr |
-| :---------------- | :----------------------------------------------------- | -----------------: | ----------------------: | ------------------: | --------------------: | -------: | --------: | --------: |
-| rno04530          | Tight junction - Rattus norvegicus (rat)               |                170 |                      19 |                8856 |                   295 | 5.662827 | 0.0000026 | 0.0006753 |
-| rno05135          | Yersinia infection - Rattus norvegicus (rat)           |                128 |                      16 |                8856 |                   295 | 4.263776 | 0.0000041 | 0.0006753 |
-| rno05210          | Colorectal cancer - Rattus norvegicus (rat)            |                 88 |                      12 |                8856 |                   295 | 2.931346 | 0.0000289 | 0.0031674 |
-| rno04144          | Endocytosis - Rattus norvegicus (rat)                  |                275 |                      22 |                8856 |                   295 | 9.160456 | 0.0000789 | 0.0059095 |
-| rno05231          | Choline metabolism in cancer - Rattus norvegicus (rat) |                 99 |                      12 |                8856 |                   295 | 3.297764 | 0.0000930 | 0.0059095 |
-| rno05213          | Endometrial cancer - Rattus norvegicus (rat)           |                 58 |                       9 |                8856 |                   295 | 1.932023 | 0.0001078 | 0.0059095 |
+| KEGG\_PATHWAY\_ID | KEGG\_PATHWAY\_description                             | KEGG\_PATHWAY\_cnt | KEGG\_PATHWAY\_in\_list | KEGG\_DATABASE\_cnt | KEG\_DATABASE\_in\_list | expected | enrich\_p |       fdr | fold\_enrichment |
+| :---------------- | :----------------------------------------------------- | -----------------: | ----------------------: | ------------------: | ----------------------: | -------: | --------: | --------: | ---------------: |
+| rno04530          | Tight junction - Rattus norvegicus (rat)               |                170 |                      19 |                8856 |                     295 | 5.662827 | 0.0000035 | 0.0008093 |         3.355214 |
+| rno05135          | Yersinia infection - Rattus norvegicus (rat)           |                128 |                      16 |                8856 |                     295 | 4.263776 | 0.0000049 | 0.0008093 |         3.752542 |
+| rno05210          | Colorectal cancer - Rattus norvegicus (rat)            |                 88 |                      12 |                8856 |                     295 | 2.931346 | 0.0000318 | 0.0034870 |         4.093683 |
+| rno05231          | Choline metabolism in cancer - Rattus norvegicus (rat) |                 99 |                      12 |                8856 |                     295 | 3.297764 | 0.0001032 | 0.0067154 |         3.638829 |
+| rno05213          | Endometrial cancer - Rattus norvegicus (rat)           |                 58 |                       9 |                8856 |                     295 | 1.932023 | 0.0001132 | 0.0067154 |         4.658328 |
+| rno04144          | Endocytosis - Rattus norvegicus (rat)                  |                275 |                      22 |                8856 |                     295 | 9.160456 | 0.0001225 | 0.0067154 |         2.401627 |
 
 Table 1. Head of list1\_pe data frame generated using pathEnrich
 
@@ -255,7 +254,7 @@ Number of Genes in KEGG Database
 
 <td style="text-align:left;">
 
-KEG\_DATASE\_in\_list
+KEG\_DATABASE\_in\_list
 
 </td>
 
@@ -312,6 +311,22 @@ fdr
 
 False Discovery Rate (Benjamini and Hochberg) to account for multiple
 testing across KEGG pathways
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+fold\_enrichment
+
+</td>
+
+<td style="text-align:left;">
+
+KEGG\_PATHWAY\_in\_list/expected
 
 </td>
 
@@ -406,6 +421,12 @@ fdr\_list1
 
 <th style="text-align:right;">
 
+fold\_enrichment\_list1
+
+</th>
+
+<th style="text-align:right;">
+
 KEGG\_PATHWAY\_in\_list2
 
 </th>
@@ -431,6 +452,12 @@ enrich\_p\_list2
 <th style="text-align:right;">
 
 fdr\_list2
+
+</th>
+
+<th style="text-align:right;">
+
+fold\_enrichment\_list2
 
 </th>
 
@@ -516,6 +543,12 @@ Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
+0.0000000
+
+</td>
+
+<td style="text-align:right;">
+
 46
 
 </td>
@@ -534,13 +567,19 @@ Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.2596772
+0.2875540
 
 </td>
 
 <td style="text-align:right;">
 
-0.3273326
+0.3610888
+
+</td>
+
+<td style="text-align:right;">
+
+1.0659382
 
 </td>
 
@@ -610,13 +649,19 @@ Citrate cycle (TCA cycle) - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.2998073
+0.3013323
 
 </td>
 
 <td style="text-align:right;">
 
-0.6404974
+0.6565452
+
+</td>
+
+<td style="text-align:right;">
+
+1.8194145
 
 </td>
 
@@ -640,13 +685,19 @@ Citrate cycle (TCA cycle) - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0004165
+0.0004548
 
 </td>
 
 <td style="text-align:right;">
 
-0.0009197
+0.0010319
+
+</td>
+
+<td style="text-align:right;">
+
+1.4661917
 
 </td>
 
@@ -728,6 +779,12 @@ Pentose phosphate pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
+0.0000000
+
+</td>
+
+<td style="text-align:right;">
+
 21
 
 </td>
@@ -746,13 +803,19 @@ Pentose phosphate pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.2353757
+0.2427400
 
 </td>
 
 <td style="text-align:right;">
 
-0.3013175
+0.3131822
+
+</td>
+
+<td style="text-align:right;">
+
+1.1302234
 
 </td>
 
@@ -822,13 +885,19 @@ Pentose and glucuronate interconversions - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.6832205
+0.6846420
 
 </td>
 
 <td style="text-align:right;">
 
 1.0000000
+
+</td>
+
+<td style="text-align:right;">
+
+0.8829511
 
 </td>
 
@@ -852,13 +921,19 @@ Pentose and glucuronate interconversions - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.9524474
+0.9551452
 
 </td>
 
 <td style="text-align:right;">
 
 1.0000000
+
+</td>
+
+<td style="text-align:right;">
+
+0.7851412
 
 </td>
 
@@ -928,13 +1003,19 @@ Fructose and mannose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.7323897
+0.7339687
 
 </td>
 
 <td style="text-align:right;">
 
 1.0000000
+
+</td>
+
+<td style="text-align:right;">
+
+0.7697523
 
 </td>
 
@@ -958,13 +1039,19 @@ Fructose and mannose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0409806
+0.0439565
 
 </td>
 
 <td style="text-align:right;">
 
-0.0599227
+0.0657349
+
+</td>
+
+<td style="text-align:right;">
+
+1.2406237
 
 </td>
 
@@ -1046,6 +1133,12 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
+0.0000000
+
+</td>
+
+<td style="text-align:right;">
+
 23
 
 </td>
@@ -1064,13 +1157,19 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.1090435
+0.1137247
 
 </td>
 
 <td style="text-align:right;">
 
-0.1494805
+0.1565499
+
+</td>
+
+<td style="text-align:right;">
+
+1.1991805
 
 </td>
 
