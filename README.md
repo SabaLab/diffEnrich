@@ -59,8 +59,9 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_07-15_Jul_19
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> Kegg Release: Release_91.0+_07-29_Jul_19
 ```
 
 Here are the files:
@@ -83,7 +84,7 @@ choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_07-15_Jul_19
+#> Kegg Release: Release_91.0+_07-29_Jul_19
 ```
 
 ### Step 2: Perform individual enrichment analysis
@@ -489,19 +490,19 @@ diff\_enrich\_adjusted
 
 <td style="text-align:left;">
 
-rno00010
+rno04530
 
 </td>
 
 <td style="text-align:left;">
 
-Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
+Tight junction - Rattus norvegicus (rat)
 
 </td>
 
 <td style="text-align:right;">
 
-72
+170
 
 </td>
 
@@ -513,7 +514,7 @@ Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0
+19
 
 </td>
 
@@ -525,31 +526,31 @@ Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-2.398374
+5.662827
 
 </td>
 
 <td style="text-align:right;">
 
-1.0000000
+0.0000035
 
 </td>
 
 <td style="text-align:right;">
 
-1.0000000
+0.0008093
 
 </td>
 
 <td style="text-align:right;">
 
-0.0000000
+3.355214
 
 </td>
 
 <td style="text-align:right;">
 
-46
+131
 
 </td>
 
@@ -561,43 +562,43 @@ Glycolysis / Gluconeogenesis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-43.15447
+101.89250
 
 </td>
 
 <td style="text-align:right;">
 
-0.2875540
+0.0000015
 
 </td>
 
 <td style="text-align:right;">
 
-0.3610888
+0.0000056
 
 </td>
 
 <td style="text-align:right;">
 
-1.0659382
+1.285669
 
 </td>
 
 <td style="text-align:right;">
 
-Inf
+0.3832930
 
 </td>
 
 <td style="text-align:right;">
 
-0.1738388
+0.0006624
 
 </td>
 
 <td style="text-align:right;">
 
-0.1738388
+0.0006624
 
 </td>
 
@@ -607,297 +608,25 @@ Inf
 
 <td style="text-align:left;">
 
-rno00020
+rno05135
 
 </td>
 
 <td style="text-align:left;">
 
-Citrate cycle (TCA cycle) - Rattus norvegicus (rat)
+Yersinia infection - Rattus norvegicus (rat)
 
 </td>
 
 <td style="text-align:right;">
 
-33
+128
 
 </td>
 
 <td style="text-align:right;">
 
 8856
-
-</td>
-
-<td style="text-align:right;">
-
-2
-
-</td>
-
-<td style="text-align:right;">
-
-295
-
-</td>
-
-<td style="text-align:right;">
-
-1.099255
-
-</td>
-
-<td style="text-align:right;">
-
-0.3013323
-
-</td>
-
-<td style="text-align:right;">
-
-0.6565452
-
-</td>
-
-<td style="text-align:right;">
-
-1.8194145
-
-</td>
-
-<td style="text-align:right;">
-
-29
-
-</td>
-
-<td style="text-align:right;">
-
-5308
-
-</td>
-
-<td style="text-align:right;">
-
-19.77913
-
-</td>
-
-<td style="text-align:right;">
-
-0.0004548
-
-</td>
-
-<td style="text-align:right;">
-
-0.0010319
-
-</td>
-
-<td style="text-align:right;">
-
-1.4661917
-
-</td>
-
-<td style="text-align:right;">
-
-0.8058941
-
-</td>
-
-<td style="text-align:right;">
-
-0.6777759
-
-</td>
-
-<td style="text-align:right;">
-
-0.6777759
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-rno00030
-
-</td>
-
-<td style="text-align:left;">
-
-Pentose phosphate pathway - Rattus norvegicus (rat)
-
-</td>
-
-<td style="text-align:right;">
-
-31
-
-</td>
-
-<td style="text-align:right;">
-
-8856
-
-</td>
-
-<td style="text-align:right;">
-
-0
-
-</td>
-
-<td style="text-align:right;">
-
-295
-
-</td>
-
-<td style="text-align:right;">
-
-1.032633
-
-</td>
-
-<td style="text-align:right;">
-
-1.0000000
-
-</td>
-
-<td style="text-align:right;">
-
-1.0000000
-
-</td>
-
-<td style="text-align:right;">
-
-0.0000000
-
-</td>
-
-<td style="text-align:right;">
-
-21
-
-</td>
-
-<td style="text-align:right;">
-
-5308
-
-</td>
-
-<td style="text-align:right;">
-
-18.58040
-
-</td>
-
-<td style="text-align:right;">
-
-0.2427400
-
-</td>
-
-<td style="text-align:right;">
-
-0.3131822
-
-</td>
-
-<td style="text-align:right;">
-
-1.1302234
-
-</td>
-
-<td style="text-align:right;">
-
-Inf
-
-</td>
-
-<td style="text-align:right;">
-
-0.6243900
-
-</td>
-
-<td style="text-align:right;">
-
-0.6243900
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-rno00040
-
-</td>
-
-<td style="text-align:left;">
-
-Pentose and glucuronate interconversions - Rattus norvegicus (rat)
-
-</td>
-
-<td style="text-align:right;">
-
-34
-
-</td>
-
-<td style="text-align:right;">
-
-8856
-
-</td>
-
-<td style="text-align:right;">
-
-1
-
-</td>
-
-<td style="text-align:right;">
-
-295
-
-</td>
-
-<td style="text-align:right;">
-
-1.132565
-
-</td>
-
-<td style="text-align:right;">
-
-0.6846420
-
-</td>
-
-<td style="text-align:right;">
-
-1.0000000
-
-</td>
-
-<td style="text-align:right;">
-
-0.8829511
 
 </td>
 
@@ -909,119 +638,37 @@ Pentose and glucuronate interconversions - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-5308
-
-</td>
-
-<td style="text-align:right;">
-
-20.37850
-
-</td>
-
-<td style="text-align:right;">
-
-0.9551452
-
-</td>
-
-<td style="text-align:right;">
-
-1.0000000
-
-</td>
-
-<td style="text-align:right;">
-
-0.7851412
-
-</td>
-
-<td style="text-align:right;">
-
-0.8892440
-
-</td>
-
-<td style="text-align:right;">
-
-0.6019442
-
-</td>
-
-<td style="text-align:right;">
-
-0.6019442
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-rno00051
-
-</td>
-
-<td style="text-align:left;">
-
-Fructose and mannose metabolism - Rattus norvegicus (rat)
-
-</td>
-
-<td style="text-align:right;">
-
-39
-
-</td>
-
-<td style="text-align:right;">
-
-8856
-
-</td>
-
-<td style="text-align:right;">
-
-1
-
-</td>
-
-<td style="text-align:right;">
-
 295
 
 </td>
 
 <td style="text-align:right;">
 
-1.299119
+4.263776
 
 </td>
 
 <td style="text-align:right;">
 
-0.7339687
+0.0000049
 
 </td>
 
 <td style="text-align:right;">
 
-1.0000000
+0.0008093
 
 </td>
 
 <td style="text-align:right;">
 
-0.7697523
+3.752542
 
 </td>
 
 <td style="text-align:right;">
 
-29
+105
 
 </td>
 
@@ -1033,43 +680,43 @@ Fructose and mannose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-23.37534
+76.71906
 
 </td>
 
 <td style="text-align:right;">
 
-0.0439565
+0.0000001
 
 </td>
 
 <td style="text-align:right;">
 
-0.0657349
+0.0000003
 
 </td>
 
 <td style="text-align:right;">
 
-1.2406237
+1.368630
 
 </td>
 
 <td style="text-align:right;">
 
-1.6116341
+0.3648137
 
 </td>
 
 <td style="text-align:right;">
 
-1.0000000
+0.0007692
 
 </td>
 
 <td style="text-align:right;">
 
-1.0000000
+0.0007692
 
 </td>
 
@@ -1079,19 +726,19 @@ Fructose and mannose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:left;">
 
-rno00052
+rno05210
 
 </td>
 
 <td style="text-align:left;">
 
-Galactose metabolism - Rattus norvegicus (rat)
+Colorectal cancer - Rattus norvegicus (rat)
 
 </td>
 
 <td style="text-align:right;">
 
-32
+88
 
 </td>
 
@@ -1103,7 +750,7 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0
+12
 
 </td>
 
@@ -1115,19 +762,43 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-1.065944
+2.931346
 
 </td>
 
 <td style="text-align:right;">
 
-1.0000000
+0.0000318
 
 </td>
 
 <td style="text-align:right;">
 
-1.0000000
+0.0034870
+
+</td>
+
+<td style="text-align:right;">
+
+4.093683
+
+</td>
+
+<td style="text-align:right;">
+
+81
+
+</td>
+
+<td style="text-align:right;">
+
+5308
+
+</td>
+
+<td style="text-align:right;">
+
+52.74435
 
 </td>
 
@@ -1139,7 +810,101 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-23
+0.0000000
+
+</td>
+
+<td style="text-align:right;">
+
+1.535709
+
+</td>
+
+<td style="text-align:right;">
+
+0.3752664
+
+</td>
+
+<td style="text-align:right;">
+
+0.0039469
+
+</td>
+
+<td style="text-align:right;">
+
+0.0039469
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+rno05213
+
+</td>
+
+<td style="text-align:left;">
+
+Endometrial cancer - Rattus norvegicus (rat)
+
+</td>
+
+<td style="text-align:right;">
+
+58
+
+</td>
+
+<td style="text-align:right;">
+
+8856
+
+</td>
+
+<td style="text-align:right;">
+
+9
+
+</td>
+
+<td style="text-align:right;">
+
+295
+
+</td>
+
+<td style="text-align:right;">
+
+1.932023
+
+</td>
+
+<td style="text-align:right;">
+
+0.0001132
+
+</td>
+
+<td style="text-align:right;">
+
+0.0067154
+
+</td>
+
+<td style="text-align:right;">
+
+4.658328
+
+</td>
+
+<td style="text-align:right;">
+
+55
 
 </td>
 
@@ -1151,43 +916,279 @@ Galactose metabolism - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-19.17977
+34.76332
 
 </td>
 
 <td style="text-align:right;">
 
-0.1137247
+0.0000000
 
 </td>
 
 <td style="text-align:right;">
 
-0.1565499
+0.0000000
 
 </td>
 
 <td style="text-align:right;">
 
-1.1991805
+1.582127
 
 </td>
 
 <td style="text-align:right;">
 
-Inf
+0.3397394
 
 </td>
 
 <td style="text-align:right;">
 
-0.6306319
+0.0066335
 
 </td>
 
 <td style="text-align:right;">
 
-0.6306319
+0.0066335
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+rno04660
+
+</td>
+
+<td style="text-align:left;">
+
+T cell receptor signaling pathway - Rattus norvegicus (rat)
+
+</td>
+
+<td style="text-align:right;">
+
+106
+
+</td>
+
+<td style="text-align:right;">
+
+8856
+
+</td>
+
+<td style="text-align:right;">
+
+11
+
+</td>
+
+<td style="text-align:right;">
+
+295
+
+</td>
+
+<td style="text-align:right;">
+
+3.530940
+
+</td>
+
+<td style="text-align:right;">
+
+0.0007743
+
+</td>
+
+<td style="text-align:right;">
+
+0.0193977
+
+</td>
+
+<td style="text-align:right;">
+
+3.115318
+
+</td>
+
+<td style="text-align:right;">
+
+79
+
+</td>
+
+<td style="text-align:right;">
+
+5308
+
+</td>
+
+<td style="text-align:right;">
+
+63.53297
+
+</td>
+
+<td style="text-align:right;">
+
+0.0011075
+
+</td>
+
+<td style="text-align:right;">
+
+0.0022631
+
+</td>
+
+<td style="text-align:right;">
+
+1.243449
+
+</td>
+
+<td style="text-align:right;">
+
+0.3992394
+
+</td>
+
+<td style="text-align:right;">
+
+0.0083807
+
+</td>
+
+<td style="text-align:right;">
+
+0.0083807
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+rno04657
+
+</td>
+
+<td style="text-align:left;">
+
+IL-17 signaling pathway - Rattus norvegicus (rat)
+
+</td>
+
+<td style="text-align:right;">
+
+95
+
+</td>
+
+<td style="text-align:right;">
+
+8856
+
+</td>
+
+<td style="text-align:right;">
+
+9
+
+</td>
+
+<td style="text-align:right;">
+
+295
+
+</td>
+
+<td style="text-align:right;">
+
+3.164521
+
+</td>
+
+<td style="text-align:right;">
+
+0.0042709
+
+</td>
+
+<td style="text-align:right;">
+
+0.0520419
+
+</td>
+
+<td style="text-align:right;">
+
+2.844032
+
+</td>
+
+<td style="text-align:right;">
+
+59
+
+</td>
+
+<td style="text-align:right;">
+
+5308
+
+</td>
+
+<td style="text-align:right;">
+
+56.93993
+
+</td>
+
+<td style="text-align:right;">
+
+0.3737223
+
+</td>
+
+<td style="text-align:right;">
+
+0.4605042
+
+</td>
+
+<td style="text-align:right;">
+
+1.036180
+
+</td>
+
+<td style="text-align:right;">
+
+0.3644360
+
+</td>
+
+<td style="text-align:right;">
+
+0.0098022
+
+</td>
+
+<td style="text-align:right;">
+
+0.0098022
 
 </td>
 

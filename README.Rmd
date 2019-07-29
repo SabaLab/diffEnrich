@@ -131,7 +131,7 @@ description <- c("KEGG Pathway Identifier",
                  "KEGG_PATHWAY_in_list/expected")
 # Make dataframe
 df1 <- data.frame(names, description)
-colnames(df1) <- c("Column Names", "Column Description")
+colnames(df1) <- c("Column Names", "Column Description") 
 ```
 
 ```{r pathEnrich_vars_kable, warning=FALSE, echo=FALSE}
