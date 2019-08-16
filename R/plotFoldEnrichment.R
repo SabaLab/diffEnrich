@@ -24,6 +24,10 @@ plotFoldEnrichment <- function(de_res, pval, N){
   if(missing(N)){stop("Argument missing: N - if you'd like to plot top pathways, please provide a threshold and make sure N > 0")}
   if(N < 1){stop("Number of top genes (N) must be > 0")}
 
+  ###########################################################
+  # Prepare and reshape data for plotting using ggplot
+  ###########################################################
+
   ## Strip extra columns from de_res and filter based on pval. Then sort by pval.
   df <- de_res %>%
     select(KEGG_PATHWAY_ID, KEGG_PATHWAY_description,
@@ -50,5 +54,9 @@ plotFoldEnrichment <- function(de_res, pval, N){
   bardat <- subset(df.ss, variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
     mutate(alpha = c(rep(TRUE, as.numeric(table(df.ss$variable)[1])), rep(FALSE, as.numeric(table(df.ss$variable)[1]))),
            pvals = log10(pvals$value))
+
+  ###########################################################
+  # Generate plot
+  ###########################################################
 
 }
