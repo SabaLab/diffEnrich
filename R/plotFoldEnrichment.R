@@ -35,6 +35,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
            fold_enrichment_list1, fold_enrichment_list2,
            enrich_p_list1, enrich_p_list2,
            odd_ratio, diff_enrich_adjusted) %>%
+    mutate(KEGG_PATHWAY_description = sapply(strsplit(KEGG_PATHWAY_description, split = " - "), function(x) x[1])) %>%
     arrange(diff_enrich_adjusted) %>%
     filter(diff_enrich_adjusted < 0.05) %>%
     slice(1:N)
@@ -61,9 +62,9 @@ plotFoldEnrichment <- function(de_res, pval, N){
   # Generate plot
   ###########################################################
 
-  p <- ggplot(bardat, aes(x=reorder(KEGG_PATHWAY_ID, -pvals), y=value)) +
+  p <- ggplot(bardat, aes(x=reorder(KEGG_PATHWAY_description, -pvals), y=value)) +
     geom_bar(stat="identity", aes(fill=variable, alpha = pvals), position="dodge") +
-    ylim(0, max(bardat$value) + 0.6) +
+    ylim(0, max(bardat$value) + 0.6) + xlab("") +
     coord_flip() +
     scale_fill_brewer(palette = "Set1",
                       name="",
@@ -71,6 +72,6 @@ plotFoldEnrichment <- function(de_res, pval, N){
                       labels=c("Fold Enrichment in \nlist 1\n", "Fold enrichment in \nlist 2\n")) +
     scale_alpha(trans = "log10") +
     geom_text(data=subset(df.ss, variable %in% c("diff_enrich_adjusted")),
-              aes(x = KEGG_PATHWAY_ID, y = (max(bardat$value) + 0.3), label = round(value, 4))) +
+              aes(x = KEGG_PATHWAY_description, y = (max(bardat$value) + 0.3), label = round(value, 4))) +
     labs(alpha = "List specific p-value")
 }
