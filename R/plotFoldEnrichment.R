@@ -12,7 +12,8 @@
 #'
 #' @return
 #'
-#' @import dplyr
+#' @import dplyr,
+#'         ggplot2
 #' @importFrom reshape2 melt
 #' @export
 #'
@@ -52,11 +53,18 @@ plotFoldEnrichment <- function(de_res, pval, N){
 
   ## Generate data set to be used for plotting
   bardat <- subset(df.ss, variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
-    mutate(alpha = c(rep(TRUE, as.numeric(table(df.ss$variable)[1])), rep(FALSE, as.numeric(table(df.ss$variable)[1]))),
-           pvals = log10(pvals$value))
+    mutate(alpha = log10(pvals$value),
+           pvals = pvals$value)
 
   ###########################################################
   # Generate plot
   ###########################################################
 
+  p <- ggplot(bardat, aes(x=KEGG_PATHWAY_ID, y=value)) +
+    geom_bar(stat="identity", aes(fill=variable, alpha = alpha), position="dodge") +
+    ylim(0, max(bardat$value) + 0.6) +
+    coord_flip() +
+    scale_fill_brewer(palette = "Set1") +
+    geom_text(data=subset(df.ss, variable %in% c("diff_enrich_adjusted")),
+              aes(x = KEGG_PATHWAY_ID, y = (max(bardat$value) + 0.3), label = round(value, 4)))
 }
