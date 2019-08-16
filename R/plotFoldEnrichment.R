@@ -61,10 +61,14 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ###########################################################
 
   p <- ggplot(bardat, aes(x=KEGG_PATHWAY_ID, y=value)) +
-    geom_bar(stat="identity", aes(fill=variable, alpha = alpha), position="dodge") +
+    geom_bar(stat="identity", aes(fill=variable, alpha = pvals), position="dodge") +
     ylim(0, max(bardat$value) + 0.6) +
     coord_flip() +
-    scale_fill_brewer(palette = "Set1") +
+    scale_fill_brewer(palette = "Set1",
+                      name="",
+                      breaks=c("fold_enrichment_list1", "fold_enrichment_list2"),
+                      labels=c("Fold Enrichment in \nlist 1\n", "Fold enrichment in \nlist 2\n")) +
+    scale_alpha(trans = "log10") +
     geom_text(data=subset(df.ss, variable %in% c("diff_enrich_adjusted")),
               aes(x = KEGG_PATHWAY_ID, y = (max(bardat$value) + 0.3), label = round(value, 4)))
 }
