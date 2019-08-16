@@ -13,6 +13,7 @@
 #' @return
 #'
 #' @import dplyr
+#' @importFrom reshape2 melt
 #' @export
 #'
 #' @examples
@@ -32,5 +33,22 @@ plotFoldEnrichment <- function(de_res, pval, N){
     arrange(diff_enrich_adjusted) %>%
     filter(diff_enrich_adjusted < 0.05) %>%
     slice(1:N)
+
+  ## Melt data set
+  df.melt <-reshape2::melt(df, id.vars = c('KEGG_PATHWAY_ID', 'KEGG_PATHWAY_description'))
+
+  ## Clean up melted data frame
+  df.ss <- df.melt %>%
+  filter(variable %in% c("fold_enrichment_list1", "fold_enrichment_list2",
+                         "enrich_p_list1", "enrich_p_list2",
+                         "diff_enrich_adjusted"))
+
+  ## get vector of pvals
+  pvals <- subset(df.ss, variable %in% c("enrich_p_list1", "enrich_p_list2"))
+
+  ## Generate data set to be used for plotting
+  bardat <- subset(df.ss, variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
+    mutate(alpha = c(rep(TRUE, as.numeric(table(df.ss$variable)[1])), rep(FALSE, as.numeric(table(df.ss$variable)[1]))),
+           pvals = log10(pvals$value))
 
 }
