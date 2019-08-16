@@ -29,7 +29,8 @@ plotFoldEnrichment <- function(de_res, pval, N){
            fold_enrichment_list1, fold_enrichment_list2,
            enrich_p_list1, enrich_p_list2,
            odd_ratio, diff_enrich_adjusted) %>%
-    filter(diff_enrich_adjusted < pval) %>%
-    arrange(diff_enrich_adjusted)
+    arrange(diff_enrich_adjusted) %>%
+    filter(diff_enrich_adjusted < 0.05) %>%
+    slice(1:N)
 
 }
