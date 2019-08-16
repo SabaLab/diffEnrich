@@ -15,5 +15,9 @@
 #'
 #' @examples
 plotFoldEnrichment <- function(de_res, pval, N){
+  ## Check arguments
+  if(missing(de_res)){stop("Argument missing: de_res")}
+  if(missing(pval)){stop("Argument missing: pval - if you'd like to plot based on pvalue, please provide a threshold and make sure N = NULL")}
+  if(missing(N)){stop("Argument missing: N - if you'd like to plot based on top pathways, please provide a threshold and make sure N = N")}
 
 }
