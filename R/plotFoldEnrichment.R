@@ -37,7 +37,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
            odd_ratio, diff_enrich_adjusted) %>%
     mutate(KEGG_PATHWAY_description = sapply(strsplit(KEGG_PATHWAY_description, split = " - "), function(x) x[1])) %>%
     arrange(diff_enrich_adjusted) %>%
-    filter(diff_enrich_adjusted < 0.05) %>%
+    filter(diff_enrich_adjusted < pval) %>%
     slice(1:N)
 
   ## Melt data set
