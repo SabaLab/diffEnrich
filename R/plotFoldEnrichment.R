@@ -11,6 +11,8 @@
 #' @param N
 #'
 #' @return
+#'
+#' @import dplyr
 #' @export
 #'
 #' @examples
@@ -19,5 +21,14 @@ plotFoldEnrichment <- function(de_res, pval, N){
   if(missing(de_res)){stop("Argument missing: de_res")}
   if(missing(pval)){stop("Argument missing: pval - if you'd like to plot based on pvalue, please provide a threshold and make sure N = NULL")}
   if(missing(N)){stop("Argument missing: N - if you'd like to plot based on top pathways, please provide a threshold and make sure N = N")}
+
+  ## Strip extra columns from de_res and filter based on pval. Then sort by pval.
+  df <- de_res %>%
+    select(KEGG_PATHWAY_ID, KEGG_PATHWAY_description,
+           fold_enrichment_list1, fold_enrichment_list2,
+           enrich_p_list1, enrich_p_list2,
+           odd_ratio, diff_enrich_adjusted) %>%
+    filter(diff_enrich_adjusted < pval) %>%
+    arrange(diff_enrich_adjusted)
 
 }
