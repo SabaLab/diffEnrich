@@ -61,7 +61,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ###########################################################
   # Generate plot
   ###########################################################
-
+   ## TEST 1
   p <- ggplot(bardat, aes(x=reorder(KEGG_PATHWAY_description, -pvals), y=value)) +
     geom_bar(stat="identity", aes(fill=variable, alpha = pvals), position="dodge") +
     ylim(0, max(bardat$value) + 0.6) + xlab("") +
@@ -71,6 +71,19 @@ plotFoldEnrichment <- function(de_res, pval, N){
                       breaks=c("fold_enrichment_list1", "fold_enrichment_list2"),
                       labels=c("Fold Enrichment in \nlist 1\n", "Fold enrichment in \nlist 2\n")) +
     scale_alpha(trans = "log10") +
+    geom_text(data=subset(df.ss, variable %in% c("diff_enrich_adjusted")),
+              aes(x = KEGG_PATHWAY_description, y = (max(bardat$value) + 0.3), label = round(value, 4))) +
+    labs(alpha = "List specific p-value")
+  ## TEST 2
+  p2 <- ggplot(bardat, aes(x=reorder(KEGG_PATHWAY_description, -pvals), y=value)) +
+    geom_bar(stat="identity", aes(group=variable, fill=pvals), position="dodge") +
+    ylim(0, max(bardat$value) + 0.6) + xlab("") +
+    coord_flip() +
+    scale_fill_brewer(palette = "Set1",
+                      name="",
+                      breaks=c("fold_enrichment_list1", "fold_enrichment_list2"),
+                      labels=c("Fold Enrichment in \nlist 1\n", "Fold enrichment in \nlist 2\n")) +
+    scale_fill_continuous(trans = 'log10') +
     geom_text(data=subset(df.ss, variable %in% c("diff_enrich_adjusted")),
               aes(x = KEGG_PATHWAY_description, y = (max(bardat$value) + 0.3), label = round(value, 4))) +
     labs(alpha = "List specific p-value")
