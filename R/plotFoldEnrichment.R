@@ -19,6 +19,7 @@
 #'
 #' @examples
 plotFoldEnrichment <- function(de_res, pval, N){
+  library(ggplot2)
   ## Check arguments
   if(missing(de_res)){stop("Argument missing: de_res")}
   if(missing(pval)){stop("Argument missing: pval - please provide a threshold")}
