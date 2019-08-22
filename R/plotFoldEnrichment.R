@@ -4,7 +4,7 @@
 #' pathways stratified by their enrichment in list 1 or list 2. Users can plot
 #' all pathways based on the adjusted p-value threshold used in \code{\link{diffEnrich}}
 #' and the top N pathways sorted by the adjusted p-value threshold used in \code{\link{diffEnrich}}.
-#' \code{\link{plotFoldEnrich}} returns a ggplot2 object so users can add additional
+#' \code{plotFoldEnrich} returns a ggplot2 object so users can add additional
 #' customizations.
 #' @param de_res Dataframe. Generated using \code{\link{diffEnrich}}
 #' @param pval Numeric. Threshold for filtering pathways based on adjusted pvalue in de_res
@@ -68,7 +68,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
 
   ## Clean up melted data frame
   df.ss <- df.melt %>%
-    dplyr::filter(variable %in% c("fold_enrichment_list1", "fold_enrichment_list2",
+    dplyr::filter(.data$variable %in% c("fold_enrichment_list1", "fold_enrichment_list2",
                          "enrich_p_list1", "enrich_p_list2",
                          "diff_enrich_adjusted"))
 

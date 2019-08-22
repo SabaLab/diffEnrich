@@ -77,7 +77,7 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
                      "enrich_p_list2", "fdr_list2", "fold_enrichment_list2", "odd_ratio", "diff_enrich_p", "diff_enrich_adjusted")
 
   ## re-order table based on adjusted p-value
-  library(dplyr)
+  # library(dplyr)
   res <- res %>%
     arrange(.data$diff_enrich_adjusted)
 
