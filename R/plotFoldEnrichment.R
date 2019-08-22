@@ -66,7 +66,8 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ###########################################################
   # Generate plot
   ###########################################################
-  g <- ggplot(bardat, aes(x=reorder(KEGG_PATHWAY_description, -pvals), y=value)) +
+    library(ggnewscale)
+    g <- ggplot(bardat, aes(x=reorder(KEGG_PATHWAY_description, -pvals), y=value)) +
     geom_bar(stat="identity", aes(col=variable, group=variable, fill=pvals), position="dodge") +
     ylim(0, max(d$value) + 0.6) + xlab("") +
     coord_flip() +
@@ -91,8 +92,14 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ld$descr <- bardat$KEGG_PATHWAY_description[matches]
   ld$vars <- bardat$variable[matches]
 
+  ## Merge ld with df.ss
+  test <- merge(ld, df.ss, by.x = "descr", by.y = "KEGG_PATHWAY_description")
+  test <- subset(test, variable %in% c("diff_enrich_adjusted")) %>%
+    filter(!duplicated(value))
+
   ggplot(mapping = aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = pvals)) +
+    ylim(0, max(d$value) + 1.0) + xlab("") +
     scale_fill_gradient(low = "red", high = "transparent",
                         limits = c(min(ld$pvals), 0),
                         name = "P-values List 1") +
@@ -103,6 +110,8 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         name = "P-values List 2") +
     scale_x_continuous(breaks = seq_along(unique(ld$descr)),
                        labels = unique(ld$descr)) +
-    coord_flip()
+    coord_flip() +
+    geom_text(data=test,
+              aes(x = 1:5, y = (max(bardat$value) + 0.3), label = round(value, 4)))
   return(p)
 }
