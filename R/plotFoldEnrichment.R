@@ -95,9 +95,8 @@ plotFoldEnrichment <- function(de_res, pval, N){
                       breaks=c("fold_enrichment_list1", "fold_enrichment_list2"),
                       labels=c("Fold Enrichment in \nlist 1\n", "Fold enrichment in \nlist 2\n")) +
     scale_fill_continuous(trans = 'log10') +
-    geom_text(data=subset(df.ss, .data$variable %in% c("diff_enrich_adjusted")),
-              aes(x = .data$KEGG_PATHWAY_description, y = (max(bardat$value) + 0.3), label = round(.data$value, 4))) +
-    labs(alpha = "List specific p-value")
+    geom_text(data=subset(df.ss, df.ss$variable %in% c("diff_enrich_adjusted")),
+              aes(x = .data$KEGG_PATHWAY_description, y = (max(bardat$value) + 0.3), label = round(.data$value, 4)))
 
   # Next, we'll take the coordinates of this layers data and match them back to the original data.
   ld <- ggplot2::layer_data(g)
@@ -113,7 +112,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
 
   ## Merge ld with df.ss
   df_ptext <- merge(ld, df.ss, by.x = "descr", by.y = "KEGG_PATHWAY_description")
-  df_ptext <- subset(df_ptext, .data$variable %in% c("diff_enrich_adjusted")) %>%
+  df_ptext <- subset(df_ptext, df_ptext$variable %in% c("diff_enrich_adjusted")) %>%
     dplyr::filter(!duplicated(.data$value))
 
   ## Generate finale plot
