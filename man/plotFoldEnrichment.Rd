@@ -14,9 +14,9 @@ plotFoldEnrichment(de_res, pval, N)
 \item{N}{Numeric. Number of top pathways to plot after filtering based on pval}
 }
 \value{
-ggplot object. If the user calls \code{\link{plotFoldEnrich}} and
+ggplot object. If the user calls \code{plotFoldEnrich} and
 assigns it to an object (see example) then no plot will print in viewer,
-but if \code{\link{plotFoldEnrich}} is called without being assigned to an
+but if \code{plotFoldEnrich} is called without being assigned to an
 object the plot will print to the viewer. Users can edit the ggplot object
 as they would any other ggplot object (e.g. add title, theme, etc.).
 }

@@ -43,6 +43,7 @@
 #'
 #' @export
 #' @importFrom  stats fisher.test
+#' @importFrom  rlang .data
 #' @import dplyr
 #'
 #' @examples
@@ -78,7 +79,7 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
   ## re-order table based on adjusted p-value
   library(dplyr)
   res <- res %>%
-    arrange(diff_enrich_adjusted)
+    arrange(.data$diff_enrich_adjusted)
 
   ## update rownames
   rownames(res) <- res$KEGG_PATHWAY_ID
