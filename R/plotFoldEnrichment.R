@@ -16,6 +16,17 @@
 #' object the plot will print to the viewer. Users can edit the ggplot object
 #' as they would any other ggplot object (e.g. add title, theme, etc.).
 #'
+#' @details This function generates a grouped bar plot using ggplot2 and the
+#' ggnewscale package. KEGG pathways are plotted on the y-axis and fold
+#' enrichment is plotted on the x-axis. each KEGG pathway has a bar plotting
+#' its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue).
+#' The transparency of the bars correspond to the adjusted p-value for the
+#' pathway's enrichment in the given list. The p-value presented as text to the
+#' right of each pair of bars is the adjusted p-value associated with the
+#' differential enrichment of the pathway between the two lists, and the pathways
+#' are ordered from top to bottom by this p-value (i.e. smallest p-value on top
+#' of plot, and largest p-value on bottom of plot).
+#'
 #' @import dplyr
 #'         ggplot2
 #'         ggnewscale

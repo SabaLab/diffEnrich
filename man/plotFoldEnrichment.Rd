@@ -29,6 +29,18 @@ and the top N pathways sorted by the adjusted p-value threshold used in \code{\l
 \code{\link{plotFoldEnrich}} returns a ggplot2 object so users can add additional
 customizations.
 }
+\details{
+This function generates a grouped bar plot using ggplot2 and the
+ggnewscale package. KEGG pathways are plotted on the y-axis and fold
+enrichment is plotted on the x-axis. each KEGG pathway has a bar plotting
+its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue).
+The transparency of the bars correspond to the adjusted p-value for the
+pathway's enrichment in the given list. The p-value presented as text to the
+right of each pair of bars is the adjusted p-value associated with the
+differential enrichment of the pathway between the two lists, and the pathways
+are ordered from top to bottom by this p-value (i.e. smallest p-value on top
+of plot, and largest p-value on bottom of plot).
+}
 \examples{
 \dontrun{
 plot <- plotFoldEnrichment(de_res = diffEnrich, pval = 0.05, N = 5)
