@@ -29,6 +29,7 @@ Depends:
     rlang,
     dplyr,
     stringr,
+    reshape2,
     ggplot2,
     ggnewscale,
     R (>= 2.10)
