@@ -89,7 +89,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   matches <- match(ld$ymax, bardat$value)
 
   # Supplement with original data
-  ld$pvals <- log10((bardat$pvals[matches]))
+  ld$pvals <- log10(bardat$pvals[matches])
   ld$descr <- bardat$KEGG_PATHWAY_description[matches]
   ld$vars <- bardat$variable[matches]
 
@@ -103,12 +103,18 @@ plotFoldEnrichment <- function(de_res, pval, N){
     geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = pvals)) +
     ylim(0, max(d$value) + 1.0) + xlab("") + ylab("Fold Enrichment") +
     scale_fill_gradient(low = "red", high = "transparent",
+                        #trans = 'log10',
                         limits = c(min(ld$pvals), 0),
+                        breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
+                        labels = as.character(formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], format = "e", digits = 2)),
                         name = "Log10 P-values List 1") +
     new_scale_fill() +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list2", ], aes(fill = pvals)) +
     scale_fill_gradient(low =  "blue", high = "transparent",
+                        #trans = 'log10',
                         limits = c(min(ld$pvals), 0),
+                        breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
+                        labels = as.character(formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], format = 'e', digits = 2)),
                         name = "Log10 P-values List 2") +
     scale_x_continuous(breaks = seq_along(unique(ld$descr)),
                        labels = unique(ld$descr)) +
