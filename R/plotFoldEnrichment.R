@@ -29,10 +29,10 @@
 #'
 #' @import dplyr
 #'         ggplot2
-#'         ggnewscale
 #' @importFrom reshape2 melt
 #' @importFrom stats reorder
 #' @importFrom rlang .data
+#' @importFrom ggnewscale new_scale_fill
 #' @export
 #'
 #' @examples
@@ -73,10 +73,10 @@ plotFoldEnrichment <- function(de_res, pval, N){
                          "diff_enrich_adjusted"))
 
   ## get vector of pvals
-  pvals <- subset(df.ss, variable %in% c("enrich_p_list1", "enrich_p_list2"))
+  pvals <- subset(df.ss, df.ss$variable %in% c("enrich_p_list1", "enrich_p_list2"))
 
   ## Generate data set to be used for plotting
-  bardat <- subset(df.ss, variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
+  bardat <- subset(df.ss, df.ss$variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
     dplyr::mutate(alpha = log10(pvals$value),
            pvals = pvals$value) %>%
     dplyr::arrange(.data$pvals)

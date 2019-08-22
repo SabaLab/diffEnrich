@@ -24,13 +24,14 @@ Suggests:
     rmarkdown,
     kableExtra
 Depends:
+    dplyr,
+    ggplot2,
+    R (>= 2.10)
+Imports:
     here,
     stats,
     rlang,
-    dplyr,
     stringr,
     reshape2,
-    ggplot2,
     ggnewscale,
-    R (>= 2.10)
 VignetteBuilder: knitr
