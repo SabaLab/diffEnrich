@@ -14,6 +14,7 @@
 #'
 #' @import dplyr
 #'         ggplot2
+#'         ggnewscale
 #' @importFrom reshape2 melt
 #' @export
 #'
@@ -55,10 +56,10 @@ plotFoldEnrichment <- function(de_res, pval, N){
                          "diff_enrich_adjusted"))
 
   ## get vector of pvals
-  pvals <- dplyr::subset(df.ss, variable %in% c("enrich_p_list1", "enrich_p_list2"))
+  pvals <- subset(df.ss, variable %in% c("enrich_p_list1", "enrich_p_list2"))
 
   ## Generate data set to be used for plotting
-  bardat <- dplyr::subset(df.ss, variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
+  bardat <- subset(df.ss, variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
     dplyr::mutate(alpha = log10(pvals$value),
            pvals = pvals$value) %>%
     dplyr::arrange(pvals)
@@ -82,7 +83,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
     labs(alpha = "List specific p-value")
 
   # Next, we'll take the coordinates of this layers data and match them back to the original data.
-  ld <- layer_data(g)
+  ld <- ggplot2::layer_data(g)
   ld <- ld[, c("xmin", "xmax", "ymin", "ymax")]
 
   # Match back to original data
@@ -96,7 +97,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ## Merge ld with df.ss
   df_ptext <- merge(ld, df.ss, by.x = "descr", by.y = "KEGG_PATHWAY_description")
   df_ptext <- subset(df_ptext, variable %in% c("diff_enrich_adjusted")) %>%
-    filter(!duplicated(value))
+    dplyr::filter(!duplicated(value))
 
   ## Generate finale plot
   p <- ggplot(mapping = aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
@@ -108,7 +109,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
                         labels = as.character(formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], format = "e", digits = 2)),
                         name = "P-values List 1") +
-    new_scale_fill() +
+    ggnewscale::new_scale_fill() +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list2", ], aes(fill = pvals)) +
     scale_fill_gradient(low =  "blue", high = "transparent",
                         #trans = 'log10',
@@ -118,7 +119,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         name = "P-values List 2") +
     scale_x_continuous(breaks = seq_along(unique(ld$descr)),
                        labels = unique(ld$descr)) +
-    coord_flip() +
+    coord_flip() + theme_bw() +
     geom_text(data=df_ptext,
               aes(x = 1:N, y = (max(bardat$value) + 0.3), label = round(value, 4)))
   return(p)
