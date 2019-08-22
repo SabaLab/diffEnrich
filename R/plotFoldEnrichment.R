@@ -10,7 +10,11 @@
 #' @param pval Numeric. Threshold for filtering pathways based on adjusted pvalue in de_res
 #' @param N Numeric. Number of top pathways to plot after filtering based on pval
 #'
-#' @return
+#' @return ggplot object. If the user calls \code{\link{plotFoldEnrich}} and
+#' assigns it to an object (see example) then no plot will print in viewer,
+#' but if \code{\link{plotFoldEnrich}} is called without being assigned to an
+#' object the plot will print to the viewer. Users can edit the ggplot object
+#' as they would any other ggplot object (e.g. add title, theme, etc.).
 #'
 #' @import dplyr
 #'         ggplot2
@@ -71,7 +75,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   # First, we'll make a plot and save it as a variable
     g <- ggplot(bardat, aes(x=reorder(KEGG_PATHWAY_description, -pvals), y=value)) +
     geom_bar(stat="identity", aes(col=variable, group=variable, fill=pvals), position="dodge") +
-    ylim(0, max(d$value) + 0.6) + xlab("") +
+    ylim(0, max(bardat$value) + 0.6) + xlab("") +
     coord_flip() +
     scale_fill_brewer(palette = "Set1",
                       name="",
@@ -102,7 +106,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ## Generate finale plot
   p <- ggplot(mapping = aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = pvals)) +
-    ylim(0, max(d$value) + 1.0) + xlab("") + ylab("Fold Enrichment") +
+    ylim(0, max(bardat$value) + 1.0) + xlab("") + ylab("Fold Enrichment") +
     scale_fill_gradient(low = "darkred", high = "transparent",
                         #trans = 'log10',
                         limits = c(min(ld$pvals), 0),
