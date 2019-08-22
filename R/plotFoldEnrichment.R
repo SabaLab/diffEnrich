@@ -114,6 +114,6 @@ plotFoldEnrichment <- function(de_res, pval, N){
                        labels = unique(ld$descr)) +
     coord_flip() +
     geom_text(data=df_ptext,
-              aes(x = 1:5, y = (max(bardat$value) + 0.3), label = round(value, 4)))
+              aes(x = 1:N, y = (max(bardat$value) + 0.3), label = round(value, 4)))
   return(p)
 }
