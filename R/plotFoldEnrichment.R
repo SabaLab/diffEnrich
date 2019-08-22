@@ -67,6 +67,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   # Generate plot
   ###########################################################
     library(ggnewscale)
+  # First, we'll make a plot and save it as a variable
     g <- ggplot(bardat, aes(x=reorder(KEGG_PATHWAY_description, -pvals), y=value)) +
     geom_bar(stat="identity", aes(col=variable, group=variable, fill=pvals), position="dodge") +
     ylim(0, max(d$value) + 0.6) + xlab("") +
@@ -80,9 +81,9 @@ plotFoldEnrichment <- function(de_res, pval, N){
               aes(x = KEGG_PATHWAY_description, y = (max(bardat$value) + 0.3), label = round(value, 4))) +
     labs(alpha = "List specific p-value")
 
+  # Next, we'll take the coordinates of this layers data and match them back to the original data.
   ld <- layer_data(g)
   ld <- ld[, c("xmin", "xmax", "ymin", "ymax")]
-
 
   # Match back to original data
   matches <- match(ld$ymax, bardat$value)
@@ -93,11 +94,12 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ld$vars <- bardat$variable[matches]
 
   ## Merge ld with df.ss
-  test <- merge(ld, df.ss, by.x = "descr", by.y = "KEGG_PATHWAY_description")
-  test <- subset(test, variable %in% c("diff_enrich_adjusted")) %>%
+  df_ptext <- merge(ld, df.ss, by.x = "descr", by.y = "KEGG_PATHWAY_description")
+  df_ptext <- subset(df_ptext, variable %in% c("diff_enrich_adjusted")) %>%
     filter(!duplicated(value))
 
-  ggplot(mapping = aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
+  ## Generate fineal plot
+  p <- ggplot(mapping = aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = pvals)) +
     ylim(0, max(d$value) + 1.0) + xlab("") +
     scale_fill_gradient(low = "red", high = "transparent",
@@ -111,7 +113,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
     scale_x_continuous(breaks = seq_along(unique(ld$descr)),
                        labels = unique(ld$descr)) +
     coord_flip() +
-    geom_text(data=test,
+    geom_text(data=df_ptext,
               aes(x = 1:5, y = (max(bardat$value) + 0.3), label = round(value, 4)))
   return(p)
 }
