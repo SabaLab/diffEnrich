@@ -98,10 +98,10 @@ plotFoldEnrichment <- function(de_res, pval, N){
   df_ptext <- subset(df_ptext, variable %in% c("diff_enrich_adjusted")) %>%
     filter(!duplicated(value))
 
-  ## Generate fineal plot
+  ## Generate finale plot
   p <- ggplot(mapping = aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = pvals)) +
-    ylim(0, max(d$value) + 1.0) + xlab("") +
+    ylim(0, max(d$value) + 1.0) + xlab("") + ylab("Fold Enrichment") +
     scale_fill_gradient(low = "red", high = "transparent",
                         limits = c(min(ld$pvals), 0),
                         name = "P-values List 1") +
