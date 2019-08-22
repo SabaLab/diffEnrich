@@ -103,7 +103,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   p <- ggplot(mapping = aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = pvals)) +
     ylim(0, max(d$value) + 1.0) + xlab("") + ylab("Fold Enrichment") +
-    scale_fill_gradient(low = "red", high = "transparent",
+    scale_fill_gradient(low = "darkred", high = "transparent",
                         #trans = 'log10',
                         limits = c(min(ld$pvals), 0),
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
@@ -111,7 +111,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         name = "P-values List 1") +
     ggnewscale::new_scale_fill() +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list2", ], aes(fill = pvals)) +
-    scale_fill_gradient(low =  "blue", high = "transparent",
+    scale_fill_gradient(low =  "navy", high = "transparent",
                         #trans = 'log10',
                         limits = c(min(ld$pvals), 0),
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
