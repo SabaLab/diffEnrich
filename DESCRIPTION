@@ -29,5 +29,6 @@ Depends:
     rlang,
     dplyr,
     stringr,
+    ggplot2,
     R (>= 2.10)
 VignetteBuilder: knitr

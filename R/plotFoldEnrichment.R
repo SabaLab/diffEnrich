@@ -6,19 +6,23 @@
 #' and the top N pathways sorted by the adjusted p-value threshold used in \code{\link{diffEnrich}}.
 #' \code{\link{plotFoldEnrich}} returns a ggplot2 object so users can add additional
 #' customizations.
-#' @param de_res
-#' @param pval
-#' @param N
+#' @param de_res Dataframe. Generated using \code{\link{diffEnrich}}
+#' @param pval Numeric. Threshold for filtering pathways based on adjusted pvalue in de_res
+#' @param N Numeric. Number of top pathways to plot after filtering based on pval
 #'
 #' @return
 #'
-#' @import dplyr,
+#' @import dplyr
 #'         ggplot2
 #' @importFrom reshape2 melt
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' plot <- plotFoldEnrichment(de_res = diffEnrich, pval = 0.05, N = 5)
+#' }
 plotFoldEnrichment <- function(de_res, pval, N){
+  library(dplyr)
   library(ggplot2)
   ## Check arguments
   if(missing(de_res)){stop("Argument missing: de_res")}
@@ -32,32 +36,32 @@ plotFoldEnrichment <- function(de_res, pval, N){
 
   ## Strip extra columns from de_res and filter based on pval. Then sort by pval.
   df <- de_res %>%
-    select(KEGG_PATHWAY_ID, KEGG_PATHWAY_description,
+    dplyr::select(KEGG_PATHWAY_ID, KEGG_PATHWAY_description,
            fold_enrichment_list1, fold_enrichment_list2,
            enrich_p_list1, enrich_p_list2,
            odd_ratio, diff_enrich_adjusted) %>%
-    mutate(KEGG_PATHWAY_description = sapply(strsplit(KEGG_PATHWAY_description, split = " - "), function(x) x[1])) %>%
-    arrange(diff_enrich_adjusted) %>%
-    filter(diff_enrich_adjusted < pval) %>%
-    slice(1:N)
+    dplyr::mutate(KEGG_PATHWAY_description = sapply(strsplit(KEGG_PATHWAY_description, split = " - "), function(x) x[1])) %>%
+    dplyr::arrange(diff_enrich_adjusted) %>%
+    dplyr::filter(diff_enrich_adjusted < pval) %>%
+    dplyr::slice(1:N)
 
   ## Melt data set
   df.melt <-reshape2::melt(df, id.vars = c('KEGG_PATHWAY_ID', 'KEGG_PATHWAY_description'))
 
   ## Clean up melted data frame
   df.ss <- df.melt %>%
-  filter(variable %in% c("fold_enrichment_list1", "fold_enrichment_list2",
+    dplyr::filter(variable %in% c("fold_enrichment_list1", "fold_enrichment_list2",
                          "enrich_p_list1", "enrich_p_list2",
                          "diff_enrich_adjusted"))
 
   ## get vector of pvals
-  pvals <- subset(df.ss, variable %in% c("enrich_p_list1", "enrich_p_list2"))
+  pvals <- dplyr::subset(df.ss, variable %in% c("enrich_p_list1", "enrich_p_list2"))
 
   ## Generate data set to be used for plotting
-  bardat <- subset(df.ss, variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
-    mutate(alpha = log10(pvals$value),
+  bardat <- dplyr::subset(df.ss, variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
+    dplyr::mutate(alpha = log10(pvals$value),
            pvals = pvals$value) %>%
-    arrange(pvals)
+    dplyr::arrange(pvals)
 
   ###########################################################
   # Generate plot
