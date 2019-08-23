@@ -33,5 +33,5 @@ Imports:
     rlang,
     stringr,
     reshape2,
-    ggnewscale,
+    ggnewscale
 VignetteBuilder: knitr
