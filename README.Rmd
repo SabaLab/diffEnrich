@@ -25,8 +25,8 @@ download and clean species specific ENTREZ gene IDs and map them to their respec
 KEGG pathways by accessing KEGG's REST API. This way the user will always have 
 the most up-to-date pathway data from KEGG. Next, the user will identify significantly
 enriched pathways from two different gene sets, and finally, the user will identify 
-pathways that are differentially expressed between the two gene sets. In addition to 
-the analysis pipeline, this package also provides functions for data visualizations.
+pathways that are differentially enriched between the two gene sets. In addition to 
+the analysis pipeline, this package also provides a plotting function. 
 
 
 development of methods and software for differential enrichment analysis
