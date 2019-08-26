@@ -63,7 +63,8 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
 #> Kegg Release: Release_91.0+_08-26_Aug_19
 ```
 
