@@ -29,7 +29,58 @@ pathways that are differentially enriched between the two gene sets. In addition
 the analysis pipeline, this package also provides a plotting function. 
 
 
-development of methods and software for differential enrichment analysis
+```{r, echo=FALSE, fig.cap='Figure 1. diffEnrich analysis pipeline.', dpi=400}
+suppressMessages(library(diagram))
+
+## open plot
+par(mar = c(0.5, 1, 0.5, 1))
+openplotmat()
+## define number of boxes at each level
+elpos <- coordinates (c(1, 1, 2, 2, 1, 1, 1, 1))
+## generate matrix of from-to arrow coordinates
+fromto <- matrix(ncol = 2, byrow = TRUE,
+                 data = c(1, 2,
+                          2, 3,
+                          2, 4,
+                          3, 5,
+                          4, 6,
+                          5, 7,
+                          6, 7,
+                          7, 8, 
+                          8, 9))
+nr <- nrow(fromto)
+arrpos <- matrix(ncol = 2, nrow = nr)
+
+## Build flow chart
+for (i in 1:nr){
+  arrpos[i, ] <- straightarrow (to = elpos[fromto[i, 2], ],
+                                from = elpos[fromto[i, 1], ],
+                                lwd = 2, arr.pos = 0.5, arr.length = 0.5)
+  textrect(elpos[1,], 0.10, 0.03, lab = "get_kegg()", box.col = "steelblue1",
+              shadow.col = "darkblue", shadow.size = 0.005, cex = 1.0)
+  textround(elpos[2,], 0.10, 0.03,lab = "KEGG REST API", box.col = "orange1",
+            shadow.col = "orange4", shadow.size = 0.005, cex = 1.0)
+  textrect(elpos[3,], 0.10, 0.03,lab = "pathEnrich(List 1)", box.col = "steelblue1",
+            shadow.col = "darkblue", shadow.size = 0.005, cex = 1.0)
+  textrect(elpos[4,], 0.10, 0.03, lab = "pathEnrich(List 2)", box.col = "steelblue1",
+           shadow.col = "darkblue", shadow.size = 0.005, cex = 1.0)
+  textellipse(elpos[5,], 0.10, 0.04, lab = c("pathEnrich","result/object"), box.col = "firebrick1",
+              shadow.col = "firebrick4", shadow.size = 0.005, cex = 1.0)
+  textellipse(elpos[6,], 0.10, 0.04, lab = c("pathEnrich","result/object"),box.col = "firebrick1",
+              shadow.col = "firebrick4", shadow.size = 0.005, cex = 1.0)
+  textrect(elpos[7,], 0.10, 0.03, lab = "diffEnrich()", box.col = "steelblue1",
+           shadow.col = "darkblue", shadow.size = 0.005, cex = 1.0)
+  textellipse(elpos[8,], 0.10, 0.04, lab = c("diffEnrich","result/object"), box.col = "firebrick1",
+              shadow.col = "firebrick4", shadow.size = 0.005, cex = 1.0)
+  textrect(elpos[9,], 0.11, 0.03, lab = "plotFoldEnrichment", box.col = "steelblue1",
+           shadow.col = "darkblue", shadow.size = 0.005, cex = 1.0)
+  text(0.2,0.95, "Figure 1. diffEnrich Analysis pipeline", cex = 0.75)
+}
+```
+
+## Introduction
+
+## Differential Enrichment in practice
 
 Papers from Saba Lab where differentially enrichment has been used:
 1. [Shearn et al 2018 - ACER](https://onlinelibrary.wiley.com/doi/full/10.1111/acer.13766)
@@ -174,7 +225,7 @@ differential enrichment of the pathway between the two lists, and the pathways
 are ordered from top to bottom by this p-value (i.e. smallest p-value on top
 of plot, and largest p-value on bottom of plot).
 
-```{r plotFoldEnrichment}
+```{r plotFoldEnrichment, dpi=400}
 ## Plot fold enrichment
 plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 ```

@@ -16,7 +16,11 @@ and finally, the user will identify pathways that are differentially
 enriched between the two gene sets. In addition to the analysis
 pipeline, this package also provides a plotting function.
 
-development of methods and software for differential enrichment analysis
+<img src="man/figures/README-unnamed-chunk-1-1.png" title="Figure 1. diffEnrich analysis pipeline." alt="Figure 1. diffEnrich analysis pipeline." width="100%" />
+
+## Introduction
+
+## Differential Enrichment in practice
 
 Papers from Saba Lab where differentially enrichment has been used: 1.
 [Shearn et al 2018 -
@@ -59,9 +63,8 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
-#> Kegg Release: Release_91.0+_08-23_Aug_19
+#> These files already exist in your working directory. New files will not be generated.
+#> Kegg Release: Release_91.0+_08-26_Aug_19
 ```
 
 Here are the files:
@@ -84,7 +87,7 @@ choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_08-23_Aug_19
+#> Kegg Release: Release_91.0+_08-26_Aug_19
 ```
 
 ### Step 2: Perform individual enrichment analysis
