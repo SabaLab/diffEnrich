@@ -22,7 +22,8 @@ BugReports: https://github.com/SabaLab/diffEnrich/issues
 Suggests: 
     knitr,
     rmarkdown,
-    kableExtra
+    kableExtra,
+    diagram
 Depends:
     dplyr,
     ggplot2,
