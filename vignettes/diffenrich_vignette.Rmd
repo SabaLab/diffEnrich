@@ -33,7 +33,7 @@ enriched pathways from two different gene sets, and finally, the user will ident
 pathways that are differentially enriched between the two gene sets. In addition to 
 the analysis pipeline, this package also provides a plotting function.
 
-```{r, echo=FALSE, out.height='400px', out.width='400px', dpi=200}
+```{r, echo=FALSE, out.height='400px', out.width='400px', dpi=300, fig.cap='Figure 1. diffEnrich analysis pipeline.'}
 suppressMessages(library(diagram))
 
 ## open plot
@@ -74,7 +74,7 @@ for (i in 1:nr){
   textellipse(elpos[5,], 0.18, 0.06, lab = c("cleaned gene-to-pathway", "map"), box.col = "firebrick1",
               shadow.col = "firebrick4", shadow.size = 0.005, cex = 0.5)
   textrect(elpos[6,], 0.14, 0.03,lab = "pathEnrich(List 1)", box.col = "steelblue1",
-            shadow.col = "darkblue", shadow.size = 0.005, cex = 0.6)
+            shadow.col = "darkblue", shadow.size = 0.005, cex = 0.5)
   textrect(elpos[7,], 0.14, 0.03, lab = "pathEnrich(List 2)", box.col = "steelblue1",
            shadow.col = "darkblue", shadow.size = 0.005, cex = 0.5)
   textellipse(elpos[8,], 0.12, 0.04, lab = c("pathEnrich","result/object"), box.col = "firebrick1",
@@ -84,10 +84,10 @@ for (i in 1:nr){
   textrect(elpos[10,], 0.10, 0.03, lab = "diffEnrich()", box.col = "steelblue1",
            shadow.col = "darkblue", shadow.size = 0.005, cex = 0.5)
   textellipse(elpos[11,], 0.12, 0.06, lab = c("diffEnrich","result/object"), box.col = "firebrick1",
-              shadow.col = "firebrick4", shadow.size = 0.005, cex = 0.6)
-  textrect(elpos[12,], 0.17, 0.03, lab = "plotFoldEnrichment", box.col = "steelblue1",
-           shadow.col = "darkblue", shadow.size = 0.005, cex = 0.6)
-  #text(0.15,0.05, "Figure 1. diffEnrich Analysis pipeline", cex = 0.75)
+              shadow.col = "firebrick4", shadow.size = 0.005, cex = 0.5)
+  textrect(elpos[12,], 0.17, 0.03, lab = "plotFoldEnrichment()", box.col = "steelblue1",
+           shadow.col = "darkblue", shadow.size = 0.005, cex = 0.5)
+  #text(0.15,0.05, "Figure 1. diffEnrich Analysis pipeline", cex = 0.15)
 }
 ```
 
