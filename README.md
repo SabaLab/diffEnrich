@@ -1283,3 +1283,5 @@ plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 ```
 
 <img src="man/figures/README-plotFoldEnrichment-1.png" width="100%" />
+
+## References

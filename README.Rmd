@@ -50,7 +50,7 @@ KEGG API is very easy using statistical programming tools like R or Python and
 integrating data pulls into user's code makes the program reproducible. To 
 further enforce reproducibilty *diffEnrich* adds a date and KEGG realease tag to
 all data files it generates from accessing the API. For update histories and release 
-notes please go [here](https://www.kegg.jp/kegg/rest/).
+notes please go [here](https://www.kegg.jp/kegg/rest/). 
 
 
 ```{r, echo=FALSE, fig.cap='Figure 1. diffEnrich analysis pipeline.', dpi=400}
@@ -281,3 +281,6 @@ of plot, and largest p-value on bottom of plot).
 ## Plot fold enrichment
 plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 ```
+
+
+## References
