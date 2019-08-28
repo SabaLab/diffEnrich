@@ -1282,23 +1282,21 @@ associated p-value. Users can choose from those supported by
 
 ### Step 4: Plot fold enrichment
 
-This function generates a grouped bar plot using ggplot2 and the
-ggnewscale package. KEGG pathways are plotted on the y-axis and fold
+*plotFoldEnrichment* generates a grouped bar plot using ggplot2 and the
+*ggnewscale* package. KEGG pathways are plotted on the y-axis and fold
 enrichment is plotted on the x-axis. each KEGG pathway has a bar
 plotting its fold enrichment in list 1 (red) and its fold enrichment in
 list 2 (blue). The transparency of the bars correspond to the adjusted
-p-value for the pathway’s enrichment in the given list. The p-value
-presented as text to the right of each pair of bars is the adjusted
-p-value associated with the differential enrichment of the pathway
-between the two lists, and the pathways are ordered from top to bottom
-by this p-value (i.e. smallest p-value on top of plot, and largest
-p-value on bottom of plot).
+p-value (FDR) for the pathway’s enrichment in the given list. The
+p-value presented as text to the right of each pair of bars is the
+adjusted p-value (user defined: default is FDR) associated with the
+differential enrichment of the pathway between the two lists, and the
+pathways are ordered from top to bottom by this p-value (i.e. smallest
+p-value on top of plot, and largest p-value on bottom of plot).
 
 ``` r
 ## Plot fold enrichment
 plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
-#> Scale for 'fill' is already present. Adding another scale for 'fill',
-#> which will replace the existing scale.
 ```
 
 <img src="man/figures/README-plotFoldEnrichment-1.png" width="100%" />
