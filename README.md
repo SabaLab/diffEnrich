@@ -4,8 +4,8 @@
 [![Build
 status](https://ci.appveyor.com/api/projects/status/xwu8nket2u1pd5ij?svg=true)](https://ci.appveyor.com/project/hsmith9002/diffenrich)
 
-[![Travis build
-status](https://travis-ci.com/SabaLab/diffEnrich.svg?branch=master)](https://travis-ci.com/SabaLab/diffEnrich)
+[![Build
+Status](https://travis-ci.com/SabaLab/diffEnrich.svg?token=M2jELEzTYYqmxZMY6hpb&branch=master)](https://travis-ci.com/SabaLab/diffEnrich)
 
 # diffEnrich
 
