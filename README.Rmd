@@ -7,7 +7,7 @@ always_allow_html: yes
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/SabaLab/diffEnrich?branch=master&svg=true)](https://ci.appveyor.com/project/SabaLab/diffEnrich)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/SabaLab/diffEnrich?branch=master&svg=true)](https://ci.appveyor.com/api/github/webhook?id=ocnarj9n9qj7xncf)
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
