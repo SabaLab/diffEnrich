@@ -4,6 +4,9 @@
 [![Build
 status](https://ci.appveyor.com/api/projects/status/xwu8nket2u1pd5ij?svg=true)](https://ci.appveyor.com/project/hsmith9002/diffenrich)
 
+[![Travis build
+status](https://travis-ci.com/SabaLab/diffEnrich.svg?branch=master)](https://travis-ci.com/SabaLab/diffEnrich)
+
 # diffEnrich
 
 ## Introduction
@@ -37,9 +40,9 @@ information (e.g. biochemical reactions), and 4) health information
 In 2012 KEGG released its first application programming interface (API),
 and has been adding features and functionality ever since. There are
 benefits to using an API. First, API’s like KEGG’s allow users to
-perform customized analyses with the most up-t-date versions of the data
-contained in the data base. In addition, accessing the KEGG API is very
-easy using statistical programming tools like R or Python and
+perform customized analyses with the most up-to-date versions of the
+data contained in the data base. In addition, accessing the KEGG API is
+very easy using statistical programming tools like R or Python and
 integrating data pulls into user’s code makes the program reproducible.
 To further enforce reproducibilty *diffEnrich* adds a date and KEGG
 realease tag to all data files it generates from accessing the API. For
@@ -63,7 +66,7 @@ role of the GSTA4 gene on protein carbonylation and the progression of
 liver injury in a model consisting of long‐term (116 days) chronic
 ethanol (EtOH) consumption followed by a single EtOH binge.
 
-Functional enrichment of carbonylated proteins for KEGG pathways and was
+Functional enrichment of carbonylated proteins for KEGG pathways was
 tested using a 1‐sided Fisher’s exact test in each experimental group (2
 genotypes × 3 treatment conditions = 6 experimental groups).
 Differential enrichment between experimental groups was examined using a
@@ -92,11 +95,11 @@ install.packages("diffEnrich")
 
 ### Step 1: Collect and clean pathways from KEGG API
 
-First we will use the *get\_kegg* function access the KEGG REST API and
-download the data sets required to perform our downstream analysis. This
-function takes two arguments. The first, ‘species’ is required and is
-the species of interest. Currently, *diffEnrich* supports three species,
-and the argument is a character string using the KEGG code
+First we will use the *get\_kegg* function to access the KEGG REST API
+and download the data sets required to perform our downstream analysis.
+This function takes two arguments. The first, ‘species’ is required and
+is the species of interest. Currently, *diffEnrich* supports three
+species, and the argument is a character string using the KEGG code
 [REF](https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf):
 Homo sapiens (human), use ‘hsa’; Mus musculus (mouse), use ‘mmu’, and
 Rattus norvegicus (rat), use ‘rno’. The second, ‘path’ is also passed as
@@ -109,18 +112,20 @@ describing the data, and for reproducibility, the date they were
 generated and the version of KEGG when the API was accessed. In addition
 to these flat files, *get\_kegg* will also create a named list with the
 three relevant KEGG data sets. The names of this list will describe the
-the data set.
+the data set. For a ddetailed descritpion of list elements use
+*?get\_kegg*.
 
 ``` r
 suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
 #> Kegg Release: Release_91.0+_08-28_Aug_19
 ```
 
-Here are the files:
+Here are examples of the output files:
 
     kegg_to_pathway2019-04-26Release_90.0+_04-26_Apr_19.txt
     ncbi_to_kegg2019-04-26Release_90.0+_04-26_Apr_19.txt
@@ -146,21 +151,35 @@ kegg_rno <- get_kegg('rno')
 ### Step 2: Perform individual enrichment analysis
 
 In this step we will use the *pathEnrich* function to identify KEGG
-pathways that are enriched (i.e. over-represented) based on a list of
-genes we are interested in and based on a list of background genes. This
-function may not always use the complete list of genes provided by the
-user. Specifically, it will only use the genes from the list provided
-that are also in the most current species list pulled from the KEGG REST
-API using *get\_kegg*, or from the older KEGG data loaded by the user
-from a previous *get\_kegg* call. The *pathEnrich* function should be
-run at least twice, once for the genes of interest and once for the
-background. Each *pathEnrich* call generates a data frame summarizing
-the results of an enrichment analysis in which a Fisher’s Exact test is
-used to identify which KEGG pathways are enriched by the user’s list of
-interesting genes with respect to background enrichment, and a p-value
-is calculated using a hypergeometric distribution (Formula 1). P-values
-are adjusted for multiple comparisons by controlling the False Discovery
-Rate (FDR) at 0.05.
+pathways that are enriched (i.e. over-represented) based on two gene
+lists of interest. The ENTREZ gene IDs. User gene lists must also be
+charater vectors and be formatted as ENTREZ gene IDs. The
+*clusterProfiler* offers a nice function (*bitr*) that maps gene symbols
+and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their
+[vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter5.html#supported-organisms).
+
+``` r
+## View sample gene lists from package data
+head(geneLists$list1)
+#> [1] "361692"    "293654"    "293655"    "500974"    "100361529" "171434"
+head(geneLists$list2)
+#> [1] "315547" "315548" "315549" "315550" "50938"  "58856"
+```
+
+This function may not always use the complete list of genes provided by
+the user. Specifically, it will only use the genes from the list
+provided that are also in the most current species list pulled from the
+KEGG REST API using *get\_kegg*, or from the older KEGG data loaded by
+the user from a previous *get\_kegg* call. The *pathEnrich* function
+should be run at least twice, once for the genes of interest in list 1
+and once for the genes of interest in list2. Each *pathEnrich* call
+generates a data frame summarizing the results of an enrichment analysis
+in which a Fisher’s Exact test is used to identify which KEGG pathways
+are enriched by the user’s list of interesting genes with respect to
+background (universe), and a p-value is calculated using a
+hypergeometric distribution (Formula 1). P-values are adjusted for
+multiple comparisons by controlling the False Discovery Rate (FDR) at
+0.05.
 
 Formula 1:
 
@@ -173,8 +192,8 @@ Formula 1:
 where N is the total number of genes in the background, M is the number
 of genes within that background that also in the gene set of interest, n
 is the size of the list of genes of interest and k is the number of
-genes within that are in the background. The background by default is
-all the genes that have annotation.
+genes within that are in the background. The background (universe) by
+default is all the genes that have annotation.
 
 ``` r
 # run pathEnrich using kegg_rno
@@ -196,6 +215,7 @@ list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 Table 1. Head of list1\_pe data frame generated using pathEnrich
 
 *pathEnrich* generates a data frame with 9 columns described below.
+Details also provided in *pathEnrich* documentation. Use *?pathEnrich*.
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
@@ -395,7 +415,7 @@ KEGG\_PATHWAY\_in\_list/expected
 
 ### Step 3: Identify differentially enriched KEGG pathways
 
-The diffEnrich function will merge the results from the *pathEnrich*
+The *diffEnrich* function will merge the results from the *pathEnrich*
 calls generated above. Specifically, the data frame ‘list1\_pe’ and the
 data frame ‘list2\_pe’ will be merged using the base *merge*
 functionality and be merged by the following columns:
@@ -1255,10 +1275,10 @@ IL-17 signaling pathway - Rattus norvegicus (rat)
 </table>
 
 The result of the *diffEnrich* call is the merged data frame with the
-estimated odds ration generated by the Fisher’s Exact test and the
+estimated odds ratio generated by the Fisher’s Exact test and the
 associated p-value. Users can choose from those supported by
 *stats::p.adjust*, and the default is the False Discovery Rate
-(Benjamini and Hochberg).
+(Benjamini and Hochberg, [1995](http://www.jstor.org/stable/2346101)).
 
 ### Step 4: Plot fold enrichment
 
