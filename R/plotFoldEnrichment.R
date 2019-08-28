@@ -115,6 +115,11 @@ plotFoldEnrichment <- function(de_res, pval, N){
   df_ptext <- subset(df_ptext, df_ptext$variable %in% c("diff_enrich_adjusted")) %>%
     dplyr::filter(!duplicated(.data$value))
 
+  ## Format list p-values
+  options(scipen = 999)
+  lpval <- sprintf(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], fmt = '%#.5f')
+  lpval <- ifelse(lpval < 0.000001, "< 0.000001", lpval)
+
   ## Generate finale plot
   p <- ggplot(mapping = aes(xmin = .data$xmin, xmax = .data$xmax, ymin = .data$ymin, ymax = .data$ymax)) +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = .data$pvals)) +
@@ -123,7 +128,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         #trans = 'log10',
                         limits = c(min(ld$pvals), 0),
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
-                        labels = as.character(formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], format = "e", digits = 2)),
+                        labels = lpval,
                         name = "P-values List 1") +
     ggnewscale::new_scale_fill() +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list2", ], aes(fill = .data$pvals)) +
@@ -131,12 +136,12 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         #trans = 'log10',
                         limits = c(min(ld$pvals), 0),
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
-                        labels = as.character(formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], format = 'e', digits = 2)),
+                        labels = lpval,
                         name = "P-values List 2") +
     scale_x_continuous(breaks = seq_along(unique(ld$descr)),
                        labels = unique(ld$descr)) +
     coord_flip() + theme_bw() +
     geom_text(data=df_ptext,
-              aes(x = 1:N, y = (max(bardat$value) + 0.3), label = round(.data$value, 4)))
+              aes(x = 1:N, y = (max(bardat$value) + 0.4), label = round(.data$value, 5)))
   return(p)
 }
