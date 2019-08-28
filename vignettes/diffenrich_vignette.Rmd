@@ -51,7 +51,7 @@ First, API's like KEGG's allow users to perform customized analyses with the mos
 up-to-date versions of the data contained in the data base. In addition, accessing the
 KEGG API is very easy using statistical programming tools like R or Python and
 integrating data pulls into user's code makes the program reproducible. To 
-further enforce reproducibilty *diffEnrich* adds a date and KEGG realease tag to
+further enforce reproducibilty *diffEnrich* adds a date and KEGG release tag to
 all data files it generates from accessing the API. For update histories and release 
 notes please go [here](https://www.kegg.jp/kegg/rest/).
 
@@ -120,7 +120,7 @@ A recent [study](https://onlinelibrary.wiley.com/doi/full/10.1111/acer.13766) ex
 the hepatic mechanism for removal of toxic lipid aldehydes via conjugation with glutathione (Cheng et al., [2001](https://www.ncbi.nlm.nih.gov/pubmed/11488593?dopt=Abstract);
 Gallagher et al., [2007](https://www.ncbi.nlm.nih.gov/pubmed/17553661?dopt=Abstract)) 
 and the primary enzyme that catalyzes this conjugation, glutathione S‐transferase A4‐4 (GSTA4).
-Specifically, the researchers examin the role of the GSTA4 gene on protein 
+Specifically, the researchers examine the role of the GSTA4 gene on protein 
 carbonylation and the progression of liver injury in a model consisting of long‐term 
 (116 days) chronic ethanol (EtOH) consumption followed by a single EtOH binge.
 
@@ -160,7 +160,7 @@ be automatically written to the current working directory using the *here::here(
 sets will be tab delimited files with a name describing the data, and for reproducibility, the date they were generated
 and the version of KEGG when the API was accessed. In addition to these flat files, *get_kegg* will also
 create a named list with the three relevant KEGG data sets. The names of this list will describe the the data set.
-For a ddetailed descritpion of list elements use *?get_kegg*.
+For a detailed description of list elements use *?get_kegg*.
 
 
 ```{r get_kegg_exp1}
@@ -189,7 +189,7 @@ kegg_rno <- get_kegg('rno')
 
 ### Step 2: Perform individual enrichment analysis
 
-In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on two gene lists of interest. The ENTREZ gene IDs. User gene lists must also be charater vectors and be formatted as ENTREZ gene IDs. The *clusterProfiler* offers a nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter5.html#supported-organisms).
+In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on two gene lists of interest. The ENTREZ gene IDs. User gene lists must also be character vectors and be formatted as ENTREZ gene IDs. The *clusterProfiler* offers a nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter5.html#supported-organisms).
 
 ```{r view_genelists}
 ## View sample gene lists from package data
@@ -292,7 +292,7 @@ differential enrichment of the pathway between the two lists, and the pathways
 are ordered from top to bottom by this p-value (i.e. smallest p-value on top
 of plot, and largest p-value on bottom of plot). Finally, the number of genes used
 for analysis from each gene list (recall that this number may not be the same as the number of
-genes in the user's original list) are reported below their repsective p-values
+genes in the user's original list) are reported below their respective p-values
 in the legend. 
 
 ```{r plotFoldEnrichment, message=FALSE, warning=FALSE, fig.height=6, fig.width=8}

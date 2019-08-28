@@ -45,7 +45,7 @@ data contained in the data base. In addition, accessing the KEGG API is
 very easy using statistical programming tools like R or Python and
 integrating data pulls into user’s code makes the program reproducible.
 To further enforce reproducibilty *diffEnrich* adds a date and KEGG
-realease tag to all data files it generates from accessing the API. For
+release tag to all data files it generates from accessing the API. For
 update histories and release notes please go
 [here](https://www.kegg.jp/kegg/rest/).
 
@@ -61,7 +61,7 @@ conjugation with glutathione (Cheng et al.,
 Gallagher et al.,
 [2007](https://www.ncbi.nlm.nih.gov/pubmed/17553661?dopt=Abstract)) and
 the primary enzyme that catalyzes this conjugation, glutathione
-S‐transferase A4‐4 (GSTA4). Specifically, the researchers examin the
+S‐transferase A4‐4 (GSTA4). Specifically, the researchers examine the
 role of the GSTA4 gene on protein carbonylation and the progression of
 liver injury in a model consisting of long‐term (116 days) chronic
 ethanol (EtOH) consumption followed by a single EtOH binge.
@@ -112,7 +112,7 @@ describing the data, and for reproducibility, the date they were
 generated and the version of KEGG when the API was accessed. In addition
 to these flat files, *get\_kegg* will also create a named list with the
 three relevant KEGG data sets. The names of this list will describe the
-the data set. For a ddetailed descritpion of list elements use
+the data set. For a detailed description of list elements use
 *?get\_kegg*.
 
 ``` r
@@ -153,7 +153,7 @@ kegg_rno <- get_kegg('rno')
 In this step we will use the *pathEnrich* function to identify KEGG
 pathways that are enriched (i.e. over-represented) based on two gene
 lists of interest. The ENTREZ gene IDs. User gene lists must also be
-charater vectors and be formatted as ENTREZ gene IDs. The
+character vectors and be formatted as ENTREZ gene IDs. The
 *clusterProfiler* offers a nice function (*bitr*) that maps gene symbols
 and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their
 [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter5.html#supported-organisms).
@@ -1295,7 +1295,7 @@ pathways are ordered from top to bottom by this p-value (i.e. smallest
 p-value on top of plot, and largest p-value on bottom of plot). Finally,
 the number of genes used for analysis from each gene list (recall that
 this number may not be the same as the number of genes in the user’s
-original list) are reported below their repsective p-values in the
+original list) are reported below their respective p-values in the
 legend.
 
 ``` r
