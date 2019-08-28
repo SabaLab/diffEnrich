@@ -1,6 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/SabaLab/diffEnrich?branch=master&svg=true)](https://ci.appveyor.com/project/SabaLab/diffEnrich)
+
 # diffEnrich
 
 ## Introduction
