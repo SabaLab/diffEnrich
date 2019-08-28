@@ -1,8 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/SabaLab/diffEnrich?branch=master&svg=true)](https://ci.appveyor.com/api/github/webhook?id=ocnarj9n9qj7xncf)
+[![Build
+status](https://ci.appveyor.com/api/projects/status/xwu8nket2u1pd5ij?svg=true)](https://ci.appveyor.com/project/hsmith9002/diffenrich)
 
 # diffEnrich
 
@@ -116,8 +116,7 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_91.0+_08-28_Aug_19
 ```
 
