@@ -17,16 +17,38 @@ knitr::opts_chunk$set(
 ```
 # diffEnrich
 
+## Introduction
+
 The goal of diffEnrich is simple. Given a list of gene symbols, *diffEnrich*  will
 perform differential enrichment analysis using the Kyoto Encyclopedia of Genes
 and Genomes (KEGG) REST API. This package provides a number of functions that are 
-intended to be used in a pipeline (See Figure N). Briefly, the workflow will
+intended to be used in a pipeline (See Figure 1). Briefly, the workflow will
 download and clean species specific ENTREZ gene IDs and map them to their respective
 KEGG pathways by accessing KEGG's REST API. This way the user will always have 
 the most up-to-date pathway data from KEGG. Next, the user will identify significantly
 enriched pathways from two different gene sets, and finally, the user will identify 
 pathways that are differentially enriched between the two gene sets. In addition to 
 the analysis pipeline, this package also provides a plotting function. 
+
+**The KEGG REST API**
+
+KEGG is a database resource for understanding high-level functions and utilities 
+of the biological system, such as the cell, the organism and the ecosystem, 
+from genomic and molecular-level information [REF](https://www.kegg.jp/kegg/kegg1a.html). KEGG is an integrated database 
+resource consisting of eighteen databases that are clustered into 4 main categories:
+1) systems information (e.g. hierarchies and maps), 2) genomic information 
+(e.g. genes and proteins), 3) chemical information (e.g. biochemical reactions), 
+and 4) health information (e.g. human disease and drugs) [REF](https://www.kegg.jp/kegg/kegg1a.html). 
+
+In 2012 KEGG released its first application programming interface (API), and has been
+adding features and functionality ever since. There are benefits to using an API.
+First, API's like KEGG's allow users to perform customized analyses with the most
+up-t-date versions of the data contained in the data base. In addition, accessing the
+KEGG API is very easy using statistical programming tools like R or Python and
+integrating data pulls into user's code makes the program reproducible. To 
+further enforce reproducibilty *diffEnrich* adds a date and KEGG realease tag to
+all data files it generates from accessing the API. For update histories and release 
+notes please go [here](https://www.kegg.jp/kegg/rest/).
 
 
 ```{r, echo=FALSE, fig.cap='Figure 1. diffEnrich analysis pipeline.', dpi=400}
@@ -87,12 +109,31 @@ for (i in 1:nr){
 }
 ```
 
-## Introduction
 
-## Differential Enrichment in practice
+**Differential Enrichment in practice**
 
-Papers from Saba Lab where differentially enrichment has been used:
-1. [Shearn et al 2018 - ACER](https://onlinelibrary.wiley.com/doi/full/10.1111/acer.13766)
+A recent [study](https://onlinelibrary.wiley.com/doi/full/10.1111/acer.13766) explored 
+the hepatic mechanism for removal of toxic lipid aldehydes via conjugation with glutathione (Cheng et al., [2001](https://www.ncbi.nlm.nih.gov/pubmed/11488593?dopt=Abstract);
+Gallagher et al., [2007](https://www.ncbi.nlm.nih.gov/pubmed/17553661?dopt=Abstract)) 
+and the primary enzyme that catalyzes this conjugation, glutathione S‐transferase A4‐4 (GSTA4).
+Specifically, the researchers examin the role of the GSTA4 gene on protein 
+carbonylation and the progression of liver injury in a model consisting of long‐term 
+(116 days) chronic ethanol (EtOH) consumption followed by a single EtOH binge.
+
+Functional enrichment of carbonylated proteins for KEGG pathways and was tested 
+using a 1‐sided Fisher's exact test in each experimental group 
+(2 genotypes × 3 treatment conditions = 6 experimental groups). Differential 
+enrichment between experimental groups was examined using a 2‐sided Fisher's exact test.
+For KEGG pathway enrichment, proteins were mapped to pathways using their UniProt ID, 
+and databases were downloaded from the KEGG API.
+
+Note: This example uses proteins as the feature of interest, however *diffEnrich*
+currently only supports genes as the feature of interest.
+
+Differential enrichment analysis of carbonylated proteins indicated that compared 
+to chow‐fed animals, the most overrepresented group of proteins that was 
+significantly adducted after long‐term EtOH exposure was ribosomal proteins.
+
 
 ## Installation
 
