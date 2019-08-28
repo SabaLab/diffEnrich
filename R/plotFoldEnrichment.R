@@ -129,7 +129,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         limits = c(min(ld$pvals), 0),
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
                         labels = lpval,
-                        name = "P-values List 1") +
+                        name = paste0("P-values List 1", "\n", "gene count: ", de_res[1,6])) +
     ggnewscale::new_scale_fill() +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list2", ], aes(fill = .data$pvals)) +
     scale_fill_gradient(low =  "navy", high = "transparent",
@@ -137,7 +137,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         limits = c(min(ld$pvals), 0),
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
                         labels = lpval,
-                        name = "P-values List 2") +
+                        name = paste0("P-values List 2", "\n", "gene count: ", de_res[1,12])) +
     scale_x_continuous(breaks = seq_along(unique(ld$descr)),
                        labels = unique(ld$descr)) +
     coord_flip() + theme_bw() +

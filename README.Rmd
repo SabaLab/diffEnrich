@@ -283,7 +283,10 @@ pathway's enrichment in the given list. The p-value presented as text to the
 right of each pair of bars is the adjusted p-value (user defined: default is FDR) associated with the
 differential enrichment of the pathway between the two lists, and the pathways
 are ordered from top to bottom by this p-value (i.e. smallest p-value on top
-of plot, and largest p-value on bottom of plot).
+of plot, and largest p-value on bottom of plot). Finally, the number of genes used
+for analysis from each gene list (recall that this number may not be the same as the number of
+genes in the user's original list) are reported below their repsective p-values
+in the legend. 
 
 ```{r plotFoldEnrichment, dpi=400, message=FALSE}
 ## Plot fold enrichment
