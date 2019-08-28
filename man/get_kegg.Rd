@@ -31,7 +31,9 @@ Currently, this function supports Human, Mouse, and Rat. Files will be
 written to the working directory unless otherwise specified by the user.
 }
 \examples{
+\dontrun{
 kegg <- get_kegg(species = "rno")
+}
 \dontrun{
 kegg <- get_kegg(species = "mmu", path = "usr/data/out/")
 }

@@ -23,7 +23,9 @@
 #' @importFrom here here
 #'
 #' @examples
+#' \dontrun{
 #' kegg <- get_kegg(species = "rno")
+#' }
 #' \dontrun{
 #' kegg <- get_kegg(species = "mmu", path = "usr/data/out/")
 #' }
