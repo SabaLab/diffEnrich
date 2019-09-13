@@ -193,6 +193,27 @@ data sets in different directories if they so choose.
 kegg_rno <- get_kegg('rno')
 ```
 
+```{r get_kegg_descriptions, echo=FALSE, eval = FALSE}
+# get column names
+names <- names(kegg_rno$pathway_to_species)
+# Define column names
+kegg_df_dat <- c("V1",
+                 "V2",
+                 "ncbi gene ID",
+                 "<-- mapped to -->",
+                 "KEGG gene ID",
+                 "KEGG gene ID",
+                 "<-- mapped to -->",
+                 "KEGG pathway ID",
+                 "KEGG pathway ID",
+                 "<-- mapped to -->",
+                 "KEGG pathway species description")
+# Make dataframe
+test <- matrix(kegg_df_dat, nrow = 2, ncol = 4)
+colnames(df1) <- c("Column Names", "Column Description")
+
+```
+
 ### Step 2: Perform individual enrichment analysis
 
 In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on two gene lists of interest. The ENTREZ gene IDs. User gene lists must also be character vectors and be formatted as ENTREZ gene IDs. The *clusterProfiler* offers a nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter5.html#supported-organisms).
