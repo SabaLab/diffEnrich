@@ -119,7 +119,7 @@ cap <- c("Figure 1. diffEnrich Analysis pipeline. Functions within the diffEnric
 ```
 
 
-**Differential Enrichment in practice**
+**Motivating experimental design for differential enrichment**
 
 A recent [study](https://onlinelibrary.wiley.com/doi/full/10.1111/acer.13766) explored 
 the hepatic mechanism for removal of toxic lipid aldehydes via conjugation with glutathione (Cheng et al., [2001](https://www.ncbi.nlm.nih.gov/pubmed/11488593?dopt=Abstract);
