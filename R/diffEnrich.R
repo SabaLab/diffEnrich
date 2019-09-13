@@ -60,7 +60,7 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
 
   ## Build diffEnrich Fisher's Exact function
   de <- function(a,b,c,d){
-    y <- stats::fisher.test(matrix(c(a,b,c,d), nrow = 2))
+    y <- stats::fisher.test(matrix(c(a,b,c-a,d-b), nrow = 2))
     est <- y$estimate
     pv <- y$p.value
     out.de <- data.frame(est, pv)
