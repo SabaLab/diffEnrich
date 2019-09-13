@@ -84,12 +84,12 @@ for (i in 1:nr){
   arrpos[i, ] <- straightarrow (to = elpos[fromto[i, 2], ],
                                 from = elpos[fromto[i, 1], ],
                                 lwd = 2, arr.pos = 0.6, arr.length = 0.5)
-  textellipse(elpos[1,], 0.10, 0.04, lab = "geneList1", box.col = "firebrick1",
-              shadow.col = "firebrick4", shadow.size = 0.005, cex = 1.0)
+  textellipse(elpos[1,], 0.10, 0.04, lab = "geneList1", box.col = "purple",
+              shadow.col = "purple4", shadow.size = 0.005, cex = 1.0)
   textrect(elpos[2,], 0.10, 0.03, lab = "get_kegg()", box.col = "steelblue1",
               shadow.col = "darkblue", shadow.size = 0.005, cex = 1.0)
-  textellipse(elpos[3,], 0.10, 0.04, lab = "geneList2", box.col = "firebrick1",
-              shadow.col = "firebrick4", shadow.size = 0.005, cex = 1.0)
+  textellipse(elpos[3,], 0.10, 0.04, lab = "geneList2", box.col = "purple",
+              shadow.col = "purple4", shadow.size = 0.005, cex = 1.0)
   textround(elpos[4,], 0.10, 0.03,lab = "KEGG REST API", box.col = "orange1",
             shadow.col = "orange4", shadow.size = 0.005, cex = 1.0)
   textellipse(elpos[5,], 0.15, 0.04, lab = c("cleaned gene-to-pathway", "map"), box.col = "firebrick1",
