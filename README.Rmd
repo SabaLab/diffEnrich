@@ -19,7 +19,6 @@ knitr::opts_chunk$set(
   out.width = "100%",
   eval.after = 'fig.cap'
 ) 
-options(knitr.table.format = "html")
 ```
 # diffEnrich
 
@@ -218,7 +217,7 @@ kegg_df <- data.frame("get_kegg list object" = kegg_df_dat,
 
 ```{r get_kegg_kable, warning=FALSE, echo=FALSE, message=FALSE}
 if (require(kableExtra)){
-knitr::kable(kegg_df,
+knitr::kable(kegg_df, format = 'html',escape = FALSE,
              caption = "Table 1. Description of data sets generated from accessing KEGG REST API", row.names = FALSE) %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T)
 }
