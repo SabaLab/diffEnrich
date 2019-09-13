@@ -26,18 +26,17 @@ knitr::opts_chunk$set(
 The goal of diffEnrich is to compare functional enrichment between two experimentally-derived groups of genes or proteins. Given a list of gene symbols, *diffEnrich*  will
 perform differential enrichment analysis using the Kyoto Encyclopedia of Genes
 and Genomes (KEGG) REST API. This package provides a number of functions that are 
-intended to be used in a pipeline (See Figure 1). Briefly, the workflow will
+intended to be used in a pipeline (See Figure 1). Briefly, the user provides a KEGG formated species id for either human, mouse or rat, and the package will
 download and clean species specific ENTREZ gene IDs and map them to their respective
-KEGG pathways by accessing KEGG's REST API. This way the user will always have 
-the most up-to-date pathway data from KEGG. Next, the user will identify significantly
+KEGG pathways by accessing KEGG's REST API. KEGG's API is used ot guarantee the most up-to-date pathway data from KEGG. Next, the user will identify significantly
 enriched pathways from two different gene sets, and finally, the user will identify 
 pathways that are differentially enriched between the two gene sets. In addition to 
 the analysis pipeline, this package also provides a plotting function. 
 
 **The KEGG REST API**
 
-KEGG is a database resource for understanding high-level functions and utilities 
-of the biological system, such as the cell, the organism and the ecosystem, 
+KEGG is a database resource for understanding high-level functions 
+of a biological system, such as a cell, an organism and an ecosystem, 
 from genomic and molecular-level information [REF](https://www.kegg.jp/kegg/kegg1a.html). KEGG is an integrated database 
 resource consisting of eighteen databases that are clustered into 4 main categories:
 1) systems information (e.g. hierarchies and maps), 2) genomic information 
@@ -47,12 +46,12 @@ and 4) health information (e.g. human disease and drugs) [REF](https://www.kegg.
 In 2012 KEGG released its first application programming interface (API), and has been
 adding features and functionality ever since. There are benefits to using an API.
 First, API's like KEGG's allow users to perform customized analyses with the most
-up-to-date versions of the data contained in the data base. In addition, accessing the
+up-to-date versions of the data contained in the database. In addition, accessing the
 KEGG API is very easy using statistical programming tools like R or Python and
 integrating data pulls into user's code makes the program reproducible. To 
 further enforce reproducibilty *diffEnrich* adds a date and KEGG release tag to
 all data files it generates from accessing the API. For update histories and release 
-notes please go [here](https://www.kegg.jp/kegg/rest/). 
+notes for the KEGG REST API please go [here](https://www.kegg.jp/kegg/rest/). 
 
 
 ```{r, echo=FALSE, fig.cap='Figure 1. diffEnrich analysis pipeline.', dpi=400}

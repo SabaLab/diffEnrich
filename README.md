@@ -16,20 +16,21 @@ experimentally-derived groups of genes or proteins. Given a list of gene
 symbols, *diffEnrich* will perform differential enrichment analysis
 using the Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API. This
 package provides a number of functions that are intended to be used in a
-pipeline (See Figure 1). Briefly, the workflow will download and clean
-species specific ENTREZ gene IDs and map them to their respective KEGG
-pathways by accessing KEGG’s REST API. This way the user will always
-have the most up-to-date pathway data from KEGG. Next, the user will
-identify significantly enriched pathways from two different gene sets,
-and finally, the user will identify pathways that are differentially
-enriched between the two gene sets. In addition to the analysis
-pipeline, this package also provides a plotting function.
+pipeline (See Figure 1). Briefly, the user provides a KEGG formated
+species id for either human, mouse or rat, and the package will download
+and clean species specific ENTREZ gene IDs and map them to their
+respective KEGG pathways by accessing KEGG’s REST API. KEGG’s API is
+used ot guarantee the most up-to-date pathway data from KEGG. Next, the
+user will identify significantly enriched pathways from two different
+gene sets, and finally, the user will identify pathways that are
+differentially enriched between the two gene sets. In addition to the
+analysis pipeline, this package also provides a plotting function.
 
 **The KEGG REST API**
 
-KEGG is a database resource for understanding high-level functions and
-utilities of the biological system, such as the cell, the organism and
-the ecosystem, from genomic and molecular-level information
+KEGG is a database resource for understanding high-level functions of a
+biological system, such as a cell, an organism and an ecosystem, from
+genomic and molecular-level information
 [REF](https://www.kegg.jp/kegg/kegg1a.html). KEGG is an integrated
 database resource consisting of eighteen databases that are clustered
 into 4 main categories: 1) systems information (e.g. hierarchies and
@@ -42,12 +43,12 @@ In 2012 KEGG released its first application programming interface (API),
 and has been adding features and functionality ever since. There are
 benefits to using an API. First, API’s like KEGG’s allow users to
 perform customized analyses with the most up-to-date versions of the
-data contained in the data base. In addition, accessing the KEGG API is
+data contained in the database. In addition, accessing the KEGG API is
 very easy using statistical programming tools like R or Python and
 integrating data pulls into user’s code makes the program reproducible.
 To further enforce reproducibilty *diffEnrich* adds a date and KEGG
 release tag to all data files it generates from accessing the API. For
-update histories and release notes please go
+update histories and release notes for the KEGG REST API please go
 [here](https://www.kegg.jp/kegg/rest/).
 
 <img src="man/figures/README-unnamed-chunk-1-1.png" title="Figure 1. diffEnrich analysis pipeline." alt="Figure 1. diffEnrich analysis pipeline." width="100%" />
@@ -121,8 +122,7 @@ suppressMessages(library(diffEnrich))
 
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_91.0+_09-13_Sep_19
 ```
 
@@ -663,19 +663,19 @@ Tight junction - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.3832930
+0.3676651
 
 </td>
 
 <td style="text-align:right;">
 
-0.0006624
+0.0002936
 
 </td>
 
 <td style="text-align:right;">
 
-0.0006624
+0.0002936
 
 </td>
 
@@ -781,19 +781,19 @@ Yersinia infection - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.3648137
+0.3520039
 
 </td>
 
 <td style="text-align:right;">
 
-0.0007692
+0.0005435
 
 </td>
 
 <td style="text-align:right;">
 
-0.0007692
+0.0005435
 
 </td>
 
@@ -899,19 +899,19 @@ Colorectal cancer - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.3752664
+0.3655602
 
 </td>
 
 <td style="text-align:right;">
 
-0.0039469
+0.0032572
 
 </td>
 
 <td style="text-align:right;">
 
-0.0039469
+0.0032572
 
 </td>
 
@@ -1017,19 +1017,19 @@ Endometrial cancer - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.3397394
+0.3328275
 
 </td>
 
 <td style="text-align:right;">
 
-0.0066335
+0.0058775
 
 </td>
 
 <td style="text-align:right;">
 
-0.0066335
+0.0058775
 
 </td>
 
@@ -1135,19 +1135,19 @@ T cell receptor signaling pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.3992394
+0.3901694
 
 </td>
 
 <td style="text-align:right;">
 
-0.0083807
+0.0072048
 
 </td>
 
 <td style="text-align:right;">
 
-0.0083807
+0.0072048
 
 </td>
 
@@ -1253,19 +1253,19 @@ IL-17 signaling pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.3644360
+0.3572935
 
 </td>
 
 <td style="text-align:right;">
 
-0.0098022
+0.0087538
 
 </td>
 
 <td style="text-align:right;">
 
-0.0098022
+0.0087538
 
 </td>
 
