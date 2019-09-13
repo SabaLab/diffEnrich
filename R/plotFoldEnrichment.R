@@ -37,7 +37,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' plot <- plotFoldEnrichment(de_res = diffEnrich, pval = 0.05, N = 5)
+#' plot <- plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 #' }
 plotFoldEnrichment <- function(de_res, pval, N){
   # library(dplyr)

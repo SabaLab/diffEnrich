@@ -43,6 +43,6 @@ of plot, and largest p-value on bottom of plot).
 }
 \examples{
 \dontrun{
-plot <- plotFoldEnrichment(de_res = diffEnrich, pval = 0.05, N = 5)
+plot <- plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 }
 }
