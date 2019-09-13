@@ -91,7 +91,7 @@ Object.description
 ncbi\_to\_kegg
 </td>
 <td style="text-align:left;">
-ncbi gene ID KEGG gene ID
+ncbi gene ID &lt;-- mapped to --&gt; KEGG gene ID
 </td>
 </tr>
 <tr>
@@ -99,7 +99,7 @@ ncbi gene ID KEGG gene ID
 kegg\_to\_pathway
 </td>
 <td style="text-align:left;">
-KEGG gene ID KEGG pathway ID
+KEGG gene ID &lt;-- mapped to --&gt; KEGG pathway ID
 </td>
 </tr>
 <tr>
@@ -107,7 +107,7 @@ KEGG gene ID KEGG pathway ID
 pathway\_to\_species
 </td>
 <td style="text-align:left;">
-KEGG pathway ID KEGG pathway species description
+KEGG pathway ID &lt;-- mapped to --&gt; KEGG pathway species description
 </td>
 </tr>
 </tbody>
