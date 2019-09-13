@@ -119,8 +119,7 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_91.0+_09-13_Sep_19
 ```
 
@@ -1806,8 +1805,8 @@ p-value.
 
 *plotFoldEnrichment* generates a grouped bar plot using ggplot2 and the
 *ggnewscale* package. KEGG pathways are plotted on the y-axis and fold
-enrichment is plotted on the x-axis. each KEGG pathway has a bar
-plotting its fold enrichment in list 1 (red) and its fold enrichment in
+enrichment is plotted on the x-axis. Each KEGG pathway has a bar
+depicting its fold enrichment in list 1 (red) and its fold enrichment in
 list 2 (blue). The transparency of the bars correspond to the adjusted
 p-value (FDR) for the pathway’s enrichment in the given list. The
 p-value presented as text to the right of each pair of bars is the
