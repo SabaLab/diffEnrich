@@ -227,14 +227,14 @@ KEGG pathway ID KEGG pathway species description
 
 </table>
 
-### Step 2: Perform individual enrichment analysis
+### Step 2: Perform enrichment analysis of individual gene sets
 
 In this step we will use the *pathEnrich* function to identify KEGG
-pathways that are enriched (i.e. over-represented) based on two gene
-lists of interest. The ENTREZ gene IDs. User gene lists must also be
-character vectors and be formatted as ENTREZ gene IDs. The
-*clusterProfiler* offers a nice function (*bitr*) that maps gene symbols
-and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their
+pathways that are enriched (i.e. over-represented) based on a gene list
+of interest. User gene lists must also be character vectors and be
+formatted as ENTREZ gene IDs. The *clusterProfiler* package offers a
+nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ
+gene IDs, and an example can be seen in their
 [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter5.html#supported-organisms).
 
 ``` r
@@ -254,25 +254,10 @@ should be run at least twice, once for the genes of interest in list 1
 and once for the genes of interest in list2. Each *pathEnrich* call
 generates a data frame summarizing the results of an enrichment analysis
 in which a Fisher’s Exact test is used to identify which KEGG pathways
-are enriched by the user’s list of interesting genes with respect to
-background (universe), and a p-value is calculated using a
-hypergeometric distribution (Formula 1). P-values are adjusted for
-multiple comparisons by controlling the False Discovery Rate (FDR) at
-0.05.
-
-Formula 1:
-
-  
-![ P = 1-\\sum\_{i=0}^{k-1} \\frac{ \\binom{m} {i} \\binom{N-M} {n-i} }
-{\\binom{N} {n} }
-](https://latex.codecogs.com/png.latex?%20P%20%3D%201-%5Csum_%7Bi%3D0%7D%5E%7Bk-1%7D%20%5Cfrac%7B%20%5Cbinom%7Bm%7D%20%7Bi%7D%20%5Cbinom%7BN-M%7D%20%7Bn-i%7D%20%7D%20%7B%5Cbinom%7BN%7D%20%7Bn%7D%20%7D%20
-" P = 1-\\sum_{i=0}^{k-1} \\frac{ \\binom{m} {i} \\binom{N-M} {n-i} } {\\binom{N} {n} } ")  
-
-where N is the total number of genes in the background, M is the number
-of genes within that background that also in the gene set of interest, n
-is the size of the list of genes of interest and k is the number of
-genes within that are in the background. The background (universe) by
-default is all the genes that have annotation.
+are enriched within the user’s list of interesting genes compared to all
+genes annotated to a KEGG pathway. P-values from the Fisher’s Exact test
+are adjusted for multiple comparisons by controlling the False Discovery
+Rate (FDR) at 0.05.
 
 ``` r
 # run pathEnrich using kegg_rno
@@ -286,7 +271,7 @@ list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 
 <caption>
 
-Table 2. Head of list1\_pe data frame generated using pathEnrich
+Table 2. First 6 rows of list1\_pe data frame generated using pathEnrich
 
 </caption>
 
