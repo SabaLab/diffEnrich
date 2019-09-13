@@ -99,9 +99,9 @@ install.packages("diffEnrich")
 
 First we will use the *get\_kegg* function to access the KEGG REST API
 and download the data sets required to perform our downstream analysis.
-This function takes two arguments. The first, ‘species’ is required and
-is the species of interest. Currently, *diffEnrich* supports three
-species, and the argument is a character string using the KEGG code
+This function takes two arguments. The first, ‘species’ is required.
+Currently, *diffEnrich* supports three species, and the argument is a
+character string using the KEGG code
 [REF](https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf):
 Homo sapiens (human), use ‘hsa’; Mus musculus (mouse), use ‘mmu’, and
 Rattus norvegicus (rat), use ‘rno’. The second, ‘path’ is also passed as
@@ -114,16 +114,12 @@ describing the data, and for reproducibility, the date they were
 generated and the version of KEGG when the API was accessed. In addition
 to these flat files, *get\_kegg* will also create a named list with the
 three relevant KEGG data sets. The names of this list will describe the
-the data set. For a detailed description of list elements use
-*?get\_kegg*.
+data set. For a detailed description of list elements use *?get\_kegg*.
 
 ``` r
-suppressMessages(library(diffEnrich))
-
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_91.0+_09-13_Sep_19
 ```
 
@@ -139,9 +135,8 @@ with exact names. *get\_kegg* checks the path provided for data sets
 generated ‘same-day/same-version’, and if it finds even one of the
 three, it will not re-write any of the data sets. It will still however,
 let the user know it is not writing out new data sets and still generate
-the named list object. Users can of course generate
-‘same-day/same-version’ data sets in different directories if they so
-choose.
+the named list object. Users can generate ‘same-day/same-version’ data
+sets in different directories if they so choose.
 
 ``` r
 ## run get_kegg() using rat
