@@ -340,12 +340,12 @@ and the associated p-value.
 *ggnewscale* package. KEGG pathways are plotted on the y-axis and fold
 enrichment is plotted on the x-axis. Each KEGG pathway has a bar depicting
 its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue).
-The transparency of the bars correspond to the adjusted p-value (FDR) for the
+The transparency of the bars correspond to the unadjusted p-value for the
 pathway's enrichment in the given list. The p-value presented as text to the
 right of each pair of bars is the adjusted p-value (user defined: default is FDR) associated with the
 differential enrichment of the pathway between the two lists, and the pathways
 are ordered from top to bottom by this p-value (i.e. smallest p-value on top
-of plot, and largest p-value on bottom of plot). Finally, the number of genes used
+of plot, and largest p-value on bottom of plot). The dotted line represents a fold enrichment of 1. Finally, the number of genes used
 for analysis from each gene list (recall that this number may not be the same as the number of
 genes in the user's original list) are reported below their respective p-values
 in the legend. 

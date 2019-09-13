@@ -116,13 +116,13 @@ plotFoldEnrichment <- function(de_res, pval, N){
     dplyr::filter(!duplicated(.data$value))
 
   ## Format list p-values
-  options(scipen = 0, digits = 2)
+  options(scipen = 0, digits = 3)
   lpval <-formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)])
   #lpval <- ifelse(lpval < 0.000001, "< 0.000001", lpval)
 
   ## Generate finale plot
   p <- ggplot(mapping = aes(xmin = .data$xmin, xmax = .data$xmax, ymin = .data$ymin, ymax = .data$ymax)) +
-    geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = .data$pvals)) +
+    geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = .data$pvals), color = 'black') +
     ylim(0, max(bardat$value) + 1.0) + xlab("") + ylab("Fold Enrichment") +
     scale_fill_gradient(low = "darkred", high = "transparent",
                         #trans = 'log10',
@@ -131,7 +131,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         labels = lpval,
                         name = paste0("P-values List 1", "\n", "gene count: ", de_res[1,6])) +
     ggnewscale::new_scale_fill() +
-    geom_rect(data = ld[ld$vars == "fold_enrichment_list2", ], aes(fill = .data$pvals)) +
+    geom_rect(data = ld[ld$vars == "fold_enrichment_list2", ], aes(fill = .data$pvals), color = 'black') +
     scale_fill_gradient(low =  "navy", high = "transparent",
                         #trans = 'log10',
                         limits = c(min(ld$pvals), 0),
@@ -140,8 +140,9 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         name = paste0("P-values List 2", "\n", "gene count: ", de_res[1,12])) +
     scale_x_continuous(breaks = seq_along(unique(ld$descr)),
                        labels = unique(ld$descr)) +
+    geom_hline(yintercept=1.0, linetype ='dashed') +
     coord_flip() + theme_bw() +
     geom_text(data=df_ptext,
-              aes(x = 1:N, y = (max(bardat$value) + 0.4), label = round(.data$value, 5)))
+              aes(x = 1:N, y = (max(bardat$value) + 0.5), label = round(.data$value, 5)))
   return(p)
 }
