@@ -264,13 +264,13 @@ description <- c("KEGG Pathway Identifier",
                  "Number of Genes from gene list in KEGG Pathway",
                  "Number of Genes in KEGG Database",
                  "Number of Genes from gene list in KEGG Database",
-                 "Expected number of genes from list to be in KEGG pathway by chance (i.e., not enriched)",
-                 "P-value for enrichment of list genes related to KEGG pathway",
+                 "Expected number of genes from list to be in KEGG pathway by chance",
+                 "P-value for enrichment within the KEGG pathway for list genes",
                  "False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways",
-                 "KEGG_PATHWAY_in_list/expected")
+                 "Ratio of number of genes observed from the gene list annotated to the KEGG pathay to the number og genes expected from the gene list annotated to the KEGG pathway if ther was no enrichment (i.e. KEGG_PATHWAY_in_list/expected)")
 # Make dataframe
 df1 <- data.frame(names, description)
-colnames(df1) <- c("Column Names", "Column Description")
+colnames(df1) <- c("Column Names", "Column Description") 
 ```
 
 ```{r pathEnrich_vars_kable, warning=FALSE, echo=FALSE}

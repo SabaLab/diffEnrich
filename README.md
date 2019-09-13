@@ -119,7 +119,8 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
 #> Kegg Release: Release_91.0+_09-13_Sep_19
 ```
 
@@ -873,7 +874,6 @@ expected
 <td style="text-align:left;">
 
 Expected number of genes from list to be in KEGG pathway by chance
-(i.e., not enriched)
 
 </td>
 
@@ -889,7 +889,7 @@ enrich\_p
 
 <td style="text-align:left;">
 
-P-value for enrichment of list genes related to KEGG pathway
+P-value for enrichment within the KEGG pathway for list genes
 
 </td>
 
@@ -922,7 +922,10 @@ fold\_enrichment
 
 <td style="text-align:left;">
 
-KEGG\_PATHWAY\_in\_list/expected
+Ratio of number of genes observed from the gene list annotated to the
+KEGG pathay to the number og genes expected from the gene list annotated
+to the KEGG pathway if ther was no enrichment
+(i.e. KEGG\_PATHWAY\_in\_list/expected)
 
 </td>
 
