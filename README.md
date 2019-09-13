@@ -11,10 +11,11 @@ Status](https://travis-ci.com/SabaLab/diffEnrich.svg?token=M2jELEzTYYqmxZMY6hpb&
 
 ## Introduction
 
-The goal of diffEnrich is simple. Given a list of gene symbols,
-*diffEnrich* will perform differential enrichment analysis using the
-Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API. This package
-provides a number of functions that are intended to be used in a
+The goal of diffEnrich is to compare functional enrichment between two
+experimentally-derived groups of genes or proteins. Given a list of gene
+symbols, *diffEnrich* will perform differential enrichment analysis
+using the Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API. This
+package provides a number of functions that are intended to be used in a
 pipeline (See Figure 1). Briefly, the workflow will download and clean
 species specific ENTREZ gene IDs and map them to their respective KEGG
 pathways by accessing KEGG’s REST API. This way the user will always
@@ -122,7 +123,7 @@ suppressMessages(library(diffEnrich))
 kegg_rno <- get_kegg('rno')
 #> 3 data sets will be written as tab delimited text files
 #> File location: /Users/smiharry/Documents/packages/diffEnrich
-#> Kegg Release: Release_91.0+_08-28_Aug_19
+#> Kegg Release: Release_91.0+_09-13_Sep_19
 ```
 
 Here are examples of the output files:
@@ -145,7 +146,7 @@ choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_08-28_Aug_19
+#> Kegg Release: Release_91.0+_09-13_Sep_19
 ```
 
 ### Step 2: Perform individual enrichment analysis
