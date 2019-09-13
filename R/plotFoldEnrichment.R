@@ -118,6 +118,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ## Format list p-values
   options(scipen = 0, digits = 2)
   lpval <-as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)]
+  lpval <- as.character(lpval)
   #lpval <- ifelse(lpval < 0.000001, "< 0.000001", lpval)
 
   ## Generate finale plot
