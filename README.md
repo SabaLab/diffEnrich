@@ -120,7 +120,7 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_09-13_Sep_19
+#> Kegg Release: Release_91.0+_09-14_Sep_19
 ```
 
 Here are examples of the output files:
@@ -142,7 +142,7 @@ sets in different directories if they so choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_09-13_Sep_19
+#> Kegg Release: Release_91.0+_09-14_Sep_19
 ```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
@@ -2153,24 +2153,43 @@ p-value.
 ### Step 4: Plot fold enrichment
 
 *plotFoldEnrichment* generates a grouped bar plot using ggplot2 and the
-*ggnewscale* package. KEGG pathways are plotted on the y-axis and fold
-enrichment is plotted on the x-axis. Each KEGG pathway has a bar
-depicting its fold enrichment in list 1 (red) and its fold enrichment in
-list 2 (blue). The transparency of the bars correspond to the unadjusted
-p-value for the pathway’s enrichment in the given list. The p-value
-presented as text to the right of each pair of bars is the adjusted
-p-value (user defined: default is FDR) associated with the differential
-enrichment of the pathway between the two lists, and the pathways are
-ordered from top to bottom by this p-value (i.e. smallest p-value on top
-of plot, and largest p-value on bottom of plot). The dotted line
-represents a fold enrichment of 1. Finally, the number of genes used for
-analysis from each gene list (recall that this number may not be the
-same as the number of genes in the user’s original list) are reported
-below their respective p-values in the legend.
+*ggnewscale* package. There are 3 arguments: 1) *de\_res* is the
+dataframe generated from the *diffEnrich* function, 2) *pval* is the
+threshold for the adjusted p-value associated with differential
+enrichment that will filter which KEGG pathways to plot, and 3) after
+filtering based on *pval* *N* tells the function how many pathways to
+plot. It is important to make a note that the significance of the fold
+change is associated with the number of genes in the gene list. Notice
+that in this example the pathways in gene list 2 have smaller fold
+changes (shorter bars) than those in list 1, but that many of them are
+more significant (darker blue). This is because there are more genes in
+gene list 2 compred to gene list 1.
 
 ``` r
 ## Plot fold enrichment
 plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 ```
 
-<img src="man/figures/README-plotFoldEnrichment-1.png" width="100%" />
+<img src="man/figures/README-plotFoldEnrichment-1.png" title="Figure 2. Fold enrichment stratified by gene list. KEGG pathways are plotted on the y-axis and fold
+enrichment is plotted on the x-axis. Each KEGG pathway has a bar depicting
+its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue).
+The transparency of the bars correspond to the unadjusted p-value for the
+pathway's enrichment in the given list. The p-value presented as text to the
+right of each pair of bars is the adjusted p-value (user defined: default is FDR) associated with the
+differential enrichment of the pathway between the two lists, and the pathways
+are ordered from top to bottom by this p-value (i.e. smallest p-value on top
+of plot, and largest p-value on bottom of plot). The dotted line represents a fold enrichment of 1. Finally, the number of genes used
+for analysis from each gene list (recall that this number may not be the same as the number of
+genes in the user's original list) are reported below their respective p-values
+in the legend." alt="Figure 2. Fold enrichment stratified by gene list. KEGG pathways are plotted on the y-axis and fold
+enrichment is plotted on the x-axis. Each KEGG pathway has a bar depicting
+its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue).
+The transparency of the bars correspond to the unadjusted p-value for the
+pathway's enrichment in the given list. The p-value presented as text to the
+right of each pair of bars is the adjusted p-value (user defined: default is FDR) associated with the
+differential enrichment of the pathway between the two lists, and the pathways
+are ordered from top to bottom by this p-value (i.e. smallest p-value on top
+of plot, and largest p-value on bottom of plot). The dotted line represents a fold enrichment of 1. Finally, the number of genes used
+for analysis from each gene list (recall that this number may not be the same as the number of
+genes in the user's original list) are reported below their respective p-values
+in the legend." width="100%" />
