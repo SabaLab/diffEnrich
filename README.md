@@ -26,6 +26,9 @@ gene sets, and finally, the user will identify pathways that are
 differentially enriched between the two gene sets. In addition to the
 analysis pipeline, this package also provides a plotting function.
 
+**Note on figure legends:** To view figure legends, hover mouse over
+image.
+
 **The KEGG REST API**
 
 KEGG is a database resource for understanding high-level functions of a
