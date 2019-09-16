@@ -122,8 +122,9 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_09-14_Sep_19
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> Kegg Release: Release_91.0+_09-16_Sep_19
 ```
 
 Here are examples of the output files:
@@ -145,7 +146,7 @@ sets in different directories if they so choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_09-14_Sep_19
+#> Kegg Release: Release_91.0+_09-16_Sep_19
 ```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
@@ -188,7 +189,7 @@ ncbi\_to\_kegg
 
 <td style="text-align:left;">
 
-ncbi gene ID KEGG gene ID
+ncbi gene ID \<– mapped to –\> KEGG gene ID
 
 </td>
 
@@ -204,7 +205,7 @@ kegg\_to\_pathway
 
 <td style="text-align:left;">
 
-KEGG gene ID KEGG pathway ID
+KEGG gene ID \<– mapped to –\> KEGG pathway ID
 
 </td>
 
@@ -220,7 +221,7 @@ pathway\_to\_species
 
 <td style="text-align:left;">
 
-KEGG pathway ID KEGG pathway species description
+KEGG pathway ID \<– mapped to –\> KEGG pathway species description
 
 </td>
 
