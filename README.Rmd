@@ -27,9 +27,9 @@ knitr::opts_chunk$set(
 The goal of diffEnrich is to compare functional enrichment between two experimentally-derived groups of genes or proteins. Given a list of gene symbols, *diffEnrich*  will
 perform differential enrichment analysis using the Kyoto Encyclopedia of Genes
 and Genomes (KEGG) REST API. This package provides a number of functions that are 
-intended to be used in a pipeline (See Figure 1). Briefly, the user provides a KEGG formated species id for either human, mouse or rat, and the package will
+intended to be used in a pipeline (See Figure 1). Briefly, the user provides a KEGG formatted species id for either human, mouse or rat, and the package will
 download and clean species specific ENTREZ gene IDs and map them to their respective
-KEGG pathways by accessing KEGG's REST API. KEGG's API is used ot guarantee the most up-to-date pathway data from KEGG. Next, the user will identify significantly
+KEGG pathways by accessing KEGG's REST API. KEGG's API is used to guarantee the most up-to-date pathway data from KEGG. Next, the user will identify significantly
 enriched pathways from two different gene sets, and finally, the user will identify 
 pathways that are differentially enriched between the two gene sets. In addition to 
 the analysis pipeline, this package also provides a plotting function. 
@@ -339,7 +339,7 @@ and the associated p-value.
 ### Step 4: Plot fold enrichment
 
 *plotFoldEnrichment* generates a grouped bar plot using ggplot2 and the
-*ggnewscale* package. There are 3 arguments: 1) *de_res* is the dataframe generated from the *diffEnrich* function, 2) *pval* is the threshold for the adjusted p-value associated with differential enrichment that will filter which KEGG pathways to plot, and 3) after filtering based on *pval* *N* tells the function how many pathways to plot. It is important to make a note that the significance of the fold change is associated with the number of genes in the gene list. Notice that in this example the pathways in gene list 2 have smaller fold changes (shorter bars) than those in list 1, but that many of them are more significant (darker blue). This is because there are more genes in gene list 2 compred to gene list 1.  
+*ggnewscale* package. There are 3 arguments: 1) *de_res* is the dataframe generated from the *diffEnrich* function, 2) *pval* is the threshold for the adjusted p-value associated with differential enrichment that will filter which KEGG pathways to plot, and 3) after filtering based on *pval* *N* tells the function how many pathways to plot. It is important to make a note that the significance of the fold change is associated with the number of genes in the gene list. Notice that in this example the pathways in gene list 2 have smaller fold changes (shorter bars) than those in list 1, but that many of them are more significant (darker blue). This is because there are more genes in gene list 2 compared to gene list 1.  
 
 ```{r echo=FALSE}
 cap_plot <- c("Figure 2. Fold enrichment stratified by gene list. KEGG pathways are plotted on the y-axis and fold

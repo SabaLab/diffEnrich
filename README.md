@@ -16,11 +16,11 @@ experimentally-derived groups of genes or proteins. Given a list of gene
 symbols, *diffEnrich* will perform differential enrichment analysis
 using the Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API. This
 package provides a number of functions that are intended to be used in a
-pipeline (See Figure 1). Briefly, the user provides a KEGG formated
+pipeline (See Figure 1). Briefly, the user provides a KEGG formatted
 species id for either human, mouse or rat, and the package will download
 and clean species specific ENTREZ gene IDs and map them to their
 respective KEGG pathways by accessing KEGG’s REST API. KEGG’s API is
-used ot guarantee the most up-to-date pathway data from KEGG. Next, the
+used to guarantee the most up-to-date pathway data from KEGG. Next, the
 user will identify significantly enriched pathways from two different
 gene sets, and finally, the user will identify pathways that are
 differentially enriched between the two gene sets. In addition to the
@@ -122,8 +122,7 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_91.0+_09-16_Sep_19
 ```
 
@@ -2167,7 +2166,7 @@ change is associated with the number of genes in the gene list. Notice
 that in this example the pathways in gene list 2 have smaller fold
 changes (shorter bars) than those in list 1, but that many of them are
 more significant (darker blue). This is because there are more genes in
-gene list 2 compred to gene list 1.
+gene list 2 compared to gene list 1.
 
 ``` r
 ## Plot fold enrichment
