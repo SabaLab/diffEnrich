@@ -926,8 +926,8 @@ fold\_enrichment
 <td style="text-align:left;">
 
 Ratio of number of genes observed from the gene list annotated to the
-KEGG pathay to the number of genes expected from the gene list annotated
-to the KEGG pathway if ther was no enrichment
+KEGG pathway to the number of genes expected from the gene list
+annotated to the KEGG pathway if there was no enrichment
 (i.e. KEGG\_PATHWAY\_in\_list/expected)
 
 </td>
@@ -1987,8 +1987,8 @@ fold\_enrichment\_list1
 <td style="text-align:left;">
 
 Ratio of number of genes observed from the gene list 1 annotated to the
-KEGG pathay to the number of genes expected from the gene list 1
-annotated to the KEGG pathway if ther was no enrichment
+KEGG pathway to the number of genes expected from the gene list 1
+annotated to the KEGG pathway if there was no enrichment
 (i.e. KEGG\_PATHWAY\_in\_list1/expected\_list1)
 
 </td>
@@ -2087,8 +2087,8 @@ fold\_enrichment\_list2
 <td style="text-align:left;">
 
 Ratio of number of genes observed from the gene list 2 annotated to the
-KEGG pathay to the number of genes expected from the gene list 2
-annotated to the KEGG pathway if ther was no enrichment
+KEGG pathway to the number of genes expected from the gene list 2
+annotated to the KEGG pathway if there was no enrichment
 (i.e. KEGG\_PATHWAY\_in\_list2/expected\_list2)
 
 </td>
