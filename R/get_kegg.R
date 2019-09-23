@@ -1,5 +1,5 @@
 #' @title get_kegg
-#' @description This function calls an internal helper function that connects to the KEGG API, downloads, and cleans
+#' @description This function calls an internal helper function that connects to the KEGG API, downloads, and stores
 #' ncbi gene ID data, KEGG pathway descriptions, and species specific data.
 #' Currently, this function supports Human, Mouse, and Rat. Files will be
 #' written to the working directory unless otherwise specified by the user.
@@ -7,6 +7,20 @@
 #' @param species character. The species to use in kegg data pull
 #' @param path character. A character string describing the path to write out KEGG
 #' API data sets. If not provided, defaults to current working directory.
+#'
+#' @details the \code{get_kegg} function is used to connect to the KEGG REST API
+#' and download the data sets required to perform downstream analysis.
+#' Currently, this function supports three species, and recognizes the KEGG code
+#' for Homo sapiens (‘hsa’), Mus musculus (‘mmu’), and Rattus norvegicus (‘rno’).
+#' For a given species, three data sets are generated: 1) Because the user must
+#' provide their own gene lists in downstream analysis using ENTREZ gene IDs,
+#' the data set maps NCBI/ENTREZ gene IDs to KEGG gene IDs, 2) a data set that
+#' maps KEGG gene IDs to their respective KEGG pathway IDs, and 3) a data set that
+#' maps KEGG pathway IDs to their respective pathway descriptions.  This function
+#' allows the user save versioned (based on KEGG release) and time-stamped text
+#' files of the three data sets described above. In addition to these flat files,
+#' \code{get_kegg()} will also create a named list with the three relevant KEGG
+#' data sets. The names of this list will describe the data set.
 #'
 #' @return kegg_out: A named list of the data pulled from kegg api when the
 #' function was run. This may be different if the function is run at
