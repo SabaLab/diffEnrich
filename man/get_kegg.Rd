@@ -44,6 +44,14 @@ allows the user save versioned (based on KEGG release) and time-stamped text
 files of the three data sets described above. In addition to these flat files,
 \code{get_kegg()} will also create a named list with the three relevant KEGG
 data sets. The names of this list will describe the data set.
+
+\strong{Table 1.} Description of \code{get_kegg} list object
+\tabular{ll}{
+   \strong{get_kegg_list_object} \tab \strong{Object_description}                              \cr
+   ncbi_to_kegg         \tab ncbi gene ID <-- mapped to --> KEGG gene ID                       \cr
+   kegg_to_pathway      \tab KEGG gene ID <-- mapped to --> KEGG pathway ID                    \cr
+   pathway_to_species   \tab KEGG pathway ID <-- mapped to --> KEGG pathway species description
+}
 }
 \examples{
 \dontrun{
