@@ -116,8 +116,8 @@ plotFoldEnrichment <- function(de_res, pval, N){
     dplyr::filter(!duplicated(.data$value))
 
   ## Format list p-values
-  options(scipen = 0, digits = 3)
-  lpval <-formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)])
+  options(scipen = 0, digits = 1)
+  lpval <-formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], digits = 1)
   #lpval <- ifelse(lpval < 0.000001, "< 0.000001", lpval)
 
   ## Generate finale plot
