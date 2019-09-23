@@ -18,7 +18,7 @@ using the Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API. This
 package provides a number of functions that are intended to be used in a
 pipeline (See Figure 1). Briefly, the user provides a KEGG formatted
 species id for either human, mouse or rat, and the package will download
-and clean species specific ENTREZ gene IDs and map them to their
+and store species specific ENTREZ gene IDs and map them to their
 respective KEGG pathways by accessing KEGG’s REST API. KEGG’s API is
 used to guarantee the most up-to-date pathway data from KEGG. Next, the
 user will identify significantly enriched pathways from two different
@@ -122,9 +122,8 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
-#> Kegg Release: Release_91.0+_09-18_Sep_19
+#> These files already exist in your working directory. New files will not be generated.
+#> Kegg Release: Release_91.0+_09-23_Sep_19
 ```
 
 Here are examples of the output files:
@@ -146,7 +145,7 @@ sets in different directories if they so choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_09-18_Sep_19
+#> Kegg Release: Release_91.0+_09-23_Sep_19
 ```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">

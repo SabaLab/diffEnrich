@@ -29,7 +29,7 @@ The goal of diffEnrich is to compare functional enrichment between two experimen
 perform differential enrichment analysis using the Kyoto Encyclopedia of Genes
 and Genomes (KEGG) REST API. This package provides a number of functions that are 
 intended to be used in a pipeline (See Figure 1). Briefly, the user provides a KEGG formatted species id for either human, mouse or rat, and the package will
-download and clean species specific ENTREZ gene IDs and map them to their respective
+download and store species specific ENTREZ gene IDs and map them to their respective
 KEGG pathways by accessing KEGG's REST API. KEGG's API is used to guarantee the most up-to-date pathway data from KEGG. Next, the user will identify significantly
 enriched pathways from two different gene sets, and finally, the user will identify 
 pathways that are differentially enriched between the two gene sets. In addition to 
@@ -58,7 +58,7 @@ notes for the KEGG REST API please go [here](https://www.kegg.jp/kegg/rest/).
 ```{r, echo=FALSE, out.height='600px', out.width='600px', dpi=300, fig.cap=cap}
 suppressMessages(library(diagram))
 
-## open plot
+## open plot 
 par(mar = c(0.5, 0.5, 0.5, 0.5))
 openplotmat()
 ## define number of boxes at each level
