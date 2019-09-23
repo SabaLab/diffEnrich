@@ -157,7 +157,7 @@ install.packages("diffEnrich")
 
 ## Example
 
-### Step 1: Collect and clean pathways from KEGG API
+### Step 1: Collect and store pathways from KEGG API
 First we will use the *get_kegg* function to access the KEGG REST API and download the data sets required to perform 
 our downstream analysis. This function takes two arguments. The first, 'species' is required. Currently, *diffEnrich* supports three species, and the argument is a character string using the KEGG
 code [REF](https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf): 
