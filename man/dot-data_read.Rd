@@ -9,6 +9,12 @@
 \arguments{
 \item{path}{character. A character string describing the path to write out KEGG
 API data sets. If not provided, defaults to current working directory.}
+
+\item{date}{character. A character string describing the date that was used to
+time stamp files from previous call. Must be formatted like YYYY-MM-DD.}
+
+\item{release}{character. A character string describing the KEGG release that was used to
+time stamp files from previous call (e.g. "90" or "92")}
 }
 \value{
 kegg_out: A named list of the data pulled from kegg api when the

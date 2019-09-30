@@ -58,7 +58,10 @@
 #' }
 #' \dontrun{
 #' kegg <- get_kegg(species = "mmu", path = "usr/data/out/")
-#' kegg <- get_kegg(species = "mmu", path = "usr/data/out/", read = TRUE, date = "2019-09-30", release = "92")
+#' kegg <- get_kegg(species = "mmu", path = "usr/data/out/",
+#' read = TRUE,
+#' date = "2019-09-30",
+#' release = "92")
 #' }
 #'
 get_kegg <- function(species, read = FALSE, path = NULL, date, release){
@@ -215,6 +218,10 @@ get_kegg <- function(species, read = FALSE, path = NULL, date, release){
 #'
 #' @param path character. A character string describing the path to write out KEGG
 #' API data sets. If not provided, defaults to current working directory.
+#' @param date character. A character string describing the date that was used to
+#' time stamp files from previous call. Must be formatted like YYYY-MM-DD.
+#' @param release character. A character string describing the KEGG release that was used to
+#' time stamp files from previous call (e.g. "90" or "92")
 #'
 #' @return kegg_out: A named list of the data pulled from kegg api when the
 #' function was run. This may be different if the function is run at

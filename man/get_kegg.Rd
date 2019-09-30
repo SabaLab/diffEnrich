@@ -69,7 +69,10 @@ kegg <- get_kegg(species = "rno")
 }
 \dontrun{
 kegg <- get_kegg(species = "mmu", path = "usr/data/out/")
-kegg <- get_kegg(species = "mmu", path = "usr/data/out/", read = TRUE, date = "2019-09-30", release = "92")
+kegg <- get_kegg(species = "mmu", path = "usr/data/out/",
+read = TRUE,
+date = "2019-09-30",
+release = "92")
 }
 
 }
