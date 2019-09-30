@@ -225,7 +225,10 @@ get_kegg <- function(species, path = NULL){
                flist,
                fixed = FALSE)]
   # Tell user what you are doing
-  message("Reading in the following files:", want)
+  message("Reading in the following files:")
+  message(want[2])
+  message(want[1])
+  message(want[3])
   message("File location: ", path)
   # Read in files
   ncbi_to_kegg <- utils::read.table(paste0(path, "/", want[2]),
