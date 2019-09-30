@@ -224,5 +224,22 @@ get_kegg <- function(species, path = NULL){
   want <- flist[grep(paste(tomatch, collapse = "|"),
                flist,
                fixed = FALSE)]
-
+  # Tell user what you are doing
+  message("Reading in the following files:", want)
+  message("File location: ", path)
+  # Read in files
+  ncbi_to_kegg <- utils::read.table(paste0(path, "/", want[2]),
+                                    header = FALSE,
+                                    sep = "\t")
+  kegg_to_pathway <- utils::read.table(paste0(path, "/", want[1]),
+                                    header = FALSE,
+                                    sep = "\t")
+  pathway_to_species <- utils::read.table(paste0(path, "/", want[3]),
+                                    header = FALSE,
+                                    sep = "\t")
+  ## Generate names list
+  kegg_out <- list("ncbi_to_kegg" = ncbi_to_kegg,
+                   "kegg_to_pathway" = kegg_to_pathway,
+                   "pathway_to_species" = pathway_to_species)
+  return(kegg_out)
 }
