@@ -193,3 +193,26 @@ get_kegg <- function(species, path = NULL){
     return(kegg_out)
   }
 }
+
+
+#' @title .data_read
+#' @description This function reads in the text files generated from a previous
+#' \code{get_kegg} call and saves them as a names list formatted for down
+#' stream analysis.
+#'
+#' @param path character. A character string describing the path to write out KEGG
+#' API data sets. If not provided, defaults to current working directory.
+#'
+#' @return kegg_out: A named list of the data pulled from kegg api when the
+#' function was run. This may be different if the function is run at
+#' different times. For reproducible results, use text files generated
+#' by function that include the date they were pulled.
+#'
+#' @importFrom here here
+#' @import utils
+#' @importFrom stringr str_extract
+#'
+
+.data_read <- function(path = path){
+
+}
