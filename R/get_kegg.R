@@ -213,6 +213,16 @@ get_kegg <- function(species, path = NULL){
 #' @importFrom stringr str_extract
 #'
 
-.data_read <- function(path = path){
+.data_read <- function(path = path, date = date, release = release){
+  options(stringsAsFactors = F)
+  # Define user's base file path
+  flist <- list.files(path)
+  # define regex to match on for files
+  pfix <- c("ncbi_to_kegg", "kegg_to_pathway", "pathway_to_species")
+  tomatch <- paste0(pfix, date, "Release_", release)
+  # find files based on date saved and egg release
+  want <- flist[grep(paste(tomatch, collapse = "|"),
+               flist,
+               fixed = FALSE)]
 
 }
