@@ -32,7 +32,7 @@ of the pathway analysis and contains the following variables:
   \item{KEGG_DATABASE_in_list}{Number of Genes from gene list in KEGG Database}
   \item{expected}{Expected number of genes from list to be in KEGG pathway by chance (i.e., not enriched)}
   \item{enrich_p}{P-value for enrichment of list genes related to KEGG pathway}
-  \item{fdr}{False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways}
+  \item{p_adj}{False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways}
   \item{fold_enrichment}{KEGG_PATHWAY_in_list/expected}
 }
 }

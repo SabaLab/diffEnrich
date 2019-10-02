@@ -30,13 +30,13 @@ of the differential enrichment and contains the following variables:
   \item{KEGG_DATABASE_in_list1}{Number of Genes from gene list 1 in KEGG Database}
   \item{expected_list1}{Expected number of genes from list 1 to be in KEGG pathway by chance (i.e., not enriched)}
   \item{enrich_p_list1}{P-value for enrichment of list 1 genes related to KEGG pathway}
-  \item{fdr_list1}{False Discovery Rate (Benjamini and Hochberg) of enrich_p_list1 to account for multiple testing across KEGG pathways}
+  \item{p_adj_list1}{Multiple testing adjustment of enrich_p_list1 (default = False Discovery Rate (Benjamini and Hochberg))}
   \item{fold_enrichment_list1}{KEGG_PATHWAY_in_list1/expected_list1}
   \item{KEGG_PATHWAY_in_list2}{Number of Genes from gene list 2 in KEGG Pathway}
   \item{KEGG_DATABASE_in_list2}{Number of Genes from gene list 2 in KEGG Database}
   \item{expected_list2}{Expected number of genes from list 2 to be in KEGG pathway by chance (i.e., not enriched)}
   \item{enrich_p_list2}{P-value for enrichment of list 2 genes related to KEGG pathway}
-  \item{fdr_list2}{False Discovery Rate (Benjamini and Hochberg) of enrich_p_list2 to account for multiple testing across KEGG pathways}
+  \item{p_adj_list2}{Multiple testing adjustment of enrich_p_list2 (default = False Discovery Rate (Benjamini and Hochberg))}
   \item{fold_enrichment_list2}{KEGG_PATHWAY_in_list2/expected_list2}
   \item{odd_ratio}{Odds of a gene from list 2 being from this KEGG pathway / Odds of a gene from list 1 being from this KEGG pathway}
   \item{diff_enrich_p}{P-value for differential enrichment of this KEGG pathway between list 1 and list 2}

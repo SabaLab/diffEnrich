@@ -26,7 +26,7 @@
 #'   \item{KEGG_DATABASE_in_list}{Number of Genes from gene list in KEGG Database}
 #'   \item{expected}{Expected number of genes from list to be in KEGG pathway by chance (i.e., not enriched)}
 #'   \item{enrich_p}{P-value for enrichment of list genes related to KEGG pathway}
-#'   \item{fdr}{False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways}
+#'   \item{p_adj}{False Discovery Rate (Benjamini and Hochberg) to account for multiple testing across KEGG pathways}
 #'   \item{fold_enrichment}{KEGG_PATHWAY_in_list/expected}
 #' }
 #'
@@ -110,6 +110,6 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH'){
   ## Add menaingful column names for the C1 and C2
   colnames(enrich_table) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_PATHWAY_in_list",
                                       "KEGG_DATABASE_cnt", "KEG_DATABASE_in_list", "expected", "enrich_p",
-                                      "fdr", "fold_enrichment")
+                                      "p_adj", "fold_enrichment")
   return(enrich_table)
 }
