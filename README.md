@@ -122,7 +122,8 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
 #> Kegg Release: Release_92.0+_10-02_Oct_19
 ```
 
@@ -333,7 +334,7 @@ enrich\_p
 
 <th style="text-align:right;">
 
-fdr
+p\_adj
 
 </th>
 
@@ -902,14 +903,14 @@ P-value for enrichment within the KEGG pathway for list genes
 
 <td style="text-align:left;">
 
-fdr
+p\_adj
 
 </td>
 
 <td style="text-align:left;">
 
-False Discovery Rate (Benjamini and Hochberg) to account for multiple
-testing across KEGG pathways
+Multiple testing adjustment of enrich\_p (default = False Discovery Rate
+(Benjamini and Hochberg))
 
 </td>
 
@@ -926,7 +927,7 @@ fold\_enrichment
 <td style="text-align:left;">
 
 Ratio of number of genes observed from the gene list annotated to the
-KEGG pathway to the number of genes expected from the gene list
+KEGG pathway to the number og genes expected from the gene list
 annotated to the KEGG pathway if there was no enrichment
 (i.e. KEGG\_PATHWAY\_in\_list/expected)
 
@@ -1019,7 +1020,7 @@ enrich\_p\_list1
 
 <th style="text-align:right;">
 
-fdr\_list1
+p\_adj\_list1
 
 </th>
 
@@ -1055,7 +1056,7 @@ enrich\_p\_list2
 
 <th style="text-align:right;">
 
-fdr\_list2
+p\_adj\_list2
 
 </th>
 
@@ -1963,14 +1964,14 @@ P-value for enrichment of list 1 genes related to KEGG pathway
 
 <td style="text-align:left;">
 
-fdr\_list1
+p\_adj\_list1
 
 </td>
 
 <td style="text-align:left;">
 
-False Discovery Rate (Benjamini and Hochberg) of enrich\_p\_list1 to
-account for multiple testing across KEGG pathways
+Multiple testing adjustment of enrich\_p\_list1 (default = False
+Discovery Rate (Benjamini and Hochberg))
 
 </td>
 
@@ -2063,14 +2064,14 @@ P-value for enrichment of list 2 genes related to KEGG pathway
 
 <td style="text-align:left;">
 
-fdr\_list2
+p\_adj\_list2
 
 </td>
 
 <td style="text-align:left;">
 
-False Discovery Rate (Benjamini and Hochberg) of enrich\_p\_list2 to
-account for multiple testing across KEGG pathways
+Multiple testing adjustment of enrich\_p\_list2 (default = False
+Discovery Rate (Benjamini and Hochberg))
 
 </td>
 
