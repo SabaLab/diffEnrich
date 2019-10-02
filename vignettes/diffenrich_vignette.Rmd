@@ -234,7 +234,7 @@ head(geneLists$list2)
 This function may not always use the complete list of genes provided 
 by the user. Specifically, it will only use the genes from the list provided that are also in
 the most current species list pulled from the KEGG REST API using *get_kegg*, or from the older KEGG data loaded by the user from a 
-previous *get_kegg* call. The *pathEnrich* function should be run at least twice, once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched within the user's list of interesting genes compared to all genes annotated to a KEGG pathway. P-values from the Fisher's Exact test are adjusted for multiple comparisons by controlling the False Discovery Rate (FDR) at 0.05.
+previous *get_kegg* call. The *pathEnrich* function should be run at least twice, once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched within the user's list of interesting genes compared to all genes annotated to a KEGG pathway. Users can choose from those supported by *stats::p.adjust* for multiple correction options, and the default is the False Discovery Rate (Benjamini and Hochberg, [1995](http://www.jstor.org/stable/2346101)).
  
 ```{r pathEnrich, warning=FALSE}
 # run pathEnrich using kegg_rno

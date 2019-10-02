@@ -123,7 +123,7 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_09-23_Sep_19
+#> Kegg Release: Release_92.0+_10-02_Oct_19
 ```
 
 Here are examples of the output files:
@@ -145,7 +145,7 @@ sets in different directories if they so choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_91.0+_09-23_Sep_19
+#> Kegg Release: Release_92.0+_10-02_Oct_19
 ```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
@@ -258,9 +258,10 @@ and once for the genes of interest in list2. Each *pathEnrich* call
 generates a data frame summarizing the results of an enrichment analysis
 in which a Fisher’s Exact test is used to identify which KEGG pathways
 are enriched within the user’s list of interesting genes compared to all
-genes annotated to a KEGG pathway. P-values from the Fisher’s Exact test
-are adjusted for multiple comparisons by controlling the False Discovery
-Rate (FDR) at 0.05.
+genes annotated to a KEGG pathway. Users can choose from those supported
+by *stats::p.adjust* for multiple correction options, and the default is
+the False Discovery Rate (Benjamini and Hochberg,
+[1995](http://www.jstor.org/stable/2346101)).
 
 ``` r
 # run pathEnrich using kegg_rno
