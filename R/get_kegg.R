@@ -230,7 +230,6 @@ get_kegg <- function(species, read = FALSE, path = NULL, date, release){
 #'
 #' @importFrom here here
 #' @import utils
-#' @importFrom stringr str_extract
 #'
 
 .data_read <- function(path = path, date = date, release = release){
