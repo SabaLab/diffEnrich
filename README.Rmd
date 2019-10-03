@@ -124,27 +124,14 @@ cap <- c("Figure 1. diffEnrich Analysis pipeline. Functions within the diffEnric
 
 **Motivating experimental design for differential enrichment**
 
-A recent [study](https://onlinelibrary.wiley.com/doi/full/10.1111/acer.13766) explored 
-the hepatic mechanism for removal of toxic lipid aldehydes via conjugation with glutathione (Cheng et al., [2001](https://www.ncbi.nlm.nih.gov/pubmed/11488593?dopt=Abstract);
-Gallagher et al., [2007](https://www.ncbi.nlm.nih.gov/pubmed/17553661?dopt=Abstract)) 
-and the primary enzyme that catalyzes this conjugation, glutathione S‐transferase A4‐4 (GSTA4).
-Specifically, the researchers examine the role of the GSTA4 gene on protein 
-carbonylation and the progression of liver injury in a model consisting of long‐term 
-(116 days) chronic ethanol (EtOH) consumption followed by a single EtOH binge.
+Often high throughput omics studies include a functional enrichment analysis to glean biological insight from a list of candidate genes, proteins, metabolites, etc. Functional enrichment examines whether the number of genes in the list associated with a biological function or particular pathway is more than would be expected by chance.  As an example, enrichment of a particular pathway among a list of genes that are differentially expressed after an experimental manipulation may indicate that the pathway has been altered by that manipulation. This analysis is rather straight forward and many solutions have been offered (e.g., [Haung et al., 2009](https://www.ncbi.nlm.nih.gov/pubmed/19033363); [Kuleshov et al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27141961); [Liao et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31114916); [Subramanian et al., 2005](https://www.pnas.org/content/102/43/15545)) as well as a wide variety of databases used to define these pathways (e.g., [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) and ontologies (e.g., [Ashburn et al., 2000](https://www.ncbi.nlm.nih.gov/pubmed/10802651)).
 
-Functional enrichment of carbonylated proteins for KEGG pathways was tested 
-using a 1‐sided Fisher's exact test in each experimental group 
-(2 genotypes × 3 treatment conditions = 6 experimental groups). Differential 
-enrichment between experimental groups was examined using a 2‐sided Fisher's exact test.
-For KEGG pathway enrichment, proteins were mapped to pathways using their UniProt ID, 
-and databases were downloaded from the KEGG API.
+One key component of a statistically rigorous functional enrichment analysis is the definition of a background data set that can be used to estimate the number of candidate genes that are ‘expected’ to be associated with the pathway by chance, e.g., if 5% of genes in the background data set are associated with a pathway then 5% of candidate gene are expected to be associated with the pathway by chance. For many study designs, the background data set is relatively simple to define (e.g., RNA-Seq analyses where the background data set includes genes expressed above background). 
 
-Note: This example uses proteins as the feature of interest, however *diffEnrich*
-currently only supports genes as the feature of interest.
+However, for some newer omics technologies, the background data set is hard to define. For example, LC-MS analysis can be used to identify carbonylated proteins ( [Peterson et al., 2018](https://www.ncbi.nlm.nih.gov/pubmed/29799837); [Shearn et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31377417); [Shearn et al., 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6028296/)). With this study design, carbonylated proteins are isolated using a BH-derivation and then LC-MS is used to identify peptides in this isolated sample. The most appropriate background data set would be proteins present in that tissue, but this would require a separate analytical analysis. Furthermore, most functional enrichment analyses involve a single gene list. However, in protein modification studies, the typical experimental design compares the presence or absence of particular modified proteins between treatment groups. 
 
-Differential enrichment analysis of carbonylated proteins indicated that compared 
-to chow‐fed animals, the most overrepresented group of proteins that was 
-significantly adducted after long‐term EtOH exposure was ribosomal proteins.
+When there are two or more gene lists to compare and the background gene list is not clearly defined, as is often the case in protein modification experiments, we propose a differential enrichment analysis. In this analysis, we compare the proportion of genes/proteins from one gene list associated with a particular pathway to the proportion of genes/proteins from a second gene list that are associated with that pathway. To easily execute this analysis, we have designed an R package that uses the KEGG REST API to obtain the most recent version of the KEGG PATHWAY ( [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) database to initially identify functional enrichment within a gene list using the entire KEGG transcriptome as the background data set and then to identify differentially enriched pathways between two gene lists. This R package includes a function to generate a ‘differential enrichment’ graphic.
+
 
 
 ## Installation
@@ -238,7 +225,7 @@ head(geneLists$list2)
 This function may not always use the complete list of genes provided 
 by the user. Specifically, it will only use the genes from the list provided that are also in
 the most current species list pulled from the KEGG REST API using *get_kegg*, or from the older KEGG data loaded by the user from a 
-previous *get_kegg* call. The *pathEnrich* function should be run at least twice, once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched within the user's list of interesting genes compared to all genes annotated to a KEGG pathway. Users can choose from those supported by *stats::p.adjust* for multiple correction options, and the default is the False Discovery Rate (Benjamini and Hochberg, [1995](http://www.jstor.org/stable/2346101)).
+previous *get_kegg* call. The *pathEnrich* function should be run at least twice, once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched within the user's list of interesting genes compared to all genes annotated to a KEGG pathway. Users can choose from those supported by *stats::p.adjust* for multiple correction options, and the default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)).
  
 ```{r pathEnrich, warning=FALSE}
 # run pathEnrich using kegg_rno
@@ -286,7 +273,7 @@ knitr::kable(df1,
 The *diffEnrich* function will merge two results from the *pathEnrich* calls generated above. Specifically, the data frame
 'list1_pe' and the data frame 'list2_pe' will be merged by the following columns:
 "KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt". This merged data set will then be used to perform differential enrichment using the same method and p-value calculation as described above. Users do have the option of choosing a method 
-for multiple testing adjustment. Users can choose from those supported by *stats::p.adjust* for multiple correction options, and the default is the False Discovery Rate (Benjamini and Hochberg, [1995](http://www.jstor.org/stable/2346101)).
+for multiple testing adjustment. Users can choose from those supported by *stats::p.adjust* for multiple correction options, and the default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)).
 
 ```{r diffEnrich}
 ## Perform differential enrichment
@@ -361,3 +348,28 @@ in the legend.")
 plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 ```
 
+# References
+
+Ashburner et al. (2000) Gene ontology: tool for the unification of biology. Nat Genet. 25(1):25-29.
+
+Benjamini, Y., and Hochberg, Y. (1995). Controlling the false discovery rate: a practical and powerful approach to multiple testing. Journal of the Royal Statistical Society Series B,.57, 289–300
+
+Huang DW. et al. (2009) Bioinformatics enrichment tools: paths toward the comprehensive functional analysis of large gene lists. Nucleic Acids Res. 37(1):1-13.
+
+Kanehisa, M. and Goto, S. (2000) KEGG: Kyoto Encyclopedia of Genes and Genomes. Nucleic Acids Res. 28, 27-30.
+
+Kuleshov MV. et al. (2016) Enrichr: a comprehensive gene set enrichment analysis web server 2016 update. Nucleic Acids Res. 44(1): 90 – 97. 
+
+Liao, Y. et al. (2019) Gene set analysis toolkit with revamped UIs and APIs, Nucleic Acids Res. 47(1):199 – 205.
+
+Petersen DR. et al. (2018) Elevated Nrf-2 responses are insufficient to mitigate protein carbonylation in hepatospecific PTEN deletion mice. PLoS One. 13(5):e0198139.
+
+Shearn CT. et al. (2019) Cholestatic liver disease results increased production of reactive aldehydes and an atypical periportal hepatic antioxidant response. Free Radic Biol Med;143:101-114. [Epub ahead ofbprint] PubMed PMID: 31377417.
+
+Shearn CT. et al. (2018) Knockout of the Gsta4 Gene in Male Mice Leads to an
+Altered Pattern of Hepatic Protein Carbonylation and Enhanced Inflammation
+Following Chronic Consumption of an Ethanol Diet. Alcohol Clin Exp Res. 42(7):1192-1205. 
+
+Subramanian T. et al. (2005) Gene set enrichment analysis: A knowledge-based approach for interpreting genome-wide expression profiles. PNAS 102, 15545-15550. 
+
+Yu G. et al. (2012). clusterProfiler: an R package for comparing biological themes among gene clusters. OMICS. 16(5), 284-287.
