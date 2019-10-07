@@ -111,5 +111,19 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH'){
   colnames(enrich_table) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_PATHWAY_in_list",
                                       "KEGG_DATABASE_cnt", "KEG_DATABASE_in_list", "expected", "enrich_p",
                                       "p_adj", "fold_enrichment")
+  class(enrich_table) <- c("diffEnrich", "data.frame")
   return(enrich_table)
 }
+
+
+#' @rdname pathEnrich
+#' @method summary pathEnrich
+#' @export
+summary.diffEnrich <- function(x, ...){
+
+}
+
+
+
+
+
