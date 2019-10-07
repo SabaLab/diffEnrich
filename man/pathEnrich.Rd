@@ -29,7 +29,11 @@ use for multiple testing correction. Available methods are thos provided by
 
 \item{x}{object of class \code{diffEnrich}}
 
+\item{...}{additional arguments to be passed to \code{print}}
+
 \item{object}{object of class \code{diffEnrich}}
+
+\item{...}{additional arguments to be passed to \code{summary}}
 }
 \value{
 A list object of class \code{diffEnrich} that contains 4 items:

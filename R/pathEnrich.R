@@ -144,6 +144,7 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH'){
 #' @rdname pathEnrich
 #' @method print diffEnrich
 #' @param x object of class \code{diffEnrich}
+#' @param ... additional arguments to be passed to \code{print}
 #' @export
 print.diffEnrich <- function(x, ...){
   dplyr::as_tibble(x$enrich_table)
@@ -153,6 +154,7 @@ print.diffEnrich <- function(x, ...){
 #' @rdname pathEnrich
 #' @method summary diffEnrich
 #' @param object object of class \code{diffEnrich}
+#' @param ... additional arguments to be passed to \code{summary}
 #' @export
 summary.diffEnrich <- function(object, ...){
   ## summary part 1
