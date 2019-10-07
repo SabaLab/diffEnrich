@@ -153,19 +153,19 @@ print.diffEnrich <- function(x){
 #' @method summary diffEnrich
 #' @export
 summary.diffEnrich <- function(x){
+  ## summary part 1
   l1 <- paste0(
     dim(x$enrich_table)[1], ' KEGG pathways were tested. \n')
   l2 <- paste0("KEGG pathway species: ", x$species, "\n")
   l3 <- paste0(
     x$enrich_table$KEGG_DATABASE_cnt[1], ' genes from gene_list were in the KEGG data pull. \n')
   l4 <- paste0("p-value adjustment method: ", x$padj, "\n")
-  l5 <- paste0(sum(list1_pe$enrich_table$p_adj < 0.05), " pathways reached statistical significance after multiple testing correction. \n")
+  l5 <- paste0(sum(x$enrich_table$p_adj < 0.05), " pathways reached statistical significance after multiple testing correction. \n")
   cat(
     l1, l2, l3, l4, l5, "\n")
-
-  cat("Significant pathways: \n")
+  ## summary part 2
   paths <- paste(x$sig_pathways, collapse = "\n")
-  cat(paths)
+  cat("Significant pathways: \n", paths)
 }
 
 
