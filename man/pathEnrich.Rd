@@ -10,9 +10,9 @@
 \usage{
 pathEnrich(gk_obj, gene_list, method = "BH")
 
-\method{print}{diffEnrich}(x)
+\method{print}{diffEnrich}(x, ...)
 
-\method{summary}{diffEnrich}(x)
+\method{summary}{diffEnrich}(object, ...)
 }
 \arguments{
 \item{gk_obj}{list. Object genrated from \code{get_kegg}, or a list containing the

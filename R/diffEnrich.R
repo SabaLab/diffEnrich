@@ -112,7 +112,7 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
   if(missing(list2_pe)){stop("Argument missing: list2_pe")}
 
   ## Merge results from first enrichment
-  combined_enrich <- merge(list1_pe, list2_pe, by = c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt"))
+  combined_enrich <- merge(list1_pe$enrich_table, list2_pe$enrich_table, by = c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt"))
   colnames(combined_enrich) <- gsub(".x", "_list1", colnames(combined_enrich), fixed = TRUE)
   colnames(combined_enrich) <- gsub(".y", "_list2", colnames(combined_enrich), fixed = TRUE)
   colnames(combined_enrich) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt",

@@ -144,7 +144,7 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH'){
 #' @rdname pathEnrich
 #' @method print diffEnrich
 #' @export
-print.diffEnrich <- function(x){
+print.diffEnrich <- function(x, ...){
   dplyr::as_tibble(x$enrich_table)
 }
 
@@ -152,19 +152,19 @@ print.diffEnrich <- function(x){
 #' @rdname pathEnrich
 #' @method summary diffEnrich
 #' @export
-summary.diffEnrich <- function(x){
+summary.diffEnrich <- function(object, ...){
   ## summary part 1
   l1 <- paste0(
-    dim(x$enrich_table)[1], ' KEGG pathways were tested. \n')
-  l2 <- paste0("KEGG pathway species: ", x$species, "\n")
+    dim(object$enrich_table)[1], ' KEGG pathways were tested. \n')
+  l2 <- paste0("KEGG pathway species: ", object$species, "\n")
   l3 <- paste0(
-    x$enrich_table$KEGG_DATABASE_cnt[1], ' genes from gene_list were in the KEGG data pull. \n')
-  l4 <- paste0("p-value adjustment method: ", x$padj, "\n")
-  l5 <- paste0(sum(x$enrich_table$p_adj < 0.05), " pathways reached statistical significance after multiple testing correction. \n")
+    object$enrich_table$KEGG_DATABASE_cnt[1], ' genes from gene_list were in the KEGG data pull. \n')
+  l4 <- paste0("p-value adjustment method: ", object$padj, "\n")
+  l5 <- paste0(sum(object$enrich_table$p_adj < 0.05), " pathways reached statistical significance after multiple testing correction. \n")
   cat(
     l1, l2, l3, l4, l5, "\n")
   ## summary part 2
-  paths <- paste(x$sig_pathways, collapse = "\n")
+  paths <- paste(object$sig_pathways, collapse = "\n")
   cat("Significant pathways: \n", paths)
 }
 
