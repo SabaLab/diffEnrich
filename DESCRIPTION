@@ -19,7 +19,7 @@ Description: The goal of diffEnrich is to compare functional enrichment between 
   enriched pathways from two different gene sets, and finally, the user will identify 
   pathways that are differentially enriched between the two gene sets. In addition to 
   the analysis pipeline, this package also provides a plotting function. 
-License: MIT
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1

@@ -154,7 +154,7 @@ data set. For a detailed description of list elements use *?get\_kegg*.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_92.0+_10-03_Oct_19
+#> Kegg Release: Release_92.0+_10-07_Oct_19
 ```
 
 Here are examples of the output files:
@@ -176,7 +176,7 @@ sets in different directories if they so choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_92.0+_10-03_Oct_19
+#> Kegg Release: Release_92.0+_10-07_Oct_19
 ```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">

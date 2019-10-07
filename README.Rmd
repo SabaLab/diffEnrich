@@ -236,7 +236,7 @@ list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 ```
 
 ```{r pathEnrich_kable, warning=FALSE, echo=FALSE}
-knitr::kable(head(list1_pe),
+knitr::kable(head(list1_pe$enrich_table),
              caption = "Table 2. First 6 rows of list1_pe data frame generated using pathEnrich", row.names = FALSE) %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T)
 ```
@@ -245,7 +245,7 @@ knitr::kable(head(list1_pe),
 
 ```{r pathEnrich_description, echo=FALSE}
 # get column names
-names <- colnames(list1_pe)
+names <- colnames(list1_pe$enrich_table)
 # Define column names
 description <- c("KEGG Pathway Identifier",
                  "Description of KEGG Pathway (provided by KEGG)",

@@ -2,9 +2,7 @@
 % Please edit documentation in R/pathEnrich.R
 \name{pathEnrich}
 \alias{pathEnrich}
-\alias{print.pathEnrich}
 \alias{print.diffEnrich}
-\alias{summary.pathEnrich}
 \alias{summary.diffEnrich}
 \title{pathEnrich}
 \usage{
@@ -32,8 +30,6 @@ use for multiple testing correction. Available methods are thos provided by
 \item{\dots}{Unused}
 
 \item{object}{object of class \code{diffEnrich}}
-
-\item{\dots}{Unused}
 }
 \value{
 A list object of class \code{diffEnrich} that contains 4 items:
