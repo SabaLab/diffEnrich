@@ -143,16 +143,18 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH'){
 #' @name print.pathEnrich
 #' @rdname pathEnrich
 #' @method print diffEnrich
+#' @param x object of class \code{diffEnrich}
 #' @export
-print.diffEnrich <- function(x, ...){
+print.diffEnrich <- function(x){
   dplyr::as_tibble(x$enrich_table)
 }
 
 #' @name summary.pathEnrich
 #' @rdname pathEnrich
 #' @method summary diffEnrich
+#' @param object object of class \code{diffEnrich}
 #' @export
-summary.diffEnrich <- function(object, ...){
+summary.diffEnrich <- function(object){
   ## summary part 1
   l1 <- paste0(
     dim(object$enrich_table)[1], ' KEGG pathways were tested. \n')
