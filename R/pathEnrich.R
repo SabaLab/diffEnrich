@@ -14,8 +14,14 @@
 #' use for multiple testing correction. Available methods are thos provided by
 #' \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).
 #'
-#' @return enrich_table: An object of class data.frame that summarizes the results
-#' of the pathway analysis and contains the following variables:
+#' @return A list object of class \code{diffEnrich} that contains 4 items:
+#'
+#' \describe{
+#' \item{species}{The species used in enrichment}
+#' \item{padj}{The method used to correct for multiple testing}
+#' \item{sig_paths}{The KEGG pathways the reached statistical significance after multiple testing correction.}
+#' \item{enrich_table}{A data frame that summarizes the results of the pathway analysis and contains the following variables:}
+#' }
 #'
 #' \describe{
 #'   \item{KEGG_PATHWAY_ID}{KEGG Pathway Identifier}
@@ -33,7 +39,11 @@
 #' @details This function may not always use the complete list of genes provided by the user.
 #' Specifically, it will only use the genes from the list provided that are also in
 #' the most current species list pulled from the KEGG REST API, or from the older data KEGG
-#' loaded by the user.
+#' loaded by the user. S3 generic functions for \code{print} and \code{summary} are
+#' provided. The \code{print} function prints the results table as a \code{tibble}, and the
+#' \code{summary} function returns the number of pathways that reached statistical significance
+#' as well as their descriptions, the number of genes used from the KEGG data base, the KEGG species, and the
+#' method used for multiple testing correction.
 #'
 #' @export
 #' @importFrom  stats fisher.test
@@ -56,6 +66,8 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH'){
   ## Prepare gene list
   #gene_list <- gene_list[!is.na(gene_list)]
   gene_list <- as.integer(gene_list)
+  # define p.adjust method
+  p.adj <- method
 
   ## prepare kegg data
   ncbi_to_kegg <- gk_obj[["ncbi_to_kegg"]]
@@ -111,16 +123,49 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH'){
   colnames(enrich_table) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_PATHWAY_in_list",
                                       "KEGG_DATABASE_cnt", "KEG_DATABASE_in_list", "expected", "enrich_p",
                                       "p_adj", "fold_enrichment")
-  class(enrich_table) <- c("diffEnrich", "data.frame")
-  return(enrich_table)
+  ## define species
+  species <- unlist(strsplit(enrich_table$KEGG_PATHWAY_description[1], split = " - ", fixed = TRUE))[2]
+  ## Extract sicgnificant pathways
+  sig_paths <- enrich_table %>%
+    dplyr::filter(.data$p_adj < 0.05) %>%
+    pull(.data$KEGG_PATHWAY_description)
+  sig_paths <- unlist(lapply(strsplit(sig_paths, split = " - ", fixed = TRUE), function(x) x[1]))
+  ## build results list
+  res <- list("species" = species,
+    "padj" = p.adj,
+    "enrich_table" = enrich_table,
+    "sig_pathways" = sig_paths)
+  ## define class attr
+  class(res) <- c("diffEnrich")
+  return(res)
 }
 
-
+#' @name print.pathEnrich
 #' @rdname pathEnrich
-#' @method summary pathEnrich
+#' @method print diffEnrich
 #' @export
-summary.diffEnrich <- function(x, ...){
+print.diffEnrich <- function(x){
+  dplyr::as_tibble(x$enrich_table)
+}
 
+#' @name summary.pathEnrich
+#' @rdname pathEnrich
+#' @method summary diffEnrich
+#' @export
+summary.diffEnrich <- function(x){
+  l1 <- paste0(
+    dim(x$enrich_table)[1], ' KEGG pathways were tested. \n')
+  l2 <- paste0("KEGG pathway species: ", x$species, "\n")
+  l3 <- paste0(
+    x$enrich_table$KEGG_DATABASE_cnt[1], ' genes from gene_list were in the KEGG data pull. \n')
+  l4 <- paste0("p-value adjustment method: ", x$padj, "\n")
+  l5 <- paste0(sum(list1_pe$enrich_table$p_adj < 0.05), " pathways reached statistical significance after multiple testing correction. \n")
+  cat(
+    l1, l2, l3, l4, l5, "\n")
+
+  cat("Significant pathways: \n")
+  paths <- paste(x$sig_pathways, collapse = "\n")
+  cat(paths)
 }
 
 

@@ -2,9 +2,17 @@
 % Please edit documentation in R/pathEnrich.R
 \name{pathEnrich}
 \alias{pathEnrich}
+\alias{print.pathEnrich}
+\alias{print.diffEnrich}
+\alias{summary.pathEnrich}
+\alias{summary.diffEnrich}
 \title{pathEnrich}
 \usage{
 pathEnrich(gk_obj, gene_list, method = "BH")
+
+\method{print}{diffEnrich}(x)
+
+\method{summary}{diffEnrich}(x)
 }
 \arguments{
 \item{gk_obj}{list. Object genrated from \code{get_kegg}, or a list containing the
@@ -20,8 +28,14 @@ use for multiple testing correction. Available methods are thos provided by
 \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).}
 }
 \value{
-enrich_table: An object of class data.frame that summarizes the results
-of the pathway analysis and contains the following variables:
+A list object of class \code{diffEnrich} that contains 4 items:
+
+\describe{
+\item{species}{The species used in enrichment}
+\item{padj}{The method used to correct for multiple testing}
+\item{sig_paths}{The KEGG pathways the reached statistical significance after multiple testing correction.}
+\item{enrich_table}{A data frame that summarizes the results of the pathway analysis and contains the following variables:}
+}
 
 \describe{
   \item{KEGG_PATHWAY_ID}{KEGG Pathway Identifier}
@@ -46,7 +60,11 @@ calculated.
 This function may not always use the complete list of genes provided by the user.
 Specifically, it will only use the genes from the list provided that are also in
 the most current species list pulled from the KEGG REST API, or from the older data KEGG
-loaded by the user.
+loaded by the user. S3 generic functions for \code{print} and \code{summary} are
+provided. The \code{print} function prints the results table as a \code{tibble}, and the
+\code{summary} function returns the number of pathways that reached statistical significance
+as well as their descriptions, the number of genes used from the KEGG data base, the KEGG species, and the
+method used for multiple testing correction.
 }
 \examples{
 
