@@ -6,7 +6,12 @@
 #' pathways between the terms enriched in the gene-of-interest list and the pathways enriched
 #' in the background. \code{diffEnrich} returns a dataframe containing differentially enriched
 #' pathways with their associated estimated odds ratio, unadjusted p-value, and fdr adjusted
-#' p-value.
+#' p-value. S3 generic functions for \code{print} and \code{summary} are
+#' provided. The \code{print} function prints the results table as a \code{tibble}, and the
+#' \code{summary} function returns the number of pathways that reached statistical significance
+#' as well as their descriptions, the number of genes used from the KEGG data base, the KEGG species,
+#' the number of pathways that were shared (and therefore tested) between the gene lists and the
+#' method used for multiple testing correction.
 #'
 #' @param list1_pe data.frame. Dataframe of enrichment results for genes of interest
 #' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
@@ -16,8 +21,15 @@
 #' use for multiple testing correction. Available methods are thos provided by
 #' \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).
 #'
-#' @return res: An object of class data.frame that summarizes the results
-#' of the differential enrichment and contains the following variables:
+#' @return A list object of class \code{diffEnrich} that contains 5 items:
+#'
+#' \describe{
+#' \item{species}{The species used in enrichment}
+#' \item{padj}{The method used to correct for multiple testing for the differential enrichment}
+#' \item{sig_paths}{The KEGG pathways the reached statistical significance after multiple testing correction.}
+#' \item{path_intersect}{the number of pathways that were shared (and therefore tested) between the gene lists.}
+#' \item{de_table}{A data frame that summarizes the results of the differential enrichment analysis and contains the following variables:}
+#' }
 #'
 #' \describe{
 #'   \item{KEGG_PATHWAY_ID}{KEGG Pathway Identifier}
@@ -55,8 +67,13 @@
 #' dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none')
 #'
 diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
+  ## check class
+  if(class(list1_pe) != "pathEnrich"){stop("list1_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
+  if(class(list2_pe) != "pathEnrich"){stop("list2_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
   ## Call .combineEnrich helper function
   ce <- .combineEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
+  # define p.adjust method
+  p.adj <- method
 
   ## Build diffEnrich Fisher's Exact function
   de <- function(a,b,c,d){
@@ -78,12 +95,33 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
 
   ## re-order table based on adjusted p-value
   # library(dplyr)
-  res <- res %>%
+  de_table <- res %>%
     arrange(.data$diff_enrich_adjusted)
 
   ## update rownames
-  rownames(res) <- res$KEGG_PATHWAY_ID
-  return(res)
+  rownames(de_table) <- de_table$KEGG_PATHWAY_ID
+
+  ## define species
+  species <- unlist(strsplit(de_table$KEGG_PATHWAY_description[1], split = " - ", fixed = TRUE))[2]
+
+  ## define pathway intersect
+  path_intersect <- dim(de_table)[1]
+
+  ## Extract sicgnificant pathways
+  sig_paths <- de_table %>%
+    dplyr::filter(.data$diff_enrich_adjusted < 0.05) %>%
+    pull(.data$KEGG_PATHWAY_description)
+  sig_paths <- unlist(lapply(strsplit(sig_paths, split = " - ", fixed = TRUE), function(x) x[1]))
+
+  ## build results list
+  out <- list("species" = species,
+              "padj" = p.adj,
+              "path_intersect" = path_intersect,
+              "de_table" = de_table,
+              "sig_pathways" = sig_paths)
+  ## define class attr
+  class(out) <- c("diffEnrich")
+  return(out)
 }
 
 
@@ -122,4 +160,36 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
 
   out <- combined_enrich
   return(out)
+}
+
+
+#' @name print.diffEnrich
+#' @rdname diffEnrich
+#' @method print diffEnrich
+#' @param x object of class \code{diffEnrich}
+#' @param \dots Unused
+#' @export
+print.diffEnrich <- function(x, ...){
+  dplyr::as_tibble(x$de_table)
+}
+
+#' @name summary.diffEnrich
+#' @rdname diffEnrich
+#' @method summary diffEnrich
+#' @param object object of class \code{diffEnrich}
+#' @export
+summary.diffEnrich <- function(object, ...){
+  ## summary part 1
+  l1 <- paste0(
+    object$path_intersect, ' KEGG pathways were shared between gene lists and were tested. \n')
+  l2 <- paste0("KEGG pathway species: ", object$species, "\n")
+  l3 <- paste0(
+    object$de_table$KEGG_DATABASE_cnt[1], ' genes from gene_list were in the KEGG data pull. \n')
+  l4 <- paste0("p-value adjustment method: ", object$padj, "\n")
+  l5 <- paste0(sum(object$de_table$diff_enrich_adjusted < 0.05), " pathways reached statistical significance after multiple testing correction. \n")
+  cat(
+    l1, l2, l3, l4, l5, "\n")
+  ## summary part 2
+  paths <- paste(object$sig_pathways, collapse = "\n")
+  cat("Significant pathways: \n", paths)
 }

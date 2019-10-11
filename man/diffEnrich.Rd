@@ -2,9 +2,15 @@
 % Please edit documentation in R/diffEnrich.R
 \name{diffEnrich}
 \alias{diffEnrich}
+\alias{print.diffEnrich}
+\alias{summary.diffEnrich}
 \title{diffEnrich}
 \usage{
 diffEnrich(list1_pe, list2_pe, method = "BH")
+
+\method{print}{diffEnrich}(x, ...)
+
+\method{summary}{diffEnrich}(object, ...)
 }
 \arguments{
 \item{list1_pe}{data.frame. Dataframe of enrichment results for genes of interest
@@ -16,10 +22,23 @@ generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}
 \item{method}{character. Character string telling \code{diffEnrich} which method to
 use for multiple testing correction. Available methods are thos provided by
 \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).}
+
+\item{x}{object of class \code{diffEnrich}}
+
+\item{\dots}{Unused}
+
+\item{object}{object of class \code{diffEnrich}}
 }
 \value{
-res: An object of class data.frame that summarizes the results
-of the differential enrichment and contains the following variables:
+A list object of class \code{diffEnrich} that contains 5 items:
+
+\describe{
+\item{species}{The species used in enrichment}
+\item{padj}{The method used to correct for multiple testing for the differential enrichment}
+\item{sig_paths}{The KEGG pathways the reached statistical significance after multiple testing correction.}
+\item{path_intersect}{the number of pathways that were shared (and therefore tested) between the gene lists.}
+\item{de_table}{A data frame that summarizes the results of the differential enrichment analysis and contains the following variables:}
+}
 
 \describe{
   \item{KEGG_PATHWAY_ID}{KEGG Pathway Identifier}
@@ -51,7 +70,12 @@ This function then uses a Fisher's Exact test to iddentify differentially enrich
 pathways between the terms enriched in the gene-of-interest list and the pathways enriched
 in the background. \code{diffEnrich} returns a dataframe containing differentially enriched
 pathways with their associated estimated odds ratio, unadjusted p-value, and fdr adjusted
-p-value.
+p-value. S3 generic functions for \code{print} and \code{summary} are
+provided. The \code{print} function prints the results table as a \code{tibble}, and the
+\code{summary} function returns the number of pathways that reached statistical significance
+as well as their descriptions, the number of genes used from the KEGG data base, the KEGG species,
+the number of pathways that were shared (and therefore tested) between the gene lists and the
+method used for multiple testing correction.
 }
 \examples{
 ## Generate individual enrichment reults
