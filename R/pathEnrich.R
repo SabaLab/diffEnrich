@@ -14,7 +14,7 @@
 #' use for multiple testing correction. Available methods are thos provided by
 #' \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).
 #'
-#' @return A list object of class \code{diffEnrich} that contains 4 items:
+#' @return A list object of class \code{pathEnrich} that contains 4 items:
 #'
 #' \describe{
 #' \item{species}{The species used in enrichment}
@@ -136,26 +136,26 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH'){
     "enrich_table" = enrich_table,
     "sig_pathways" = sig_paths)
   ## define class attr
-  class(res) <- c("diffEnrich")
+  class(res) <- c("pathEnrich")
   return(res)
 }
 
-#' @name print.diffEnrich
+#' @name print.pathEnrich
 #' @rdname pathEnrich
-#' @method print diffEnrich
-#' @param x object of class \code{diffEnrich}
+#' @method print pathEnrich
+#' @param x object of class \code{pathEnrich}
 #' @param \dots Unused
 #' @export
-print.diffEnrich <- function(x, ...){
+print.pathEnrich <- function(x, ...){
   dplyr::as_tibble(x$enrich_table)
 }
 
-#' @name summary.diffEnrich
+#' @name summary.pathEnrich
 #' @rdname pathEnrich
-#' @method summary diffEnrich
-#' @param object object of class \code{diffEnrich}
+#' @method summary pathEnrich
+#' @param object object of class \code{pathEnrich}
 #' @export
-summary.diffEnrich <- function(object, ...){
+summary.pathEnrich <- function(object, ...){
   ## summary part 1
   l1 <- paste0(
     dim(object$enrich_table)[1], ' KEGG pathways were tested. \n')
