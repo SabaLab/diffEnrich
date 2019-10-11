@@ -47,13 +47,14 @@ plotFoldEnrichment <- function(de_res, pval, N){
   if(missing(pval)){stop("Argument missing: pval - please provide a threshold")}
   if(missing(N)){stop("Argument missing: N - if you'd like to plot top pathways, please provide a threshold and make sure N > 0")}
   if(N < 1){stop("Number of top genes (N) must be > 0")}
+  if(class(de_res) != "diffEnrich"){stop("de_res must be an object of class 'diffEnrich'. Please generate this object using the diffEnrich function provided in this package.")}
 
   ###########################################################
   # Prepare and reshape data for plotting using ggplot
   ###########################################################
 
   ## Strip extra columns from de_res and filter based on pval. Then sort by pval.
-  df <- de_res %>%
+  df <- de_res$de_table %>%
     dplyr::select(.data$KEGG_PATHWAY_ID, .data$KEGG_PATHWAY_description,
                   .data$fold_enrichment_list1, .data$fold_enrichment_list2,
                   .data$enrich_p_list1, .data$enrich_p_list2,
@@ -129,7 +130,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         limits = c(min(ld$pvals), 0),
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
                         labels = lpval,
-                        name = paste0("P-values List 1", "\n", "gene count: ", de_res[1,6])) +
+                        name = paste0("P-values List 1", "\n", "gene count: ", de_res$de_table[1,6])) +
     ggnewscale::new_scale_fill() +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list2", ], aes(fill = .data$pvals), color = 'black') +
     scale_fill_gradient(low =  "navy", high = "transparent",
@@ -137,7 +138,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                         limits = c(min(ld$pvals), 0),
                         breaks = as.numeric(summary(ld$pvals))[c(1,2,3,5,6)],
                         labels = lpval,
-                        name = paste0("P-values List 2", "\n", "gene count: ", de_res[1,12])) +
+                        name = paste0("P-values List 2", "\n", "gene count: ", de_res$de_table[1,12])) +
     scale_x_continuous(breaks = seq_along(unique(ld$descr)),
                        labels = unique(ld$descr)) +
     geom_hline(yintercept=1.0, linetype ='dashed') +
