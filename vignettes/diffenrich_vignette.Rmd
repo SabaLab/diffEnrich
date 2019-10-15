@@ -25,13 +25,13 @@ options(knitr.table.format = "html")
 
 ## Introduction
 
-The goal of diffEnrich is to compare functional enrichment between two experimentally-derived groups of genes or proteins. Given a list of gene symbols, *diffEnrich*  will
+The goal of diffEnrich is to compare functional enrichment between two experimentally-derived groups of genes or proteins. Given a list of NCBI gene symbols, *diffEnrich*  will
 perform differential enrichment analysis using the Kyoto Encyclopedia of Genes
 and Genomes (KEGG) REST API. This package provides a number of functions that are 
 intended to be used in a pipeline (See Figure 1). Briefly, the user provides a KEGG formatted species id for either human, mouse or rat, and the package will
 download and store species specific ENTREZ gene IDs and map them to their respective
-KEGG pathways by accessing KEGG's REST API. KEGG's API is used to guarantee the most up-to-date pathway data from KEGG. Next, the user will identify significantly
-enriched pathways from two different gene sets, and finally, the user will identify 
+KEGG pathways by accessing the KEGG REST API. The KEGG API is used to guarantee the most up-to-date pathway data from KEGG. Next, the user will identify significantly
+enriched pathways in two different gene sets, and finally, the user will identify 
 pathways that are differentially enriched between the two gene sets. In addition to 
 the analysis pipeline, this package also provides a plotting function. 
 
@@ -39,18 +39,18 @@ the analysis pipeline, this package also provides a plotting function.
 
 KEGG is a database resource for understanding high-level functions 
 of a biological system, such as a cell, an organism and an ecosystem, 
-from genomic and molecular-level information [REF](https://www.kegg.jp/kegg/kegg1a.html). KEGG is an integrated database 
+from genomic and molecular-level information [https://www.kegg.jp/kegg/kegg1a.html](https://www.kegg.jp/kegg/kegg1a.html). KEGG is an integrated database 
 resource consisting of eighteen databases that are clustered into 4 main categories:
 1) systems information (e.g. hierarchies and maps), 2) genomic information 
 (e.g. genes and proteins), 3) chemical information (e.g. biochemical reactions), 
-and 4) health information (e.g. human disease and drugs) [REF](https://www.kegg.jp/kegg/kegg1a.html). 
+and 4) health information (e.g. human disease and drugs) [https://www.kegg.jp/kegg/kegg1a.html](https://www.kegg.jp/kegg/kegg1a.html). 
 
 In 2012 KEGG released its first application programming interface (API), and has been
 adding features and functionality ever since. There are benefits to using an API.
 First, API's like KEGG's allow users to perform customized analyses with the most
 up-to-date versions of the data contained in the database. In addition, accessing the
 KEGG API is very easy using statistical programming tools like R or Python and
-integrating data pulls into user's code makes the program reproducible. To 
+integrating data retrevial into user's code makes the program reproducible. To 
 further enforce reproducibilty *diffEnrich* adds a date and KEGG release tag to
 all data files it generates from accessing the API. For update histories and release 
 notes for the KEGG REST API please go [here](https://www.kegg.jp/kegg/rest/). 
@@ -121,11 +121,11 @@ cap <- c("Figure 1. diffEnrich Analysis pipeline. Functions within the diffEnric
 
 **Motivating experimental design for differential enrichment**
 
-Often high throughput omics studies include a functional enrichment analysis to glean biological insight from a list of candidate genes, proteins, metabolites, etc. Functional enrichment examines whether the number of genes in the list associated with a biological function or particular pathway is more than would be expected by chance.  As an example, enrichment of a particular pathway among a list of genes that are differentially expressed after an experimental manipulation may indicate that the pathway has been altered by that manipulation. This analysis is rather straight forward and many solutions have been offered (e.g., [Haung et al., 2009](https://www.ncbi.nlm.nih.gov/pubmed/19033363); [Kuleshov et al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27141961); [Liao et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31114916); [Subramanian et al., 2005](https://www.pnas.org/content/102/43/15545)) as well as a wide variety of databases used to define these pathways (e.g., [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) and ontologies (e.g., [Ashburn et al., 2000](https://www.ncbi.nlm.nih.gov/pubmed/10802651)).
+Often high throughput omics studies include a functional enrichment analysis to glean biological insight from a list of candidate genes, proteins, metabolites, etc. Functional enrichment examines whether the number of genes in the list associated with a biological function or particular pathway is more than would be expected by chance.  As an example, enrichment of a particular pathway among a list of genes that are differentially expressed after an experimental manipulation may indicate that the pathway has been altered by that manipulation. This analysis is rather straight forward and many solutions have been offered (e.g., [Haung et al., 2009](https://www.ncbi.nlm.nih.gov/pubmed/19033363); [Kuleshov et al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27141961); [Liao et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31114916); [Subramanian et al., 2005](https://www.pnas.org/content/102/43/15545)) as well a wide variety of databases have been used to define these pathways (e.g., [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) and ontologies (e.g., [Ashburn et al., 2000](https://www.ncbi.nlm.nih.gov/pubmed/10802651)).
 
 One key component of a statistically rigorous functional enrichment analysis is the definition of a background data set that can be used to estimate the number of candidate genes that are ‘expected’ to be associated with the pathway by chance, e.g., if 5% of genes in the background data set are associated with a pathway then 5% of candidate gene are expected to be associated with the pathway by chance. For many study designs, the background data set is relatively simple to define (e.g., RNA-Seq analyses where the background data set includes genes expressed above background). 
 
-However, for some newer omics technologies, the background data set is hard to define. For example, LC-MS analysis can be used to identify carbonylated proteins ( [Peterson et al., 2018](https://www.ncbi.nlm.nih.gov/pubmed/29799837); [Shearn et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31377417); [Shearn et al., 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6028296/)). With this study design, carbonylated proteins are isolated using a BH-derivation and then LC-MS is used to identify peptides in this isolated sample. The most appropriate background data set would be proteins present in that tissue, but this would require a separate analytical analysis. Furthermore, most functional enrichment analyses involve a single gene list. However, in protein modification studies, the typical experimental design compares the presence or absence of particular modified proteins between treatment groups. 
+However, for some newer omics technologies, the background data set is hard to define. For example, LC-MS analysis can be used to identify carbonylated proteins ( [Peterson et al., 2018](https://www.ncbi.nlm.nih.gov/pubmed/29799837); [Shearn et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31377417); [Shearn et al., 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6028296/)). With this study design, carbonylated proteins are isolated using a BH-derivation and then LC-MS is used to identify peptides in this isolated sample. The most appropriate background data set would be proteins present in that tissue, but this would require a separate analytical analysis. Furthermore, most functional enrichment analyses involve a single gene list. However, in protein modification studies, the typical experimental design compares the presence or absence of particular modified proteins between multiple groups. 
 
 When there are two or more gene lists to compare and the background gene list is not clearly defined, as is often the case in protein modification experiments, we propose a differential enrichment analysis. In this analysis, we compare the proportion of genes/proteins from one gene list associated with a particular pathway to the proportion of genes/proteins from a second gene list that are associated with that pathway. To easily execute this analysis, we have designed an R package that uses the KEGG REST API to obtain the most recent version of the KEGG PATHWAY ( [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) database to initially identify functional enrichment within a gene list using the entire KEGG transcriptome as the background data set and then to identify differentially enriched pathways between two gene lists. This R package includes a function to generate a ‘differential enrichment’ graphic.
 
@@ -142,14 +142,14 @@ install.packages("diffEnrich")
 ### Step 1: Collect and store pathways from KEGG API
 First we will use the *get_kegg* function to access the KEGG REST API and download the data sets required to perform 
 our downstream analysis. This function takes two arguments. The first, 'species' is required. Currently, *diffEnrich* supports three species, and the argument is a character string using the KEGG
-code [REF](https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf): 
+code [https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf](https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf): 
 Homo sapiens (human), use 'hsa'; Mus musculus (mouse), use 'mmu', and Rattus norvegicus (rat), use 'rno'. The second,
 'path' is also passed as a character string, and is the path of the directory in which the user would like to
 write the data sets downloaded from the KEGG REST API. If the user does not provide a path, the data sets will 
 be automatically written to the current working directory using the *here::here()* functionality. These data 
 sets will be tab delimited files with a name describing the data, and for reproducibility, the date they were generated
 and the version of KEGG when the API was accessed. In addition to these flat files, *get_kegg* will also
-create a named list with the three relevant KEGG data sets. The names of this list will describe the data set.
+create a named list in R with the three relevant KEGG data sets. The names of this list will describe the data set.
 For a detailed description of list elements use *?get_kegg*.
 
 
@@ -209,7 +209,7 @@ knitr::kable(kegg_df,
 
 ### Step 2: Perform enrichment analysis of individual gene sets
 
-In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on a gene list of interest. User gene lists must also be character vectors and be formatted as ENTREZ gene IDs. The *clusterProfiler* package offers a nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter5.html#supported-organisms).
+In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on a gene list of interest. User gene lists must also be character vectors and be formatted as ENTREZ gene IDs. The *clusterProfiler* package offers a nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter14.html#bitr).
 
 ```{r view_genelists}
 ## View sample gene lists from package data
@@ -220,7 +220,7 @@ head(geneLists$list2)
 This function may not always use the complete list of genes provided 
 by the user. Specifically, it will only use the genes from the list provided that are also in
 the most current species list pulled from the KEGG REST API using *get_kegg*, or from the older KEGG data loaded by the user from a 
-previous *get_kegg* call. The *pathEnrich* function should be run at least twice, once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched within the user's list of interesting genes compared to all genes annotated to a KEGG pathway. Users can choose from those supported by *stats::p.adjust* for multiple correction options, and the default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)).
+previous *get_kegg* call. The *pathEnrich* function should be run once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched for the user's list of  genes compared to all genes annotated to a KEGG pathway. Users can choose a multiple correction option from those supported by *stats::p.adjust*. The default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)).
  
 ```{r pathEnrich, warning=FALSE}
 # run pathEnrich using kegg_rno
@@ -238,7 +238,7 @@ knitr::kable(head(list1_pe$enrich_table),
 }
 ```
 
-*pathEnrich* generates a list object that contains a data frame with 9 columns described below. Details also provided in *pathEnrich* documentation as well as other metadata from the function call. Use *?pathEnrich*. S3 generic functions for *print* and *summary* are
+*pathEnrich* generates a list object that contains a data frame with 9 columns described below as well as other metadata from the function call. Details also provided in *pathEnrich* documentation. S3 generic functions for *print* and *summary* are
 provided. The *print* function prints the results table as a *tibble*, and the
 *summary* function returns the number of pathways that reached statistical significance
 as well as their descriptions, the number of genes used from the KEGG data base, the KEGG species, and the
