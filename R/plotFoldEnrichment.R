@@ -119,7 +119,6 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ## Format list p-values
   options(scipen = 0, digits = 1)
   lpval <-formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], digits = 1)
-  #lpval <- ifelse(lpval < 0.000001, "< 0.000001", lpval)
 
   ## Generate finale plot
   p <- ggplot(mapping = aes(xmin = .data$xmin, xmax = .data$xmax, ymin = .data$ymin, ymax = .data$ymax)) +
@@ -144,6 +143,6 @@ plotFoldEnrichment <- function(de_res, pval, N){
     geom_hline(yintercept=1.0, linetype ='dashed') +
     coord_flip() + theme_bw() +
     geom_text(data=df_ptext,
-              aes(x = 1:N, y = (max(bardat$value) + 0.5), label = round(.data$value, 5)))
+              aes(x = 1:N, y = (max(bardat$value) + 0.5), label = sort(round(.data$value, 5), decreasing = TRUE)))
   return(p)
 }
