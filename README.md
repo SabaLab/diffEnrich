@@ -160,8 +160,7 @@ the data set. For a detailed description of list elements use
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> 3 data sets will be written as tab delimited text files
-#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> These files already exist in your working directory. New files will not be generated.
 #> Kegg Release: Release_92.0+_10-15_Oct_19
 ```
 
@@ -291,22 +290,26 @@ This function may not always use the complete list of genes provided by
 the user. Specifically, it will only use the genes from the list
 provided that are also in the most current species list pulled from the
 KEGG REST API using *get\_kegg*, or from the older KEGG data loaded by
-the user from a previous *get\_kegg* call. The *pathEnrich* function
-should be run once for the genes of interest in list 1 and once for the
-genes of interest in list2. Each *pathEnrich* call generates a data
-frame summarizing the results of an enrichment analysis in which a
+the user from a previous *get\_kegg* call. Users can also decide which
+KEGG pathways should be tested based on how many genes from their gene
+list are contained in the KEGG pathway. Users can set this parameter by
+changing the ‘N’ argument. The default is N = 2. The *pathEnrich*
+function should be run once for the genes of interest in list 1 and once
+for the genes of interest in list2. Each *pathEnrich* call generates a
+data frame summarizing the results of an enrichment analysis in which a
 Fisher’s Exact test is used to identify which KEGG pathways are enriched
 for the user’s list of genes compared to all genes annotated to a KEGG
 pathway. Users can choose a multiple correction option from those
 supported by *stats::p.adjust*. The default is the False Discovery Rate
-( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)).
+( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)),
+and the default threshold to reach significance is 0.05.
 
 ``` r
 # run pathEnrich using kegg_rno
 ## List 1
-list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
+list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1, cutoff = 0.05, N = 2)
 ## list2
-list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2) 
+list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2, cutoff = 0.05, N = 2) 
 ```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
@@ -439,7 +442,7 @@ Tight junction - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0008093
+0.0005387
 
 </td>
 
@@ -503,7 +506,7 @@ Yersinia infection - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0008093
+0.0005387
 
 </td>
 
@@ -567,7 +570,7 @@ Colorectal cancer - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0034870
+0.0023211
 
 </td>
 
@@ -631,7 +634,7 @@ Choline metabolism in cancer - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0067154
+0.0044701
 
 </td>
 
@@ -695,7 +698,7 @@ Endometrial cancer - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0067154
+0.0044701
 
 </td>
 
@@ -759,7 +762,7 @@ Endocytosis - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0067154
+0.0044701
 
 </td>
 
@@ -787,11 +790,12 @@ correction.
 
 ``` r
 summary(list1_pe)
-#> 329 KEGG pathways were tested. 
+#> 219 KEGG pathways were tested. 
+#>  Only KEGG pathways that contained at least 2 genes from gene_list were tested. 
 #>  KEGG pathway species: Rattus norvegicus (rat)
 #>  8856 genes from gene_list were in the KEGG data pull. 
 #>  p-value adjustment method: BH
-#>  25 pathways reached statistical significance after multiple testing correction. 
+#>  36 pathways reached statistical significance after multiple testing correction at a cutoff of 0.05. 
 #>  
 #> Significant pathways: 
 #>  Tight junction
@@ -819,6 +823,17 @@ summary(list1_pe)
 #> Progesterone-mediated oocyte maturation
 #> Alzheimer disease
 #> Endocrine resistance
+#> Adrenergic signaling in cardiomyocytes
+#> IL-17 signaling pathway
+#> Chronic myeloid leukemia
+#> Dopaminergic synapse
+#> Prostate cancer
+#> EGFR tyrosine kinase inhibitor resistance
+#> Hepatitis C
+#> Ras signaling pathway
+#> Acute myeloid leukemia
+#> Insulin signaling pathway
+#> Fc epsilon RI signaling pathway
 ```
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1222,7 +1237,7 @@ Tight junction - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0008093
+0.0005387
 
 </td>
 
@@ -1340,7 +1355,7 @@ Yersinia infection - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0008093
+0.0005387
 
 </td>
 
@@ -1458,7 +1473,7 @@ Colorectal cancer - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0034870
+0.0023211
 
 </td>
 
@@ -1576,7 +1591,7 @@ Endometrial cancer - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0067154
+0.0044701
 
 </td>
 
@@ -1694,7 +1709,7 @@ T cell receptor signaling pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0193977
+0.0129121
 
 </td>
 
@@ -1730,7 +1745,7 @@ T cell receptor signaling pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0022631
+0.0022562
 
 </td>
 
@@ -1812,7 +1827,7 @@ IL-17 signaling pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.0520419
+0.0346419
 
 </td>
 
@@ -1848,7 +1863,7 @@ IL-17 signaling pathway - Rattus norvegicus (rat)
 
 <td style="text-align:right;">
 
-0.4605042
+0.4591045
 
 </td>
 
@@ -2245,7 +2260,7 @@ multiple testing correction.
 
 ``` r
 summary(diff_enrich)
-#> 329 KEGG pathways were shared between gene lists and were tested. 
+#> 219 KEGG pathways were shared between gene lists and were tested. 
 #>  KEGG pathway species: Rattus norvegicus (rat)
 #>  8856 genes from gene_list were in the KEGG data pull. 
 #>  p-value adjustment method: none

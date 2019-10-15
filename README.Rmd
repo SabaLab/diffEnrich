@@ -224,14 +224,14 @@ head(geneLists$list2)
 This function may not always use the complete list of genes provided 
 by the user. Specifically, it will only use the genes from the list provided that are also in
 the most current species list pulled from the KEGG REST API using *get_kegg*, or from the older KEGG data loaded by the user from a 
-previous *get_kegg* call. The *pathEnrich* function should be run once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched for the user's list of  genes compared to all genes annotated to a KEGG pathway. Users can choose a multiple correction option from those supported by *stats::p.adjust*. The default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)).
+previous *get_kegg* call. Users can also decide which KEGG pathways should be tested based on how many genes from their gene list are contained in the KEGG pathway. Users can set this parameter by changing the 'N' argument. The default is N = 2. The *pathEnrich* function should be run once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched for the user's list of  genes compared to all genes annotated to a KEGG pathway. Users can choose a multiple correction option from those supported by *stats::p.adjust*. The default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)), and the default threshold to reach significance is 0.05.
  
 ```{r pathEnrich, warning=FALSE}
 # run pathEnrich using kegg_rno
 ## List 1
-list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
+list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1, cutoff = 0.05, N = 2)
 ## list2
-list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2) 
+list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2, cutoff = 0.05, N = 2) 
 ```
 
 ```{r pathEnrich_kable, warning=FALSE, echo=FALSE}
