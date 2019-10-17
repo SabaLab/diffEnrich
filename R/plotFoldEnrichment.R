@@ -64,6 +64,8 @@ plotFoldEnrichment <- function(de_res, pval, N){
     dplyr::filter(.data$diff_enrich_adjusted < pval) %>%
     dplyr::slice(1:N)
 
+  if(dim(df)[1] < N){warning(paste0("'N' is larger than the number of significant pathways based on 'pval'. plotFoldEnrichment will only print the significant pathways. There were ", dim(df)[1]))}
+
   ## Melt data set
   df.melt <-reshape2::melt(df, id.vars = c('KEGG_PATHWAY_ID', 'KEGG_PATHWAY_description'))
 
@@ -120,6 +122,9 @@ plotFoldEnrichment <- function(de_res, pval, N){
   options(scipen = 0, digits = 1)
   lpval <-formatC(as.numeric(summary(bardat$pvals))[c(1,2,3,5,6)], digits = 1)
 
+  ## decide how to print p-val text
+  pt <- ifelse((dim(df)[1] >= N), N, dim(df)[1])
+
   ## Generate finale plot
   p <- ggplot(mapping = aes(xmin = .data$xmin, xmax = .data$xmax, ymin = .data$ymin, ymax = .data$ymax)) +
     geom_rect(data = ld[ld$vars == "fold_enrichment_list1", ], aes(fill = .data$pvals), color = 'black') +
@@ -143,6 +148,6 @@ plotFoldEnrichment <- function(de_res, pval, N){
     geom_hline(yintercept=1.0, linetype ='dashed') +
     coord_flip() + theme_bw() +
     geom_text(data=df_ptext,
-              aes(x = 1:N, y = (max(bardat$value) + 0.5), label = sort(round(.data$value, 5), decreasing = TRUE)))
+              aes(x = 1:pt, y = (max(bardat$value) + 0.5), label = sort(round(.data$value, 5), decreasing = TRUE)))
   return(p)
 }
