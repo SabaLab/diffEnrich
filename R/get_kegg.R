@@ -235,6 +235,9 @@ get_kegg <- function(species, read = FALSE, path = NULL, date, release){
 .data_read <- function(path = path, date = date, release = release){
   options(stringsAsFactors = F)
   if(is.null(path)){stop("Please provide a file path pointing to files from previous get_kegg() call.")}
+  if(!is.character(date)){stop("'date' must be provided as a character type.")}
+  if(!is.character(release)){stop("'release' must be provided as a character type.")}
+
   # Define user's base file path
   flist <- list.files(path)
   # define regex to match on for files
