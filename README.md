@@ -160,8 +160,9 @@ the data set. For a detailed description of list elements use
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
-#> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_92.0+_10-15_Oct_19
+#> 3 data sets will be written as tab delimited text files
+#> File location: /Users/smiharry/Documents/packages/diffEnrich
+#> Kegg Release: Release_92.0+_10-17_Oct_19
 ```
 
 Here are examples of the output files:
@@ -183,7 +184,7 @@ sets in different directories if they so choose.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_92.0+_10-15_Oct_19
+#> Kegg Release: Release_92.0+_10-17_Oct_19
 ```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
@@ -1050,7 +1051,7 @@ Hochberg, 1995](http://www.jstor.org/stable/2346101)).
 
 ``` r
 ## Perform differential enrichment
-diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none') 
+diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none', cutoff = 0.05) 
 ```
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -2264,7 +2265,7 @@ summary(diff_enrich)
 #>  KEGG pathway species: Rattus norvegicus (rat)
 #>  8856 genes from gene_list were in the KEGG data pull. 
 #>  p-value adjustment method: none
-#>  19 pathways reached statistical significance after multiple testing correction. 
+#>  19 pathways reached statistical significance after multiple testing correction at a cutoff of 0.05. 
 #>  
 #> Significant pathways: 
 #>  Tight junction

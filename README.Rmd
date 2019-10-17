@@ -284,7 +284,7 @@ for multiple testing adjustment. Users can choose from those supported by *stats
 
 ```{r diffEnrich}
 ## Perform differential enrichment
-diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none') 
+diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none', cutoff = 0.05) 
 ```
 
 ```{r diffEnrich_kable, warning=FALSE, echo=FALSE}

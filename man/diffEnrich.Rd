@@ -6,7 +6,7 @@
 \alias{summary.diffEnrich}
 \title{diffEnrich}
 \usage{
-diffEnrich(list1_pe, list2_pe, method = "BH")
+diffEnrich(list1_pe, list2_pe, method = "BH", cutoff = 0.05)
 
 \method{print}{diffEnrich}(x, ...)
 
@@ -22,6 +22,8 @@ generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}
 \item{method}{character. Character string telling \code{diffEnrich} which method to
 use for multiple testing correction. Available methods are thos provided by
 \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).}
+
+\item{cutoff}{Numeric. The p-value threshold to be used as the cutoff when determining statistical significance, and used to filter list of significant pathways.}
 
 \item{x}{object of class \code{diffEnrich}}
 
@@ -83,6 +85,6 @@ list1_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list1)
 list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 
 ## Perform differential enrichment
-dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none')
+dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none', cutoff = 0.05)
 
 }

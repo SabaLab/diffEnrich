@@ -20,6 +20,7 @@
 #' @param method character. Character string telling \code{diffEnrich} which method to
 #' use for multiple testing correction. Available methods are thos provided by
 #' \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).
+#' @param cutoff Numeric. The p-value threshold to be used as the cutoff when determining statistical significance, and used to filter list of significant pathways.
 #'
 #' @return A list object of class \code{diffEnrich} that contains 5 items:
 #'
@@ -64,9 +65,9 @@
 #' list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2)
 #'
 #' ## Perform differential enrichment
-#' dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none')
+#' dif_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'none', cutoff = 0.05)
 #'
-diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
+diffEnrich <- function(list1_pe, list2_pe, method = 'BH', cutoff = 0.05){
   ## check class
   if(class(list1_pe) != "pathEnrich"){stop("list1_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
   if(class(list2_pe) != "pathEnrich"){stop("list2_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
@@ -109,13 +110,14 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH'){
 
   ## Extract sicgnificant pathways
   sig_paths <- de_table %>%
-    dplyr::filter(.data$diff_enrich_adjusted < 0.05) %>%
+    dplyr::filter(.data$diff_enrich_adjusted < cutoff) %>%
     pull(.data$KEGG_PATHWAY_description)
   sig_paths <- unlist(lapply(strsplit(sig_paths, split = " - ", fixed = TRUE), function(x) x[1]))
 
   ## build results list
   out <- list("species" = species,
               "padj" = p.adj,
+              "cutoff" = cutoff,
               "path_intersect" = path_intersect,
               "de_table" = de_table,
               "sig_pathways" = sig_paths)
@@ -186,7 +188,7 @@ summary.diffEnrich <- function(object, ...){
   l3 <- paste0(
     object$de_table$KEGG_DATABASE_cnt[1], ' genes from gene_list were in the KEGG data pull. \n')
   l4 <- paste0("p-value adjustment method: ", object$padj, "\n")
-  l5 <- paste0(sum(object$de_table$diff_enrich_adjusted < 0.05), " pathways reached statistical significance after multiple testing correction. \n")
+  l5 <- paste0(length(object$sig_pathways), " pathways reached statistical significance after multiple testing correction at a cutoff of ", object$cutoff, ". \n")
   cat(
     l1, l2, l3, l4, l5, "\n")
   ## summary part 2

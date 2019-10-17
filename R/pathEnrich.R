@@ -14,7 +14,7 @@
 #' @param method Character. Character string telling \code{diffEnrich} which method to
 #' use for multiple testing correction. Available methods are those provided by
 #' \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).
-#' @param cutoff Numeric. The p-value threshold to be used as the cutoff when determining statistical significance, and used to filter final results data set.
+#' @param cutoff Numeric. The p-value threshold to be used as the cutoff when determining statistical significance, and used to filter list of significant pathways.
 #'
 #' @return A list object of class \code{pathEnrich} that contains 6 items:
 #'
@@ -43,7 +43,8 @@
 #' @details This function may not always use the complete list of genes provided by the user.
 #' Specifically, it will only use the genes from the list provided that are also in
 #' the most current species list pulled from the KEGG REST API, or from the older data KEGG
-#' loaded by the user. S3 generic functions for \code{print} and \code{summary} are
+#' loaded by the user. The 'cutoff' only filters the list of pathways provided in the 'sig_paths'
+#' list item. It is not used to filter the 'enrich_table' list object. S3 generic functions for \code{print} and \code{summary} are
 #' provided. The \code{print} function prints the results table as a \code{tibble}, and the
 #' \code{summary} function returns the number of pathways that reached statistical significance,
 #' as well as their descriptions, the number of genes used from the KEGG data base, the KEGG species, and the
@@ -66,7 +67,7 @@ pathEnrich <- function(gk_obj, gene_list, method = 'BH', cutoff = 0.05, N = 2){
   ## argument check
   if(missing(gk_obj)){stop("Argument missing: gk_obj")}
   if(missing(gene_list)){stop("Argument missing: gene_list. Please provide list of ncbi geneIDs")}
-  if(N < 0){stop("N must be a positive number of type float or integer.")}
+  if(N < 0 | is.character(N)){stop("N must be a positive number of type float or integer.")}
 
   ## Prepare gene list
   #gene_list <- gene_list[!is.na(gene_list)]
