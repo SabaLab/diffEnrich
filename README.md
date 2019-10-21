@@ -47,7 +47,7 @@ benefits to using an API. First, API’s like KEGG’s allow users to
 perform customized analyses with the most up-to-date versions of the
 data contained in the database. In addition, accessing the KEGG API is
 very easy using statistical programming tools like R or Python and
-integrating data retrevial into user’s code makes the program
+integrating data retrieval into user’s code makes the program
 reproducible. To further enforce reproducibilty *diffEnrich* adds a date
 and KEGG release tag to all data files it generates from accessing the
 API. For update histories and release notes for the KEGG REST API please
@@ -161,7 +161,7 @@ the data set. For a detailed description of list elements use
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_92.0+_10-17_Oct_19
+#> Kegg Release: Release_92.0+_10-21_Oct_19
 ```
 
 Here are examples of the output files:
@@ -177,7 +177,7 @@ generated ‘same-day/same-version’, and if it finds even one of the
 three, it will not re-write any of the data sets. It will still however,
 let the user know it is not writing out new data sets and still generate
 the named list object. Users can generate ‘same-day/same-version’ data
-sets in different directories if they so choose. Additionaly,
+sets in different directories if they so choose. Additionally,
 *get\_kegg* can be used to read in saved versions of the txt files
 generated from a previous call (like those displayed above), and
 generate an R list object that is compatible with downstream functions.
@@ -186,7 +186,7 @@ generate an R list object that is compatible with downstream functions.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_92.0+_10-17_Oct_19
+#> Kegg Release: Release_92.0+_10-21_Oct_19
 ```
 
 ``` r
@@ -2391,8 +2391,8 @@ PLoS One. 13(5):e0198139.
 
 Shearn CT. et al. (2019) Cholestatic liver disease results increased
 production of reactive aldehydes and an atypical periportal hepatic
-antioxidant response. Free Radic Biol Med;143:101-114. \[Epub ahead
-ofbprint\] PubMed PMID: 31377417.
+antioxidant response. Free Radic Biol Med;143:101-114. \[Epub ahead of
+print\] PubMed PMID: 31377417.
 
 Shearn CT. et al. (2018) Knockout of the Gsta4 Gene in Male Mice Leads
 to an Altered Pattern of Hepatic Protein Carbonylation and Enhanced
