@@ -293,7 +293,7 @@ knitr::kable(df1,
 The *diffEnrich* function will merge two results from the *pathEnrich* calls generated above. Specifically, the data frame
 'list1_pe' and the data frame 'list2_pe' will be merged by the following columns:
 "KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt". This merged data set will then be used to perform differential enrichment using the same method and p-value calculation as described above. Users do have the option of choosing a method 
-for multiple testing adjustment. Users can choose from those supported by *stats::p.adjust*. The default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)).
+for multiple testing adjustment. Users can choose from those supported by *stats::p.adjust*. The default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)). KEGG pathways that do not contain any genes from either gene list (i.e., *list1_pe$enrich_table$KEGG_PATHWAY_in_list* for 'rno04530' = 0 AND *list2_pe$enrich_table$KEGG_PATHWAY_in_list* for 'rno04530' = 0) will be removed as these cannot be tested. If this is the case a warning will be printed that tells the user how many pathways were removed. This can be avoided by setting the 'N' parameter to a value > 0 in the *pathEnrich* calls.
 
 ```{r diffEnrich}
 ## Perform differential enrichment

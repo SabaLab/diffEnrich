@@ -1,10 +1,13 @@
 #' diffEnrich
 #' @description This function takes the objects generated from \code{\link{pathEnrich}}.
 #' If performing a dfferential enrichment analysis, the user will have 2 objects. There
-#' will be one for the genes of interest and one for the background (see example for \code{\link{pathEnrich}}).
-#' This function then uses a Fisher's Exact test to iddentify differentially enriched
-#' pathways between the terms enriched in the gene-of-interest list and the pathways enriched
-#' in the background. \code{diffEnrich} returns a dataframe containing differentially enriched
+#' will be one for the genes of interest in gene list 1 and one for the genes of interest in gene list 2 (see example for \code{\link{pathEnrich}}).
+#' This function then uses a Fisher's Exact test to identify differentially enriched
+#' pathways between the terms enriched in the gene-of-interest lists. \code{diffEnrich}
+#' will remove KEGG pathways that do not contain any genes from either gene list as these
+#' cannot be tested, and will print a warning message telling the user how many pathways
+#' were removed.
+#' \code{diffEnrich} returns a dataframe containing differentially enriched
 #' pathways with their associated estimated odds ratio, unadjusted p-value, and fdr adjusted
 #' p-value. S3 generic functions for \code{print} and \code{summary} are
 #' provided. The \code{print} function prints the results table as a \code{tibble}, and the
@@ -13,10 +16,10 @@
 #' the number of pathways that were shared (and therefore tested) between the gene lists and the
 #' method used for multiple testing correction.
 #'
-#' @param list1_pe data.frame. Dataframe of enrichment results for genes of interest
-#' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
-#' @param list2_pe data.frame. Dataframe of enrichment results for background genes
-#' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
+#' @param list1_pe object of class \code{pathEnrich} generated from \code{\link{pathEnrich}}.
+#' See example for \code{\link{pathEnrich}}.
+#' @param list2_pe object of class \code{pathEnrich} generated from \code{\link{pathEnrich}}.
+#' See example for \code{\link{pathEnrich}}.
 #' @param method character. Character string telling \code{diffEnrich} which method to
 #' use for multiple testing correction. Available methods are thos provided by
 #' \code{\link{p.adjust}}, and the default is "BH", or False Discovery Rate (FDR).
@@ -134,12 +137,12 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH', cutoff = 0.05){
 #' will be one for list1 and one for list2(see example for \code{\link{pathEnrich}}).
 #' This function then merges the two data frames using the following columns that should be present
 #' in both objects (\code{by = c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt")}). This merged data frame
-#' will be used as the input for the differential enrichment function.
+#' will be used as the input for the differential enrichment function. Any pathways that do not contain any genes from either gene list will be removed.
 #'
-#' @param list1_pe data.frame. Data frame of enrichment results for list1
-#' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
-#' @param  list2_pe data.frame. Data frame of enrichment results for list2
-#' generated from \code{\link{pathEnrich}}. See example for \code{\link{pathEnrich}}.
+#' @param list1_pe object of class \code{pathEnrich} generated from \code{\link{pathEnrich}}.
+#' See example for \code{\link{pathEnrich}}.
+#' @param  list2_pe object of class \code{pathEnrich} generated from \code{\link{pathEnrich}}.
+#' See example for \code{\link{pathEnrich}}.
 #'
 #' @return combined_enrich: An object of class data.frame that is the result of merging
 #' \code{list1_pe} and \code{list2_pe}, using the default joining implemented in the base
@@ -152,7 +155,17 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH', cutoff = 0.05){
   if(missing(list2_pe)){stop("Argument missing: list2_pe")}
 
   ## Merge results from first enrichment
-  combined_enrich <- merge(list1_pe$enrich_table, list2_pe$enrich_table, by = c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt"))
+  combined_enrich.tmp <- merge(list1_pe$enrich_table, list2_pe$enrich_table, by = c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt"))
+  ## remove pathways that have 0 genes in both lists
+  combined_enrich <- combined_enrich.tmp %>%
+    dplyr::filter(!(KEGG_PATHWAY_in_list.x == 0 & KEGG_PATHWAY_in_list.y == 0))
+
+  ## get number of pathways that were removed
+  paths_removed <- dim(combined_enrich.tmp)[1] - dim(combined_enrich)[1]
+
+  if(list1_pe$N == 0 & list2_pe$N == 0){warning(paste0("KEGG pathways that do not contain any genes from either list provided will be removed as these cannot be tested.",
+                                                       paths_removed, " pathways were removed."))}
+
   colnames(combined_enrich) <- gsub(".x", "_list1", colnames(combined_enrich), fixed = TRUE)
   colnames(combined_enrich) <- gsub(".y", "_list2", colnames(combined_enrich), fixed = TRUE)
   colnames(combined_enrich) <- c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt",
