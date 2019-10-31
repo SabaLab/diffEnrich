@@ -158,7 +158,7 @@ diffEnrich <- function(list1_pe, list2_pe, method = 'BH', cutoff = 0.05){
   combined_enrich.tmp <- merge(list1_pe$enrich_table, list2_pe$enrich_table, by = c("KEGG_PATHWAY_ID", "KEGG_PATHWAY_description", "KEGG_PATHWAY_cnt", "KEGG_DATABASE_cnt"))
   ## remove pathways that have 0 genes in both lists
   combined_enrich <- combined_enrich.tmp %>%
-    dplyr::filter(!(KEGG_PATHWAY_in_list.x == 0 & KEGG_PATHWAY_in_list.y == 0))
+    dplyr::filter(!(.data$KEGG_PATHWAY_in_list.x == 0 & .data$KEGG_PATHWAY_in_list.y == 0))
 
   ## get number of pathways that were removed
   paths_removed <- dim(combined_enrich.tmp)[1] - dim(combined_enrich)[1]
