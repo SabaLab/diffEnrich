@@ -32,3 +32,5 @@
     Message: libcurl error code 35:
       	error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version
     --REASON: Currently, this repo is private. We will make it public as soon as the package is accepted.
+    
+   Examples for get_kegg have been set to dont_run because they may take more than 5 seconds due to the connection to the KEGG REST API. They do however run successfully when the vingette builds.
