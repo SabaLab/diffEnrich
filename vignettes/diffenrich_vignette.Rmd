@@ -47,7 +47,7 @@ and 4) health information (e.g. human disease and drugs) [https://www.kegg.jp/ke
 
 In 2012 KEGG released its first application programming interface (API), and has been
 adding features and functionality ever since. There are benefits to using an API.
-First, API's like KEGG's allow users to perform customized analyses with the most
+First, API's, like KEGG's, allow users to perform customized analyses with the most
 up-to-date versions of the data contained in the database. In addition, accessing the
 KEGG API is very easy using statistical programming tools like R or Python and
 integrating data retrieval into user's code makes the program reproducible. To 
@@ -121,7 +121,7 @@ cap <- c("Figure 1. diffEnrich Analysis pipeline. Functions within the diffEnric
 
 **Motivating experimental design for differential enrichment**
 
-Often high throughput omics studies include a functional enrichment analysis to glean biological insight from a list of candidate genes, proteins, metabolites, etc. Functional enrichment examines whether the number of genes in the list associated with a biological function or particular pathway is more than would be expected by chance.  As an example, enrichment of a particular pathway among a list of genes that are differentially expressed after an experimental manipulation may indicate that the pathway has been altered by that manipulation. This analysis is rather straight forward and many solutions have been offered (e.g., [Haung et al., 2009](https://www.ncbi.nlm.nih.gov/pubmed/19033363); [Kuleshov et al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27141961); [Liao et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31114916); [Subramanian et al., 2005](https://www.pnas.org/content/102/43/15545)) as well a wide variety of databases have been used to define these pathways (e.g., [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) and ontologies (e.g., [Ashburn et al., 2000](https://www.ncbi.nlm.nih.gov/pubmed/10802651)).
+Often high throughput omics studies include a functional enrichment analysis to glean biological insight from a list of candidate genes, proteins, metabolites, etc. Functional enrichment examines whether the number of genes in the list associated with a biological function or particular pathway is more than would be expected by chance.  As an example, enrichment of a particular pathway among a list of genes that are differentially expressed after an experimental manipulation may indicate that the pathway has been altered by that manipulation. This analysis is rather straight forward and many solutions have been offered (e.g., [Haung et al., 2009](https://www.ncbi.nlm.nih.gov/pubmed/19033363); [Kuleshov et al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27141961); [Liao et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31114916); [Subramanian et al., 2005](https://www.pnas.org/content/102/43/15545)). A wide variety of databases have also been used to define these pathways (e.g., [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) and ontologies (e.g., [Ashburn et al., 2000](https://www.ncbi.nlm.nih.gov/pubmed/10802651)).
 
 One key component of a statistically rigorous functional enrichment analysis is the definition of a background data set that can be used to estimate the number of candidate genes that are ‘expected’ to be associated with the pathway by chance, e.g., if 5% of genes in the background data set are associated with a pathway then 5% of candidate gene are expected to be associated with the pathway by chance. For many study designs, the background data set is relatively simple to define (e.g., RNA-Seq analyses where the background data set includes genes expressed above background). 
 
@@ -143,7 +143,7 @@ install.packages("diffEnrich")
 First we will use the *get_kegg* function to access the KEGG REST API and download the data sets required to perform 
 our downstream analysis. This function takes two arguments. The first, 'species' is required. Currently, *diffEnrich* supports three species, and the argument is a character string using the KEGG
 code [https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf](https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf): 
-Homo sapiens (human), use 'hsa'; Mus musculus (mouse), use 'mmu', and Rattus norvegicus (rat), use 'rno'. The second,
+Homo sapiens (human), use 'hsa'; Mus musculus (mouse), use 'mmu'; and Rattus norvegicus (rat), use 'rno'. The second,
 'path' is also passed as a character string, and is the path of the directory in which the user would like to
 write the data sets downloaded from the KEGG REST API. If the user does not provide a path, the data sets will 
 be automatically written to the current working directory using the *here::here()* functionality. These data 
@@ -222,7 +222,7 @@ knitr::kable(kegg_df,
 
 ### Step 2: Perform enrichment analysis of individual gene sets
 
-In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on a gene list of interest. User gene lists must also be character vectors and be formatted as ENTREZ gene IDs. The *clusterProfiler* package offers a nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter14.html#bitr).
+In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on a gene list of interest. User gene lists must be character vectors and be formatted as ENTREZ gene IDs. The *clusterProfiler* package offers a nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter14.html#bitr).
 
 ```{r view_genelists}
 ## View sample gene lists from package data
@@ -273,7 +273,7 @@ description <- c("KEGG Pathway Identifier",
                  "Number of Genes from gene list in KEGG Database",
                  "Expected number of genes from list to be in KEGG pathway by chance",
                  "P-value for enrichment within the KEGG pathway for list genes",
-                 "Multiple testing adjusted enrichment p-values (default = False Discovery Rate (Benjamini and Hochberg))",
+                 "Multiple testing adjusted enrichment p-values (default = False Discovery Rate (Benjamini and Hochberg, 1995))",
                  "Ratio of number of genes observed from the gene list annotated to the KEGG pathway to the number of genes expected from the gene list to be annotated to the KEGG pathway if there was no enrichment (i.e. KEGG_PATHWAY_in_list/expected)")
 # Make dataframe
 df1 <- data.frame(names, description)
@@ -319,17 +319,17 @@ de_col_descr <- c("KEGG Pathway Identifier",
                   "Number of Genes from gene list 1 in KEGG Database",
                   "Expected number of genes from list 1 to be in KEGG pathway by chance",
                   "P-value for enrichment of list 1 genes related to KEGG pathway",
-                  "Multiple testing adjusted enrichment p-values from gene list 1 (default = False Discovery Rate (Benjamini and Hochberg))",
+                  "Multiple testing adjusted enrichment p-values from gene list 1 (default = False Discovery Rate (Benjamini and Hochberg, 1995))",
                   "Ratio of number of genes observed from gene list 1 annotated to the KEGG pathway to the number of genes expected from gene list 1 annotated to the KEGG pathway if there was no enrichment (i.e. KEGG_PATHWAY_in_list1/expected_list1)",
                   "Number of Genes from gene list 2 in KEGG Pathway",
                   "Number of Genes from gene list 2 in KEGG Database",
                   "Expected number of genes from list 2 to be in KEGG pathway by chance",
                   "P-value for enrichment of list 2 genes related to KEGG pathway",
-                  "Multiple testing adjusted enrichment p-values from gene list 2 (default = False Discovery Rate (Benjamini and Hochberg))",
+                  "Multiple testing adjusted enrichment p-values from gene list 2 (default = False Discovery Rate (Benjamini and Hochberg, 1995))",
                   "Ratio of number of genes observed from gene list 2 annotated to the KEGG pathway to the number of genes expected from gene list 2 annotated to the KEGG pathway if there was no enrichment (i.e. KEGG_PATHWAY_in_list2/expected_list2)",
                   "Odds of a gene from list 2 being from this KEGG pathway / Odds of a gene from list 1 being from this KEGG pathway",
                   "P-value for differential enrichment of this KEGG pathway between list 1 and list 2",
-                  "Multiple testing adjusted differential enrichment p-values (default = False Discovery Rate (Benjamini and Hochberg))")
+                  "Multiple testing adjusted differential enrichment p-values (default = False Discovery Rate (Benjamini and Hochberg, 1995))")
 # Make dataframe
 de_descr_df <- data.frame(de_col_names, de_col_descr)
 colnames(de_descr_df) <- c("Column Names", "Column Description") 
@@ -346,7 +346,7 @@ and the associated p-value as well as other metadata from the function call. S3 
 provided. The *print* function prints the results table as a *tibble*, and the
 *summary* function returns the number of pathways that reached statistical significance
 as well as their descriptions, the number of genes used from the KEGG database, the KEGG species,
-the number of pathways that were shared (i.e. had at least 1 gene from each gene list present in the pathway) between the gene lists and the
+the number of pathways that were shared (i.e. had at least 1 gene from each gene list present in the pathway based on what the user chose for N in *pathEnrich*) between the gene lists and the
 method used for multiple testing correction.
 
 ```{r}
@@ -361,7 +361,7 @@ summary(diff_enrich)
 *ggnewscale* package. There are 3 arguments: 1) *de_res* is the dataframe generated from the *diffEnrich* function, 2) *pval* is the threshold for the adjusted p-value associated with differential enrichment that will filter which KEGG pathways to plot, and 3) after filtering based on *pval* *N* tells the function how many pathways to plot. It is important to make a note that the significance of the fold change is associated with the number of genes in the gene list. Notice that in this example the pathways in gene list 2 have smaller fold changes (shorter bars) than those in list 1, but that many of them are more significant (darker blue). This is because there are more genes in gene list 2 compared to gene list 1.
 
 ```{r echo=FALSE}
-cap_plot <- c("Figure 2. Fold enrichment stratified by gene list. KEGG pathways are plotted on the y-axis and fold
+cap_plot <- c("Figure 2. Example of a differential enrichment graphic. KEGG pathways are plotted on the y-axis and fold
 enrichment is plotted on the x-axis. Each KEGG pathway has a bar depicting
 its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue).
 The transparency of the bars correspond to the unadjusted p-value for the
