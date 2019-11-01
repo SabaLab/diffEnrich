@@ -14,23 +14,12 @@
   
   New submission
   
-  Found the following (possibly) invalid URLs:
-  URL: http://www.jstor.org/stable/2346101
-    From: inst/doc/diffenrich_vignette.html
-    Status: 403
-    Message: Forbidden
-    --REASON: This artical requires a subscription.
-  URL: https://github.com/SabaLab/diffEnrich
-    From: DESCRIPTION
-    Status: Error
-    Message: libcurl error code 35:
-      	error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version
-    --REASON: Currently, this repo is private. We will make it public as soon as the package is accepted.
-  URL: https://github.com/SabaLab/diffEnrich/issues
-    From: DESCRIPTION
-    Status: Error
-    Message: libcurl error code 35:
-      	error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version
-    --REASON: Currently, this repo is private. We will make it public as soon as the package is accepted.
-    
-   Examples for get_kegg have been set to dont_run because they may take more than 5 seconds due to the connection to the KEGG REST API. They do however run successfully when the vingette builds.
+ * THIS IS A RESUBMISSION *
+ Revier comments:
+ Tanks, please omit the redundant "The goal of diffEnrich is to". Rather,
+is there some reference about the method you can add in the Description
+field in the form Authors (year) <doi:.....>?
+
+OLD:"The goal of diffEnrich is to compare functional enrichment between two experimentally-derived groups of genes or proteins."
+
+UPDATED: "Compare functional enrichment between two experimentally-derived groups of genes or proteins (Peterson, DR., et al.(2018)) <doi: 10.1371/journal.pone.0198139>."
