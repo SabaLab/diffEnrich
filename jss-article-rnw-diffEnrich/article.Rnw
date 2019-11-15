@@ -36,34 +36,34 @@ Pharmaceutical Sciences}
 %% - \title{} in title case
 %% - \Plaintitle{} without LaTeX markup (if any)
 %% - \Shorttitle{} with LaTeX markup (if any), used as running title
-\title{diffEnrich: An \proglang{R} Package to Compare Functional Enrichment Between Two 
+\title{diffEnrich: An \proglang{R} Package to Compare Functional Enrichment Between Two
 Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
-\Plaintitle{diffEnrich: An R Package to Compare Functional Enrichment Between Two 
+\Plaintitle{diffEnrich: An R Package to Compare Functional Enrichment Between Two
 Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
 \Shorttitle{The \proglang{R} Package diffEnrich}
 
 %% - \Abstract{} almost as usual
 \Abstract{
-  \textbf{Motivation:} To aid in the biological interpretation of a list of candidate 
+  \textbf{Motivation:} To aid in the biological interpretation of a list of candidate
   genes and proteins generated as part of omics studies, researchers quantitate
   the enrichment of known pathways or biological functions among the genes of
-  interest. With the advent of new technologies and new experimental designs, 
+  interest. With the advent of new technologies and new experimental designs,
   it is often of interest to compare enrichment of a particular pathway between
   two gene lists (i.e., differential enrichment).
-  \textbf{Results:} This package provides a number of functions that are intended to be 
-  used in a pipeline. Briefly, a function within the package will map 
-  species-specific ENTREZ gene IDs to their respective Kyoto Encyclopedia of 
-  Genes and Genomes (KEGG) pathways by accessing the KEGG REST API. The KEGG API 
-  is used to guarantee the most up-to-date pathway data from KEGG. Next, another 
-  function will identify significantly enriched pathways in two gene sets 
-  independently. The user can then identify pathways that are differentially 
-  enriched between the two gene sets using a third function. This package also 
+  \textbf{Results:} This package provides a number of functions that are intended to be
+  used in a pipeline. Briefly, a function within the package will map
+  species-specific ENTREZ gene IDs to their respective Kyoto Encyclopedia of
+  Genes and Genomes (KEGG) pathways by accessing the KEGG REST API. The KEGG API
+  is used to guarantee the most up-to-date pathway data from KEGG. Next, another
+  function will identify significantly enriched pathways in two gene sets
+  independently. The user can then identify pathways that are differentially
+  enriched between the two gene sets using a third function. This package also
   provides a plotting function.
-  \textbf{Availability and implementation:} diffEnrich is freely available on the 
-  Comprehensive R Archive Network (CRAN). Issues and bug reports can be submitted 
-  to the GitHub page \url{https://github.com/SabaLab/diffEnrich/issues}. 
+  \textbf{Availability and implementation:} diffEnrich is freely available on the
+  Comprehensive R Archive Network (CRAN). Issues and bug reports can be submitted
+  to the GitHub page \url{https://github.com/SabaLab/diffEnrich/issues}.
   \textbf{Supplementary information:} A step-by-step tutorial is provided on the diffEnrich
-  GitHub page \url{https://github.com/SabaLab/diffEnrich}, and example data are 
+  GitHub page \url{https://github.com/SabaLab/diffEnrich}, and example data are
   included in the package.
 
 }
@@ -152,7 +152,7 @@ diagnostics and inference. The manuscript that this document is based on
 count models in the functions \fct{hurdle} and \fct{zeroinfl} in the \pkg{pscl}
 package \citep{Jackman:2015}. Of course, much more software could be discussed
 here, including (but not limited to) generalized additive models for count data
-as available in the \proglang{R} packages \pkg{mgcv} \cite{Wood:2006}, 
+as available in the \proglang{R} packages \pkg{mgcv} \cite{Wood:2006},
 \pkg{gamlss} \citep{Stasinopoulos+Rigby:2007}, or \pkg{VGAM} \citep{Yee:2009}.
 
 
