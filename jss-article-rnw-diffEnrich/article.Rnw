@@ -71,8 +71,8 @@ Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
 %% - \Keywords{} with LaTeX markup, at least one required
 %% - \Plainkeywords{} without LaTeX markup (if necessary)
 %% - Should be comma-separated and in sentence case.
-\Keywords{JSS, style guide, comma-separated, not capitalized, \proglang{R}}
-\Plainkeywords{JSS, style guide, comma-separated, not capitalized, R}
+\Keywords{differential enrichment, KEGG REST API, \proglang{R}}
+\Plainkeywords{differential enrichment, KEGG REST API, R}
 
 %% - \Address{} of at least one author
 %% - May contain multiple affiliations for each author
@@ -80,16 +80,13 @@ Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
 %% - May contain multiple authors for the same affiliation
 %%   (in the same first line, separated by comma).
 \Address{
-  Achim Zeileis\\
-  Journal of Statistical Software\\
-  \emph{and}\\
-  Department of Statistics\\
-  Faculty of Economics and Statistics\\
-  Universit\"at Innsbruck\\
-  Universit\"atsstr.~15\\
-  6020 Innsbruck, Austria\\
-  E-mail: \email{Achim.Zeileis@R-project.org}\\
-  URL: \url{https://eeecon.uibk.ac.at/~zeileis/}
+  Laura Saba\\
+  University of Colorado\\
+  Skaggs School of Pharmacy and Pharmaceutical Sciences\\
+  Mail Stop C238\\
+  12850 E. Montview Blvd. V20-2124\\
+  Aurora, CO 80045\\
+  E-mail: \email{Laura.Saba@cuanschutz.edu}\\
 }
 
 \begin{document}

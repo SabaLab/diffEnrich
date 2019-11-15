@@ -83,34 +83,34 @@ Pharmaceutical Sciences}
 %% - \title{} in title case
 %% - \Plaintitle{} without LaTeX markup (if any)
 %% - \Shorttitle{} with LaTeX markup (if any), used as running title
-\title{diffEnrich: An \proglang{R} Package to Compare Functional Enrichment Between Two 
+\title{diffEnrich: An \proglang{R} Package to Compare Functional Enrichment Between Two
 Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
-\Plaintitle{diffEnrich: An R Package to Compare Functional Enrichment Between Two 
+\Plaintitle{diffEnrich: An R Package to Compare Functional Enrichment Between Two
 Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
 \Shorttitle{The \proglang{R} Package diffEnrich}
 
 %% - \Abstract{} almost as usual
 \Abstract{
-  \textbf{Motivation:} To aid in the biological interpretation of a list of candidate 
+  \textbf{Motivation:} To aid in the biological interpretation of a list of candidate
   genes and proteins generated as part of omics studies, researchers quantitate
   the enrichment of known pathways or biological functions among the genes of
-  interest. With the advent of new technologies and new experimental designs, 
+  interest. With the advent of new technologies and new experimental designs,
   it is often of interest to compare enrichment of a particular pathway between
   two gene lists (i.e., differential enrichment).
-  \textbf{Results:} This package provides a number of functions that are intended to be 
-  used in a pipeline. Briefly, a function within the package will map 
-  species-specific ENTREZ gene IDs to their respective Kyoto Encyclopedia of 
-  Genes and Genomes (KEGG) pathways by accessing the KEGG REST API. The KEGG API 
-  is used to guarantee the most up-to-date pathway data from KEGG. Next, another 
-  function will identify significantly enriched pathways in two gene sets 
-  independently. The user can then identify pathways that are differentially 
-  enriched between the two gene sets using a third function. This package also 
+  \textbf{Results:} This package provides a number of functions that are intended to be
+  used in a pipeline. Briefly, a function within the package will map
+  species-specific ENTREZ gene IDs to their respective Kyoto Encyclopedia of
+  Genes and Genomes (KEGG) pathways by accessing the KEGG REST API. The KEGG API
+  is used to guarantee the most up-to-date pathway data from KEGG. Next, another
+  function will identify significantly enriched pathways in two gene sets
+  independently. The user can then identify pathways that are differentially
+  enriched between the two gene sets using a third function. This package also
   provides a plotting function.
-  \textbf{Availability and implementation:} diffEnrich is freely available on the 
-  Comprehensive R Archive Network (CRAN). Issues and bug reports can be submitted 
-  to the GitHub page \url{https://github.com/SabaLab/diffEnrich/issues}. 
+  \textbf{Availability and implementation:} diffEnrich is freely available on the
+  Comprehensive R Archive Network (CRAN). Issues and bug reports can be submitted
+  to the GitHub page \url{https://github.com/SabaLab/diffEnrich/issues}.
   \textbf{Supplementary information:} A step-by-step tutorial is provided on the diffEnrich
-  GitHub page \url{https://github.com/SabaLab/diffEnrich}, and example data are 
+  GitHub page \url{https://github.com/SabaLab/diffEnrich}, and example data are
   included in the package.
 
 }
@@ -118,8 +118,8 @@ Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
 %% - \Keywords{} with LaTeX markup, at least one required
 %% - \Plainkeywords{} without LaTeX markup (if necessary)
 %% - Should be comma-separated and in sentence case.
-\Keywords{JSS, style guide, comma-separated, not capitalized, \proglang{R}}
-\Plainkeywords{JSS, style guide, comma-separated, not capitalized, R}
+\Keywords{differential enrichment, KEGG REST API, \proglang{R}}
+\Plainkeywords{differential enrichment, KEGG REST API, R}
 
 %% - \Address{} of at least one author
 %% - May contain multiple affiliations for each author
@@ -127,16 +127,13 @@ Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
 %% - May contain multiple authors for the same affiliation
 %%   (in the same first line, separated by comma).
 \Address{
-  Achim Zeileis\\
-  Journal of Statistical Software\\
-  \emph{and}\\
-  Department of Statistics\\
-  Faculty of Economics and Statistics\\
-  Universit\"at Innsbruck\\
-  Universit\"atsstr.~15\\
-  6020 Innsbruck, Austria\\
-  E-mail: \email{Achim.Zeileis@R-project.org}\\
-  URL: \url{https://eeecon.uibk.ac.at/~zeileis/}
+  Laura Saba\\
+  University of Colorado\\
+  Skaggs School of Pharmacy and Pharmaceutical Sciences\\
+  Mail Stop C238\\
+  12850 E. Montview Blvd. V20-2124\\
+  Aurora, CO 80045\\
+  E-mail: \email{Laura.Saba@cuanschutz.edu}\\
 }
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
@@ -199,7 +196,7 @@ diagnostics and inference. The manuscript that this document is based on
 count models in the functions \fct{hurdle} and \fct{zeroinfl} in the \pkg{pscl}
 package \citep{Jackman:2015}. Of course, much more software could be discussed
 here, including (but not limited to) generalized additive models for count data
-as available in the \proglang{R} packages \pkg{mgcv} \cite{Wood:2006}, 
+as available in the \proglang{R} packages \pkg{mgcv} \cite{Wood:2006},
 \pkg{gamlss} \citep{Stasinopoulos+Rigby:2007}, or \pkg{VGAM} \citep{Yee:2009}.
 
 
