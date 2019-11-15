@@ -4,6 +4,7 @@
 
 %% recommended packages
 \usepackage{thumbpdf,lmodern}
+\usepackage{textcomp}
 
 %% another package (only for this demo article)
 \usepackage{framed}
@@ -86,7 +87,7 @@ Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
   Mail Stop C238\\
   12850 E. Montview Blvd. V20-2124\\
   Aurora, CO 80045\\
-  E-mail: \email{Laura.Saba@cuanschutz.edu}\\
+  E-mail: \email{Laura.Saba@cuanschutz.edu}
 }
 
 \begin{document}
@@ -105,53 +106,74 @@ Experimentally-derived Groups of Genes by Connecting to the KEGG REST API}
 %%   of Statistical Software" above) they should be in sentence case (like
 %%   "generalized linear models" below).
 
-\section[Introduction: Count data regression in R]{Introduction: Count data regression in \proglang{R}} \label{sec:intro}
+\section[Introduction]{Introduction} \label{sec:intro}
 
-\begin{leftbar}
-The introduction is in principle ``as usual''. However, it should usually embed
-both the implemented \emph{methods} and the \emph{software} into the respective
-relevant literature. For the latter both competing and complementary software
-should be discussed (within the same software environment and beyond), bringing
-out relative (dis)advantages. All software mentioned should be properly
-\verb|\cite{}|d. (See also Appendix~\ref{app:bibtex} for more details on
-\textsc{Bib}{\TeX}.)
+Often high throughput omics studies include a functional enrichment analysis to
+glean biological insight from a list of candidate genes, proteins, metabolites,
+etc. Functional enrichment examines whether the number of genes in the list
+associated with a biological function or particular pathway is more than would
+be expected by chance. As an example, enrichment of a particular pathway among
+a list of genes that are differentially expressed after an experimental
+manipulation may indicate that the pathway has been altered by that
+manipulation. This analysis is rather straight forward and many solutions have
+been offered (e.g., \cite{HuangDW:2009}; Kuleshov et al., 2016; Liao et al.,
+2019; Subramanian et al., 2005). A wide variety of databases have also been
+used to define these pathways (e.g., Kanehisa and Goto, 2000) and ontologies
+(e.g., \cite{Ashburner:2000}).
 
-For writing about software JSS requires authors to use the markup
-\verb|\proglang{}| (programming languages and large programmable systems),
-\verb|\pkg{}| (software packages), \verb|\code{}| (functions, commands,
-arguments, etc.). If there is such markup in (sub)section titles (as above), a
-plain text version has to be provided in the {\LaTeX} command as well. Below we
-also illustrate how abbrevations should be introduced and citation commands can
-be employed. See the {\LaTeX} code for more details.
-\end{leftbar}
+One key component of a statistically rigorous functional enrichment analysis is
+the definition of a background data set that can be used to estimate the number
+of candidate genes that are ``expected'' to be associated with the pathway by
+chance, e.g., if 5\% of genes in the background data set are associated with
+a pathway then 5\% of candidate gene are expected to be associated with the
+pathway by chance. For many study designs, the background data set is
+relatively simple to define (e.g., RNA-Seq analyses where the background data
+set includes genes expressed above background).
 
-Modeling count variables is a common task in economics and the social sciences.
-The classical Poisson regression model for count data is often of limited use in
-these disciplines because empirical count data sets typically exhibit
-overdispersion and/or an excess number of zeros. The former issue can be
-addressed by extending  the plain Poisson regression model in various
-directions: e.g., using sandwich covariances or estimating an additional
-dispersion parameter (in a so-called quasi-Poisson model). Another more formal
-way is to use a negative binomial (NB) regression. All of these models belong to
-the family of generalized linear models (GLMs). However, although these models
-typically can capture overdispersion rather well, they are in many applications
-not sufficient for  modeling excess zeros. Since \cite{Mullahy:1986} there is
-increased interest in zero-augmented models that address this issue by a second
-model component capturing zero counts. An overview of count data models in
-econometrics, including  hurdle and zero-inflated models, is provided in
-\cite{Cameron+Trivedi:2013}.
+However, for some newer omics technologies, the background data set is hard to
+define. For example, LC-MS analysis can be used to identify carbonylated
+proteins ( Peterson et al., 2018; Shearn et al., 2019; Shearn et al., 2018).
+With this study design, carbonylated proteins are isolated using a BH-derivation
+and then LC-MS is used to identify peptides in this isolated sample. The most
+appropriate background data set would be proteins present in that tissue, but
+this would require a separate analytical analysis. Furthermore, most functional
+enrichment analyses involve a single gene list. However, in protein modification
+studies, the typical experimental design compares the presence or absence of
+particular modified proteins between multiple groups.
 
-In \proglang{R} \citep{R}, GLMs are provided by the model fitting functions
-\fct{glm} in the \pkg{stats} package and \fct{glm.nb} in the \pkg{MASS} package
-\citep[][Chapter~7.4]{Venables+Ripley:2002} along with associated methods for
-diagnostics and inference. The manuscript that this document is based on
-\citep{Zeileis+Kleiber+Jackman:2008} then introduced hurdle and zero-inflated
-count models in the functions \fct{hurdle} and \fct{zeroinfl} in the \pkg{pscl}
-package \citep{Jackman:2015}. Of course, much more software could be discussed
-here, including (but not limited to) generalized additive models for count data
-as available in the \proglang{R} packages \pkg{mgcv} \cite{Wood:2006},
-\pkg{gamlss} \citep{Stasinopoulos+Rigby:2007}, or \pkg{VGAM} \citep{Yee:2009}.
+When there are two or more gene lists to compare and the background gene list is
+not clearly defined, as is often the case in protein modification experiments,
+we propose a differential enrichment analysis. In this analysis, we compare the
+proportion of genes/proteins from one gene list associated with a particular
+pathway to the proportion of genes/proteins from a second gene list that are
+associated with that pathway. To easily execute this analysis, we have designed
+an R package that uses the KEGG REST API to obtain the most recent version of
+the KEGG PATHWAY ( Kanehisa and Goto, 2000) database to initially identify
+functional enrichment within a gene list using the entire KEGG transcriptome as
+the background data set and then to identify differentially enriched pathways
+between two gene lists. This R package includes a function to generate a
+``differential enrichment'' graphic.
 
+KEGG is a database resource for understanding high-level functions of a
+biological system, such as a cell, an organism and an ecosystem, from genomic
+and molecular-level information \url{https://www.kegg.jp/kegg/kegg1a.html}. KEGG is
+an integrated database resource consisting of eighteen databases that are
+clustered into 4 main categories: 1) systems information (e.g. hierarchies
+and maps), 2) genomic information (e.g. genes and proteins), 3) chemical
+information (e.g. biochemical reactions), and 4) health information (e.g. human
+disease and drugs) \url{https://www.kegg.jp/kegg/kegg1a.html}.
+
+In 2012 KEGG released its first application programming interface (API), and has
+been adding features and functionality ever since. There are benefits to using
+an API. First, API\textquotesingle s, like KEGG\textquotesingle s, allow users to
+perform customized analyses with the most up-to-date versions of the data
+contained in the database. In addition, accessing the KEGG API is very easy
+using statistical programming tools like R or Python and integrating data
+retrieval into user\textquotesingle s code makes the
+program reproducible. To further enforce reproducibilty diffEnrich adds a date
+and KEGG release tag to all data files it generates from accessing the API. For
+update histories and release notes for the KEGG REST API please visit
+\url{https://www.kegg.jp/kegg/rest/}.
 
 %% -- Manuscript ---------------------------------------------------------------
 

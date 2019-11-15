@@ -3,45 +3,48 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: article.aux
 The style file: jss.bst
 Database file #1: refs.bib
+Warning--I didn't find a database entry for "McCullagh+Nelder:1989"
+Warning--I didn't find a database entry for "Chambers+Hastie:1992"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 11 entries,
+You've used 2 entries,
             3215 wiz_defined-function locations,
-            724 strings with 6946 characters,
-and the built_in function-call counts, 8668 in all, are:
-= -- 834
-> -- 173
-< -- 10
-+ -- 67
-- -- 55
-* -- 592
-:= -- 1089
-add.period$ -- 47
-call.type$ -- 11
-change.case$ -- 66
-chr.to.int$ -- 12
-cite$ -- 11
-duplicate$ -- 898
-empty$ -- 743
-format.name$ -- 87
-if$ -- 1771
+            656 strings with 5506 characters,
+and the built_in function-call counts, 1736 in all, are:
+= -- 159
+> -- 36
+< -- 2
++ -- 14
+- -- 13
+* -- 133
+:= -- 225
+add.period$ -- 10
+call.type$ -- 2
+change.case$ -- 12
+chr.to.int$ -- 3
+cite$ -- 2
+duplicate$ -- 172
+empty$ -- 146
+format.name$ -- 20
+if$ -- 343
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 106
-newline$ -- 73
-num.names$ -- 45
-pop$ -- 432
+missing$ -- 22
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 68
 preamble$ -- 1
-purify$ -- 62
+purify$ -- 12
 quote$ -- 0
-skip$ -- 185
+skip$ -- 35
 stack$ -- 0
-substring$ -- 756
-swap$ -- 232
+substring$ -- 141
+swap$ -- 60
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 84
+type$ -- 18
 warning$ -- 0
-while$ -- 59
+while$ -- 14
 width$ -- 0
-write$ -- 165
+write$ -- 40
+(There were 2 warnings)
