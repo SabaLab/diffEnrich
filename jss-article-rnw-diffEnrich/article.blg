@@ -6,45 +6,45 @@ Database file #1: refs.bib
 Warning--I didn't find a database entry for "McCullagh+Nelder:1989"
 Warning--I didn't find a database entry for "Chambers+Hastie:1992"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 2 entries,
+You've used 9 entries,
             3215 wiz_defined-function locations,
-            656 strings with 5506 characters,
-and the built_in function-call counts, 1736 in all, are:
-= -- 159
-> -- 36
-< -- 2
-+ -- 14
-- -- 13
-* -- 133
-:= -- 225
-add.period$ -- 10
-call.type$ -- 2
-change.case$ -- 12
-chr.to.int$ -- 3
-cite$ -- 2
-duplicate$ -- 172
-empty$ -- 146
-format.name$ -- 20
-if$ -- 343
+            714 strings with 6917 characters,
+and the built_in function-call counts, 7867 in all, are:
+= -- 742
+> -- 163
+< -- 9
++ -- 63
+- -- 55
+* -- 608
+:= -- 994
+add.period$ -- 45
+call.type$ -- 9
+change.case$ -- 54
+chr.to.int$ -- 10
+cite$ -- 9
+duplicate$ -- 786
+empty$ -- 669
+format.name$ -- 91
+if$ -- 1584
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 22
-newline$ -- 23
-num.names$ -- 8
-pop$ -- 68
+missing$ -- 98
+newline$ -- 65
+num.names$ -- 36
+pop$ -- 318
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 54
 quote$ -- 0
-skip$ -- 35
+skip$ -- 155
 stack$ -- 0
-substring$ -- 141
-swap$ -- 60
+substring$ -- 695
+swap$ -- 265
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 18
+type$ -- 81
 warning$ -- 0
-while$ -- 14
+while$ -- 61
 width$ -- 0
-write$ -- 40
+write$ -- 145
 (There were 2 warnings)

@@ -1,4 +1,4 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{9}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -21,5 +21,55 @@ Huang D, \emph{et~al.} (2009).
   comprehensive functional analysis of large gene lists.}
 \newblock \emph{Nucleic acids research}, \textbf{37}(1), 1--13.
 \newblock \doi{10.1093/nar/gkn923}.
+
+\bibitem[{Kanehisa and Goto(2000)}]{KEGG:2000}
+Kanehisa M, Goto S (2000).
+\newblock \enquote{KEGG: Kyoto Encyclopedia of Genes and Genomes.}
+\newblock \emph{Nucleic acids research}, \textbf{28}(1), 27--30.
+\newblock \doi{10.1093/nar/28.1.27}.
+
+\bibitem[{Kuleshov \emph{et~al.}(2016)}]{Kuleshov:2016}
+Kuleshov M, \emph{et~al.} (2016).
+\newblock \enquote{Enrichr: a comprehensive gene set enrichment analysis web
+  server 2016 update.}
+\newblock \emph{Nucleic acids research}, \textbf{44}(1), 90--97.
+\newblock \doi{10.1093/nar/gkw377}.
+
+\bibitem[{Liao \emph{et~al.}(2019)}]{Liao:2019}
+Liao Y, \emph{et~al.} (2019).
+\newblock \enquote{Gene set analysis toolkit with revamped UIs and APIs.}
+\newblock \emph{Nucleic acids research}, \textbf{47}(1), 199--205.
+\newblock \doi{10.1093/nar/gkz401}.
+
+\bibitem[{Petersen \emph{et~al.}(2018)}]{Petersen:2018}
+Petersen D, \emph{et~al.} (2018).
+\newblock \enquote{Elevated Nrf-2 responses are insufficient to mitigate
+  protein carbonylation in hepatospecific PTEN deletion mice.}
+\newblock \emph{PLoS one}, \textbf{13}(5).
+\newblock \doi{10.1371/journal.pone.0198139}.
+
+\bibitem[{Shearn \emph{et~al.}(2018)}]{Shearn:2018}
+Shearn C, \emph{et~al.} (2018).
+\newblock \enquote{Knockout of the Gsta4 Gene in Male Mice Leads to an Altered
+  Pattern of Hepatic Protein Carbonylation and Enhanced Inflammation Following
+  Chronic Consumption of an Ethanol Diet.}
+\newblock \emph{Alcoholism clinical and experimental research}, \textbf{42}(7),
+  1192--1205.
+\newblock \doi{10.1111/acer.13766}.
+
+\bibitem[{Shearn \emph{et~al.}(2019)}]{Shearn:2019}
+Shearn C, \emph{et~al.} (2019).
+\newblock \enquote{Cholestatic liver disease results increased production of
+  reactive aldehydes and an atypical periportal hepatic antioxidant response.}
+\newblock \emph{Free radical biology and medicine}, \textbf{143}(1), 101--114.
+\newblock \doi{10.1016/j.freeradbiomed.2019.07.036}.
+
+\bibitem[{Subramanian \emph{et~al.}(2005)}]{Subramanian:2005}
+Subramanian T, \emph{et~al.} (2005).
+\newblock \enquote{Gene set enrichment analysis: A knowledge-based approach for
+  interpreting genome-wide expression profiles.}
+\newblock \emph{Proceedings of the National Academy of Sciences of the United
+  States of America}, \textbf{102}(43), 15545--15550.
+\newblock \doi{10.1073/pnas.0506580102}.
 
 \end{thebibliography}
