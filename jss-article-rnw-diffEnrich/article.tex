@@ -238,14 +238,43 @@ and KEGG release tag to all data files it generates from accessing the API. For
 update histories and release notes for the KEGG REST API please visit
 \url{https://www.kegg.jp/kegg/rest/}.
 
+%% ------------Section 2: Features----------------------------------------------
+
+\section[Features]{Features} \label{sec:feat}
+
 The goal of the diffEnrich package is to compare functional enrichment between
 two experimentally-derived groups of genes or proteins. This package provides
 four functions that are intended to be used in an ordered pipeline
 (Figure~\ref{fig:flowchart}).
 
-%% ------------Section 2: Features----------------------------------------------
+\medskip
 
-\section[Features]{Features} \label{sec:feat}
+You can install the released version of diffEnrich from CRAN with:
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{install.packages}\hlstd{(}\hlstr{"diffEnrich"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\subsection{\code{get\textunderscore kegg}: Download and prepare pathways from KEGG API}
+
+First, the \code{get\textunderscore kegg} function is used to connect to the
+KEGG REST API and download the data sets required to perform downstream
+analysis. Currently, this function supports three species: Homo sapiens, Mus
+musculus, and Rattus norvegicus. For a given species, three data sets are
+generated: 1) ncbi\textunderscore to\textunderscore kegg: this data set maps NCBI/ENTREZ gene IDs to KEGG gene
+IDs, 2) kegg\textunderscore to\textunderscore pathway: this data set maps KEGG gene IDs to their respective
+KEGG pathway IDs, and 3) pathway\textunderscore to\textunderscore species: this data set maps KEGG pathway IDs
+to their respective pathway descriptions. This function allows the user to save
+versioned (based on KEGG release) and time-stamped text files of the three data
+sets described above. In addition to these flat files, \code{get\textunderscore kegg} will also create
+a named list in R with the three data sets. \code{get\textunderscore kegg} can also read in the saved
+text files from a past run and format them for downstream analyses. This
+function typically completes in a few seconds, but it is important to note that
+the finishing time is dependent on the time it takes to connect to the KEGG API.
 
 
 \bibliography{refs}
