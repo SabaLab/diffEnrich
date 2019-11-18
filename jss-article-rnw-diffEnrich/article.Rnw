@@ -281,6 +281,22 @@ text files from a past run and format them for downstream analyses. This
 function typically completes in a few seconds, but it is important to note that
 the finishing time is dependent on the time it takes to connect to the KEGG API.
 
+The \code{get_kegg} function accesses the KEGG REST API and downloads the data
+sets required to perform downstream analysis. This function takes two arguments.
+The first, 'species' is required. Currently, diffEnrich supports three species,
+and the argument is a character string using the KEGG code: Homo sapiens
+(human), use 'hsa'; Mus musculus (mouse), use 'mmu'; and Rattus norvegicus
+(rat), use 'rno'. The second, 'path' is also passed as a character string, and
+is the path of the directory in which the user would like to write the data sets
+downloaded from the KEGG REST API. If the user does not provide a path, the data
+sets will be automatically written to the current working directory using the
+\code{here::here()} (\cite{kirill:2017}) functionality. These data sets will be
+tab delimited files with a name describing the data, and for reproducibility,
+the date they were generated and the version of KEGG when the API was accessed.
+In addition to these flat files, \code{get_kegg} will also create a named list
+in R with the three relevant KEGG data sets. The names of this list will
+describe the data set, and are described in Table 1.
+
 
 \bibliography{refs}
 
