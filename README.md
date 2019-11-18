@@ -162,7 +162,7 @@ the data set. For a detailed description of list elements use
 kegg_rno <- get_kegg('rno')
 #> 3 data sets will be written as tab delimited text files
 #> File location: /Users/smiharry/Documents/packages/diffEnrich
-#> Kegg Release: Release_92.0+_10-30_Oct_19
+#> Kegg Release: Release_92.0+_11-18_Nov_19
 ```
 
 Here are examples of the output files:
@@ -187,7 +187,7 @@ generate an R list object that is compatible with downstream functions.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_92.0+_10-30_Oct_19
+#> Kegg Release: Release_92.0+_11-18_Nov_19
 ```
 
 ``` r
@@ -1065,14 +1065,12 @@ choose from those supported by *stats::p.adjust*. The default is the
 False Discovery Rate ( [Benjamini and
 Hochberg, 1995](http://www.jstor.org/stable/2346101)). KEGG pathways
 that do not contain any genes from either gene list (i.e.,
-*list1\_pe![enrich\_table](https://latex.codecogs.com/png.latex?enrich_table
-"enrich_table")KEGG\_PATHWAY\_in\_list* for ‘rno04530’ = 0 AND
-*list2\_pe![enrich\_table](https://latex.codecogs.com/png.latex?enrich_table
-"enrich_table")KEGG\_PATHWAY\_in\_list* for ‘rno04530’ = 0) will be
-removed as these cannot be tested. If this is the case a warning will be
-printed that tells the user how many pathways were removed. This can be
-avoided by setting the ‘N’ parameter to a value \> 0 in the *pathEnrich*
-calls.
+list1\_pe$enrich\_table$KEGG\_PATHWAY\_in\_list for ‘rno04530’ = 0 AND
+list2\_pe$enrich\_table$KEGG\_PATHWAY\_in\_list for ‘rno04530’ = 0) will
+be removed as these cannot be tested. If this is the case a warning will
+be printed that tells the user how many pathways were removed. This can
+be avoided by setting the ‘N’ parameter to a value \> 0 in the
+*pathEnrich* calls.
 
 ``` r
 ## Perform differential enrichment
