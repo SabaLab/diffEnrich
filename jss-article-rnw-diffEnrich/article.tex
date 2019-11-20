@@ -276,7 +276,7 @@ text files from a past run and format them for downstream analyses. This
 function typically completes in a few seconds, but it is important to note that
 the finishing time is dependent on the time it takes to connect to the KEGG API.
 
-The \code{get_kegg} function accesses the KEGG REST API and downloads the data
+The \code{get_\textunderscore kegg} function accesses the KEGG REST API and downloads the data
 sets required to perform downstream analysis. This function takes two arguments.
 The first, 'species' is required. Currently, diffEnrich supports three species,
 and the argument is a character string using the KEGG code: Homo sapiens
@@ -288,9 +288,22 @@ sets will be automatically written to the current working directory using the
 \code{here::here()} (\cite{kirill:2017}) functionality. These data sets will be
 tab delimited files with a name describing the data, and for reproducibility,
 the date they were generated and the version of KEGG when the API was accessed.
-In addition to these flat files, \code{get_kegg} will also create a named list
+In addition to these flat files, \code{get\textunderscore kegg} will also create a named list
 in R with the three relevant KEGG data sets. The names of this list will
 describe the data set, and are described in Table 1.
+
+\begin{table}[ht!]
+\centering
+\begin{tabular}{lllp{7.4cm}}
+\hline
+\code{get\textunderscore kegg} list object & Description \\ \hline
+ncbi\textunderscore to\textunderscore kegg                & ncbi gene ID <-- mapped to --> KEGG gene ID \\
+kegg\textunderscore to\textunderscore pathway             & KEGG gene ID <-- mapped to --> KEGG pathway ID \\
+pathway\textunderscore to\textunderscore species          & KEGG pathway ID <-- mapped to --> KEGG pathway species description \\ \hline
+\end{tabular}
+\caption{\label{tab:description} Description of the data sets retrieved by \code{get\textunderscore kegg}'s
+connection to the KEGG REST API.}
+\end{table}
 
 
 \bibliography{refs}
