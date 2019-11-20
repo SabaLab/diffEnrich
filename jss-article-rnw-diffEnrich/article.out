@@ -1,3 +1,4 @@
 \BOOKMARK [1][-]{Section.0.Introduction.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{Section.1.Features.1}{Features}{}% 2
 \BOOKMARK [2][-]{Subsection.2.0.\bgroup \catcode `\_12\relax \catcode `\~12\relax \catcode `\$12\relax {\normalfont  \ttfamily  \hyphenchar \font =-1 get\textunderscore kegg}\egroup : Download and prepare pathways from KEGG API.2}{`\13712`12`\04412=-1 get\137kegg: Download and prepare pathways from KEGG API}{Section.1.Features.1}% 3
+\BOOKMARK [2][-]{Subsection.2.1.\bgroup \catcode `\_12\relax \catcode `\~12\relax \catcode `\$12\relax {\normalfont  \ttfamily  \hyphenchar \font =-1 pathEnrich}\egroup : Perform enrichment analysis of individual gene sets..2}{`\13712`12`\04412=-1 pathEnrich: Perform enrichment analysis of individual gene sets.}{Section.1.Features.1}% 4
