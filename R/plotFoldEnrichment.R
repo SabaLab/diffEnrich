@@ -85,13 +85,14 @@ plotFoldEnrichment <- function(de_res, pval, N){
     dplyr::arrange(.data$pvals)
 
   bardat <- merge(bardat.tmp, df, by = "KEGG_PATHWAY_ID")
+  colnames(bardat)[2] <- "KEGG_PATHWAY_description"
 
   ###########################################################
   # Generate plot
   ###########################################################
   # library(ggnewscale)
   # First, we'll make a plot and save it as a variable
-  g <- ggplot(bardat, aes(x=stats::reorder(.data$KEGG_PATHWAY_description.x, -.data$diff_enrich_adjusted), y=.data$value)) +
+  g <- ggplot(bardat, aes(x=stats::reorder(.data$KEGG_PATHWAY_description, -.data$diff_enrich_adjusted), y=.data$value)) +
     geom_bar(stat="identity", aes(col=.data$variable, group=.data$variable, fill=.data$pvals), position="dodge") +
     ylim(0, max(bardat$value) + 0.6) + xlab("") +
     coord_flip() +
@@ -112,7 +113,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
 
   # Supplement with original data
   ld$pvals <- log10(bardat$pvals[matches])
-  ld$descr <- bardat$KEGG_PATHWAY_description.x[matches]
+  ld$descr <- bardat$KEGG_PATHWAY_description[matches]
   ld$vars <- bardat$variable[matches]
 
   ## Merge ld with df.ss
