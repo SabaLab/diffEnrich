@@ -72,24 +72,26 @@ plotFoldEnrichment <- function(de_res, pval, N){
   ## Clean up melted data frame
   df.ss <- df.melt %>%
     dplyr::filter(.data$variable %in% c("fold_enrichment_list1", "fold_enrichment_list2",
-                         "enrich_p_list1", "enrich_p_list2",
-                         "diff_enrich_adjusted"))
+                                        "enrich_p_list1", "enrich_p_list2",
+                                        "diff_enrich_adjusted"))
 
   ## get vector of pvals
   pvals <- subset(df.ss, df.ss$variable %in% c("enrich_p_list1", "enrich_p_list2"))
 
   ## Generate data set to be used for plotting
-  bardat <- subset(df.ss, df.ss$variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
+  bardat.tmp <- subset(df.ss, df.ss$variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
     dplyr::mutate(alpha = log10(pvals$value),
-           pvals = pvals$value) %>%
+                  pvals = pvals$value) %>%
     dplyr::arrange(.data$pvals)
+
+  bardat <- merge(bardat.tmp, df, by = "KEGG_PATHWAY_ID")
 
   ###########################################################
   # Generate plot
   ###########################################################
-    # library(ggnewscale)
+  # library(ggnewscale)
   # First, we'll make a plot and save it as a variable
-    g <- ggplot(bardat, aes(x=stats::reorder(.data$KEGG_PATHWAY_description, -.data$pvals), y=.data$value)) +
+  g <- ggplot(bardat, aes(x=stats::reorder(.data$KEGG_PATHWAY_description.x, -.data$diff_enrich_adjusted), y=.data$value)) +
     geom_bar(stat="identity", aes(col=.data$variable, group=.data$variable, fill=.data$pvals), position="dodge") +
     ylim(0, max(bardat$value) + 0.6) + xlab("") +
     coord_flip() +
@@ -110,7 +112,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
 
   # Supplement with original data
   ld$pvals <- log10(bardat$pvals[matches])
-  ld$descr <- bardat$KEGG_PATHWAY_description[matches]
+  ld$descr <- bardat$KEGG_PATHWAY_description.x[matches]
   ld$vars <- bardat$variable[matches]
 
   ## Merge ld with df.ss
