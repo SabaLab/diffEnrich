@@ -382,7 +382,7 @@ plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 
 # References
 
-Ashburner et al. (2000) Gene ontology: tool for the unification of biology. Nat Genet. 25(1):25-29.
+Ashburner et al. (2000) Gene ontology: tool for the unification of biology. Nat Genet. 25(1):25-29. 
 
 Benjamini, Y., and Hochberg, Y. (1995). Controlling the false discovery rate: a practical and powerful approach to multiple testing. Journal of the Royal Statistical Society Series B,.57, 289–300
 
