@@ -10,7 +10,7 @@ Authors@R:
              family = "Saba",
              role = "aut",
              email = "laura.saba@cuanschutz.edu"))
-Description: Compare functional enrichment between two experimentally-derived groups of genes or proteins (Peterson, DR., et al.(2018)) <doi: 10.1371/journal.pone.0198139>. Given a list of gene symbols, *diffEnrich*  will
+Description: Compare functional enrichment between two experimentally-derived groups of genes or proteins (Peterson, DR., et al.(2018)) <doi: 10.1371/journal.pone.0198139>. Given a list of gene symbols, 'diffEnrich'  will
   perform differential enrichment analysis using the Kyoto Encyclopedia of Genes
   and Genomes (KEGG) REST API. This package provides a number of functions that are 
   intended to be used in a pipeline. Briefly, the user provides a KEGG formatted species id for either human, mouse or rat, and the package will
