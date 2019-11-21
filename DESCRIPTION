@@ -3,13 +3,13 @@ Title: Given a List of Gene Symbols, Performs Differential Enrichment Analysis
 Version: 0.1.0.9001
 Authors@R: 
     c(person(given = "Harry",
-           family = "Smith",
-           role = c("aut", "cre"),
-           email = "harry.smith@ucdenver.edu"),
-    person(given = "Laura",
-           family = "Saba",
-           role = c("aut"),
-           email = "laura.saba@cuanschutz.edu"))
+             family = "Smith",
+             role = c("aut", "cre"),
+             email = "harry.smith@ucdenver.edu"),
+      person(given = "Laura",
+             family = "Saba",
+             role = "aut",
+             email = "laura.saba@cuanschutz.edu"))
 Description: Compare functional enrichment between two experimentally-derived groups of genes or proteins (Peterson, DR., et al.(2018)) <doi: 10.1371/journal.pone.0198139>. Given a list of gene symbols, *diffEnrich*  will
   perform differential enrichment analysis using the Kyoto Encyclopedia of Genes
   and Genomes (KEGG) REST API. This package provides a number of functions that are 
