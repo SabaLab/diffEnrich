@@ -79,19 +79,19 @@ plotFoldEnrichment <- function(de_res, pval, N){
   pvals <- subset(df.ss, df.ss$variable %in% c("enrich_p_list1", "enrich_p_list2"))
 
   ## Generate data set to be used for plotting
-  bardat <- subset(df.ss, df.ss$variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
+  bardat.tmp <- subset(df.ss, df.ss$variable %in% c("fold_enrichment_list1", "fold_enrichment_list2")) %>%
     dplyr::mutate(alpha = log10(pvals$value),
                   pvals = pvals$value) %>%
     dplyr::arrange(.data$pvals)
 
-  # bardat <- merge(bardat.tmp, df[, c(1,8)], by = "KEGG_PATHWAY_ID")
+  bardat <- merge(bardat.tmp, df[, c(1,8)], by = "KEGG_PATHWAY_ID")
 
   ###########################################################
   # Generate plot
   ###########################################################
   # library(ggnewscale)
   # First, we'll make a plot and save it as a variable
-  g <- ggplot(bardat, aes(x=stats::reorder(.data$KEGG_PATHWAY_description, -.data$pvals), y=.data$value)) +
+  g <- ggplot(bardat, aes(x=stats::reorder(.data$KEGG_PATHWAY_description, -.data$diff_enrich_adjusted), y=.data$value)) +
     geom_bar(stat="identity", aes(col=.data$variable, group=.data$variable, fill=.data$pvals), position="dodge") +
     ylim(0, max(bardat$value) + 0.6) + xlab("") +
     coord_flip() +
