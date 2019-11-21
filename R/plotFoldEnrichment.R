@@ -84,8 +84,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
                   pvals = pvals$value) %>%
     dplyr::arrange(.data$pvals)
 
-  bardat <- merge(bardat.tmp, df, by = "KEGG_PATHWAY_ID")
-  colnames(bardat)[2] <- "KEGG_PATHWAY_description"
+  bardat <- merge(bardat.tmp, df[, c(1,8)], by = "KEGG_PATHWAY_ID")
 
   ###########################################################
   # Generate plot
