@@ -10,16 +10,29 @@
 0 errors | 0 warnings | 1 note
 
 * ❯ checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'Harry Smith <harry.smith@ucdenver.edu>'
+  New maintainer:
+    Harry Smith <harry.smith@cuanschutz.edu>
+  Old maintainer(s):
+    Harry Smith <harry.smith@ucdenver.edu>
   
-  New submission
+ * THIS IS A VERSION UPDATE WITH BUG FIXES *
+ -previous version: 0.1.0
+ -current version 0.1.1
+ Reason for new version: bug due to 'transparent' no longer a valid color option for
+ ggplot2::scale_fill_gradient. This introduced an error in plotFoldEnrichment():
+ 
+ Quitting from lines 379-381 (diffenrich_vignette.Rmd)
+    Error: processing vignette 'diffenrich_vignette.Rmd' failed with diagnostics:
+    need at least two non-NA values to interpolate
+    --- failed re-building 'diffenrich_vignette.Rmd'
+    
+  SUMMARY: processing the following file failed:
+  'diffenrich_vignette.Rmd'
+    
+  Error: Vignette re-building failed.
+  Execution halted
   
- * THIS IS A RESUBMISSION *
- Revier comments:
- Tanks, please omit the redundant "The goal of diffEnrich is to". Rather,
-is there some reference about the method you can add in the Description
-field in the form Authors (year) <doi:.....>?
-
-OLD:"The goal of diffEnrich is to compare functional enrichment between two experimentally-derived groups of genes or proteins."
-
-UPDATED: "Compare functional enrichment between two experimentally-derived groups of genes or proteins (Peterson, DR., et al.(2018)) <doi: 10.1371/journal.pone.0198139>."
+  I fixed this by changing the 'transparent' color to 'white'. This seems to have
+  resolved the issue. diffEnrich is now passing all checks. The 'new maintainer'
+  NOTE is because I updated my email address.
+ 
