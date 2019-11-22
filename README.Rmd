@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 ```
 # diffEnrich
 
-## Introduction
+## Introduction 
 
 The goal of diffEnrich is to compare functional enrichment between two experimentally-derived groups of genes or proteins. Given a list of NCBI gene symbols, *diffEnrich*  will
 perform differential enrichment analysis using the Kyoto Encyclopedia of Genes
