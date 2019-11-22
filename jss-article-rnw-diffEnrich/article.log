@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  21 NOV 2019 14:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  21 NOV 2019 20:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -448,48 +448,123 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (/usr/local/texlive/2018/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
+Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+\col@sep=\dimen113
+\ar@mcellbox=\box27
+\extrarowheight=\dimen114
+\NC@list=\toks15
+\extratabsurround=\skip54
+\backup@length=\skip55
+\ar@cellbox=\box28
+)
+\TX@col@width=\dimen115
+\TX@old@table=\dimen116
+\TX@old@col=\dimen117
+\TX@target=\dimen118
+\TX@delta=\dimen119
+\TX@cols=\count102
+\TX@ftn=\toks16
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2018/04/08 v1.1 Adjusting TeX boxes (trim, clip, ...)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks17
+\XKV@tempa@toks=\toks18
+)
+\XKV@depth=\count103
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box29
+)
+\tc@llx=\dimen120
+\tc@lly=\dimen121
+\tc@urx=\dimen122
+\tc@ury=\dimen123
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2018/04/08 v2.1 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen124
+\adjbox@Height=\dimen125
+\adjbox@Depth=\dimen126
+\adjbox@Totalheight=\dimen127
+\adjbox@pwidth=\dimen128
+\adjbox@pheight=\dimen129
+\adjbox@pdepth=\dimen130
+\adjbox@ptotalheight=\dimen131
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count104
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box30
+\sift@deathcycles=\count105
+\@vwid@loff=\dimen132
+\@vwid@roff=\dimen133
+))
 (./article.aux)
 \openout1 = `article.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 141.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 141.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 145.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 145.
 
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 141.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 145.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count102
-\scratchdimen=\dimen113
-\scratchbox=\box27
-\nofMPsegments=\count103
-\nofMParguments=\count104
-\everyMPshowfont=\toks15
-\MPscratchCnt=\count105
-\MPscratchDim=\dimen114
-\MPnumerator=\count106
-\makeMPintoPDFobject=\count107
-\everyMPtoPDFconversion=\toks16
+\scratchcounter=\count106
+\scratchdimen=\dimen134
+\scratchbox=\box31
+\nofMPsegments=\count107
+\nofMParguments=\count108
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen135
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
+\everyMPtoPDFconversion=\toks20
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -507,8 +582,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring ON on input line 141.
+\AtBeginShipoutBox=\box32
+Package hyperref Info: Link coloring ON on input line 145.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -516,11 +591,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count108
+\c@section@level=\count112
 )
-LaTeX Info: Redefining \ref on input line 141.
-LaTeX Info: Redefining \pageref on input line 141.
-LaTeX Info: Redefining \nameref on input line 141.
+LaTeX Info: Redefining \ref on input line 145.
+LaTeX Info: Redefining \pageref on input line 145.
+LaTeX Info: Redefining \nameref on input line 145.
 
 (./article.out) (./article.out
 ! Missing \endcsname inserted.
@@ -619,13 +694,46 @@ l.4 ...ndividual gene sets.}{Section.1.Features.1}
 The control sequence marked <to be read again> should
 not appear between \csname and \endcsname.
 
+! Undefined control sequence.
+\Hy@temp ->`\1
+              3712`12`\04412=-1 get\137kegg: Download and prepare pathways f...
+l.5 ...Information.1}{Supplementary Information}{}
+                                                  % 5
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\Hy@temp ->`\13712`12`\0
+                        4412=-1 get\137kegg: Download and prepare pathways f...
+l.5 ...Information.1}{Supplementary Information}{}
+                                                  % 5
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\Hy@temp ->`\13712`12`\04412=-1 get\1
+                                     37kegg: Download and prepare pathways f...
+l.5 ...Information.1}{Supplementary Information}{}
+                                                  % 5
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 )
 Runaway text?
 \catcode `\protect \T1\textunderscore 12\relax \catcode `\unhbox \voidb@x \ETC.
 ! File ended while scanning text of \B_Subsection.2.0..
 <inserted text> 
                 }
-l.141 \begin{document}
+l.145 \begin{document}
                       
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -638,7 +746,7 @@ you'd better type `E' or `X' now and fix your file.
 ! Undefined control sequence.
 \@author ...acy\\and Pharmaceutical Sciences \And 
                                                   Laura Saba\\Skaggs School ...
-l.141 \begin{document}
+l.145 \begin{document}
                       
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -648,87 +756,87 @@ and I'll forget about whatever was undefined.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 141.
+(hyperref)                removing `\\' on input line 145.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 141.
+(hyperref)                removing `\\' on input line 145.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 141.
+(hyperref)                removing `\\' on input line 145.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 141.
+(hyperref)                removing `\\' on input line 145.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 141.
+(hyperref)                removing `\\' on input line 145.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 141.
+(hyperref)                removing `\\' on input line 145.
 
 <jsslogo.jpg, id=16, 540.0175pt x 393.47pt>
 File: jsslogo.jpg Graphic file (type jpg)
 <use jsslogo.jpg>
-Package pdftex.def Info: jsslogo.jpg  used on input line 141.
+Package pdftex.def Info: jsslogo.jpg  used on input line 145.
 (pdftex.def)             Requested size: 89.80768pt x 65.43607pt.
-LaTeX Font Info:    Try loading font information for T1+pzc on input line 141.
+LaTeX Font Info:    Try loading font information for T1+pzc on input line 145.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1pzc.fd
 File: t1pzc.fd 2001/06/04 font definitions for T1/pzc.
 )
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <28> not available
-(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 141.
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 141.
+(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 145.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 145.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 141.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 145.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 141.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 145.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 141
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 145
 .
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 141
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 145
 .
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 141.
+(Font)              <10.95> on input line 145.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 141.
+(Font)              <8> on input line 145.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 141.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 141.
+(Font)              <6> on input line 145.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 145.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 141.
+(Font)              <10> on input line 145.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 141.
+(Font)              <7> on input line 145.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 141.
+(Font)              <5> on input line 145.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -736,13 +844,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./jsslo
 go.jpg>]
-Package color Info: Redefining color shadecolor on input line 218.
+Package color Info: Redefining color shadecolor on input line 222.
 <figure/visualization-1.pdf, id=55, 505.89pt x 505.89pt>
 File: figure/visualization-1.pdf Graphic file (type pdf)
 <use figure/visualization-1.pdf>
-Package pdftex.def Info: figure/visualization-1.pdf  used on input line 219.
+Package pdftex.def Info: figure/visualization-1.pdf  used on input line 223.
 (pdftex.def)             Requested size: 442.65375pt x 442.66037pt.
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 231.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 235.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -757,104 +865,105 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
  []
 
 [3 <./figure/visualization-1.pdf>]
-Overfull \hbox (23.96657pt too wide) in paragraph at lines 245--249
+Overfull \hbox (23.96657pt too wide) in paragraph at lines 249--253
 []\T1/lmr/m/n/10.95 The goal of the dif-f-En-rich pack-age is to com-pare func-
 tional en-rich-ment be-tween two experimentally-
  []
 
-Package color Info: Redefining color shadecolor on input line 255.
+Package color Info: Redefining color shadecolor on input line 259.
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 257.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 261.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 262.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 262.
+(hyperref)                removing `\catcode' on input line 266.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 262.
+(hyperref)                removing `\catcode' on input line 266.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hyphenchar' on input line 262.
+(hyperref)                removing `\catcode' on input line 266.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\font' on input line 262.
+(hyperref)                removing `\hyphenchar' on input line 266.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\font' on input line 266.
 
 
 Package hyperref Warning: Composite letter `\texttilde+1'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\texttilde' on input line 262.
+(hyperref)                removing `\texttilde' on input line 266.
 
-Package color Info: Redefining color shadecolor on input line 292.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 297
+Package color Info: Redefining color shadecolor on input line 296.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 301
 .
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
+Overfull \hbox (5.74747pt too wide) in paragraph at lines 305--306
+[]\T1/lmtt/m/it/10.95 ## These files already exist in your working directory. N
+ew files will not be
+ []
+
+
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 4 []
  []
 
 [4]
-Package color Info: Redefining color shadecolor on input line 318.
+Package color Info: Redefining color shadecolor on input line 320.
 
-Overfull \hbox (5.74747pt too wide) in paragraph at lines 325--326
+Overfull \hbox (5.74747pt too wide) in paragraph at lines 327--328
 []\T1/lmtt/m/it/10.95 ## These files already exist in your working directory. N
 ew files will not be
  []
 
-Package color Info: Redefining color shadecolor on input line 335.
+Package color Info: Redefining color shadecolor on input line 337.
 
-Overfull \hbox (36.56134pt too wide) in paragraph at lines 359--367
- [][] 
- []
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 374.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 370.
+(hyperref)                removing `\catcode' on input line 374.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 370.
+(hyperref)                removing `\catcode' on input line 374.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 370.
+(hyperref)                removing `\hyphenchar' on input line 374.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hyphenchar' on input line 370.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\font' on input line 370.
+(hyperref)                removing `\font' on input line 374.
 
 
 Package hyperref Warning: Composite letter `\texttilde+1'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\texttilde' on input line 370.
+(hyperref)                removing `\texttilde' on input line 374.
 
-Package color Info: Redefining color shadecolor on input line 381.
+Package color Info: Redefining color shadecolor on input line 385.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 5
  []
 
 [5]
-Package color Info: Redefining color shadecolor on input line 431.
+Package color Info: Redefining color shadecolor on input line 438.
 
-Overfull \hbox (28.7424pt too wide) in paragraph at lines 480--480
+Overfull \hbox (28.7424pt too wide) in paragraph at lines 487--487
 []\T1/lmtt/m/n/10.95 ##  Only KEGG pathways that contained at least 2 genes fro
 m gene_list were tested.[] 
  []
 
 
-Overfull \hbox (149.4658pt too wide) in paragraph at lines 480--480
+Overfull \hbox (149.4658pt too wide) in paragraph at lines 487--487
 []\T1/lmtt/m/n/10.95 ##  36 pathways reached statistical significance after mul
 tiple testing correction at a cutoff of 0.05.[] 
  []
@@ -871,30 +980,38 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 
 [7])
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 490.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 490.
+(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 523.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 523.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 8 []
  []
 
 [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 490.
+Overfull \hbox (5.47499pt too wide) has occurred while \output is active
+[] \T1/lmr/m/n/10.95 9
+ []
+
+[9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 523.
  (./article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 490.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 490.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 523.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 523.
 Package rerunfilecheck Info: File `article.out' has not changed.
-(rerunfilecheck)             Checksum: 5CBCFA07E1F47CDCEAE5AA5164B1FCA9;790.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 490.
+(rerunfilecheck)             Checksum: C7005A67211C356728435FA6589AE5C6;878.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 523.
  ) 
 Here is how much of TeX's memory you used:
- 7140 strings out of 492649
- 107608 string characters out of 6129622
- 200419 words of memory out of 5000000
- 10857 multiletter control sequences out of 15000+600000
- 80589 words of font info for 61 fonts, out of 8000000 for 9000
+ 8186 strings out of 492649
+ 124499 string characters out of 6129622
+ 227620 words of memory out of 5000000
+ 11857 multiletter control sequences out of 15000+600000
+ 83577 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,9n,34p,631b,415s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,9n,37p,631b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Subsection.2.0.\\bgroup\040\\catcode\040`\\protec
 t\040\\T1\\textunderscore\04012\\relax\040\\catcode\040`\\unhbox\040\\voidb@x\0
 40\\bgroup\040\\let\040\\unhbox\040\\voidb@x\040\\setbox\040\\@tempboxa\040\\hb
@@ -911,24 +1028,25 @@ date\040\\hyphenchar\040\\font\040=-1\040get\\T1\\textunderscore\040kegg}\\egro
 up\040:\040Download\040and\040prepare\040pathways\040from\040KEGG\040API.2} has
  been referenced but does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/t
-exlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2018/te
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/te
+xlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2018/te
 xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/
 type1/public/lm/lmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
 ic/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr1
-0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmri10.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2018/texmf-d
-ist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2018/texmf-dist/fonts
-/type1/public/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/lm/lmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmt
-t12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtti10.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (8 pages, 922456 bytes).
+0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texl
+ive/2018/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2018/texmf-dist/
+fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/lm/lmsso10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
+c/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt1
+0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtti10.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
+Output written on article.pdf (9 pages, 954558 bytes).
 PDF statistics:
- 195 PDF objects out of 1000 (max. 8388607)
- 167 compressed objects within 2 object streams
- 30 named destinations out of 1000 (max. 500000)
+ 207 PDF objects out of 1000 (max. 8388607)
+ 177 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
  35 words of extra memory for PDF output out of 10000 (max. 10000000)
 
