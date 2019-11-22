@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  21 NOV 2019 21:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  22 NOV 2019 13:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -529,48 +529,74 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \c@nlinenum=\count106
 \TeXr@lab=\toks19
 )
+(/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count107
+\float@exts=\toks20
+\float@box=\box31
+\@float@everytoks=\toks21
+\@floatcapt=\box32
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip56
+\LTright=\skip57
+\LTpre=\skip58
+\LTpost=\skip59
+\LTchunksize=\count108
+\LTcapwidth=\dimen135
+\LT@head=\box33
+\LT@firsthead=\box34
+\LT@foot=\box35
+\LT@lastfoot=\box36
+\LT@cols=\count109
+\LT@rows=\count110
+\c@LT@tables=\count111
+\c@LT@chunks=\count112
+\LT@p@ftn=\toks22
+)
 (./article.aux)
 \openout1 = `article.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 146.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 146.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 148.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 148.
 
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 146.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 148.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count107
-\scratchdimen=\dimen135
-\scratchbox=\box31
-\nofMPsegments=\count108
-\nofMParguments=\count109
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count110
-\MPscratchDim=\dimen136
-\MPnumerator=\count111
-\makeMPintoPDFobject=\count112
-\everyMPtoPDFconversion=\toks21
+\scratchcounter=\count113
+\scratchdimen=\dimen136
+\scratchbox=\box37
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count116
+\MPscratchDim=\dimen137
+\MPnumerator=\count117
+\makeMPintoPDFobject=\count118
+\everyMPtoPDFconversion=\toks24
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -588,8 +614,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring ON on input line 146.
+\AtBeginShipoutBox=\box38
+Package hyperref Info: Link coloring ON on input line 148.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -597,11 +623,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count113
+\c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 146.
-LaTeX Info: Redefining \pageref on input line 146.
-LaTeX Info: Redefining \nameref on input line 146.
+LaTeX Info: Redefining \ref on input line 148.
+LaTeX Info: Redefining \pageref on input line 148.
+LaTeX Info: Redefining \nameref on input line 148.
 
 (./article.out) (./article.out
 ! Missing \endcsname inserted.
@@ -703,7 +729,7 @@ not appear between \csname and \endcsname.
 ! Undefined control sequence.
 \Hy@temp ->`\1
               3712`12`\04412=-1 get\137kegg: Download and prepare pathways f...
-l.5 ...Information.1}{Supplementary Information}{}
+l.5 ...iched KEGG pathways.}{Section.1.Features.1}
                                                   % 5
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -714,7 +740,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \Hy@temp ->`\13712`12`\0
                         4412=-1 get\137kegg: Download and prepare pathways f...
-l.5 ...Information.1}{Supplementary Information}{}
+l.5 ...iched KEGG pathways.}{Section.1.Features.1}
                                                   % 5
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -725,8 +751,79 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \Hy@temp ->`\13712`12`\04412=-1 get\1
                                      37kegg: Download and prepare pathways f...
-l.5 ...Information.1}{Supplementary Information}{}
+l.5 ...iched KEGG pathways.}{Section.1.Features.1}
                                                   % 5
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> `\1
+              3712`12`\04412=-1 diffEnrich: Identify differentially enriched...
+l.5 ...iched KEGG pathways.}{Section.1.Features.1}
+                                                  % 5
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> `\13712`12`\0
+                        4412=-1 diffEnrich: Identify differentially enriched...
+l.5 ...iched KEGG pathways.}{Section.1.Features.1}
+                                                  % 5
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \bgroup 
+l.5 ...iched KEGG pathways.}{Section.1.Features.1}
+                                                  % 5
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \bgroup 
+l.5 ...iched KEGG pathways.}{Section.1.Features.1}
+                                                  % 5
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Undefined control sequence.
+\Hy@temp ->`\1
+              3712`12`\04412=-1 get\137kegg: Download and prepare pathways f...
+l.6 ...Information.1}{Supplementary Information}{}
+                                                  % 6
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\Hy@temp ->`\13712`12`\0
+                        4412=-1 get\137kegg: Download and prepare pathways f...
+l.6 ...Information.1}{Supplementary Information}{}
+                                                  % 6
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\Hy@temp ->`\13712`12`\04412=-1 get\1
+                                     37kegg: Download and prepare pathways f...
+l.6 ...Information.1}{Supplementary Information}{}
+                                                  % 6
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -739,7 +836,7 @@ Runaway text?
 ! File ended while scanning text of \B_Subsection.2.0..
 <inserted text> 
                 }
-l.146 \begin{document}
+l.148 \begin{document}
                       
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -752,7 +849,7 @@ you'd better type `E' or `X' now and fix your file.
 ! Undefined control sequence.
 \@author ...acy\\and Pharmaceutical Sciences \And 
                                                   Laura Saba\\Skaggs School ...
-l.146 \begin{document}
+l.148 \begin{document}
                       
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -762,87 +859,87 @@ and I'll forget about whatever was undefined.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 146.
+(hyperref)                removing `\\' on input line 148.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 146.
+(hyperref)                removing `\\' on input line 148.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 146.
+(hyperref)                removing `\\' on input line 148.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 146.
+(hyperref)                removing `\\' on input line 148.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 146.
+(hyperref)                removing `\\' on input line 148.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 146.
+(hyperref)                removing `\\' on input line 148.
 
 <jsslogo.jpg, id=16, 540.0175pt x 393.47pt>
 File: jsslogo.jpg Graphic file (type jpg)
 <use jsslogo.jpg>
-Package pdftex.def Info: jsslogo.jpg  used on input line 146.
+Package pdftex.def Info: jsslogo.jpg  used on input line 148.
 (pdftex.def)             Requested size: 89.80768pt x 65.43607pt.
-LaTeX Font Info:    Try loading font information for T1+pzc on input line 146.
+LaTeX Font Info:    Try loading font information for T1+pzc on input line 148.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1pzc.fd
 File: t1pzc.fd 2001/06/04 font definitions for T1/pzc.
 )
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <28> not available
-(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 146.
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 146.
+(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 148.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 148.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 146.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 148.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 146.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 148.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 146
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 148
 .
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 146
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 148
 .
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 146.
+(Font)              <10.95> on input line 148.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 146.
+(Font)              <8> on input line 148.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 146.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 146.
+(Font)              <6> on input line 148.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 148.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 146.
+(Font)              <10> on input line 148.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 146.
+(Font)              <7> on input line 148.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 146.
+(Font)              <5> on input line 148.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -850,13 +947,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./jsslo
 go.jpg>]
-Package color Info: Redefining color shadecolor on input line 223.
+Package color Info: Redefining color shadecolor on input line 225.
 <figure/visualization-1.pdf, id=55, 505.89pt x 505.89pt>
 File: figure/visualization-1.pdf Graphic file (type pdf)
 <use figure/visualization-1.pdf>
-Package pdftex.def Info: figure/visualization-1.pdf  used on input line 224.
+Package pdftex.def Info: figure/visualization-1.pdf  used on input line 226.
 (pdftex.def)             Requested size: 442.65375pt x 442.66037pt.
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 236.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 238.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -870,42 +967,49 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 3
  []
 
-[3 <./figure/visualization-1.pdf>]
-Overfull \hbox (23.96657pt too wide) in paragraph at lines 250--254
+[3pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.252 T
+       he goal of the diffEnrich package is to compare functional enrichment...
+ <./figure/visualization-1.pdf>]
+Overfull \hbox (23.96657pt too wide) in paragraph at lines 252--256
 []\T1/lmr/m/n/10.95 The goal of the dif-f-En-rich pack-age is to com-pare func-
 tional en-rich-ment be-tween two experimentally-
  []
 
-Package color Info: Redefining color shadecolor on input line 260.
+Package color Info: Redefining color shadecolor on input line 262.
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 262.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 264.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 267.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 267.
+(hyperref)                removing `\catcode' on input line 269.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 267.
+(hyperref)                removing `\catcode' on input line 269.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hyphenchar' on input line 267.
+(hyperref)                removing `\catcode' on input line 269.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\font' on input line 267.
+(hyperref)                removing `\hyphenchar' on input line 269.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\font' on input line 269.
 
 
 Package hyperref Warning: Composite letter `\texttilde+1'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\texttilde' on input line 267.
+(hyperref)                removing `\texttilde' on input line 269.
 
-Package color Info: Redefining color shadecolor on input line 297.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 302
+Package color Info: Redefining color shadecolor on input line 299.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 304
 .
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -915,58 +1019,157 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
  []
 
 [4]
-Package color Info: Redefining color shadecolor on input line 323.
+Package color Info: Redefining color shadecolor on input line 325.
 
-Overfull \hbox (5.74747pt too wide) in paragraph at lines 330--331
+Overfull \hbox (5.74747pt too wide) in paragraph at lines 332--333
 []\T1/lmtt/m/it/10.95 ## These files already exist in your working directory. N
 ew files will not be
  []
 
-Package color Info: Redefining color shadecolor on input line 340.
+Package color Info: Redefining color shadecolor on input line 342.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 377.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 377.
+(hyperref)                removing `\catcode' on input line 379.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 377.
+(hyperref)                removing `\catcode' on input line 379.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hyphenchar' on input line 377.
+(hyperref)                removing `\catcode' on input line 379.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\font' on input line 377.
+(hyperref)                removing `\hyphenchar' on input line 379.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\font' on input line 379.
 
 
 Package hyperref Warning: Composite letter `\texttilde+1'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\texttilde' on input line 377.
+(hyperref)                removing `\texttilde' on input line 379.
 
-Package color Info: Redefining color shadecolor on input line 388.
+Package color Info: Redefining color shadecolor on input line 390.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 5
  []
 
-[5]
-Package color Info: Redefining color shadecolor on input line 438.
+[5pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
+as been already used, duplicate ignored
 
-Overfull \hbox (28.7424pt too wide) in paragraph at lines 487--487
-[]\T1/lmtt/m/n/10.95 ##  Only KEGG pathways that contained at least 2 genes fro
-m gene_list were tested.[] 
- []
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.390 ....969, 0.969}\color{fgcolor}\begin{kframe}
+                                                  ]
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \penalty \@M \futurelet \@let@token \LT@@h...
+l.440   \hline
+              
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
 
+! Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.441 C
+       olumn Names & Column Description \\
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
 
-Overfull \hbox (149.4658pt too wide) in paragraph at lines 487--487
-[]\T1/lmtt/m/n/10.95 ##  36 pathways reached statistical significance after mul
-tiple testing correction at a cutoff of 0.05.[] 
- []
+! Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.441 C
+       olumn Names & Column Description \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.447 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.449   & &
+            \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.451 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.453 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.455 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.457 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.459 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.461 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.463 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
@@ -975,54 +1178,91 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 
 [6]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 478.
 
-(./article.bbl
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 478.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 478.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\hyphenchar' on input line 478.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\font' on input line 478.
+
+
+Package hyperref Warning: Composite letter `\texttilde+1'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\texttilde' on input line 478.
+
+
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 7
  []
 
 [7]
+Package color Info: Redefining color shadecolor on input line 526.
+
+Overfull \hbox (28.7424pt too wide) in paragraph at lines 575--575
+[]\T1/lmtt/m/n/10.95 ##  Only KEGG pathways that contained at least 2 genes fro
+m gene_list were tested.[] 
+ []
+
+
+Overfull \hbox (149.4658pt too wide) in paragraph at lines 575--575
+[]\T1/lmtt/m/n/10.95 ##  36 pathways reached statistical significance after mul
+tiple testing correction at a cutoff of 0.05.[] 
+ []
+
+
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 8 []
  []
 
-[8])
-LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 561.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 561.
+[8pdfTeX warning (ext4): destination with the same identifier (name{table.3}) h
+as been already used, duplicate ignored
 
-Underfull \vbox (badness 5637) has occurred while \output is active []
-
-
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.576 \end{kframe}
+                  ] (./article.bbl
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 9
  []
 
-[9
+[9])
+LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
+(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 589.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 589.
 
-]
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 10 []
  []
 
 [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 561.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 589.
  (./article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 561.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 561.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 589.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 589.
 Package rerunfilecheck Info: File `article.out' has not changed.
-(rerunfilecheck)             Checksum: C7005A67211C356728435FA6589AE5C6;878.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 561.
+(rerunfilecheck)             Checksum: 874499A865B7A9ED1D9DD8A1A3603760;1207.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 589.
  ) 
 Here is how much of TeX's memory you used:
- 8339 strings out of 492649
- 126120 string characters out of 6129622
- 240410 words of memory out of 5000000
- 12004 multiletter control sequences out of 15000+600000
+ 8481 strings out of 492649
+ 128140 string characters out of 6129622
+ 240134 words of memory out of 5000000
+ 12137 multiletter control sequences out of 15000+600000
  83577 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,16n,37p,631b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,10n,37p,631b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Subsection.2.0.\\bgroup\040\\catcode\040`\\protec
 t\040\\T1\\textunderscore\04012\\relax\040\\catcode\040`\\unhbox\040\\voidb@x\0
 40\\bgroup\040\\let\040\\unhbox\040\\voidb@x\040\\setbox\040\\@tempboxa\040\\hb
@@ -1054,10 +1294,10 @@ c/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt1
 0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></us
 r/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtti10.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (10 pages, 956160 bytes).
+Output written on article.pdf (10 pages, 958590 bytes).
 PDF statistics:
- 212 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
+ 217 PDF objects out of 1000 (max. 8388607)
+ 186 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
  35 words of extra memory for PDF output out of 10000 (max. 10000000)
 
