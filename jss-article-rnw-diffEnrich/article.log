@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  22 NOV 2019 13:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  22 NOV 2019 13:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1208,15 +1208,16 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
  []
 
 [7]
-Package color Info: Redefining color shadecolor on input line 526.
+Package color Info: Redefining color shadecolor on input line 499.
+Package color Info: Redefining color shadecolor on input line 550.
 
-Overfull \hbox (28.7424pt too wide) in paragraph at lines 575--575
+Overfull \hbox (28.7424pt too wide) in paragraph at lines 599--599
 []\T1/lmtt/m/n/10.95 ##  Only KEGG pathways that contained at least 2 genes fro
 m gene_list were tested.[] 
  []
 
 
-Overfull \hbox (149.4658pt too wide) in paragraph at lines 575--575
+Overfull \hbox (149.4658pt too wide) in paragraph at lines 599--599
 []\T1/lmtt/m/n/10.95 ##  36 pathways reached statistical significance after mul
 tiple testing correction at a cutoff of 0.05.[] 
  []
@@ -1231,7 +1232,7 @@ as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.576 \end{kframe}
+l.600 \end{kframe}
                   ] (./article.bbl
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 9
@@ -1239,21 +1240,21 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 
 [9])
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 589.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 589.
+(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 613.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 613.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 10 []
  []
 
 [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 589.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 613.
  (./article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 589.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 589.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 613.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 613.
 Package rerunfilecheck Info: File `article.out' has not changed.
 (rerunfilecheck)             Checksum: 874499A865B7A9ED1D9DD8A1A3603760;1207.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 589.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 613.
  ) 
 Here is how much of TeX's memory you used:
  8481 strings out of 492649
@@ -1262,7 +1263,7 @@ Here is how much of TeX's memory you used:
  12137 multiletter control sequences out of 15000+600000
  83577 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,10n,37p,631b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,10n,37p,631b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Subsection.2.0.\\bgroup\040\\catcode\040`\\protec
 t\040\\T1\\textunderscore\04012\\relax\040\\catcode\040`\\unhbox\040\\voidb@x\0
 40\\bgroup\040\\let\040\\unhbox\040\\voidb@x\040\\setbox\040\\@tempboxa\040\\hb
@@ -1294,7 +1295,7 @@ c/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt1
 0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></us
 r/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtti10.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (10 pages, 958590 bytes).
+Output written on article.pdf (10 pages, 960019 bytes).
 PDF statistics:
  217 PDF objects out of 1000 (max. 8388607)
  186 compressed objects within 2 object streams
