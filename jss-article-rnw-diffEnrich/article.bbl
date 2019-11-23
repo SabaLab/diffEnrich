@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{12}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -14,6 +14,12 @@ Ashburner, \emph{et~al.} (2000).
 \newblock \enquote{Gene ontology: tool for the unification of biology.}
 \newblock \emph{Nature genetics}, \textbf{25}(1), 25--29.
 \newblock \doi{10.1038/75556}.
+
+\bibitem[{Campitelli(2019)}]{Elio:2019}
+Campitelli E (2019).
+\newblock \emph{ggnewscale: Multiple Fill and Color Scales in 'ggplot2'}.
+\newblock R package version 0.4.0,
+  \urlprefix\url{https://CRAN.R-project.org/package=ggnewscale}.
 
 \bibitem[{Huang \emph{et~al.}(2009)}]{HuangDW:2009}
 Huang D, \emph{et~al.} (2009).
@@ -77,5 +83,12 @@ Subramanian T, \emph{et~al.} (2005).
 \newblock \emph{Proceedings of the National Academy of Sciences of the United
   States of America}, \textbf{102}(43), 15545--15550.
 \newblock \doi{10.1073/pnas.0506580102}.
+
+\bibitem[{Wickham(2016)}]{Hadley:2106}
+Wickham H (2016).
+\newblock \emph{ggplot2: Elegant Graphics for Data Analysis}.
+\newblock Springer-Verlag New York.
+\newblock ISBN 978-3-319-24277-4.
+\newblock \urlprefix\url{https://ggplot2.tidyverse.org}.
 
 \end{thebibliography}

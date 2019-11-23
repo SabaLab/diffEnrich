@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  22 NOV 2019 14:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  22 NOV 2019 20:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -800,7 +800,7 @@ not appear between \csname and \endcsname.
 ! Undefined control sequence.
 \Hy@temp ->`\1
               3712`12`\04412=-1 get\137kegg: Download and prepare pathways f...
-l.6 ...Information.1}{Supplementary Information}{}
+l.6 ...1 plotFoldEnrichment}{Section.1.Features.1}
                                                   % 6
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -811,7 +811,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \Hy@temp ->`\13712`12`\0
                         4412=-1 get\137kegg: Download and prepare pathways f...
-l.6 ...Information.1}{Supplementary Information}{}
+l.6 ...1 plotFoldEnrichment}{Section.1.Features.1}
                                                   % 6
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -822,8 +822,79 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \Hy@temp ->`\13712`12`\04412=-1 get\1
                                      37kegg: Download and prepare pathways f...
-l.6 ...Information.1}{Supplementary Information}{}
+l.6 ...1 plotFoldEnrichment}{Section.1.Features.1}
                                                   % 6
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> `\1
+              3712`12`\04412=-1 plotFoldEnrichment
+l.6 ...1 plotFoldEnrichment}{Section.1.Features.1}
+                                                  % 6
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> `\13712`12`\0
+                        4412=-1 plotFoldEnrichment
+l.6 ...1 plotFoldEnrichment}{Section.1.Features.1}
+                                                  % 6
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \bgroup 
+l.6 ...1 plotFoldEnrichment}{Section.1.Features.1}
+                                                  % 6
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \bgroup 
+l.6 ...1 plotFoldEnrichment}{Section.1.Features.1}
+                                                  % 6
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Undefined control sequence.
+\Hy@temp ->`\1
+              3712`12`\04412=-1 get\137kegg: Download and prepare pathways f...
+l.7 ...Information.1}{Supplementary Information}{}
+                                                  % 7
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\Hy@temp ->`\13712`12`\0
+                        4412=-1 get\137kegg: Download and prepare pathways f...
+l.7 ...Information.1}{Supplementary Information}{}
+                                                  % 7
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\Hy@temp ->`\13712`12`\04412=-1 get\1
+                                     37kegg: Download and prepare pathways f...
+l.7 ...Information.1}{Supplementary Information}{}
+                                                  % 7
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1437,7 +1508,30 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
  []
 
 [9]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 577.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 577.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 577.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\hyphenchar' on input line 577.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\font' on input line 577.
+
+
+Package hyperref Warning: Composite letter `\texttilde+1'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\texttilde' on input line 577.
 
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
@@ -1445,61 +1539,119 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [10]
-Package color Info: Redefining color shadecolor on input line 604.
+Package color Info: Redefining color shadecolor on input line 598.
+<figure/visualization_2-1.pdf, id=142, 505.89pt x 505.89pt>
+File: figure/visualization_2-1.pdf Graphic file (type pdf)
+<use figure/visualization_2-1.pdf>
+Package pdftex.def Info: figure/visualization_2-1.pdf  used on input line 604.
+(pdftex.def)             Requested size: 361.35352pt x 289.08589pt.
+LaTeX Font Info:    Calculating math sizes for size <90> on input line 637.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <90> on input line 637.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <62.99973> on input line 637.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <45> on input line 637.
 
-Overfull \hbox (28.7424pt too wide) in paragraph at lines 653--653
-[]\T1/lmtt/m/n/10.95 ##  Only KEGG pathways that contained at least 2 genes fro
-m gene_list were tested.[] 
- []
-
-
-Overfull \hbox (149.4658pt too wide) in paragraph at lines 653--653
-[]\T1/lmtt/m/n/10.95 ##  36 pathways reached statistical significance after mul
-tiple testing correction at a cutoff of 0.05.[] 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 11
  []
 
-[11pdfTeX warning (ext4): destination with the same identifier (name{table.4}) 
-has been already used, duplicate ignored
+[11pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.654 \end{kframe}
-                  ] (./article.bbl)
-LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 667.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 667.
+l.650 \end{table}
+                  <./figure/visualization_2-1.pdf>]
+LaTeX Font Info:    Calculating math sizes for size <50> on input line 659.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <50> on input line 659.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <34.99985> on input line 659.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <25> on input line 659.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 12 []
  []
 
-[12]
+[12pdfTeX warning (ext4): destination with the same identifier (name{table.4}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.673 
+      ]
+Package color Info: Redefining color shadecolor on input line 676.
+
+Overfull \hbox (28.7424pt too wide) in paragraph at lines 725--725
+[]\T1/lmtt/m/n/10.95 ##  Only KEGG pathways that contained at least 2 genes fro
+m gene_list were tested.[] 
+ []
+
+
+Overfull \hbox (149.4658pt too wide) in paragraph at lines 725--725
+[]\T1/lmtt/m/n/10.95 ##  36 pathways reached statistical significance after mul
+tiple testing correction at a cutoff of 0.05.[] 
+ []
+
+
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 13
  []
 
-[13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 667.
+[13pdfTeX warning (ext4): destination with the same identifier (name{table.5}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.726 \end{kframe}
+                  ] (./article.bbl
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+\T1/lmr/m/n/10.95 14 []
+ []
+
+[14])
+LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
+(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 739.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 739.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+[] \T1/lmr/m/n/10.95 15
+ []
+
+[15]
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+\T1/lmr/m/n/10.95 16 []
+ []
+
+[16]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 739.
  (./article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 667.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 667.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 739.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 739.
 Package rerunfilecheck Info: File `article.out' has not changed.
-(rerunfilecheck)             Checksum: 874499A865B7A9ED1D9DD8A1A3603760;1207.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 667.
+(rerunfilecheck)             Checksum: C7F8BCB01C978A4145868C433AF85D54;1454.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 739.
  ) 
 Here is how much of TeX's memory you used:
- 8486 strings out of 492649
- 128173 string characters out of 6129622
- 242170 words of memory out of 5000000
- 12138 multiletter control sequences out of 15000+600000
- 83577 words of font info for 62 fonts, out of 8000000 for 9000
+ 8539 strings out of 492649
+ 129249 string characters out of 6129622
+ 254000 words of memory out of 5000000
+ 12180 multiletter control sequences out of 15000+600000
+ 108363 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,10n,37p,631b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,10n,37p,1258b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Subsection.2.0.\\bgroup\040\\catcode\040`\\protec
 t\040\\T1\\textunderscore\04012\\relax\040\\catcode\040`\\unhbox\040\\voidb@x\0
 40\\bgroup\040\\let\040\\unhbox\040\\voidb@x\040\\setbox\040\\@tempboxa\040\\hb
@@ -1521,20 +1673,20 @@ xlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2018/te
 xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/
 type1/public/lm/lmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
 ic/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr1
-0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/texlive/2018/t
-exmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2018/texmf-dist/
-fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
-pe1/public/lm/lmsso10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
-c/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt1
-0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtti10.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (13 pages, 963272 bytes).
+0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/lm/lmsso10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt
+10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtti10.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
+Output written on article.pdf (16 pages, 977121 bytes).
 PDF statistics:
- 231 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
- 35 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 266 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 40 words of extra memory for PDF output out of 10000 (max. 10000000)
 
