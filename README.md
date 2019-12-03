@@ -1,64 +1,169 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Build status](https://ci.appveyor.com/api/projects/status/xwu8nket2u1pd5ij?svg=true)](https://ci.appveyor.com/project/hsmith9002/diffenrich)
 
-[![Build Status](https://travis-ci.com/SabaLab/diffEnrich.svg?token=M2jELEzTYYqmxZMY6hpb&branch=master)](https://travis-ci.com/SabaLab/diffEnrich)
+[![Build
+status](https://ci.appveyor.com/api/projects/status/xwu8nket2u1pd5ij?svg=true)](https://ci.appveyor.com/project/hsmith9002/diffenrich)
 
-diffEnrich
-==========
+[![Build
+Status](https://travis-ci.com/SabaLab/diffEnrich.svg?token=M2jELEzTYYqmxZMY6hpb&branch=master)](https://travis-ci.com/SabaLab/diffEnrich)
 
-Introduction
-------------
+\#diffEnrich
 
-The goal of diffEnrich is to compare functional enrichment between two experimentally-derived groups of genes or proteins. Given a list of NCBI gene symbols, *diffEnrich* will perform differential enrichment analysis using the Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API. This package provides a number of functions that are intended to be used in a pipeline (See Figure 1). Briefly, the user provides a KEGG formatted species id for either human, mouse or rat, and the package will download and store species specific ENTREZ gene IDs and map them to their respective KEGG pathways by accessing the KEGG REST API. The KEGG API is used to guarantee the most up-to-date pathway data from KEGG. Next, the user will identify significantly enriched pathways in two different gene sets, and finally, the user will identify pathways that are differentially enriched between the two gene sets. In addition to the analysis pipeline, this package also provides a plotting function.
+## Introduction
 
-**Note on figure legends:** To view figure legends, hover mouse over image.
+The goal of diffEnrich is to compare functional enrichment between two
+experimentally-derived groups of genes or proteins. Given a list of NCBI
+gene symbols, *diffEnrich* will perform differential enrichment analysis
+using the Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API. This
+package provides a number of functions that are intended to be used in a
+pipeline (See Figure 1). Briefly, the user provides a KEGG formatted
+species id for either human, mouse or rat, and the package will download
+and store species specific ENTREZ gene IDs and map them to their
+respective KEGG pathways by accessing the KEGG REST API. The KEGG API is
+used to guarantee the most up-to-date pathway data from KEGG. Next, the
+user will identify significantly enriched pathways in two different gene
+sets, and finally, the user will identify pathways that are
+differentially enriched between the two gene sets. In addition to the
+analysis pipeline, this package also provides a plotting function.
+
+**Note on figure legends:** To view figure legends, hover mouse over
+image.
 
 **The KEGG REST API**
 
-KEGG is a database resource for understanding high-level functions of a biological system, such as a cell, an organism and an ecosystem, from genomic and molecular-level information <https://www.kegg.jp/kegg/kegg1a.html>. KEGG is an integrated database resource consisting of eighteen databases that are clustered into 4 main categories: 1) systems information (e.g. hierarchies and maps), 2) genomic information (e.g. genes and proteins), 3) chemical information (e.g. biochemical reactions), and 4) health information (e.g. human disease and drugs) <https://www.kegg.jp/kegg/kegg1a.html>.
+KEGG is a database resource for understanding high-level functions of a
+biological system, such as a cell, an organism and an ecosystem, from
+genomic and molecular-level information
+<https://www.kegg.jp/kegg/kegg1a.html>. KEGG is an integrated database
+resource consisting of eighteen databases that are clustered into 4 main
+categories: 1) systems information (e.g. hierarchies and maps), 2)
+genomic information (e.g. genes and proteins), 3) chemical information
+(e.g. biochemical reactions), and 4) health information (e.g. human
+disease and drugs) <https://www.kegg.jp/kegg/kegg1a.html>.
 
-In 2012 KEGG released its first application programming interface (API), and has been adding features and functionality ever since. There are benefits to using an API. First, API's, like KEGG's, allow users to perform customized analyses with the most up-to-date versions of the data contained in the database. In addition, accessing the KEGG API is very easy using statistical programming tools like R or Python and integrating data retrieval into user's code makes the program reproducible. To further enforce reproducibilty *diffEnrich* adds a date and KEGG release tag to all data files it generates from accessing the API. For update histories and release notes for the KEGG REST API please go [here](https://www.kegg.jp/kegg/rest/).
+In 2012 KEGG released its first application programming interface (API),
+and has been adding features and functionality ever since. There are
+benefits to using an API. First, API’s, like KEGG’s, allow users to
+perform customized analyses with the most up-to-date versions of the
+data contained in the database. In addition, accessing the KEGG API is
+very easy using statistical programming tools like R or Python and
+integrating data retrieval into user’s code makes the program
+reproducible. To further enforce reproducibilty *diffEnrich* adds a date
+and KEGG release tag to all data files it generates from accessing the
+API. For update histories and release notes for the KEGG REST API please
+go
+[here](https://www.kegg.jp/kegg/rest/).
 
-<img src="man/figures/README-unnamed-chunk-1-1.png" alt="Figure 1. diffEnrich Analysis pipeline. Functions within the diffEnrich package are represented by blue rectangles. The data that must be provided by the user is represented by the purple ovals. Data objects generated by a function in diffEnrich are represented by red ovals. The external call of the get_kegg function to the KEGG REST API is represented in yellow." width="100%" />
-<p class="caption">
-Figure 1. diffEnrich Analysis pipeline. Functions within the diffEnrich package are represented by blue rectangles. The data that must be provided by the user is represented by the purple ovals. Data objects generated by a function in diffEnrich are represented by red ovals. The external call of the get\_kegg function to the KEGG REST API is represented in yellow.
-</p>
+<img src="man/figures/README-unnamed-chunk-1-1.png" title="Figure 1. diffEnrich Analysis pipeline. Functions within the diffEnrich package are represented by blue rectangles. The data that must be provided by the user is represented by the purple ovals. Data objects generated by a function in diffEnrich are represented by red ovals. The external call of the get_kegg function to the KEGG REST API is represented in yellow." alt="Figure 1. diffEnrich Analysis pipeline. Functions within the diffEnrich package are represented by blue rectangles. The data that must be provided by the user is represented by the purple ovals. Data objects generated by a function in diffEnrich are represented by red ovals. The external call of the get_kegg function to the KEGG REST API is represented in yellow." width="100%" />
 
-**Figure 1. diffEnrich Analysis pipeline.** Functions within the diffEnrich package are represented by blue rectangles. The data that must be provided by the user is represented by the purple ovals. Data objects generated by a function in diffEnrich are represented by red ovals. The external call of the get\_kegg function to the KEGG REST API is represented in yellow.
+**Figure 1. diffEnrich Analysis pipeline.** Functions within the
+diffEnrich package are represented by blue rectangles. The data that
+must be provided by the user is represented by the purple ovals. Data
+objects generated by a function in diffEnrich are represented by red
+ovals. The external call of the get\_kegg function to the KEGG REST API
+is represented in yellow.
 
 **Motivating experimental design for differential enrichment**
 
-Often high throughput omics studies include a functional enrichment analysis to glean biological insight from a list of candidate genes, proteins, metabolites, etc. Functional enrichment examines whether the number of genes in the list associated with a biological function or particular pathway is more than would be expected by chance. As an example, enrichment of a particular pathway among a list of genes that are differentially expressed after an experimental manipulation may indicate that the pathway has been altered by that manipulation. This analysis is rather straight forward and many solutions have been offered (e.g., [Haung et al., 2009](https://www.ncbi.nlm.nih.gov/pubmed/19033363); [Kuleshov et al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27141961); [Liao et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31114916); [Subramanian et al., 2005](https://www.pnas.org/content/102/43/15545)). A wide variety of databases have also been used to define these pathways (e.g., [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) and ontologies (e.g., [Ashburn et al., 2000](https://www.ncbi.nlm.nih.gov/pubmed/10802651)).
+Often high throughput omics studies include a functional enrichment
+analysis to glean biological insight from a list of candidate genes,
+proteins, metabolites, etc. Functional enrichment examines whether the
+number of genes in the list associated with a biological function or
+particular pathway is more than would be expected by chance. As an
+example, enrichment of a particular pathway among a list of genes that
+are differentially expressed after an experimental manipulation may
+indicate that the pathway has been altered by that manipulation. This
+analysis is rather straight forward and many solutions have been offered
+(e.g., [Haung et
+al., 2009](https://www.ncbi.nlm.nih.gov/pubmed/19033363); [Kuleshov et
+al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27141961); [Liao et
+al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31114916); [Subramanian
+et al., 2005](https://www.pnas.org/content/102/43/15545)). A wide
+variety of databases have also been used to define these pathways (e.g.,
+[Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173))
+and ontologies (e.g., [Ashburn et
+al., 2000](https://www.ncbi.nlm.nih.gov/pubmed/10802651)).
 
-One key component of a statistically rigorous functional enrichment analysis is the definition of a background data set that can be used to estimate the number of candidate genes that are ‘expected’ to be associated with the pathway by chance, e.g., if 5% of genes in the background data set are associated with a pathway then 5% of candidate gene are expected to be associated with the pathway by chance. For many study designs, the background data set is relatively simple to define (e.g., RNA-Seq analyses where the background data set includes genes expressed above background).
+One key component of a statistically rigorous functional enrichment
+analysis is the definition of a background data set that can be used to
+estimate the number of candidate genes that are ‘expected’ to be
+associated with the pathway by chance, e.g., if 5% of genes in the
+background data set are associated with a pathway then 5% of candidate
+gene are expected to be associated with the pathway by chance. For many
+study designs, the background data set is relatively simple to define
+(e.g., RNA-Seq analyses where the background data set includes genes
+expressed above background).
 
-However, for some newer omics technologies, the background data set is hard to define. For example, LC-MS analysis can be used to identify carbonylated proteins ( [Peterson et al., 2018](https://www.ncbi.nlm.nih.gov/pubmed/29799837); [Shearn et al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31377417); [Shearn et al., 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6028296/)). With this study design, carbonylated proteins are isolated using a BH-derivation and then LC-MS is used to identify peptides in this isolated sample. The most appropriate background data set would be proteins present in that tissue, but this would require a separate analytical analysis. Furthermore, most functional enrichment analyses involve a single gene list. However, in protein modification studies, the typical experimental design compares the presence or absence of particular modified proteins between multiple groups.
+However, for some newer omics technologies, the background data set is
+hard to define. For example, LC-MS analysis can be used to identify
+carbonylated proteins ( [Peterson et
+al., 2018](https://www.ncbi.nlm.nih.gov/pubmed/29799837); [Shearn et
+al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31377417); [Shearn et
+al., 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6028296/)). With
+this study design, carbonylated proteins are isolated using a
+BH-derivation and then LC-MS is used to identify peptides in this
+isolated sample. The most appropriate background data set would be
+proteins present in that tissue, but this would require a separate
+analytical analysis. Furthermore, most functional enrichment analyses
+involve a single gene list. However, in protein modification studies,
+the typical experimental design compares the presence or absence of
+particular modified proteins between multiple groups.
 
-When there are two or more gene lists to compare and the background gene list is not clearly defined, as is often the case in protein modification experiments, we propose a differential enrichment analysis. In this analysis, we compare the proportion of genes/proteins from one gene list associated with a particular pathway to the proportion of genes/proteins from a second gene list that are associated with that pathway. To easily execute this analysis, we have designed an R package that uses the KEGG REST API to obtain the most recent version of the KEGG PATHWAY ( [Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) database to initially identify functional enrichment within a gene list using the entire KEGG transcriptome as the background data set and then to identify differentially enriched pathways between two gene lists. This R package includes a function to generate a ‘differential enrichment’ graphic.
+When there are two or more gene lists to compare and the background gene
+list is not clearly defined, as is often the case in protein
+modification experiments, we propose a differential enrichment analysis.
+In this analysis, we compare the proportion of genes/proteins from one
+gene list associated with a particular pathway to the proportion of
+genes/proteins from a second gene list that are associated with that
+pathway. To easily execute this analysis, we have designed an R package
+that uses the KEGG REST API to obtain the most recent version of the
+KEGG PATHWAY ( [Kanehisa and
+Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) database to
+initially identify functional enrichment within a gene list using the
+entire KEGG transcriptome as the background data set and then to
+identify differentially enriched pathways between two gene lists. This R
+package includes a function to generate a ‘differential enrichment’
+graphic.
 
-Installation
-------------
+## Installation
 
-You can install the released version of diffEnrich from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of diffEnrich from
+[CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("diffEnrich") 
 ```
 
-Example
--------
+## Example
 
 ### Step 1: Collect and store pathways from KEGG API
 
-First we will use the *get\_kegg* function to access the KEGG REST API and download the data sets required to perform our downstream analysis. This function takes two arguments. The first, 'species' is required. Currently, *diffEnrich* supports three species, and the argument is a character string using the KEGG code <https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf>: Homo sapiens (human), use 'hsa'; Mus musculus (mouse), use 'mmu'; and Rattus norvegicus (rat), use 'rno'. The second, 'path' is also passed as a character string, and is the path of the directory in which the user would like to write the data sets downloaded from the KEGG REST API. If the user does not provide a path, the data sets will be automatically written to the current working directory using the *here::here()* functionality. These data sets will be tab delimited files with a name describing the data, and for reproducibility, the date they were generated and the version of KEGG when the API was accessed. In addition to these flat files, *get\_kegg* will also create a named list in R with the three relevant KEGG data sets. The names of this list will describe the data set. For a detailed description of list elements use *?get\_kegg*.
+First we will use the *get\_kegg* function to access the KEGG REST API
+and download the data sets required to perform our downstream analysis.
+This function takes two arguments. The first, ‘species’ is required.
+Currently, *diffEnrich* supports three species, and the argument is a
+character string using the KEGG code
+<https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf>:
+Homo sapiens (human), use ‘hsa’; Mus musculus (mouse), use ‘mmu’; and
+Rattus norvegicus (rat), use ‘rno’. The second, ‘path’ is also passed as
+a character string, and is the path of the directory in which the user
+would like to write the data sets downloaded from the KEGG REST API. If
+the user does not provide a path, the data sets will be automatically
+written to the current working directory using the *here::here()*
+functionality. These data sets will be tab delimited files with a name
+describing the data, and for reproducibility, the date they were
+generated and the version of KEGG when the API was accessed. In addition
+to these flat files, *get\_kegg* will also create a named list in R with
+the three relevant KEGG data sets. The names of this list will describe
+the data set. For a detailed description of list elements use
+*?get\_kegg*.
 
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> 3 data sets will be written as tab delimited text files
 #> File location: /Users/harry/Documents/Saba_Lab/diffEnrich
-#> Kegg Release: Release_92.0+_11-21_Nov_19
+#> Kegg Release: Release_92.0+_12-04_Dec_19
 ```
 
 Here are examples of the output files:
@@ -67,13 +172,23 @@ Here are examples of the output files:
     kegg_to_pathway2019-10-17Release_92.0+_10-17_Oct_19.txt
     pathway_to_species2019-10-17Release_92.0+_10-17_Oct_19.txt
 
-**Note:** Because it is assumed that the user might want to use the data sets generated by *get\_kegg*, it is careful not to overwrite data sets with exact names. *get\_kegg* checks the path provided for data sets generated 'same-day/same-version', and if it finds even one of the three, it will not re-write any of the data sets. It will still however, let the user know it is not writing out new data sets and still generate the named list object. Users can generate 'same-day/same-version' data sets in different directories if they so choose. Additionally, *get\_kegg* can be used to read in saved versions of the txt files generated from a previous call (like those displayed above), and generate an R list object that is compatible with downstream functions.
+**Note:** Because it is assumed that the user might want to use the data
+sets generated by *get\_kegg*, it is careful not to overwrite data sets
+with exact names. *get\_kegg* checks the path provided for data sets
+generated ‘same-day/same-version’, and if it finds even one of the
+three, it will not re-write any of the data sets. It will still however,
+let the user know it is not writing out new data sets and still generate
+the named list object. Users can generate ‘same-day/same-version’ data
+sets in different directories if they so choose. Additionally,
+*get\_kegg* can be used to read in saved versions of the txt files
+generated from a previous call (like those displayed above), and
+generate an R list object that is compatible with downstream functions.
 
 ``` r
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_92.0+_11-21_Nov_19
+#> Kegg Release: Release_92.0+_12-04_Dec_19
 ```
 
 ``` r
@@ -90,49 +205,96 @@ Here is an example of the output:
     File location: ~/Desktop
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+
 <caption>
+
 Table 1. Description of data sets generated from accessing KEGG REST API
+
 </caption>
+
 <thead>
+
 <tr>
+
 <th style="text-align:left;">
+
 get\_kegg.list.object
+
 </th>
+
 <th style="text-align:left;">
+
 Object.description
+
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:left;">
+
 ncbi\_to\_kegg
+
 </td>
+
 <td style="text-align:left;">
-ncbi gene ID &lt;-- mapped to --&gt; KEGG gene ID
+
+ncbi gene ID \<– mapped to –\> KEGG gene ID
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 kegg\_to\_pathway
+
 </td>
+
 <td style="text-align:left;">
-KEGG gene ID &lt;-- mapped to --&gt; KEGG pathway ID
+
+KEGG gene ID \<– mapped to –\> KEGG pathway ID
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 pathway\_to\_species
+
 </td>
+
 <td style="text-align:left;">
-KEGG pathway ID &lt;-- mapped to --&gt; KEGG pathway species description
+
+KEGG pathway ID \<– mapped to –\> KEGG pathway species description
+
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
+
 ### Step 2: Perform enrichment analysis of individual gene sets
 
-In this step we will use the *pathEnrich* function to identify KEGG pathways that are enriched (i.e. over-represented) based on a gene list of interest. User gene lists must be character vectors and be formatted as ENTREZ gene IDs. The *clusterProfiler* package offers a nice function (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and an example can be seen in their [vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter14.html#bitr).
+In this step we will use the *pathEnrich* function to identify KEGG
+pathways that are enriched (i.e. over-represented) based on a gene list
+of interest. User gene lists must be character vectors and be formatted
+as ENTREZ gene IDs. The *clusterProfiler* package offers a nice function
+(*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and
+an example can be seen in their
+[vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter14.html#bitr).
 
 ``` r
 ## View sample gene lists from package data
@@ -142,7 +304,23 @@ head(geneLists$list2)
 #> [1] "315547" "315548" "315549" "315550" "50938"  "58856"
 ```
 
-This function may not always use the complete list of genes provided by the user. Specifically, it will only use the genes from the list provided that are also in the most current species list pulled from the KEGG REST API using *get\_kegg*, or from the older KEGG data loaded by the user from a previous *get\_kegg* call. Users can also decide which KEGG pathways should be tested based on how many genes from their gene list are contained in the KEGG pathway. Users can set this parameter by changing the 'N' argument. The default is N = 2. The *pathEnrich* function should be run once for the genes of interest in list 1 and once for the genes of interest in list2. Each *pathEnrich* call generates a data frame summarizing the results of an enrichment analysis in which a Fisher's Exact test is used to identify which KEGG pathways are enriched for the user's list of genes compared to all genes annotated to a KEGG pathway. Users can choose a multiple correction option from those supported by *stats::p.adjust*. The default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)), and the default threshold to reach significance is 0.05.
+This function may not always use the complete list of genes provided by
+the user. Specifically, it will only use the genes from the list
+provided that are also in the most current species list pulled from the
+KEGG REST API using *get\_kegg*, or from the older KEGG data loaded by
+the user from a previous *get\_kegg* call. Users can also decide which
+KEGG pathways should be tested based on how many genes from their gene
+list are contained in the KEGG pathway. Users can set this parameter by
+changing the ‘N’ argument. The default is N = 2. The *pathEnrich*
+function should be run once for the genes of interest in list 1 and once
+for the genes of interest in list2. Each *pathEnrich* call generates a
+data frame summarizing the results of an enrichment analysis in which a
+Fisher’s Exact test is used to identify which KEGG pathways are enriched
+for the user’s list of genes compared to all genes annotated to a KEGG
+pathway. Users can choose a multiple correction option from those
+supported by *stats::p.adjust*. The default is the False Discovery Rate
+( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)),
+and the default threshold to reach significance is 0.05.
 
 ``` r
 # run pathEnrich using kegg_rno
@@ -153,239 +331,480 @@ list2_pe <- pathEnrich(gk_obj = kegg, gene_list = geneLists$list2, cutoff = 0.05
 ```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+
 <caption>
+
 Table 2. First 6 rows of list1\_pe data frame generated using pathEnrich
+
 </caption>
+
 <thead>
+
 <tr>
+
 <th style="text-align:left;">
+
 KEGG\_PATHWAY\_ID
+
 </th>
+
 <th style="text-align:left;">
+
 KEGG\_PATHWAY\_description
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_PATHWAY\_cnt
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_PATHWAY\_in\_list
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_DATABASE\_cnt
+
 </th>
+
 <th style="text-align:right;">
+
 KEG\_DATABASE\_in\_list
+
 </th>
+
 <th style="text-align:right;">
+
 expected
+
 </th>
+
 <th style="text-align:right;">
+
 enrich\_p
+
 </th>
+
 <th style="text-align:right;">
+
 p\_adj
+
 </th>
+
 <th style="text-align:right;">
+
 fold\_enrichment
+
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno04530
+
 </td>
+
 <td style="text-align:left;">
+
 Tight junction - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 170
+
 </td>
+
 <td style="text-align:right;">
+
 19
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 5.662827
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000035
+
 </td>
+
 <td style="text-align:right;">
+
 0.0005387
+
 </td>
+
 <td style="text-align:right;">
+
 3.355214
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno05135
+
 </td>
+
 <td style="text-align:left;">
+
 Yersinia infection - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 128
+
 </td>
+
 <td style="text-align:right;">
+
 16
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 4.263776
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000049
+
 </td>
+
 <td style="text-align:right;">
+
 0.0005387
+
 </td>
+
 <td style="text-align:right;">
+
 3.752542
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno05210
+
 </td>
+
 <td style="text-align:left;">
+
 Colorectal cancer - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 88
+
 </td>
+
 <td style="text-align:right;">
+
 12
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 2.931346
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000318
+
 </td>
+
 <td style="text-align:right;">
+
 0.0023211
+
 </td>
+
 <td style="text-align:right;">
+
 4.093683
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno05231
+
 </td>
+
 <td style="text-align:left;">
+
 Choline metabolism in cancer - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 99
+
 </td>
+
 <td style="text-align:right;">
+
 12
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 3.297764
+
 </td>
+
 <td style="text-align:right;">
+
 0.0001032
+
 </td>
+
 <td style="text-align:right;">
+
 0.0044701
+
 </td>
+
 <td style="text-align:right;">
+
 3.638829
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno05213
+
 </td>
+
 <td style="text-align:left;">
+
 Endometrial cancer - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 58
+
 </td>
+
 <td style="text-align:right;">
+
 9
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 1.932023
+
 </td>
+
 <td style="text-align:right;">
+
 0.0001132
+
 </td>
+
 <td style="text-align:right;">
+
 0.0044701
+
 </td>
+
 <td style="text-align:right;">
+
 4.658328
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno04144
+
 </td>
+
 <td style="text-align:left;">
+
 Endocytosis - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 275
+
 </td>
+
 <td style="text-align:right;">
+
 22
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 9.160456
+
 </td>
+
 <td style="text-align:right;">
+
 0.0001225
+
 </td>
+
 <td style="text-align:right;">
+
 0.0044701
+
 </td>
+
 <td style="text-align:right;">
+
 2.401627
+
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
-*pathEnrich* generates a list object that contains a data frame with 9 columns described below as well as other metadata from the function call. Details also provided in *pathEnrich* documentation. S3 generic functions for *print* and *summary* are provided. The *print* function prints the results table as a *tibble*, and the *summary* function returns the number of pathways that reached statistical significance as well as their descriptions, the number of genes used from the KEGG data base, the KEGG species, and the method used for multiple testing correction.
+
+*pathEnrich* generates a list object that contains a data frame with 9
+columns described below as well as other metadata from the function
+call. Details also provided in *pathEnrich* documentation. S3 generic
+functions for *print* and *summary* are provided. The *print* function
+prints the results table as a *tibble*, and the *summary* function
+returns the number of pathways that reached statistical significance as
+well as their descriptions, the number of genes used from the KEGG data
+base, the KEGG species, and the method used for multiple testing
+correction.
 
 ``` r
 summary(list1_pe)
@@ -436,105 +855,223 @@ summary(list1_pe)
 ```
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+
 <caption>
+
 Table 3. Description of columns is dataframe generated by pathEnrich
+
 </caption>
+
 <thead>
+
 <tr>
+
 <th style="text-align:left;">
+
 Column Names
+
 </th>
+
 <th style="text-align:left;">
+
 Column Description
+
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_ID
+
 </td>
+
 <td style="text-align:left;">
+
 KEGG Pathway Identifier
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_description
+
 </td>
+
 <td style="text-align:left;">
+
 Description of KEGG Pathway (provided by KEGG)
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_cnt
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes in KEGG Pathway
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_in\_list
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes from gene list in KEGG Pathway
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_DATABASE\_cnt
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes in KEGG Database
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEG\_DATABASE\_in\_list
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes from gene list in KEGG Database
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 expected
+
 </td>
+
 <td style="text-align:left;">
+
 Expected number of genes from list to be in KEGG pathway by chance
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 enrich\_p
+
 </td>
+
 <td style="text-align:left;">
+
 P-value for enrichment within the KEGG pathway for list genes
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 p\_adj
+
 </td>
+
 <td style="text-align:left;">
-Multiple testing adjusted enrichment p-values (default = False Discovery Rate (Benjamini and Hochberg, 1995))
+
+Multiple testing adjusted enrichment p-values (default = False Discovery
+Rate (Benjamini and Hochberg, 1995))
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 fold\_enrichment
+
 </td>
+
 <td style="text-align:left;">
-Ratio of number of genes observed from the gene list annotated to the KEGG pathway to the number of genes expected from the gene list to be annotated to the KEGG pathway if there was no enrichment (i.e. KEGG\_PATHWAY\_in\_list/expected)
+
+Ratio of number of genes observed from the gene list annotated to the
+KEGG pathway to the number of genes expected from the gene list to be
+annotated to the KEGG pathway if there was no enrichment
+(i.e. KEGG\_PATHWAY\_in\_list/expected)
+
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
+
 ### Step 3: Identify differentially enriched KEGG pathways
 
-The *diffEnrich* function will merge two results from the *pathEnrich* calls generated above. Specifically, the data frame 'list1\_pe' and the data frame 'list2\_pe' will be merged by the following columns: "KEGG\_PATHWAY\_ID", "KEGG\_PATHWAY\_description", "KEGG\_PATHWAY\_cnt", "KEGG\_DATABASE\_cnt". This merged data set will then be used to perform differential enrichment using the same method and p-value calculation as described above. Users do have the option of choosing a method for multiple testing adjustment. Users can choose from those supported by *stats::p.adjust*. The default is the False Discovery Rate ( [Benjamini and Hochberg, 1995](http://www.jstor.org/stable/2346101)). KEGG pathways that do not contain any genes from either gene list (i.e., list1\_pe$enrich\_table$KEGG\_PATHWAY\_in\_list for 'rno04530' = 0 AND list2\_pe$enrich\_table$KEGG\_PATHWAY\_in\_list for 'rno04530' = 0) will be removed as these cannot be tested. If this is the case a warning will be printed that tells the user how many pathways were removed. This can be avoided by setting the 'N' parameter to a value &gt; 0 in the *pathEnrich* calls.
+The *diffEnrich* function will merge two results from the *pathEnrich*
+calls generated above. Specifically, the data frame ‘list1\_pe’ and the
+data frame ‘list2\_pe’ will be merged by the following columns:
+“KEGG\_PATHWAY\_ID”, “KEGG\_PATHWAY\_description”,
+“KEGG\_PATHWAY\_cnt”, “KEGG\_DATABASE\_cnt”. This merged data set
+will then be used to perform differential enrichment using the same
+method and p-value calculation as described above. Users do have the
+option of choosing a method for multiple testing adjustment. Users can
+choose from those supported by *stats::p.adjust*. The default is the
+False Discovery Rate ( [Benjamini and
+Hochberg, 1995](http://www.jstor.org/stable/2346101)). KEGG pathways
+that do not contain any genes from either gene list (i.e.,
+list1\_pe$enrich\_table$KEGG\_PATHWAY\_in\_list for ‘rno04530’ = 0 AND
+list2\_pe$enrich\_table$KEGG\_PATHWAY\_in\_list for ‘rno04530’ = 0) will
+be removed as these cannot be tested. If this is the case a warning will
+be printed that tells the user how many pathways were removed. This can
+be avoided by setting the ‘N’ parameter to a value \> 0 in the
+*pathEnrich* calls.
 
 ``` r
 ## Perform differential enrichment
@@ -542,597 +1079,1211 @@ diff_enrich <- diffEnrich(list1_pe = list1_pe, list2_pe = list2_pe, method = 'no
 ```
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+
 <caption>
+
 Table 4.First 6 rows from data frame generated by diffEnrich
+
 </caption>
+
 <thead>
+
 <tr>
+
 <th style="text-align:left;">
+
 KEGG\_PATHWAY\_ID
+
 </th>
+
 <th style="text-align:left;">
+
 KEGG\_PATHWAY\_description
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_PATHWAY\_cnt
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_DATABASE\_cnt
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_PATHWAY\_in\_list1
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_DATABASE\_in\_list1
+
 </th>
+
 <th style="text-align:right;">
+
 expected\_list1
+
 </th>
+
 <th style="text-align:right;">
+
 enrich\_p\_list1
+
 </th>
+
 <th style="text-align:right;">
+
 p\_adj\_list1
+
 </th>
+
 <th style="text-align:right;">
+
 fold\_enrichment\_list1
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_PATHWAY\_in\_list2
+
 </th>
+
 <th style="text-align:right;">
+
 KEGG\_DATABASE\_in\_list2
+
 </th>
+
 <th style="text-align:right;">
+
 expected\_list2
+
 </th>
+
 <th style="text-align:right;">
+
 enrich\_p\_list2
+
 </th>
+
 <th style="text-align:right;">
+
 p\_adj\_list2
+
 </th>
+
 <th style="text-align:right;">
+
 fold\_enrichment\_list2
+
 </th>
+
 <th style="text-align:right;">
+
 odd\_ratio
+
 </th>
+
 <th style="text-align:right;">
+
 diff\_enrich\_p
+
 </th>
+
 <th style="text-align:right;">
+
 diff\_enrich\_adjusted
+
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno04530
+
 </td>
+
 <td style="text-align:left;">
+
 Tight junction - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 170
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 19
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 5.662827
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000035
+
 </td>
+
 <td style="text-align:right;">
+
 0.0005387
+
 </td>
+
 <td style="text-align:right;">
+
 3.355214
+
 </td>
+
 <td style="text-align:right;">
+
 131
+
 </td>
+
 <td style="text-align:right;">
+
 5308
+
 </td>
+
 <td style="text-align:right;">
+
 101.89250
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000015
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000056
+
 </td>
+
 <td style="text-align:right;">
+
 1.285669
+
 </td>
+
 <td style="text-align:right;">
+
 0.3676651
+
 </td>
+
 <td style="text-align:right;">
+
 0.0002936
+
 </td>
+
 <td style="text-align:right;">
+
 0.0002936
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno05135
+
 </td>
+
 <td style="text-align:left;">
+
 Yersinia infection - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 128
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 16
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 4.263776
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000049
+
 </td>
+
 <td style="text-align:right;">
+
 0.0005387
+
 </td>
+
 <td style="text-align:right;">
+
 3.752542
+
 </td>
+
 <td style="text-align:right;">
+
 105
+
 </td>
+
 <td style="text-align:right;">
+
 5308
+
 </td>
+
 <td style="text-align:right;">
+
 76.71906
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000001
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000003
+
 </td>
+
 <td style="text-align:right;">
+
 1.368630
+
 </td>
+
 <td style="text-align:right;">
+
 0.3520039
+
 </td>
+
 <td style="text-align:right;">
+
 0.0005435
+
 </td>
+
 <td style="text-align:right;">
+
 0.0005435
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno05210
+
 </td>
+
 <td style="text-align:left;">
+
 Colorectal cancer - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 88
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 12
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 2.931346
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000318
+
 </td>
+
 <td style="text-align:right;">
+
 0.0023211
+
 </td>
+
 <td style="text-align:right;">
+
 4.093683
+
 </td>
+
 <td style="text-align:right;">
+
 81
+
 </td>
+
 <td style="text-align:right;">
+
 5308
+
 </td>
+
 <td style="text-align:right;">
+
 52.74435
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000000
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000000
+
 </td>
+
 <td style="text-align:right;">
+
 1.535709
+
 </td>
+
 <td style="text-align:right;">
+
 0.3655602
+
 </td>
+
 <td style="text-align:right;">
+
 0.0032572
+
 </td>
+
 <td style="text-align:right;">
+
 0.0032572
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno05213
+
 </td>
+
 <td style="text-align:left;">
+
 Endometrial cancer - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 58
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 9
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 1.932023
+
 </td>
+
 <td style="text-align:right;">
+
 0.0001132
+
 </td>
+
 <td style="text-align:right;">
+
 0.0044701
+
 </td>
+
 <td style="text-align:right;">
+
 4.658328
+
 </td>
+
 <td style="text-align:right;">
+
 55
+
 </td>
+
 <td style="text-align:right;">
+
 5308
+
 </td>
+
 <td style="text-align:right;">
+
 34.76332
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000000
+
 </td>
+
 <td style="text-align:right;">
+
 0.0000000
+
 </td>
+
 <td style="text-align:right;">
+
 1.582127
+
 </td>
+
 <td style="text-align:right;">
+
 0.3328275
+
 </td>
+
 <td style="text-align:right;">
+
 0.0058775
+
 </td>
+
 <td style="text-align:right;">
+
 0.0058775
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno04660
+
 </td>
+
 <td style="text-align:left;">
+
 T cell receptor signaling pathway - Rattus norvegicus (rat)
+
 </td>
+
 <td style="text-align:right;">
+
 106
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 11
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 3.530940
+
 </td>
+
 <td style="text-align:right;">
+
 0.0007743
+
 </td>
+
 <td style="text-align:right;">
+
 0.0129121
+
 </td>
+
 <td style="text-align:right;">
+
 3.115318
+
 </td>
+
 <td style="text-align:right;">
+
 79
+
 </td>
+
 <td style="text-align:right;">
+
 5308
+
 </td>
+
 <td style="text-align:right;">
+
 63.53297
+
 </td>
+
 <td style="text-align:right;">
+
 0.0011075
+
 </td>
+
 <td style="text-align:right;">
+
 0.0022562
+
 </td>
+
 <td style="text-align:right;">
+
 1.243449
+
 </td>
+
 <td style="text-align:right;">
+
 0.3901694
+
 </td>
+
 <td style="text-align:right;">
+
 0.0072048
+
 </td>
+
 <td style="text-align:right;">
+
 0.0072048
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 rno04657
+
 </td>
+
 <td style="text-align:left;">
-IL-17 signaling pathway - Rattus norvegicus (rat)
+
+IL-17 signaling pathway - Rattus norvegicus
+(rat)
+
 </td>
+
 <td style="text-align:right;">
+
 95
+
 </td>
+
 <td style="text-align:right;">
+
 8856
+
 </td>
+
 <td style="text-align:right;">
+
 9
+
 </td>
+
 <td style="text-align:right;">
+
 295
+
 </td>
+
 <td style="text-align:right;">
+
 3.164521
+
 </td>
+
 <td style="text-align:right;">
+
 0.0042709
+
 </td>
+
 <td style="text-align:right;">
+
 0.0346419
+
 </td>
+
 <td style="text-align:right;">
+
 2.844032
+
 </td>
+
 <td style="text-align:right;">
+
 59
+
 </td>
+
 <td style="text-align:right;">
+
 5308
+
 </td>
+
 <td style="text-align:right;">
+
 56.93993
+
 </td>
+
 <td style="text-align:right;">
+
 0.3737223
+
 </td>
+
 <td style="text-align:right;">
+
 0.4591045
+
 </td>
+
 <td style="text-align:right;">
+
 1.036180
+
 </td>
+
 <td style="text-align:right;">
+
 0.3572935
+
 </td>
+
 <td style="text-align:right;">
+
 0.0087538
+
 </td>
+
 <td style="text-align:right;">
+
 0.0087538
+
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
+
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+
 <caption>
+
 Table 5. Description of columns in dataframe generated by diffEnrich
+
 </caption>
+
 <thead>
+
 <tr>
+
 <th style="text-align:left;">
+
 Column Names
+
 </th>
+
 <th style="text-align:left;">
+
 Column Description
+
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_ID
+
 </td>
+
 <td style="text-align:left;">
+
 KEGG Pathway Identifier
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_description
+
 </td>
+
 <td style="text-align:left;">
+
 Description of KEGG Pathway (provided by KEGG)
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_cnt
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes in KEGG Pathway
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_DATABASE\_cnt
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes in KEGG Database
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_in\_list1
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes from gene list 1 in KEGG Pathway
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_DATABASE\_in\_list1
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes from gene list 1 in KEGG Database
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 expected\_list1
+
 </td>
+
 <td style="text-align:left;">
+
 Expected number of genes from list 1 to be in KEGG pathway by chance
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 enrich\_p\_list1
+
 </td>
+
 <td style="text-align:left;">
+
 P-value for enrichment of list 1 genes related to KEGG pathway
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 p\_adj\_list1
+
 </td>
+
 <td style="text-align:left;">
-Multiple testing adjusted enrichment p-values from gene list 1 (default = False Discovery Rate (Benjamini and Hochberg, 1995))
+
+Multiple testing adjusted enrichment p-values from gene list 1 (default
+= False Discovery Rate (Benjamini and Hochberg, 1995))
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 fold\_enrichment\_list1
+
 </td>
+
 <td style="text-align:left;">
-Ratio of number of genes observed from gene list 1 annotated to the KEGG pathway to the number of genes expected from gene list 1 annotated to the KEGG pathway if there was no enrichment (i.e. KEGG\_PATHWAY\_in\_list1/expected\_list1)
+
+Ratio of number of genes observed from gene list 1 annotated to the KEGG
+pathway to the number of genes expected from gene list 1 annotated to
+the KEGG pathway if there was no enrichment
+(i.e. KEGG\_PATHWAY\_in\_list1/expected\_list1)
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_PATHWAY\_in\_list2
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes from gene list 2 in KEGG Pathway
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 KEGG\_DATABASE\_in\_list2
+
 </td>
+
 <td style="text-align:left;">
+
 Number of Genes from gene list 2 in KEGG Database
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 expected\_list2
+
 </td>
+
 <td style="text-align:left;">
+
 Expected number of genes from list 2 to be in KEGG pathway by chance
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 enrich\_p\_list2
+
 </td>
+
 <td style="text-align:left;">
+
 P-value for enrichment of list 2 genes related to KEGG pathway
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 p\_adj\_list2
+
 </td>
+
 <td style="text-align:left;">
-Multiple testing adjusted enrichment p-values from gene list 2 (default = False Discovery Rate (Benjamini and Hochberg, 1995))
+
+Multiple testing adjusted enrichment p-values from gene list 2 (default
+= False Discovery Rate (Benjamini and Hochberg, 1995))
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 fold\_enrichment\_list2
+
 </td>
+
 <td style="text-align:left;">
-Ratio of number of genes observed from gene list 2 annotated to the KEGG pathway to the number of genes expected from gene list 2 annotated to the KEGG pathway if there was no enrichment (i.e. KEGG\_PATHWAY\_in\_list2/expected\_list2)
+
+Ratio of number of genes observed from gene list 2 annotated to the KEGG
+pathway to the number of genes expected from gene list 2 annotated to
+the KEGG pathway if there was no enrichment
+(i.e. KEGG\_PATHWAY\_in\_list2/expected\_list2)
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 odd\_ratio
+
 </td>
+
 <td style="text-align:left;">
-Odds of a gene from list 2 being from this KEGG pathway / Odds of a gene from list 1 being from this KEGG pathway
+
+Odds of a gene from list 2 being from this KEGG pathway / Odds of a gene
+from list 1 being from this KEGG pathway
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 diff\_enrich\_p
+
 </td>
+
 <td style="text-align:left;">
-P-value for differential enrichment of this KEGG pathway between list 1 and list 2
+
+P-value for differential enrichment of this KEGG pathway between list 1
+and list 2
+
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 diff\_enrich\_adjusted
+
 </td>
+
 <td style="text-align:left;">
-Multiple testing adjusted differential enrichment p-values (default = False Discovery Rate (Benjamini and Hochberg, 1995))
+
+Multiple testing adjusted differential enrichment p-values (default =
+False Discovery Rate (Benjamini and Hochberg, 1995))
+
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
-The result of the *diffEnrich* call is a list object that contains a data frame with the estimated odds ratio generated by the Fisher's Exact test and the associated p-value as well as other metadata from the function call. S3 generic functions for *print* and *summary* are provided. The *print* function prints the results table as a *tibble*, and the *summary* function returns the number of pathways that reached statistical significance as well as their descriptions, the number of genes used from the KEGG database, the KEGG species, the number of pathways that were shared (i.e. had at least N gene from each gene list present in the pathway based on what the user chose for N in *pathEnrich*) between the gene lists and the method used for multiple testing correction.
+
+The result of the *diffEnrich* call is a list object that contains a
+data frame with the estimated odds ratio generated by the Fisher’s Exact
+test and the associated p-value as well as other metadata from the
+function call. S3 generic functions for *print* and *summary* are
+provided. The *print* function prints the results table as a *tibble*,
+and the *summary* function returns the number of pathways that reached
+statistical significance as well as their descriptions, the number of
+genes used from the KEGG database, the KEGG species, the number of
+pathways that were shared (i.e. had at least N gene from each gene list
+present in the pathway based on what the user chose for N in
+*pathEnrich*) between the gene lists and the method used for multiple
+testing correction.
 
 ``` r
 summary(diff_enrich)
@@ -1166,14 +2317,36 @@ summary(diff_enrich)
 
 ### Step 4: Plot fold enrichment
 
-*plotFoldEnrichment* generates a grouped bar plot using ggplot2 and the *ggnewscale* package. There are 3 arguments: 1) *de\_res* is the dataframe generated from the *diffEnrich* function, 2) *pval* is the threshold for the adjusted p-value associated with differential enrichment that will filter which KEGG pathways to plot, and 3) after filtering based on *pval* *N* tells the function how many pathways to plot. It is important to make a note that the significance of the fold change is associated with the number of genes in the gene list. Notice that in this example the pathways in gene list 2 have smaller fold changes (shorter bars) than those in list 1, but that many of them are more significant (darker blue). This is because there are more genes in gene list 2 compared to gene list 1.
+*plotFoldEnrichment* generates a grouped bar plot using ggplot2 and the
+*ggnewscale* package. There are 3 arguments: 1) *de\_res* is the
+dataframe generated from the *diffEnrich* function, 2) *pval* is the
+threshold for the adjusted p-value associated with differential
+enrichment that will filter which KEGG pathways to plot, and 3) after
+filtering based on *pval* *N* tells the function how many pathways to
+plot. It is important to make a note that the significance of the fold
+change is associated with the number of genes in the gene list. Notice
+that in this example the pathways in gene list 2 have smaller fold
+changes (shorter bars) than those in list 1, but that many of them are
+more significant (darker blue). This is because there are more genes in
+gene list 2 compared to gene list 1.
 
 ``` r
 ## Plot fold enrichment
 plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)
 ```
 
-<img src="man/figures/README-plotFoldEnrichment-1.png" alt="Figure 2. Example of a differential enrichment graphic. KEGG pathways are plotted on the y-axis and fold
+<img src="man/figures/README-plotFoldEnrichment-1.png" title="Figure 2. Example of a differential enrichment graphic. KEGG pathways are plotted on the y-axis and fold
+enrichment is plotted on the x-axis. Each KEGG pathway has a bar depicting
+its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue).
+The transparency of the bars correspond to the unadjusted p-value for the
+pathway's enrichment in the given list. The p-value presented as text to the
+right of each pair of bars is the adjusted p-value (user defined: default is FDR) associated with the
+differential enrichment of the pathway between the two lists, and the pathways
+are ordered from top to bottom by this p-value (i.e. smallest p-value on top
+of plot, and largest p-value on bottom of plot). The dotted line represents a fold enrichment of 1. Finally, the number of genes used
+for analysis from each gene list (recall that this number may not be the same as the number of
+genes in the user's original list) are reported below their respective p-values
+in the legend." alt="Figure 2. Example of a differential enrichment graphic. KEGG pathways are plotted on the y-axis and fold
 enrichment is plotted on the x-axis. Each KEGG pathway has a bar depicting
 its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue).
 The transparency of the bars correspond to the unadjusted p-value for the
@@ -1185,33 +2358,62 @@ of plot, and largest p-value on bottom of plot). The dotted line represents a fo
 for analysis from each gene list (recall that this number may not be the same as the number of
 genes in the user's original list) are reported below their respective p-values
 in the legend." width="100%" />
-<p class="caption">
-Figure 2. Example of a differential enrichment graphic. KEGG pathways are plotted on the y-axis and fold enrichment is plotted on the x-axis. Each KEGG pathway has a bar depicting its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue). The transparency of the bars correspond to the unadjusted p-value for the pathway's enrichment in the given list. The p-value presented as text to the right of each pair of bars is the adjusted p-value (user defined: default is FDR) associated with the differential enrichment of the pathway between the two lists, and the pathways are ordered from top to bottom by this p-value (i.e. smallest p-value on top of plot, and largest p-value on bottom of plot). The dotted line represents a fold enrichment of 1. Finally, the number of genes used for analysis from each gene list (recall that this number may not be the same as the number of genes in the user's original list) are reported below their respective p-values in the legend.
-</p>
 
-**Figure 2. Example of a differential enrichment graphic.** KEGG pathways are plotted on the y-axis and fold enrichment is plotted on the x-axis. Each KEGG pathway has a bar depicting its fold enrichment in list 1 (red) and its fold enrichment in list 2 (blue). The transparency of the bars correspond to the unadjusted p-value for the pathway's enrichment in the given list. The p-value presented as text to the right of each pair of bars is the adjusted p-value (user defined: default is FDR) associated with the differential enrichment of the pathway between the two lists, and the pathways are ordered from top to bottom by this p-value (i.e. smallest p-value on top of plot, and largest p-value on bottom of plot). The dotted line represents a fold enrichment of 1. Finally, the number of genes used for analysis from each gene list (recall that this number may not be the same as the number of genes in the user's original list) are reported below their respective p-values in the legend.
+**Figure 2. Example of a differential enrichment graphic.** KEGG
+pathways are plotted on the y-axis and fold enrichment is plotted on the
+x-axis. Each KEGG pathway has a bar depicting its fold enrichment in
+list 1 (red) and its fold enrichment in list 2 (blue). The transparency
+of the bars correspond to the unadjusted p-value for the pathway’s
+enrichment in the given list. The p-value presented as text to the right
+of each pair of bars is the adjusted p-value (user defined: default is
+FDR) associated with the differential enrichment of the pathway between
+the two lists, and the pathways are ordered from top to bottom by this
+p-value (i.e. smallest p-value on top of plot, and largest p-value on
+bottom of plot). The dotted line represents a fold enrichment of 1.
+Finally, the number of genes used for analysis from each gene list
+(recall that this number may not be the same as the number of genes in
+the user’s original list) are reported below their respective p-values
+in the legend.
 
-References
-==========
+# References
 
-Ashburner et al. (2000) Gene ontology: tool for the unification of biology. Nat Genet. 25(1):25-29.
+Ashburner et al. (2000) Gene ontology: tool for the unification of
+biology. Nat Genet. 25(1):25-29.
 
-Benjamini, Y., and Hochberg, Y. (1995). Controlling the false discovery rate: a practical and powerful approach to multiple testing. Journal of the Royal Statistical Society Series B,.57, 289–300
+Benjamini, Y., and Hochberg, Y. (1995). Controlling the false discovery
+rate: a practical and powerful approach to multiple testing. Journal of
+the Royal Statistical Society Series B,.57, 289–300
 
-Huang DW. et al. (2009) Bioinformatics enrichment tools: paths toward the comprehensive functional analysis of large gene lists. Nucleic Acids Res. 37(1):1-13.
+Huang DW. et al. (2009) Bioinformatics enrichment tools: paths toward
+the comprehensive functional analysis of large gene lists. Nucleic Acids
+Res. 37(1):1-13.
 
-Kanehisa, M. and Goto, S. (2000) KEGG: Kyoto Encyclopedia of Genes and Genomes. Nucleic Acids Res. 28, 27-30.
+Kanehisa, M. and Goto, S. (2000) KEGG: Kyoto Encyclopedia of Genes and
+Genomes. Nucleic Acids Res. 28, 27-30.
 
-Kuleshov MV. et al. (2016) Enrichr: a comprehensive gene set enrichment analysis web server 2016 update. Nucleic Acids Res. 44(1): 90 – 97.
+Kuleshov MV. et al. (2016) Enrichr: a comprehensive gene set enrichment
+analysis web server 2016 update. Nucleic Acids Res. 44(1): 90 – 97.
 
-Liao, Y. et al. (2019) Gene set analysis toolkit with revamped UIs and APIs, Nucleic Acids Res. 47(1):199 – 205.
+Liao, Y. et al. (2019) Gene set analysis toolkit with revamped UIs and
+APIs, Nucleic Acids Res. 47(1):199 – 205.
 
-Petersen DR. et al. (2018) Elevated Nrf-2 responses are insufficient to mitigate protein carbonylation in hepatospecific PTEN deletion mice. PLoS One. 13(5):e0198139.
+Petersen DR. et al. (2018) Elevated Nrf-2 responses are insufficient to
+mitigate protein carbonylation in hepatospecific PTEN deletion mice.
+PLoS One. 13(5):e0198139.
 
-Shearn CT. et al. (2019) Cholestatic liver disease results increased production of reactive aldehydes and an atypical periportal hepatic antioxidant response. Free Radic Biol Med;143:101-114. \[Epub ahead of print\] PubMed PMID: 31377417.
+Shearn CT. et al. (2019) Cholestatic liver disease results increased
+production of reactive aldehydes and an atypical periportal hepatic
+antioxidant response. Free Radic Biol Med;143:101-114. \[Epub ahead of
+print\] PubMed PMID: 31377417.
 
-Shearn CT. et al. (2018) Knockout of the Gsta4 Gene in Male Mice Leads to an Altered Pattern of Hepatic Protein Carbonylation and Enhanced Inflammation Following Chronic Consumption of an Ethanol Diet. Alcohol Clin Exp Res. 42(7):1192-1205.
+Shearn CT. et al. (2018) Knockout of the Gsta4 Gene in Male Mice Leads
+to an Altered Pattern of Hepatic Protein Carbonylation and Enhanced
+Inflammation Following Chronic Consumption of an Ethanol Diet. Alcohol
+Clin Exp Res. 42(7):1192-1205.
 
-Subramanian T. et al. (2005) Gene set enrichment analysis: A knowledge-based approach for interpreting genome-wide expression profiles. PNAS 102, 15545-15550.
+Subramanian T. et al. (2005) Gene set enrichment analysis: A
+knowledge-based approach for interpreting genome-wide expression
+profiles. PNAS 102, 15545-15550.
 
-Yu G. et al. (2012). clusterProfiler: an R package for comparing biological themes among gene clusters. OMICS. 16(5), 284-287.
+Yu G. et al. (2012). clusterProfiler: an R package for comparing
+biological themes among gene clusters. OMICS. 16(5), 284-287.
