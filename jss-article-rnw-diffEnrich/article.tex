@@ -62,6 +62,7 @@
 \usepackage{makecell}
 \usepackage{float}
 \usepackage{longtable}
+\usepackage{listings}
 \newcommand\mc[1]{\multicolumn{1}{c}{#1}}
 
 %% another package (only for this demo article)
@@ -260,9 +261,8 @@ You can install the released version of diffEnrich from CRAN with:
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{install.packages}\hlstd{(}\hlstr{"diffEnrich"}\hlstd{)}
-\end{alltt}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+install.packages("diffEnrich")\end{lstlisting}
 \end{kframe}
 \end{knitrout}
 
@@ -297,12 +297,14 @@ describe the data set, and are described in Table 1.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## Load package}
-\hlkwd{suppressMessages}\hlstd{(}\hlkwd{library}\hlstd{(diffEnrich))}
-\hlcom{## run get_kegg() using rat}
-\hlstd{kegg_rno} \hlkwb{<-} \hlkwd{get_kegg}\hlstd{(}\hlstr{'rno'}\hlstd{)}
-\end{alltt}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+## Load package\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+suppressMessages(library(diffEnrich))\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+## run get_kegg() using rat\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+kegg_rno <- get_kegg('rno')\end{lstlisting}
 
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# 3 data sets will be written as tab delimited text files}}
@@ -323,10 +325,10 @@ directories if they so choose.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## run get_kegg() using rat}
-\hlstd{kegg_rno} \hlkwb{<-} \hlkwd{get_kegg}\hlstd{(}\hlstr{'rno'}\hlstd{)}
-\end{alltt}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+## run get_kegg() using rat\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+kegg_rno <- get_kegg('rno')\end{lstlisting}
 
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# These files already exist in your working directory. New files will not be generated.}}
@@ -340,14 +342,15 @@ object that is compatible with downstream functions.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## run get_kegg() using rat}
-\hlstd{date} \hlkwb{<-} \hlkwd{as.character}\hlstd{(}\hlkwd{Sys.Date}\hlstd{())}
-\hlstd{kegg_rno} \hlkwb{<-} \hlkwd{get_kegg}\hlstd{(}\hlkwc{read} \hlstd{=} \hlnum{TRUE}\hlstd{,}
-                     \hlkwc{path} \hlstd{= here}\hlopt{::}\hlkwd{here}\hlstd{(),}
-                     \hlkwc{date} \hlstd{= date,}
-                     \hlkwc{release} \hlstd{=} \hlstr{"92"}\hlstd{)}
-\end{alltt}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+## run get_kegg() using rat\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+date <- as.character(Sys.Date())\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+kegg_rno <- get_kegg(read = TRUE,
+                     path = here::here(),
+                     date = date,
+                     release = "92")\end{lstlisting}
 
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Reading in the following files:}}
@@ -388,20 +391,19 @@ IDs. An example of this function's use can be found in their vignette
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## View sample gene lists from package data}
-\hlkwd{head}\hlstd{(geneLists}\hlopt{$}\hlstd{list1)}
-\end{alltt}
-\begin{verbatim}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+## View sample gene lists from package data\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+head(geneLists$list1)\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
 ## [1] "361692"    "293654"    "293655"    "500974"    "100361529"
 ## [6] "171434"
-\end{verbatim}
-\begin{alltt}
-\hlkwd{head}\hlstd{(geneLists}\hlopt{$}\hlstd{list2)}
-\end{alltt}
-\begin{verbatim}
+\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+head(geneLists$list2)\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
 ## [1] "315547" "315548" "315549" "315550" "50938"  "58856"
-\end{verbatim}
+\end{lstlisting}
 \end{kframe}
 \end{knitrout}
 
@@ -431,10 +433,9 @@ are in displayed below. For a detailed description of the variables in this tabl
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{head}\hlstd{(list1_pe}\hlopt{$}\hlstd{enrich_table)}
-\end{alltt}
-\begin{verbatim}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+head(list1_pe$enrich_table)\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
 ##     KEGG_PATHWAY_ID
 ## 95         rno04530
 ## 172        rno05135
@@ -470,7 +471,7 @@ are in displayed below. For a detailed description of the variables in this tabl
 ## 212        3.638829
 ## 197        4.658328
 ## 66         2.401627
-\end{verbatim}
+\end{lstlisting}
 \end{kframe}
 \end{knitrout}
 
@@ -523,10 +524,9 @@ correction.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{summary}\hlstd{(list1_pe)}
-\end{alltt}
-\begin{verbatim}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+summary(list1_pe)\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
 ## 219 KEGG pathways were tested. 
 ##  Only KEGG pathways that contained at least 2 genes from gene_list were tested. 
 ##  KEGG pathway species: Rattus norvegicus (rat)
@@ -571,7 +571,7 @@ correction.
 ## Acute myeloid leukemia
 ## Insulin signaling pathway
 ## Fc epsilon RI signaling pathway
-\end{verbatim}
+\end{lstlisting}
 \end{kframe}
 \end{knitrout}
 
@@ -597,22 +597,21 @@ results generated by \code{diffEnrich} are displayed below.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## Perform differential enrichment}
-\hlstd{diff_enrich} \hlkwb{<-} \hlkwd{diffEnrich}\hlstd{(}\hlkwc{list1_pe} \hlstd{= list1_pe,}
-                          \hlkwc{list2_pe} \hlstd{= list2_pe,}
-                          \hlkwc{method} \hlstd{=} \hlstr{'none'}\hlstd{,}
-                          \hlkwc{cutoff} \hlstd{=} \hlnum{0.05}\hlstd{)}
-\end{alltt}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+## Perform differential enrichment\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+diff_enrich <- diffEnrich(list1_pe = list1_pe,
+                          list2_pe = list2_pe,
+                          method = 'none',
+                          cutoff = 0.05)\end{lstlisting}
 \end{kframe}
 \end{knitrout}
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{head}\hlstd{(diff_enrich}\hlopt{$}\hlstd{de_table)}
-\end{alltt}
-\begin{verbatim}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+head(diff_enrich$de_table)\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
 ##          KEGG_PATHWAY_ID
 ## rno04530        rno04530
 ## rno05135        rno05135
@@ -669,7 +668,7 @@ results generated by \code{diffEnrich} are displayed below.
 ## rno05213         0.0058774642
 ## rno04660         0.0072047984
 ## rno04657         0.0087537607
-\end{verbatim}
+\end{lstlisting}
 \end{kframe}
 \end{knitrout}
 
@@ -742,10 +741,9 @@ diff\_enrich\_adjusted & \makecell{Multiple testing adjusted differential \\ enr
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{summary}\hlstd{(diff_enrich)}
-\end{alltt}
-\begin{verbatim}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+summary(diff_enrich)\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
 ## 219 KEGG pathways were shared between gene lists and were tested. 
 ##  KEGG pathway species: Rattus norvegicus (rat)
 ##  8856 genes from gene_list were in the KEGG data pull. 
@@ -772,7 +770,7 @@ diff\_enrich\_adjusted & \makecell{Multiple testing adjusted differential \\ enr
 ## Fc epsilon RI signaling pathway
 ## Thyroid hormone signaling pathway
 ## Alzheimer disease
-\end{verbatim}
+\end{lstlisting}
 \end{kframe}
 \end{knitrout}
 
@@ -798,10 +796,10 @@ more genes in gene list 2 compared to gene list 1.
 % \centering
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## Plot fold enrichment}
-\hlkwd{plotFoldEnrichment}\hlstd{(}\hlkwc{de_res} \hlstd{= diff_enrich,} \hlkwc{pval} \hlstd{=} \hlnum{0.05}\hlstd{,} \hlkwc{N} \hlstd{=} \hlnum{5}\hlstd{)}
-\end{alltt}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+## Plot fold enrichment\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily,breaklines=true]
+plotFoldEnrichment(de_res = diff_enrich, pval = 0.05, N = 5)\end{lstlisting}
 \end{kframe}
 \includegraphics[width=5.0in,height=4in]{figure/visualization_2-1} 
 

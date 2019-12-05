@@ -12,6 +12,7 @@
 \usepackage{makecell}
 \usepackage{float}
 \usepackage{longtable}
+\usepackage{listings}
 \newcommand\mc[1]{\multicolumn{1}{c}{#1}}
 
 %% another package (only for this demo article)
@@ -26,7 +27,15 @@
 %% \SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
 <<preliminaries, echo=FALSE, results='hide'>>=
 options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
-library("MASS")
+
+ options(width=70)
+
+  listing <- function(x, options) {
+    paste("\\begin{lstlisting}[basicstyle=\\ttfamily,breaklines=true]\n",
+      x, "\\end{lstlisting}\n", sep = "")
+  }
+  knit_hooks$set(source=listing, output=listing)
+
 @
 
 
