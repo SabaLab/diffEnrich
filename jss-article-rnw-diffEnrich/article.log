@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  5 DEC 2019 09:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  6 APR 2020 11:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -580,7 +580,11 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(./article.aux)
+(./article.aux
+
+LaTeX Warning: Label `tab:description' multiply defined.
+
+)
 \openout1 = `article.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
@@ -1076,44 +1080,24 @@ LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 307
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 317.
+
+
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 4 []
  []
 
 [4]
-Package color Info: Redefining color shadecolor on input line 327.
+Package color Info: Redefining color shadecolor on input line 344.
 
-Overfull \hbox (5.74747pt too wide) in paragraph at lines 334--335
+Overfull \hbox (5.74747pt too wide) in paragraph at lines 351--352
 []\T1/lmtt/m/it/10.95 ## These files already exist in your working directory. N
 ew files will not be
  []
 
-Package color Info: Redefining color shadecolor on input line 344.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 382.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 382.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 382.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hyphenchar' on input line 382.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\font' on input line 382.
-
-
-Package hyperref Warning: Composite letter `\texttilde+1'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\texttilde' on input line 382.
-
+Package color Info: Redefining color shadecolor on input line 361.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 5
@@ -1124,20 +1108,51 @@ as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.391 
-      ]
-Package color Info: Redefining color shadecolor on input line 393.
-Package color Info: Redefining color shadecolor on input line 435.
+l.397 \end{table}
+                 ]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 399.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 399.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 399.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\hyphenchar' on input line 399.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\font' on input line 399.
+
+
+Package hyperref Warning: Composite letter `\texttilde+1'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\texttilde' on input line 399.
+
+Package color Info: Redefining color shadecolor on input line 410.
+Package color Info: Redefining color shadecolor on input line 452.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 6 []
  []
 
-[6]
+[6pdfTeX warning (ext4): destination with the same identifier (name{table.2}) h
+as been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.452 ....969, 0.969}\color{fgcolor}\begin{kframe}
+                                                  ]
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \penalty \@M \futurelet \@let@token \LT@@h...
-l.487   \hline
+l.504   \hline
               
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1145,7 +1160,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.488 C
+l.505 C
        olumn Names & Column Description \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1153,7 +1168,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Extra alignment tab has been changed to \cr.
 <template> \endtemplate 
                         
-l.488 C
+l.505 C
        olumn Names & Column Description \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1162,7 +1177,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.494 & &
+l.511 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1171,7 +1186,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.496   & &
+l.513   & &
             \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1180,7 +1195,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.498 & &
+l.515 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1189,7 +1204,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.500 & &
+l.517 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1198,7 +1213,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.502 & &
+l.519 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1207,7 +1222,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.504 & &
+l.521 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1216,7 +1231,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.506 & &
+l.523 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1225,7 +1240,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.508 & &
+l.525 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1234,7 +1249,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.510 & &
+l.527 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1246,57 +1261,56 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
  []
 
 [7]
-Package color Info: Redefining color shadecolor on input line 526.
+Package color Info: Redefining color shadecolor on input line 543.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 8 []
  []
 
 [8]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 578.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 578.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 578.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hyphenchar' on input line 578.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\font' on input line 578.
-
-
-Package hyperref Warning: Composite letter `\texttilde+1'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\texttilde' on input line 578.
-
-
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 9
  []
 
 [9]
-Package color Info: Redefining color shadecolor on input line 599.
-Package color Info: Redefining color shadecolor on input line 611.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 595.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 595.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\catcode' on input line 595.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\hyphenchar' on input line 595.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\font' on input line 595.
+
+
+Package hyperref Warning: Composite letter `\texttilde+1'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\texttilde' on input line 595.
+
+Package color Info: Redefining color shadecolor on input line 616.
+Package color Info: Redefining color shadecolor on input line 628.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 10 []
  []
 
 [10]
-Underfull \vbox (badness 10000) detected at line 672
+Underfull \vbox (badness 10000) detected at line 689
  []
 
 
-Underfull \vbox (badness 10000) detected at line 672
+Underfull \vbox (badness 10000) detected at line 689
  []
 
 
@@ -1308,7 +1322,7 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \penalty \@M \futurelet \@let@token \LT@@h...
-l.695   \hline
+l.712   \hline
               
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1316,7 +1330,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.696  &
+l.713  &
          Column Names & Column Description \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1324,7 +1338,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Extra alignment tab has been changed to \cr.
 <template> \endtemplate 
                         
-l.696  &
+l.713  &
          Column Names & Column Description \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1333,121 +1347,26 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.696  & Column Names &
+l.713  & Column Names &
                         Column Description \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
 So I'll assume that you meant to type \cr instead.
 
 
-Overfull \hbox (41.18472pt too wide) in alignment at lines 693--698
+Overfull \hbox (41.18472pt too wide) in alignment at lines 710--715
  [] [] 
  []
 
 
-Overfull \hbox (41.18472pt too wide) in alignment at lines 698--700
- [] [] 
- []
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.702 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.704 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.706 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.708 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.710 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.712 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.714 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.716 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.718 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.720 & &
-          \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-
-Overfull \hbox (41.18472pt too wide) in alignment at lines 700--721
+Overfull \hbox (41.18472pt too wide) in alignment at lines 715--717
  [] [] 
  []
 
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.722 & &
+l.719 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1456,7 +1375,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.724 & &
+l.721 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1465,7 +1384,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.726 & &
+l.723 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1474,7 +1393,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.728 & &
+l.725 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1483,7 +1402,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.730 & &
+l.727 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1492,7 +1411,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.732 & &
+l.729 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1501,7 +1420,7 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.734 & &
+l.731 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
@@ -1510,14 +1429,109 @@ So I'll assume that you meant to type \cr instead.
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.736 & &
+l.733 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.735 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.737 & &
           \\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
 So I'll assume that you meant to type \cr instead.
 
 
-Overfull \hbox (41.18472pt too wide) in alignment at lines 721--740
+Overfull \hbox (41.18472pt too wide) in alignment at lines 717--738
+ [] [] 
+ []
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.739 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.741 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.743 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.745 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.747 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.749 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.751 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.753 & &
+          \\
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+
+Overfull \hbox (41.18472pt too wide) in alignment at lines 738--757
  [] [] 
  []
 
@@ -1532,58 +1546,67 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [13]
-Package color Info: Redefining color shadecolor on input line 743.
-
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 14 []
  []
 
 [14]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 777.
+Package color Info: Redefining color shadecolor on input line 760.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 777.
+(hyperref)                removing `\catcode' on input line 794.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\catcode' on input line 777.
+(hyperref)                removing `\catcode' on input line 794.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hyphenchar' on input line 777.
+(hyperref)                removing `\catcode' on input line 794.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\font' on input line 777.
+(hyperref)                removing `\hyphenchar' on input line 794.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\font' on input line 794.
 
 
 Package hyperref Warning: Composite letter `\texttilde+1'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\texttilde' on input line 777.
+(hyperref)                removing `\texttilde' on input line 794.
 
-Package color Info: Redefining color shadecolor on input line 798.
-<figure/visualization_2-1.pdf, id=341, 505.89pt x 505.89pt>
-File: figure/visualization_2-1.pdf Graphic file (type pdf)
-<use figure/visualization_2-1.pdf>
-Package pdftex.def Info: figure/visualization_2-1.pdf  used on input line 804.
-(pdftex.def)             Requested size: 361.35352pt x 289.08589pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2073) has occurred while \output is active []
 
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 15
  []
 
-[15] (./article.bbl
+[15]
+Package color Info: Redefining color shadecolor on input line 815.
+<figure/visualization_2-1.pdf, id=376, 505.89pt x 505.89pt>
+File: figure/visualization_2-1.pdf Graphic file (type pdf)
+<use figure/visualization_2-1.pdf>
+Package pdftex.def Info: figure/visualization_2-1.pdf  used on input line 821.
+(pdftex.def)             Requested size: 361.35352pt x 289.08589pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 16 []
  []
 
-[16pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
+[16] (./article.bbl
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+[] \T1/lmr/m/n/10.95 17
+ []
+
+[17pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1591,38 +1614,42 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 l.23 
       <./figure/visualization_2-1.pdf>])
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 885.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 885.
+(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 902.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 902.
 
 Underfull \vbox (badness 5787) has occurred while \output is active []
 
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
-[] \T1/lmr/m/n/10.95 17
- []
-
-[17]
-Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 18 []
  []
 
 [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 885.
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+[] \T1/lmr/m/n/10.95 19
+ []
+
+[19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 902.
  (./article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 885.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 885.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 902.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 902.
 Package rerunfilecheck Info: File `article.out' has not changed.
 (rerunfilecheck)             Checksum: EDD4A09D22E92C486CDCF02508B34E01;1366.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 885.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 902.
  ) 
 Here is how much of TeX's memory you used:
- 10288 strings out of 492649
- 152580 string characters out of 6129622
- 427911 words of memory out of 5000000
+ 10290 strings out of 492649
+ 152594 string characters out of 6129622
+ 436950 words of memory out of 5000000
  13704 multiletter control sequences out of 15000+600000
  80271 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,10n,37p,1258b,1349s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,15n,37p,1258b,1349s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Subsection.2.0.\\bgroup\040\\catcode\040`\\protec
 t\040\\T1\\textunderscore\04012\\relax\040\\catcode\040`\\unhbox\040\\voidb@x\0
 40\\bgroup\040\\let\040\\unhbox\040\\voidb@x\040\\setbox\040\\@tempboxa\040\\hb
@@ -1653,10 +1680,10 @@ ist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2018/texmf-dist/fonts
 lic/lm/lmtt12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmt
 ti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.p
 fb>
-Output written on article.pdf (18 pages, 930358 bytes).
+Output written on article.pdf (19 pages, 932224 bytes).
 PDF statistics:
- 526 PDF objects out of 1000 (max. 8388607)
- 482 compressed objects within 5 object streams
- 267 named destinations out of 1000 (max. 500000)
+ 532 PDF objects out of 1000 (max. 8388607)
+ 487 compressed objects within 5 object streams
+ 269 named destinations out of 1000 (max. 500000)
  40 words of extra memory for PDF output out of 10000 (max. 10000000)
 
