@@ -22,7 +22,7 @@ Description: Compare functional enrichment between two experimentally-derived gr
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 URL: https://github.com/SabaLab/diffEnrich
 BugReports: https://github.com/SabaLab/diffEnrich/issues
 Suggests: 
