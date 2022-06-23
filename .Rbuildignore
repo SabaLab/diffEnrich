@@ -9,3 +9,4 @@
 
 ^.*\.txt$
 ^jss-article-rnw-diffEnrich/*$
+^CRAN-SUBMISSION$
