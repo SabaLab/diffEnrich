@@ -109,7 +109,7 @@ get_kegg <- function(species, read = FALSE, path = NULL, date, release){
   if(missing(species) | !(species %in% c('hsa','mmu','rno'))){stop("Must choose one of the 3 species options: human: use 'hsa', mouse: use 'mmu', rat: use rno")}
 
   # Define base api path and define list of operations/arguments
-  api_base <- "http://rest.kegg.jp/"
+  api_base <- "https://rest.kegg.jp/"
   op <- list("info"="info", "list"="list", "find"="find", "get"="get",
              "conv"="conv", "link"="link", "ddi"="ddi")
   db <- list("pathway"="pathway")
