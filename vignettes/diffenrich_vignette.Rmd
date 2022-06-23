@@ -82,7 +82,7 @@ arrpos <- matrix(ncol = 2, nrow = nr)
 
 ## Build flow chart
 for (i in 1:nr){
-  arrpos[i, ] <- straightarrow (to = elpos[fromto[i, 2], ],
+  arrpos[i, ] <- straightarrow(to = elpos[fromto[i, 2], ],
                                 from = elpos[fromto[i, 1], ],
                                 lwd = 1, arr.pos = 0.6, arr.length = 0.2)
   textellipse(elpos[1,], 0.10, 0.04, lab = "geneList1", box.col = "purple",
