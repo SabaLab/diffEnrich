@@ -47,7 +47,7 @@ plotFoldEnrichment <- function(de_res, pval, N){
   if(missing(pval)){stop("Argument missing: pval - please provide a threshold")}
   if(missing(N)){stop("Argument missing: N - if you'd like to plot top pathways, please provide a threshold and make sure N > 0")}
   if(N < 1){stop("Number of top genes (N) must be > 0")}
-  if(class(de_res) != "diffEnrich"){stop("de_res must be an object of class 'diffEnrich'. Please generate this object using the diffEnrich function provided in this package.")}
+  if(inherits(de_res, "diffEnrich") != TRUE){stop("de_res must be an object of class 'diffEnrich'. Please generate this object using the diffEnrich function provided in this package.")}
 
   ###########################################################
   # Prepare and reshape data for plotting using ggplot

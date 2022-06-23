@@ -35,4 +35,35 @@
   I fixed this by changing the 'transparent' color to 'white'. This seems to have
   resolved the issue. diffEnrich is now passing all checks. The 'new maintainer'
   NOTE is because I updated my email address.
+  
+   * THIS IS A VERSION UPDATE WITH BUG FIXES *
+   -previous version: 0.1.0
+ -current version 0.1.2
+ 
+ Reason for version change:
+ 
+Check: re-building of vignette outputs
+Result: ERROR
+    Error(s) in re-building vignettes:
+     ...
+    --- re-building 'diffenrich_vignette.Rmd' using rmarkdown
+    Quitting from lines 161-163 (diffenrich_vignette.Rmd)
+    Error: processing vignette 'diffenrich_vignette.Rmd' failed with diagnostics:
+    cannot read from connection
+    --- failed re-building 'diffenrich_vignette.Rmd'
+    
+    SUMMARY: processing the following file failed:
+     'diffenrich_vignette.Rmd'
+     
+      Error: Vignette re-building failed.
+    Execution halted
+     
+This led to discovering that the issue was the api path used in the function
+.api_pull was failing using http.I fixed this bug by updating the api path to 
+use https.
+
+❯ checking CRAN incoming feasibility ... NOTE
+  Maintainer: 'Harry Smith <harry.smith@ucdenver.edu>'
+  - My email changed, so I updated it in the DESCRIPTION
+   
  

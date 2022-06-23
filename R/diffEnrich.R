@@ -72,8 +72,10 @@
 #'
 diffEnrich <- function(list1_pe, list2_pe, method = 'BH', cutoff = 0.05){
   ## check class
-  if(class(list1_pe) != "pathEnrich"){stop("list1_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
-  if(class(list2_pe) != "pathEnrich"){stop("list2_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
+  # if(class(list1_pe) != "pathEnrich"){stop("list1_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
+  if(inherits(list1_pe, "pathEnrich") != TRUE){stop("list1_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
+  # if(class(list2_pe) != "pathEnrich"){stop("list2_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
+  if(inherits(list2_pe, "pathEnrich") != TRUE){stop("list2_pe must be an object of class 'pathEnrich'. Please generate this object using the pathEnrich function provided in this package.")}
   ## Call .combineEnrich helper function
   ce <- .combineEnrich(list1_pe = list1_pe, list2_pe = list2_pe)
   # define p.adjust method
