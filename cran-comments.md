@@ -65,5 +65,7 @@ use https.
 ❯ checking CRAN incoming feasibility ... NOTE
   Maintainer: 'Harry Smith <harry.smith@ucdenver.edu>'
   - My email changed, so I updated it in the DESCRIPTION
+  
+ * THIS IS NOT A VERSION UPDATE. JUST FIXES FOR RESUBMISSION *
    
- 
+ I updated all URLs that moved
