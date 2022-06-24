@@ -5,7 +5,7 @@
 status](https://ci.appveyor.com/api/projects/status/xwu8nket2u1pd5ij?svg=true)](https://ci.appveyor.com/project/hsmith9002/diffenrich)
 
 [![Build
-Status](https://travis-ci.com/SabaLab/diffEnrich.svg?token=M2jELEzTYYqmxZMY6hpb&branch=master)](https://travis-ci.com/SabaLab/diffEnrich)
+Status](https://travis-ci.com/SabaLab/diffEnrich.svg?token=M2jELEzTYYqmxZMY6hpb&branch=master)](https://www.travis-ci.com/SabaLab/diffEnrich)
 
 \#diffEnrich
 
@@ -90,14 +90,14 @@ are differentially expressed after an experimental manipulation may
 indicate that the pathway has been altered by that manipulation. This
 analysis is rather straight forward and many solutions have been offered
 (e.g., [Haung et
-al., 2009](https://www.ncbi.nlm.nih.gov/pubmed/19033363); [Kuleshov et
-al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27141961); [Liao et
-al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31114916); [Subramanian
-et al., 2005](https://www.pnas.org/content/102/43/15545)). A wide
+al., 2009](https://pubmed.ncbi.nlm.nih.gov/19033363/); [Kuleshov et
+al., 2016](https://pubmed.ncbi.nlm.nih.gov/27141961/); [Liao et
+al., 2019](https://pubmed.ncbi.nlm.nih.gov/31114916/); [Subramanian
+et al., 2005](https://www.pnas.org/doi/10.1073/pnas.0506580102)). A wide
 variety of databases have also been used to define these pathways (e.g.,
-[Kanehisa and Goto, 2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173))
+[Kanehisa and Goto, 2000](https://pubmed.ncbi.nlm.nih.gov/10592173/))
 and ontologies (e.g., [Ashburn et
-al., 2000](https://www.ncbi.nlm.nih.gov/pubmed/10802651)).
+al., 2000](https://pubmed.ncbi.nlm.nih.gov/10802651/)).
 
 One key component of a statistically rigorous functional enrichment
 analysis is the definition of a background data set that can be used to
@@ -112,8 +112,8 @@ expressed above background).
 However, for some newer omics technologies, the background data set is
 hard to define. For example, LC-MS analysis can be used to identify
 carbonylated proteins ( [Peterson et
-al., 2018](https://www.ncbi.nlm.nih.gov/pubmed/29799837); [Shearn et
-al., 2019](https://www.ncbi.nlm.nih.gov/pubmed/31377417); [Shearn et
+al., 2018](https://pubmed.ncbi.nlm.nih.gov/29799837/); [Shearn et
+al., 2019](https://pubmed.ncbi.nlm.nih.gov/31377417/); [Shearn et
 al., 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6028296/)). With
 this study design, carbonylated proteins are isolated using a
 BH-derivation and then LC-MS is used to identify peptides in this
@@ -158,7 +158,7 @@ and download the data sets required to perform our downstream analysis.
 This function takes two arguments. The first, ‘species’ is required.
 Currently, *diffEnrich* supports three species, and the argument is a
 character string using the KEGG code
-<https://www.pnas.org/content/suppl/2008/09/11/0806162105.DCSupplemental/ST1_PDF.pdf>:
+<https://www.pnas.org/doi/10.1073/pnas.0806162105>:
 Homo sapiens (human), use ‘hsa’; Mus musculus (mouse), use ‘mmu’; and
 Rattus norvegicus (rat), use ‘rno’. The second, ‘path’ is also passed as
 a character string, and is the path of the directory in which the user
@@ -309,7 +309,7 @@ of interest. User gene lists must be character vectors and be formatted
 as ENTREZ gene IDs. The *clusterProfiler* package offers a nice function
 (*bitr*) that maps gene symbols and Ensembl IDs to ENTREZ gene IDs, and
 an example can be seen in their
-[vignette](https://yulab-smu.github.io/clusterProfiler-book/chapter14.html#bitr).
+[vignette](https://yulab-smu.top/biomedical-knowledge-mining-book/useful-utilities.html).
 
 ``` r
 ## View sample gene lists from package data
