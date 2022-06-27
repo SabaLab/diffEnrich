@@ -1,9 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Build
-Status](https://travis-ci.com/SabaLab/diffEnrich.svg?token=M2jELEzTYYqmxZMY6hpb&branch=master)](https://www.travis-ci.com/SabaLab/diffEnrich)
-
 \#diffEnrich
 
 ## Introduction
