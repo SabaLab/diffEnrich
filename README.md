@@ -2,9 +2,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![Build
-Status](https://app.travis-ci.com/SabaLab/diffEnrich.svg?branch=master)](https://app.travis-ci.com/SabaLab/diffEnrich)
-
-[![Build
 Status](https://travis-ci.com/SabaLab/diffEnrich.svg?token=M2jELEzTYYqmxZMY6hpb&branch=master)](https://www.travis-ci.com/SabaLab/diffEnrich)
 
 \#diffEnrich
@@ -117,12 +114,11 @@ genes/proteins from a second gene list that are associated with that
 pathway. To easily execute this analysis, we have designed an R package
 that uses the KEGG REST API to obtain the most recent version of the
 KEGG PATHWAY ( [Kanehisa and Goto,
-2000](https://www.ncbi.nlm.nih.gov/pubmed/10592173)) database to
-initially identify functional enrichment within a gene list using the
-entire KEGG transcriptome as the background data set and then to
-identify differentially enriched pathways between two gene lists. This R
-package includes a function to generate a “differential enrichment”
-graphic.
+2000](https://pubmed.ncbi.nlm.nih.gov/10592173/)) database to initially
+identify functional enrichment within a gene list using the entire KEGG
+transcriptome as the background data set and then to identify
+differentially enriched pathways between two gene lists. This R package
+includes a function to generate a “differential enrichment” graphic.
 
 ## Installation
 
@@ -162,7 +158,7 @@ the data set. For a detailed description of list elements use
 kegg_rno <- get_kegg('rno')
 #> 3 data sets will be written as tab delimited text files
 #> File location: /Users/smithh/Documents/Saba_Lab/diffEnrich
-#> Kegg Release: Release_102.0+_06-24_Jun_22
+#> Kegg Release: Release_102.0+_06-27_Jun_22
 ```
 
 Here are examples of the output files:
@@ -187,7 +183,7 @@ generate an R list object that is compatible with downstream functions.
 ## run get_kegg() using rat
 kegg_rno <- get_kegg('rno')
 #> These files already exist in your working directory. New files will not be generated.
-#> Kegg Release: Release_102.0+_06-24_Jun_22
+#> Kegg Release: Release_102.0+_06-27_Jun_22
 ```
 
 ``` r
